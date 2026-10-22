@@ -1,0 +1,33 @@
+{
+  "checkout_head_at_build": "6c3bbb46f89653b13bec7c39e4b811161c82c765",
+  "source_binding": "Dirty working-tree build; checkout HEAD is not the built source commit. Exact-commit verification remains pending.",
+  "source_dir": "/home/common/projects/templar/blend-contracts-v2",
+  "toolchain": "rustc 1.81 (rustup run 1.81), stellar 22.6.0 (/tmp/adr8-local-20260913.RLSEWPiF/tools/bin)",
+  "artifacts": {
+    "pool": {
+      "sha256": "351257924a5499a6c7c947a7c81e27ffce51ed013650cd52ce188d50cff5c96d",
+      "bytes": 53921
+    },
+    "backstop": {
+      "sha256": "6bd13007c020b617c43c718c2ad3d2d13605d4d42fa8f739da2293f8a4e293a0",
+      "bytes": 22701
+    },
+    "pool_factory": {
+      "sha256": "80abaf3c68fd15adade9f82165baa9b50d85800e497c99b45809e1fbd7397de2",
+      "bytes": 3149
+    }
+  },
+  "comparisons": {
+    "pool_factory_wasm_vs_baseline": "byte-identical (80abaf3c…)",
+    "spec_xdr_base64_vs_baseline": {
+      "pool": "identical (e2d5e750…)",
+      "backstop": "identical (a0bfed1e…)",
+      "pool_factory": "identical (28bfa6de…)"
+    },
+    "rebuild_reproducibility": "2026-09-13T16:50 rebuild from final dirty-tree source reproduced the 10:25 wasm bytes exactly for pool and backstop; post-10:25 edits to pool/src/pool/*.rs were test-only"
+  },
+  "differential": {
+    "command": "cargo test --locked -p test-suites --test adr8_differential -- --ignored --exact adr8_base_fork_differential --nocapture",
+    "rerun_with_restored_queue_probe": "passed 86.78s; pool_sealed_config/fork-after-queue.json present in /tmp/adr8-development-differential-evidence"
+  }
+}

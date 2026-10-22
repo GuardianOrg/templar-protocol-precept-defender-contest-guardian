@@ -1,0 +1,25 @@
+description = "The same fork on both sides with different reserve parameters, to see what a configuration change alone moves. Any trap or loss-path divergence here would be a bug, since the code is identical."
+profile = "fork-vs-fork"
+
+[shared]
+token_wasm = "/home/common/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sep-41-token-1.2.0/src/testutils/mock_sep_41_token.wasm"
+oracle_wasm = "/home/common/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sep-40-oracle-1.2.0/src/testutils/mock_sep_40_oracle.wasm"
+comet_wasm = "/home/common/projects/templar/blend-contracts-v2/comet.wasm"
+emitter_wasm = "/home/common/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blend-contract-sdk-1.22.0/wasm/emitter.wasm"
+
+# Pinned stock baseline (6cf6dd1), built by `make differential` in blend-contracts-v2.
+[a]
+label = "fork-default"
+pool_wasm = "/home/common/projects/templar/blend-contracts-v2/target/wasm32-unknown-unknown/optimized/pool.wasm"
+backstop_wasm = "/home/common/projects/templar/blend-contracts-v2/target/wasm32-unknown-unknown/optimized/backstop.wasm"
+factory_wasm = "/home/common/projects/templar/blend-contracts-v2/target/wasm32-unknown-unknown/optimized/pool_factory.wasm"
+
+[b]
+label = "fork-tight"
+pool_wasm = "/home/common/projects/templar/blend-contracts-v2/target/wasm32-unknown-unknown/optimized/pool.wasm"
+backstop_wasm = "/home/common/projects/templar/blend-contracts-v2/target/wasm32-unknown-unknown/optimized/backstop.wasm"
+factory_wasm = "/home/common/projects/templar/blend-contracts-v2/target/wasm32-unknown-unknown/optimized/pool_factory.wasm"
+
+# Side B: tighter XLM collateral factor.
+[b.reserves.xlm]
+c_factor = 6000000

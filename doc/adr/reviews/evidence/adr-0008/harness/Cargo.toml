@@ -1,0 +1,14 @@
+[workspace]
+resolver = "2"
+members = []
+exclude = ["blend-src"]
+
+[package]
+name = "adr8-harness"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.81"
+
+[dependencies]
+proptest = { version = "=1.6.0", default-features = false, features = ["std"] }
+test-suites = { path = "blend-src/test-suites" }

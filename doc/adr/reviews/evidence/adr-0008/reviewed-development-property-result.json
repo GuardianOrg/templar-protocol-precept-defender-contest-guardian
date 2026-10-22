@@ -1,0 +1,12 @@
+{
+  "cases": 10000,
+  "seed": 9110008,
+  "status": "passed",
+  "log": "logs/reviewed-property-10000.log",
+  "log_sha256": "1c8df1e039dbe597a07d84957a43cd52a18143e602ef227373ae2e9ac5618b51",
+  "scope": "Development build; not substituted for exact commit acceptance.",
+  "terminal_lines": [
+    "PASS adr8 mode=wasm-registered fixtures seed=9110008 cases=10000 bounds ops<=64 users<=4 reserves<=3 amount-selectors<=5 time-selectors<=8",
+    "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 28354.85s"
+  ]
+}

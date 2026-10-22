@@ -1,0 +1,17 @@
+{
+  "pool": {
+    "sha256": "712486df0f76267e46aecc74c8c2d8ffb3bb72a2a3fdc80b301a60108ba0cfc8",
+    "size": 57247,
+    "spec_sha256": "e2d5e75029a044fdaf107a6124d2e3a346f5cf180e1dbbbff51dbd4b34a89d95"
+  },
+  "backstop": {
+    "sha256": "eef956ba07f26f5f1186330a4f14a3923193ca1829a24eb6a526793e64bf6d91",
+    "size": 30691,
+    "spec_sha256": "a0bfed1ea59382ebf9573867eb177d0e1da958adac51e037f8f981ec69ed853e"
+  },
+  "pool_factory": {
+    "sha256": "80abaf3c68fd15adade9f82165baa9b50d85800e497c99b45809e1fbd7397de2",
+    "size": 3149,
+    "spec_sha256": "28bfa6de93228ce3af8c08e4df13f014594d4c6a741834ee00c74fb922b8eda4"
+  }
+}

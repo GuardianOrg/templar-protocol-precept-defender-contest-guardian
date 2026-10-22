@@ -1,0 +1,43 @@
+[package]
+name = "templar-token-faucet-contract"
+license = "GPL-3.0-only"
+repository = "https://github.com/Templar-Protocol/precept"
+edition = "2021"
+rust-version = "1.86"
+version = "0.1.0"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+path = "src/lib.rs"
+
+[workspace]
+
+[dependencies]
+soroban-sdk = { version = "=25.3.0", features = ["alloc"] }
+
+[dev-dependencies]
+soroban-sdk = { version = "=25.3.0", features = ["testutils", "alloc"] }
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = "fat"
+debug = false
+panic = "abort"
+strip = "symbols"
+overflow-checks = true
+
+[profile.release-soroban]
+inherits = "release"
+overflow-checks = false
+
+[profile.release-soroban.package."*"]
+overflow-checks = false
+
+[profile.release-soroban-checked]
+inherits = "release-soroban"
+overflow-checks = true
+
+[profile.release-soroban-checked.package."*"]
+overflow-checks = false

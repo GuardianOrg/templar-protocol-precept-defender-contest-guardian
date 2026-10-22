@@ -1,0 +1,10 @@
+error: failed to load manifest for dependency `test-suites`
+
+Caused by:
+  failed to parse manifest at `/tmp/adr8-exact-local.xerov9sq/harness/blend-src/test-suites/Cargo.toml`
+
+Caused by:
+  error inheriting `blend-contract-sdk` from workspace root manifest's `workspace.dependencies.blend-contract-sdk`
+
+Caused by:
+  `workspace.dependencies` was not defined

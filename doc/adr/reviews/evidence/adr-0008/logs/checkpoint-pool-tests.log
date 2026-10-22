@@ -1,0 +1,1049 @@
+   Compiling pool v2.0.0 (/home/common/projects/templar/blend-contracts-v2/pool)
+warning: unused imports: `dependencies::EmitterClient` and `emissions`
+ --> backstop/src/contract.rs:4:5
+  |
+4 |     dependencies::EmitterClient,
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5 |     emissions,
+  |     ^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `claim::execute_claim`
+ --> backstop/src/emissions/mod.rs:2:9
+  |
+2 | pub use claim::execute_claim;
+  |         ^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `add_to_reward_zone`, `distribute`, `gulp_emissions`, and `remove_from_reward_zone`
+ --> backstop/src/emissions/mod.rs:8:19
+  |
+8 | pub use manager::{add_to_reward_zone, distribute, gulp_emissions, remove_from_reward_zone};
+  |                   ^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^  ^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `pool`
+   --> backstop/src/contract.rs:268:31
+    |
+268 |     fn gulp_emissions(e: Env, pool: Address) -> i128 {
+    |                               ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `to_add`
+   --> backstop/src/contract.rs:272:27
+    |
+272 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                           ^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_add`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:272:44
+    |
+272 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                                            ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:276:30
+    |
+276 |     fn remove_reward(e: Env, to_remove: Address) {
+    |                              ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `from`
+   --> backstop/src/contract.rs:280:22
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                      ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `pool_addresses`
+   --> backstop/src/contract.rs:280:37
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                     ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_pool_addresses`
+
+warning: unused variable: `min_lp_tokens_out`
+   --> backstop/src/contract.rs:280:67
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                                                   ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_lp_tokens_out`
+
+warning: function `is_pool_above_threshold` is never used
+   --> backstop/src/backstop/pool.rs:105:8
+    |
+105 | pub fn is_pool_above_threshold(pool_backstop_data: &PoolBackstopData) -> bool {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_RZ_SIZE` is never used
+ --> backstop/src/constants.rs:8:11
+  |
+8 | pub const MAX_RZ_SIZE: u32 = 30;
+  |           ^^^^^^^^^^^
+
+warning: function `execute_claim` is never used
+  --> backstop/src/emissions/claim.rs:13:8
+   |
+13 | pub fn execute_claim(
+   |        ^^^^^^^^^^^^^
+
+warning: function `claim_emissions` is never used
+  --> backstop/src/emissions/distributor.rs:37:15
+   |
+37 | pub(super) fn claim_emissions(
+   |               ^^^^^^^^^^^^^^^
+
+warning: function `add_to_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:18:8
+   |
+18 | pub fn add_to_reward_zone(e: &Env, to_add: Address, to_remove: Option<Address>) {
+   |        ^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_from_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:58:8
+   |
+58 | pub fn remove_from_reward_zone(e: &Env, to_remove: Address) {
+   |        ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_pool` is never used
+  --> backstop/src/emissions/manager.rs:73:4
+   |
+73 | fn remove_pool(e: &Env, reward_zone: &mut Vec<Address>, to_remove: &Address) {
+   |    ^^^^^^^^^^^
+
+warning: function `require_distribute_run_recently` is never used
+  --> backstop/src/emissions/manager.rs:87:4
+   |
+87 | fn require_distribute_run_recently(e: &Env) {
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `distribute` is never used
+  --> backstop/src/emissions/manager.rs:96:8
+   |
+96 | pub fn distribute(e: &Env) -> i128 {
+   |        ^^^^^^^^^^
+
+warning: function `gulp_emissions` is never used
+   --> backstop/src/emissions/manager.rs:209:8
+    |
+209 | pub fn gulp_emissions(e: &Env, pool: &Address) -> (i128, i128) {
+    |        ^^^^^^^^^^^^^^
+
+warning: function `set_backstop_emission_eps` is never used
+   --> backstop/src/emissions/manager.rs:253:8
+    |
+253 | pub fn set_backstop_emission_eps(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated functions `distribute`, `gulp_emissions`, `rw_zone_add`, `rw_zone_remove`, and `claim` are never used
+   --> backstop/src/events.rs:84:12
+    |
+5   | impl BackstopEvents {
+    | ------------------- associated functions in this implementation
+...
+84  |     pub fn distribute(e: &Env, new_tokens_emitted: i128) {
+    |            ^^^^^^^^^^
+...
+98  |     pub fn gulp_emissions(
+    |            ^^^^^^^^^^^^^^
+...
+117 |     pub fn rw_zone_add(e: &Env, to_add: Address, to_remove: Option<Address>) {
+    |            ^^^^^^^^^^^
+...
+129 |     pub fn rw_zone_remove(e: &Env, to_remove: Address) {
+    |            ^^^^^^^^^^^^^^
+...
+142 |     pub fn claim(e: &Env, from: Address, amount: i128) {
+    |            ^^^^^
+
+warning: constant `LAST_DISTRO_KEY` is never used
+  --> backstop/src/storage.rs:61:7
+   |
+61 | const LAST_DISTRO_KEY: &str = "LastDist";
+   |       ^^^^^^^^^^^^^^^
+
+warning: constant `BACKFILL_EMISSIONS_KEY` is never used
+  --> backstop/src/storage.rs:64:7
+   |
+64 | const BACKFILL_EMISSIONS_KEY: &str = "BackfillEmis";
+   |       ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: constant `BACKFILL_STATUS_KEY` is never used
+  --> backstop/src/storage.rs:65:7
+   |
+65 | const BACKFILL_STATUS_KEY: &str = "Backfill";
+   |       ^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_emitter` is never used
+   --> backstop/src/storage.rs:117:8
+    |
+117 | pub fn get_emitter(e: &Env) -> Address {
+    |        ^^^^^^^^^^^
+
+warning: function `get_last_distribution_time` is never used
+   --> backstop/src/storage.rs:288:8
+    |
+288 | pub fn get_last_distribution_time(e: &Env) -> u64 {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_last_distribution_time` is never used
+   --> backstop/src/storage.rs:302:8
+    |
+302 | pub fn set_last_distribution_time(e: &Env, timestamp: &u64) {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_reward_zone` is never used
+   --> backstop/src/storage.rs:328:8
+    |
+328 | pub fn set_reward_zone(e: &Env, reward_zone: &Vec<Address>) {
+    |        ^^^^^^^^^^^^^^^
+
+warning: function `get_backfill_emissions` is never used
+   --> backstop/src/storage.rs:340:8
+    |
+340 | pub fn get_backfill_emissions(e: &Env) -> i128 {
+    |        ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_backfill_emissions` is never used
+   --> backstop/src/storage.rs:354:8
+    |
+354 | pub fn set_backfill_emissions(e: &Env, emissions: &i128) {
+    |        ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_backfill_status` is never used
+   --> backstop/src/storage.rs:368:8
+    |
+368 | pub fn get_backfill_status(e: &Env) -> Option<bool> {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_backfill_status` is never used
+   --> backstop/src/storage.rs:382:8
+    |
+382 | pub fn set_backfill_status(e: &Env, status: &bool) {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_rz_emis` is never used
+   --> backstop/src/storage.rs:397:8
+    |
+397 | pub fn get_rz_emis(e: &Env, pool: &Address) -> RzEmissions {
+    |        ^^^^^^^^^^^
+
+warning: function `set_rz_emis` is never used
+   --> backstop/src/storage.rs:416:8
+    |
+416 | pub fn set_rz_emis(e: &Env, pool: &Address, emissions: &RzEmissions) {
+    |        ^^^^^^^^^^^
+
+warning: function `get_drop_list` is never used
+   --> backstop/src/storage.rs:498:8
+    |
+498 | pub fn get_drop_list(e: &Env) -> Vec<(Address, i128)> {
+    |        ^^^^^^^^^^^^^
+
+warning: `backstop` (lib) generated 36 warnings (run `cargo fix --lib -p backstop` to apply 3 suggestions)
+warning: unused import: `execute_update_pool`
+  --> pool/src/pool/mod.rs:10:26
+   |
+10 |     execute_set_reserve, execute_update_pool,
+   |                          ^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `execute_submit_with_flash_loan`
+  --> pool/src/pool/mod.rs:20:34
+   |
+20 | pub use submit::{execute_submit, execute_submit_with_flash_loan};
+   |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `backstop_take_rate`
+   --> pool/src/contract.rs:392:28
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                            ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_backstop_take_rate`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `max_positions`
+   --> pool/src/contract.rs:392:53
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                     ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_max_positions`
+
+warning: unused variable: `min_collateral`
+   --> pool/src/contract.rs:392:73
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                                         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_collateral`
+
+warning: unused variable: `from`
+   --> pool/src/contract.rs:480:9
+    |
+480 |         from: Address,
+    |         ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `flash_loan`
+   --> pool/src/contract.rs:481:9
+    |
+481 |         flash_loan: FlashLoan,
+    |         ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_flash_loan`
+
+warning: unused variable: `requests`
+   --> pool/src/contract.rs:482:9
+    |
+482 |         requests: Vec<Request>,
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_requests`
+
+warning: associated functions `update_pool`, `bad_debt`, and `flash_loan` are never used
+   --> pool/src/events.rs:30:12
+    |
+7   | impl PoolEvents {
+    | --------------- associated functions in this implementation
+...
+30  |     pub fn update_pool(
+    |            ^^^^^^^^^^^
+...
+157 |     pub fn bad_debt(e: &Env, user: Address, asset: Address, d_tokens: i128) {
+    |            ^^^^^^^^
+...
+306 |     pub fn flash_loan(
+    |            ^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: function `execute_update_pool` is never used
+  --> pool/src/pool/config.rs:47:8
+   |
+47 | pub fn execute_update_pool(
+   |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `execute_submit_with_flash_loan` is never used
+  --> pool/src/pool/submit.rs:70:8
+   |
+70 | pub fn execute_submit_with_flash_loan(
+   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: method `has_collateral` is never used
+   --> pool/src/pool/user.rs:119:12
+    |
+43  | impl User {
+    | --------- method in this implementation
+...
+119 |     pub fn has_collateral(&self) -> bool {
+    |            ^^^^^^^^^^^^^^
+
+warning: `pool` (lib) generated 12 warnings (run `cargo fix --lib -p pool` to apply 2 suggestions)
+   Compiling mock-pool-factory v0.0.0 (/home/common/projects/templar/blend-contracts-v2/mocks/mock-pool-factory)
+   Compiling moderc3156-example v0.1.0 (/home/common/projects/templar/blend-contracts-v2/mocks/moderc3156)
+warning: unused variable: `backstop_client`
+   --> pool/src/pool/bad_debt.rs:682:17
+    |
+682 |         let (_, backstop_client) = create_backstop(&e, &pool, &lp_token, &usdc, &blnd);
+    |                 ^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_backstop_client`
+
+warning: unused variable: `bombadil`
+    --> pool/src/pool/bad_debt.rs:1019:13
+     |
+1019 |         let bombadil = Address::generate(&e);
+     |             ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_bombadil`
+
+warning: associated functions `update_pool` and `bad_debt` are never used
+   --> pool/src/events.rs:30:12
+    |
+7   | impl PoolEvents {
+    | --------------- associated functions in this implementation
+...
+30  |     pub fn update_pool(
+    |            ^^^^^^^^^^^
+...
+157 |     pub fn bad_debt(e: &Env, user: Address, asset: Address, d_tokens: i128) {
+    |            ^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: `pool` (lib test) generated 11 warnings (8 duplicates)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 57.44s
+     Running unittests src/lib.rs (target/debug/deps/pool-15ea5ff8b2abec5c)
+
+running 346 tests
+test auctions::auction::tests::test_scale_auction_100_fill_pct ... ok
+test auctions::auction::tests::test_scale_auction_dust ... ok
+test auctions::auction::tests::test_scale_auction_not_100_fill_pct ... ok
+test auctions::auction::tests::test_scale_auction_fill_percentage_over_100 - should panic ... ok
+test auctions::auction::tests::test_scale_auction_fill_percentage_zero - should panic ... ok
+test auctions::auction::tests::test_delete_stale_auction ... ok
+test auctions::auction::tests::test_delete_user_liquidation ... ok
+test auctions::auction::tests::test_delete_user_liquidation_does_not_exist - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_no_reserve - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_user_not_backstop - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_percent_not_100 - should panic ... ok
+test auctions::auction::tests::test_delete_stale_auction_not_stale - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_already_in_progress - should panic ... ok
+test auctions::auction::tests::test_delete_stale_auction_does_not_exist - should panic ... ok
+test auctions::auction::tests::test_fill_rejects_existing_interest_auction - should panic ... ok
+test auctions::auction::tests::test_fill_rejects_existing_bad_debt_auction - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_liquidation_already_in_progress - should panic ... ok
+test auctions::auction::tests::test_fill ... FAILED
+test auctions::user_liquidation_auction::tests::test_create_liquidation_percent_over_100 - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_liquidation_percent_zero - should panic ... ok
+test auctions::auction::tests::test_create_liquidation_for_pool - should panic ... ok
+test auctions::auction::tests::test_partial_partial_full_fill ... FAILED
+test auctions::auction::tests::test_create_liquidation_for_backstop - should panic ... ok
+test auctions::auction::tests::test_create_liquidation ... ok
+test auctions::user_liquidation_auction::tests::test_create_liquidation_user_is_pool - should panic ... ok
+test auctions::auction::tests::test_fill_fails_pct_too_large - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_liquidation_user_is_backstop - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_fill_interest_auction_with_backstop - should panic ... ok
+test auctions::auction::tests::test_fill_liquidation_same_address - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_under_threshold - should panic ... ok
+test auctions::auction::tests::test_partial_fill ... ok
+test auctions::auction::tests::test_fill_fails_pct_too_small - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_invalid_lot_empty - should panic ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_user_not_backstop - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_too_large - should panic ... FAILED
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_normal_scalars ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_already_in_progress - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_checks_max_positions - should panic ... ok
+test auctions::auction::tests::test_create_auction_invalid_type - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_too_small - should panic ... FAILED
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_invalid_lot - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_full_liquidation ... FAILED
+test auctions::auction::tests::test_create_auction_duplicate_lot - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_2_decimal_oracle ... FAILED
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_weird_scalar ... FAILED
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_95_safe_can_liq_fully ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_invalid_lot_empty - should panic ... ok
+test emissions::distributor::tests::test_claim_emissions ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_invalid_lot_no_position - should panic ... ok
+test emissions::distributor::tests::test_claim_emissions_no_config_ignores ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_over_95_percent_liqs_fully ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_invalid_bid - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_invalid_bid - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_14_decimal_oracle ... FAILED
+test emissions::distributor::tests::test_update_emission_data_no_config_returns_none ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_invalid_bid_empty - should panic ... ok
+test auctions::bad_debt_auction::tests::test_fill_bad_debt_auction_leftover_debt_sufficient_balance ... ok
+test emissions::distributor::tests::test_update_emission_data_expired_returns_old ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_bad_full_liq - should panic ... FAILED
+test emissions::distributor::tests::test_update_emission_data_no_eps_returns_old ... ok
+test emissions::distributor::tests::test_update_emission_data_no_supply_returns_old ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_partial ... ok
+test emissions::distributor::tests::test_update_emission_data_past_exp ... ok
+test emissions::distributor::tests::test_update_emission_data_rounds_down ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_applies_interest ... ok
+test emissions::distributor::tests::test_update_emissions ... ok
+test emissions::distributor::tests::test_update_emissions_negative_time_diff - should panic ... ok
+test emissions::distributor::tests::test_update_emissions_no_data_ignores ... ok
+test emissions::distributor::tests::test_update_emission_data_updated_this_block_returns_old ... ok
+test emissions::distributor::tests::test_update_user_emissions_first_time ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction ... ok
+test emissions::distributor::tests::test_update_user_emissions_claim_returns_accrual ... ok
+test emissions::distributor::tests::test_update_user_emissions_accrues ... ok
+test emissions::distributor::tests::test_update_user_emissions_claim_first_time_claims_tokens ... ok
+test emissions::distributor::tests::test_update_user_emissions_if_accrued_skips ... ok
+test emissions::distributor::tests::test_update_user_emissions_no_bal_no_accrual ... ok
+test emissions::distributor::tests::test_update_emission_no_overflow ... ok
+test auctions::bad_debt_auction::tests::test_fill_bad_debt_auction ... ok
+test emissions::distributor::tests::test_update_user_emissions_first_time_had_tokens ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_percent_not_100 - should panic ... ok
+test emissions::distributor::tests::test_update_user_emissions_negative_index - should panic ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_no_backstop_tokens - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_fill_interest_auction_empty_bid ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_oracle_2_decimals ... FAILED
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_invalid_bid_no_position - should panic ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_checks_max_positions - should panic ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_oracle_14_decimals ... FAILED
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_checks_max_positions - should panic ... ok
+test auctions::bad_debt_auction::tests::test_fill_bad_debt_auction_empty_bid ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_partial_exclude_collateral_when_required_panics - should panic ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_invalid_lot - should panic ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_invalid_bid_no_position - should panic ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_partial ... ok
+test pool::actions::tests::test_aggregating_actions ... ok
+test pool::actions::tests::test_build_actions_from_request_repay ... ok
+test pool::actions::tests::test_build_actions_from_request_borrow ... ok
+test auctions::bad_debt_auction::tests::test_fill_bad_debt_auction_leftover_debt_small_backstop_does_not_burn_if_not_full_liq ... ok
+test pool::actions::tests::test_delete_liquidation_auction ... ok
+test pool::actions::tests::test_build_actions_from_request_withdraw_blocks_over_100_util - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_partial_0_cf_lot ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_partial_100 ... ok
+test auctions::auction::tests::test_create_auction_duplicate_bid - should panic ... ok
+test pool::bad_debt::tests::test_bad_debt_backstop - should panic ... ok
+test pool::bad_debt::tests::test_bad_debt_backstop_rejection_precedes_auction ... FAILED
+test pool::actions::tests::test_build_actions_from_request_withdraw_collateral_blocks_over_100_util - should panic ... ok
+test pool::actions::tests::test_build_actions_from_request_repay_over_balance ... ok
+test pool::actions::tests::test_build_actions_from_request_borrow_blocks_over_100_util - should panic ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_applies_interest ... ok
+test pool::actions::tests::test_build_actions_from_request_supply ... ok
+test pool::actions::tests::test_build_actions_from_request_supply_collateral ... ok
+test pool::actions::tests::test_build_actions_from_request_withdraw ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_invalid_bid_empty - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_partial_exclude_liabilities_when_required_too_small - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_requires_unhealthy_user - should panic ... ok
+test pool::actions::tests::test_build_actions_from_request_withdraw_collateral ... ok
+test pool::actions::tests::test_build_actions_panic_borrow_disabled_asset - should panic ... ok
+test pool::bad_debt::tests::test_public_bad_debt_rejects_no_liability_user_without_valuation - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_assigns_bad_debt ... FAILED
+test pool::config::tests::test_execute_initialize_bad_max_positions - should panic ... ok
+test pool::config::tests::test_execute_initialize ... ok
+test pool::config::tests::test_execute_initialize_bad_take_rate - should panic ... ok
+test pool::actions::tests::test_build_actions_panic_supply_collateral_disabled_asset - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_fill_interest_auction ... ok
+test pool::actions::tests::test_exceed_supply_cap - should panic ... ok
+test emissions::manager::tests::test_gulp_emissions_no_pool_emissions_does_nothing ... ok
+test pool::actions::tests::test_build_actions_from_request_borrow_adds_check_util_safely ... ok
+test pool::actions::tests::test_build_actions_panic_supply_disabled_asset - should panic ... ok
+test pool::actions::tests::test_build_actions_from_request_withdraw_collateral_over_balance ... ok
+test pool::actions::tests::test_build_actions_from_request_withdraw_over_balance ... ok
+test pool::config::tests::test_execute_update_pool_validates_max_positions - should panic ... ok
+test emissions::manager::tests::test_gulp_emissions_when_a_reserve_disabled ... ok
+test pool::config::tests::test_execute_update_pool_validates_min_collateral - should panic ... ok
+test emissions::manager::tests::test_gulp_emissions_too_small - should panic ... ok
+test pool::config::tests::test_execute_update_pool ... ok
+test pool::config::tests::test_execute_update_pool_validates_b_stop_rate - should panic ... ok
+test emissions::distributor::tests::test_calc_claim_with_invalid_reserve_panics - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_no_bad_debt_if_not_100_fill ... ok
+test pool::config::tests::test_validate_reserve_metadata ... ok
+test pool::config::tests::test_execute_cancel_queued_reserve_initialization ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_decimals - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_c_factor - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_l_factor - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_max_util - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_r_base_too_high - should panic ... ok
+test emissions::manager::tests::test_set_pool_emissions_ok_if_under_100 ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_r_order - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_r_base_too_low - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_util - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_reactivity - should panic ... ok
+test emissions::manager::tests::test_set_pool_emissions_panics_if_anyone_share_equal_0 - should panic ... ok
+test auctions::bad_debt_auction::tests::test_fill_bad_debt_auction_leftover_debt_small_backstop_burns ... ok
+test pool::config::tests::test_execute_set_reserve_applies_queued_disable_only_transition ... FAILED
+test emissions::manager::tests::test_gulp_emissions ... ok
+test pool::config::tests::test_execute_set_reserve_first_reserve ... ok
+test pool::config::tests::test_execute_set_reserve_requires_block_passed - should panic ... ok
+test pool::health_factor::tests::test_as_health_factor_rounds_floor ... ok
+test pool::health_factor::tests::test_is_hf_over ... ok
+test pool::health_factor::tests::test_is_hf_over_no_liabilites ... ok
+test pool::health_factor::tests::test_is_hf_over_odd_scalar ... ok
+test pool::health_factor::tests::test_is_hf_over_true ... ok
+test pool::health_factor::tests::test_is_hf_under ... ok
+test pool::health_factor::tests::test_is_hf_under_no_liabilites ... ok
+test pool::config::tests::test_execute_set_reserve_rejects_drift_on_existing_reserve - should panic ... ok
+test pool::health_factor::tests::test_is_hf_under_odd_scalar ... ok
+test pool::health_factor::tests::test_is_hf_under_true ... ok
+test pool::config::tests::test_queue_set_reserve_decimals_changed - should panic ... ok
+test pool::interest::tests::test_calc_accrual_rounds_up ... ok
+test pool::interest::tests::test_calc_accrual_fixed_rate ... ok
+test pool::interest::tests::test_calc_accrual_util_over_95 ... ok
+test auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_no_bad_debt_if_collateral_remaining ... ok
+test pool::interest::tests::test_calc_accrual_util_over_target ... ok
+test pool::interest::tests::test_calc_accrual_util_under_target ... ok
+test auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction ... ok
+test pool::interest::tests::test_calc_ir_mod_over_limit ... ok
+test pool::interest::tests::test_calc_ir_mod_reactivity_0 ... ok
+test pool::interest::tests::test_calc_ir_mod_under_limit ... ok
+test pool::config::tests::test_queue_set_reserve_lf_removed - should panic ... ok
+test emissions::distributor::tests::test_execute_claim ... ok
+test pool::config::tests::test_queue_set_reserve_duplicate - should panic ... ok
+test pool::config::tests::test_execute_set_reserve_validates_decimals_stay_same - should panic ... ok
+test pool::config::tests::test_queue_set_reserve_with_existing_res_during_setup ... ok
+test auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_hits_target ... ok
+test pool::pool::tests::test_require_action_allowed_borrow_while_active ... ok
+test pool::config::tests::test_queue_set_reserve_rejects_new_reserve_off_setup - should panic ... ok
+test emissions::manager::tests::test_set_pool_emissions ... ok
+test pool::config::tests::test_queue_set_reserve_status_6 ... ok
+test pool::config::tests::test_queue_set_reserve_rejects_other_field_drift_on_existing - should panic ... ok
+test pool::pool::tests::test_require_action_allowed_borrow_while_on_ice_panics - should panic ... ok
+test pool::pool::tests::test_require_action_allowed_supply_collateral_while_frozen - should panic ... ok
+test pool::pool::tests::test_require_action_allowed_can_withdrawal_and_repay_while_frozen ... ok
+test pool::pool::tests::test_require_action_allowed_supply_while_frozen - should panic ... ok
+test pool::pool::tests::test_require_action_allowed_cancel_liquidation_while_active ... ok
+test pool::config::tests::test_queue_set_reserve_seeds_disabled_transition_from_existing ... ok
+test pool::pool::tests::test_require_action_allowed_cancel_liquidation_while_on_ice_panics - should panic ... ok
+test pool::bad_debt::tests::test_bad_debt_user ... FAILED
+test pool::bad_debt::tests::test_custody_rejects_reserve_b_token_emission_data - should panic ... FAILED
+test pool::reserve::tests::test_accrue ... ok
+test pool::reserve::tests::test_accrue_negative_delta_no_change ... ok
+test pool::config::tests::test_initialize_reserve_sets_index ... ok
+test emissions::distributor::tests::test_execute_claim_with_already_claimed_reserve ... ok
+test pool::bad_debt::tests::test_custody_rejects_pool_map_b_token_emissions - should panic ... FAILED
+test pool::reserve::tests::test_require_action_allowed_panics_if_borrow_disabled_asset - should panic ... ok
+test pool::gulp::tests::test_execute_gulp_zero_delta_skips ... ok
+test pool::reserve::tests::test_require_action_allowed_panics_if_supply_collateral_disabled_asset - should panic ... ok
+test pool::reserve::tests::test_require_action_allowed_panics_if_supply_disabled_asset - should panic ... ok
+test pool::reserve::tests::test_require_action_allowed_passed_if_withdraw_or_repay ... ok
+test pool::reserve::tests::test_require_utilization_below_max_pass ... ok
+test pool::reserve::tests::test_require_utilization_under_100_pass ... ok
+test pool::reserve::tests::test_require_utilization_under_100_panic - should panic ... ok
+test pool::reserve::tests::test_require_utilization_under_max_panic - should panic ... ok
+test pool::gulp::tests::test_execute_gulp_rejects_debt_positive - should panic ... ok
+test pool::reserve::tests::test_to_asset_from_b_token ... ok
+test pool::reserve::tests::test_to_asset_from_d_token ... ok
+test pool::reserve::tests::test_to_b_token_down ... ok
+test pool::reserve::tests::test_to_b_token_up ... ok
+test pool::reserve::tests::test_to_d_token_down ... ok
+test pool::reserve::tests::test_to_d_token_up ... ok
+test pool::reserve::tests::test_to_effective_asset_from_b_token ... ok
+test pool::reserve::tests::test_to_effective_asset_from_d_token ... ok
+test pool::reserve::tests::test_total_liabilities ... ok
+test pool::reserve::tests::test_total_supply ... ok
+test pool::reserve::tests::test_utilization ... ok
+test pool::reserve::tests::test_utilization_empty ... ok
+test pool::reserve::tests::test_utilization_more_liabilities ... ok
+test pool::reserve::tests::test_utilization_no_liabilities ... ok
+test pool::status::tests::test_calc_pool_backstop_threshold ... ok
+test pool::gulp::tests::test_execute_gulp_rejects_res_emis_data - should panic ... ok
+test pool::status::tests::test_calc_pool_backstop_threshold_5pct ... ok
+test pool::bad_debt::tests::test_bad_debt_orphaned_same_reserve_cycle ... FAILED
+test pool::status::tests::test_calc_pool_backstop_threshold_10_percent ... ok
+test pool::status::tests::test_calc_pool_backstop_threshold_saturates ... ok
+test pool::status::tests::test_calc_pool_backstop_threshold_too_small ... ok
+test pool::status::tests::test_calc_pool_backstop_threshold_over ... ok
+test pool::config::tests::test_execute_update_pool_updates_reserves_if_backstop_rate_changes ... ok
+test pool::config::tests::test_execute_set_reserve_update_during_setup ... FAILED
+test pool::bad_debt::tests::test_custody_rejects_pool_address_user_emissions - should panic ... FAILED
+test auctions::bad_debt_auction::tests::test_fill_bad_debt_auction_with_backstop - should panic ... ok
+test pool::gulp::tests::test_execute_gulp_settles_orphan ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_max_balance ... ok
+test pool::pool::tests::test_load_price_decimals_panics_if_wrong_decimals - should panic ... ok
+test pool::pool::tests::test_require_under_max_allows_decreasing_change ... ok
+test pool::pool::tests::test_require_under_max_panics_if_over - should panic ... ok
+test pool::pool::tests::test_require_under_max_ignores_supply ... ok
+test pool::pool::tests::test_load_price_panics_if_future_dated - should panic ... ok
+test pool::pool::tests::test_require_under_max_empty ... ok
+test pool::pool::tests::test_reserve_cache ... ok
+test pool::pool::tests::test_load_price_panics_if_zero - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_empty_bid ... ok
+test pool::reserve::tests::test_load_reserve_zero_bstop_rate ... ok
+test pool::actions::tests::test_fill_user_liquidation ... ok
+test pool::gulp::tests::test_gulp_settles_collateral_relocated_by_bad_debt ... FAILED
+test pool::gulp::tests::test_execute_gulp_rejects_pool_user_emissions - should panic ... ok
+test pool::gulp::tests::test_execute_gulp_rejects_pool_map_emissions - should panic ... ok
+test pool::pool::tests::test_load_price_panics_if_stale - should panic ... ok
+test pool::pool::tests::test_load_price_accepts_exact_24_hours ... ok
+test pool::reserve::tests::test_store ... ok
+test pool::reserve::tests::test_load_reserve ... ok
+test pool::reserve::tests::test_load_reserve_zero_util ... ok
+test pool::reserve::tests::test_load_reserve_zero_supply ... ok
+test pool::reserve::tests::test_load_reserve_accrues_b_rate ... ok
+test pool::pool::tests::test_reserve_cache_does_nothing_if_nothing_marked ... ok
+test pool::pool::tests::test_load_price ... ok
+test pool::pool::tests::test_reserve_cache_stores_only_marked ... ok
+test pool::pool::tests::test_reserve_cache_panics_if_missing_reserve_to_store - should panic ... ok
+test pool::pool::tests::test_load_price_decimals ... ok
+test pool::actions::tests::test_fill_bad_debt_auction ... FAILED
+test pool::submit::tests::test_submit_from_is_not_self - should panic ... ok
+test pool::health_factor::tests::test_calculate_from_positions ... ok
+test pool::submit::tests::test_submit_no_liabilities_does_not_load_oracle ... ok
+test pool::submit::tests::test_submit_borrow_over_max_util - should panic ... ok
+test pool::submit::tests::test_submit_over_max_positions - should panic ... ok
+test pool::submit::tests::test_submit_requires_healhty - should panic ... ok
+test pool::submit::tests::test_submit_with_flash_loan_checks_max_util - should panic ... ok
+test pool::submit::tests::test_submit_spender_is_not_self - should panic ... ok
+test pool::submit::tests::test_submit_to_is_not_self - should panic ... ok
+test pool::submit::tests::test_submit_use_allowance_no_allowance - should panic ... ok
+test pool::bad_debt::tests::test_bad_debt_backstop_no_change - should panic ... ok
+test pool::user::tests::test_add_collateral_zero_mint - should panic ... ok
+test pool::user::tests::test_add_collateral_accrues_emissions ... ok
+test pool::bad_debt::tests::test_bad_debt_user_with_ongoing_auction - should panic ... ok
+test pool::user::tests::test_add_liabilities_zero_mint - should panic ... ok
+test pool::submit::tests::test_submit_use_allowance_over_repay ... ok
+test pool::user::tests::test_default_liabilities_reduces_b_rate ... ok
+test pool::user::tests::test_collateral ... ok
+test pool::user::tests::test_add_liabilities_accrues_emissions ... ok
+test pool::user::tests::test_add_supply_zero_mint - should panic ... ok
+test pool::submit::tests::test_submit_with_flash_loan_checks_reserve_status - should panic ... ok
+test pool::bad_debt::tests::test_check_and_handle_backstop_bad_debt_with_no_liabilities ... ok
+test pool::user::tests::test_default_liabilities_reduces_b_rate_rounds_ceil ... ok
+test pool::submit::tests::test_submit_use_allowance ... ok
+test pool::user::tests::test_remove_collateral_over_balance_panics - should panic ... ok
+test pool::user::tests::test_default_liabilities_reduces_b_rate_to_zero ... ok
+test pool::user::tests::test_remove_collateral_zero_burn - should panic ... ok
+test pool::submit::tests::test_submit_over_max_positions_decrease_allowed ... ok
+test pool::user::tests::test_liabilities ... ok
+test pool::user::tests::test_load_and_store ... ok
+test pool::user::tests::test_remove_liabilities_over_balance_panics - should panic ... ok
+test pool::submit::tests::test_submit_with_flash_loan_checks_pool_status - should panic ... ok
+test pool::user::tests::test_remove_liabilities_zero_burn - should panic ... ok
+test pool::user::tests::test_add_supply_accrues_emissions ... ok
+test pool::user::tests::test_remove_liabilities_accrues_emissions ... ok
+test pool::user::tests::test_total_supply ... ok
+test pool::bad_debt::tests::test_check_and_handle_backstop_bad_debt ... ok
+test pool::user::tests::test_remove_supply_over_balance_panics - should panic ... ok
+test pool::user::tests::test_remove_supply_zero_burn - should panic ... ok
+test pool::user::tests::test_remove_collateral_accrues_emissions ... ok
+test pool::user::tests::test_remove_supply_accrues_emissions ... ok
+test pool::user::tests::test_supply ... ok
+test pool::submit::tests::test_submit_with_flash_loan_over_max_positions - should panic ... ok
+test pool::submit::tests::test_submit ... ok
+test pool::bad_debt::tests::test_check_and_handle_user_bad_debt_with_collateral ... FAILED
+test pool::submit::tests::test_submit_under_min_collateral_fails - should panic ... ok
+test pool::bad_debt::tests::test_check_and_handle_backstop_bad_debt_with_unhealthy_backstop_defaults ... ok
+test pool::submit::tests::test_submit_with_flash_loan_checks_health - should panic ... ok
+test pool::actions::tests::test_fill_interest_auction ... FAILED
+test pool::status::tests::test_set_non_admin_pool_status_panics - should panic ... ok
+test pool::status::tests::test_set_pool_status_active_blocks_with_too_high_q4w - should panic ... ok
+test pool::status::tests::test_set_pool_status_on_ice ... ok
+test pool::bad_debt::tests::test_check_and_handle_user_bad_debt ... FAILED
+test pool::bad_debt::tests::test_bad_debt_user_panics_no_change - should panic ... FAILED
+test pool::status::tests::test_set_pool_status_frozen ... ok
+test pool::status::tests::test_update_pool_status_admin_frozen - should panic ... ok
+test pool::submit::tests::test_submit_with_flash_loan ... ok
+test pool::submit::tests::test_submit_with_flash_loan_under_min_collateral_fails - should panic ... ok
+test pool::status::tests::test_set_pool_status_admin_on_ice_blocks_with_too_high_q4w - should panic ... ok
+test pool::status::tests::test_update_pool_status_active ... ok
+test pool::status::tests::test_update_pool_status_on_ice_tokens ... ok
+test pool::status::tests::test_update_pool_status_frozen_admin_on_ice ... ok
+test pool::status::tests::test_update_pool_status_on_ice_30_q4w_admin_active ... ok
+test pool::submit::tests::test_submit_with_flash_loan_with_ongoing_liquidation_blocked - should panic ... ok
+test pool::status::tests::test_update_pool_status_frozen ... ok
+test pool::status::tests::test_set_pool_status_active_blocks_without_backstop_minimum - should panic ... ok
+test pool::status::tests::test_update_pool_status_on_ice_30_q4w ... ok
+test pool::status::tests::test_update_pool_status_on_ice_50_q4w_admin_active ... ok
+test pool::status::tests::test_update_pool_status_admin_set_no_changes ... ok
+test pool::status::tests::test_update_pool_status_setup - should panic ... ok
+test pool::status::tests::test_set_pool_status_backstop_on_ice_blocks_with_too_high_q4w - should panic ... ok
+test pool::submit::tests::test_submit_with_ongoing_liquidation_blocked - should panic ... ok
+test pool::status::tests::test_update_pool_status_frozen_75_q4w ... ok
+test pool::submit::tests::test_submit_with_flash_loan_process_flash_loan_first ... ok
+test pool::submit::tests::test_submit_with_flash_loan_over_max_positions_decrease_allowed ... ok
+test pool::submit::tests::test_submit_with_ongoing_liquidation_works_if_canceled ... ok
+test pool::status::tests::test_admin_update_pool_status_unfreeze ... ok
+test pool::submit::tests::test_submit_withdraw_over_max_util ... ok
+test pool::status::tests::test_set_pool_status_active ... ok
+
+failures:
+
+---- auctions::auction::tests::test_fill stdout ----
+thread 'auctions::auction::tests::test_fill' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(WasmVm, InvalidAction)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARQG5, topics:[error, Error(WasmVm, InvalidAction)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARQG5, topics:[error, Error(WasmVm, InvalidAction)], data:["contract call failed", decimals, []]
+   2: [Failed Diagnostic Event (not emitted)] contract:CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, topics:[error, Error(WasmVm, InvalidAction)], data:["VM call trapped: UnreachableCodeReached", decimals]
+   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARQG5, topics:[fn_call, CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, decimals], data:Void
+
+Writing test snapshot file for test "auctions::auction::tests::test_fill" to "test_snapshots/auctions/auction/tests/test_fill.1.json".
+
+---- auctions::auction::tests::test_partial_partial_full_fill stdout ----
+thread 'auctions::auction::tests::test_partial_partial_full_fill' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(WasmVm, InvalidAction)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARQG5, topics:[error, Error(WasmVm, InvalidAction)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARQG5, topics:[error, Error(WasmVm, InvalidAction)], data:["contract call failed", decimals, []]
+   2: [Failed Diagnostic Event (not emitted)] contract:CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, topics:[error, Error(WasmVm, InvalidAction)], data:["VM call trapped: UnreachableCodeReached", decimals]
+   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARQG5, topics:[fn_call, CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, decimals], data:Void
+
+Writing test snapshot file for test "auctions::auction::tests::test_partial_partial_full_fill" to "test_snapshots/auctions/auction/tests/test_partial_partial_full_fill.1.json".
+
+---- auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_too_large stdout ----
+thread 'auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_too_large' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(Contract, #1210)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:["failing with contract error", 1210]
+   2: [Diagnostic Event] contract:CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, topics:[fn_return, decimals], data:6
+   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[fn_call, CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, decimals], data:Void
+
+Writing test snapshot file for test "auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_too_large" to "test_snapshots/auctions/user_liquidation_auction/tests/test_create_user_liquidation_auction_too_large.1.json".
+note: panic did not contain expected string
+      panic message: `"HostError: Error(Contract, #1210)\n\nEvent log (newest first):\n   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:\"escalating error to panic\"\n   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:[\"failing with contract error\", 1210]\n   2: [Diagnostic Event] contract:CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, topics:[fn_return, decimals], data:6\n   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[fn_call, CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, decimals], data:Void\n"`,
+ expected substring: `"Error(Contract, #1213)"`
+---- auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_too_small stdout ----
+thread 'auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_too_small' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(Contract, #1210)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:["failing with contract error", 1210]
+   2: [Diagnostic Event] contract:CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, topics:[fn_return, decimals], data:5
+   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[fn_call, CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, decimals], data:Void
+
+Writing test snapshot file for test "auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_too_small" to "test_snapshots/auctions/user_liquidation_auction/tests/test_create_user_liquidation_auction_too_small.1.json".
+note: panic did not contain expected string
+      panic message: `"HostError: Error(Contract, #1210)\n\nEvent log (newest first):\n   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:\"escalating error to panic\"\n   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:[\"failing with contract error\", 1210]\n   2: [Diagnostic Event] contract:CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, topics:[fn_return, decimals], data:5\n   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[fn_call, CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, decimals], data:Void\n"`,
+ expected substring: `"Error(Contract, #1214)"`
+---- auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_full_liquidation stdout ----
+thread 'auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_full_liquidation' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(Contract, #1210)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:["failing with contract error", 1210]
+   2: [Diagnostic Event] contract:CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, topics:[fn_return, decimals], data:5
+   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[fn_call, CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, decimals], data:Void
+
+Writing test snapshot file for test "auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_full_liquidation" to "test_snapshots/auctions/user_liquidation_auction/tests/test_create_user_liquidation_auction_full_liquidation.1.json".
+
+---- auctions::backstop_interest_auction::tests::test_create_interest_auction_2_decimal_oracle stdout ----
+thread 'auctions::backstop_interest_auction::tests::test_create_interest_auction_2_decimal_oracle' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(Contract, #1210)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDR4, topics:[error, Error(Contract, #1210)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDR4, topics:[error, Error(Contract, #1210)], data:["failing with contract error", 1210]
+   2: [Diagnostic Event] contract:CAQ5UHPIIQ2LXWNVOLLZFEQOUYIWGPGDEMNH4WJQCX3C4LPOI6EKQH5V, topics:[fn_return, decimals], data:2
+   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDR4, topics:[fn_call, CAQ5UHPIIQ2LXWNVOLLZFEQOUYIWGPGDEMNH4WJQCX3C4LPOI6EKQH5V, decimals], data:Void
+
+Writing test snapshot file for test "auctions::backstop_interest_auction::tests::test_create_interest_auction_2_decimal_oracle" to "test_snapshots/auctions/backstop_interest_auction/tests/test_create_interest_auction_2_decimal_oracle.1.json".
+
+---- auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_weird_scalar stdout ----
+thread 'auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_weird_scalar' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(Contract, #1210)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:["failing with contract error", 1210]
+   2: [Diagnostic Event] contract:CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, topics:[fn_return, decimals], data:14
+   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[fn_call, CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, decimals], data:Void
+
+Writing test snapshot file for test "auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_weird_scalar" to "test_snapshots/auctions/user_liquidation_auction/tests/test_create_user_liquidation_auction_weird_scalar.1.json".
+
+---- auctions::backstop_interest_auction::tests::test_create_interest_auction_14_decimal_oracle stdout ----
+thread 'auctions::backstop_interest_auction::tests::test_create_interest_auction_14_decimal_oracle' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(Contract, #1210)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDR4, topics:[error, Error(Contract, #1210)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDR4, topics:[error, Error(Contract, #1210)], data:["failing with contract error", 1210]
+   2: [Diagnostic Event] contract:CAQ5UHPIIQ2LXWNVOLLZFEQOUYIWGPGDEMNH4WJQCX3C4LPOI6EKQH5V, topics:[fn_return, decimals], data:14
+   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDR4, topics:[fn_call, CAQ5UHPIIQ2LXWNVOLLZFEQOUYIWGPGDEMNH4WJQCX3C4LPOI6EKQH5V, decimals], data:Void
+
+Writing test snapshot file for test "auctions::backstop_interest_auction::tests::test_create_interest_auction_14_decimal_oracle" to "test_snapshots/auctions/backstop_interest_auction/tests/test_create_interest_auction_14_decimal_oracle.1.json".
+
+---- auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_bad_full_liq stdout ----
+thread 'auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_bad_full_liq' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(Contract, #1210)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:["failing with contract error", 1210]
+   2: [Diagnostic Event] contract:CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, topics:[fn_return, decimals], data:8
+   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[fn_call, CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, decimals], data:Void
+
+Writing test snapshot file for test "auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_bad_full_liq" to "test_snapshots/auctions/user_liquidation_auction/tests/test_create_user_liquidation_auction_bad_full_liq.1.json".
+note: panic did not contain expected string
+      panic message: `"HostError: Error(Contract, #1210)\n\nEvent log (newest first):\n   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:\"escalating error to panic\"\n   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:[\"failing with contract error\", 1210]\n   2: [Diagnostic Event] contract:CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, topics:[fn_return, decimals], data:8\n   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[fn_call, CC6YSLPYSKOZZFQSYO3UWY6VG5ZFKBXYOVDLAO7CVS26QZAFFR6AWO5K, decimals], data:Void\n"`,
+ expected substring: `"Error(Contract, #1213)"`
+---- auctions::bad_debt_auction::tests::test_create_bad_debt_auction_oracle_2_decimals stdout ----
+thread 'auctions::bad_debt_auction::tests::test_create_bad_debt_auction_oracle_2_decimals' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(Contract, #1210)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:["failing with contract error", 1210]
+   2: [Diagnostic Event] contract:CBJPUABS5H6EDPZ7AGJYOEWEDQ5HWMZDJNJYFGTTHDEI5FHONNL2BQN5, topics:[fn_return, decimals], data:2
+   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[fn_call, CBJPUABS5H6EDPZ7AGJYOEWEDQ5HWMZDJNJYFGTTHDEI5FHONNL2BQN5, decimals], data:Void
+
+Writing test snapshot file for test "auctions::bad_debt_auction::tests::test_create_bad_debt_auction_oracle_2_decimals" to "test_snapshots/auctions/bad_debt_auction/tests/test_create_bad_debt_auction_oracle_2_decimals.1.json".
+
+---- auctions::bad_debt_auction::tests::test_create_bad_debt_auction_oracle_14_decimals stdout ----
+thread 'auctions::bad_debt_auction::tests::test_create_bad_debt_auction_oracle_14_decimals' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(Contract, #1210)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1210)], data:["failing with contract error", 1210]
+   2: [Diagnostic Event] contract:CBJPUABS5H6EDPZ7AGJYOEWEDQ5HWMZDJNJYFGTTHDEI5FHONNL2BQN5, topics:[fn_return, decimals], data:14
+   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[fn_call, CBJPUABS5H6EDPZ7AGJYOEWEDQ5HWMZDJNJYFGTTHDEI5FHONNL2BQN5, decimals], data:Void
+
+Writing test snapshot file for test "auctions::bad_debt_auction::tests::test_create_bad_debt_auction_oracle_14_decimals" to "test_snapshots/auctions/bad_debt_auction/tests/test_create_bad_debt_auction_oracle_14_decimals.1.json".
+
+---- pool::bad_debt::tests::test_bad_debt_backstop_rejection_precedes_auction stdout ----
+thread 'pool::bad_debt::tests::test_bad_debt_backstop_rejection_precedes_auction' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(Contract, #1200)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM, topics:[error, Error(Contract, #1200)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM, topics:[error, Error(Contract, #1200)], data:["failing with contract error", 1200]
+
+Writing test snapshot file for test "pool::bad_debt::tests::test_bad_debt_backstop_rejection_precedes_auction" to "test_snapshots/pool/bad_debt/tests/test_bad_debt_backstop_rejection_precedes_auction.1.json".
+
+---- auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_assigns_bad_debt stdout ----
+thread 'auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_assigns_bad_debt' panicked at pool/src/auctions/user_liquidation_auction.rs:3180:13:
+assertion `left == right` failed
+  left: 0
+ right: 2
+Writing test snapshot file for test "auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_assigns_bad_debt" to "test_snapshots/auctions/user_liquidation_auction/tests/test_fill_user_liquidation_auction_assigns_bad_debt.1.json".
+
+---- pool::config::tests::test_execute_set_reserve_applies_queued_disable_only_transition stdout ----
+thread 'pool::config::tests::test_execute_set_reserve_applies_queued_disable_only_transition' panicked at pool/src/pool/config.rs:1191:13:
+assertion failed: res_data.backstop_credit > 0
+Writing test snapshot file for test "pool::config::tests::test_execute_set_reserve_applies_queued_disable_only_transition" to "test_snapshots/pool/config/tests/test_execute_set_reserve_applies_queued_disable_only_transition.1.json".
+
+---- pool::bad_debt::tests::test_bad_debt_user stdout ----
+thread 'pool::bad_debt::tests::test_bad_debt_user' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(WasmVm, InvalidAction)
+
+Event log (newest first):
+   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:"escalating error to panic"
+   1: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:["contract call failed", mint, [CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM, -50987654321]]
+   2: [Failed Diagnostic Event (not emitted)] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXI7N, topics:[error, Error(WasmVm, InvalidAction)], data:["VM call trapped: UnreachableCodeReached", mint]
+   3: [Diagnostic Event] topics:[fn_call, CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXI7N, mint], data:[CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK3IM, -50987654321]
+
+Writing test snapshot file for test "pool::bad_debt::tests::test_bad_debt_user" to "test_snapshots/pool/bad_debt/tests/test_bad_debt_user.1.json".
+
+---- pool::bad_debt::tests::test_custody_rejects_reserve_b_token_emission_data stdout ----
+thread 'pool::bad_debt::tests::test_custody_rejects_reserve_b_token_emission_data' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(WasmVm, InvalidAction)
+
+Event log (newest first):
+   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:"escalating error to panic"
+   1: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:["contract call failed", set_price_stable, [[50]]]
+   2: [Failed Diagnostic Event (not emitted)] contract:CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, topics:[error, Error(WasmVm, InvalidAction)], data:["VM call trapped: UnreachableCodeReached", set_price_stable]
+   3: [Diagnostic Event] topics:[fn_call, CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, set_price_stable], data:[50]
+
+Writing test snapshot file for test "pool::bad_debt::tests::test_custody_rejects_reserve_b_token_emission_data" to "test_snapshots/pool/bad_debt/tests/test_custody_rejects_reserve_b_token_emission_data.1.json".
+note: panic did not contain expected string
+      panic message: `"HostError: Error(WasmVm, InvalidAction)\n\nEvent log (newest first):\n   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:\"escalating error to panic\"\n   1: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:[\"contract call failed\", set_price_stable, [[50]]]\n   2: [Failed Diagnostic Event (not emitted)] contract:CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, topics:[error, Error(WasmVm, InvalidAction)], data:[\"VM call trapped: UnreachableCodeReached\", set_price_stable]\n   3: [Diagnostic Event] topics:[fn_call, CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, set_price_stable], data:[50]\n"`,
+ expected substring: `"Error(Contract, #1200)"`
+---- pool::bad_debt::tests::test_custody_rejects_pool_map_b_token_emissions stdout ----
+thread 'pool::bad_debt::tests::test_custody_rejects_pool_map_b_token_emissions' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(WasmVm, InvalidAction)
+
+Event log (newest first):
+   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:"escalating error to panic"
+   1: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:["contract call failed", set_price_stable, [[50]]]
+   2: [Failed Diagnostic Event (not emitted)] contract:CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, topics:[error, Error(WasmVm, InvalidAction)], data:["VM call trapped: UnreachableCodeReached", set_price_stable]
+   3: [Diagnostic Event] topics:[fn_call, CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, set_price_stable], data:[50]
+
+Writing test snapshot file for test "pool::bad_debt::tests::test_custody_rejects_pool_map_b_token_emissions" to "test_snapshots/pool/bad_debt/tests/test_custody_rejects_pool_map_b_token_emissions.1.json".
+note: panic did not contain expected string
+      panic message: `"HostError: Error(WasmVm, InvalidAction)\n\nEvent log (newest first):\n   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:\"escalating error to panic\"\n   1: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:[\"contract call failed\", set_price_stable, [[50]]]\n   2: [Failed Diagnostic Event (not emitted)] contract:CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, topics:[error, Error(WasmVm, InvalidAction)], data:[\"VM call trapped: UnreachableCodeReached\", set_price_stable]\n   3: [Diagnostic Event] topics:[fn_call, CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, set_price_stable], data:[50]\n"`,
+ expected substring: `"Error(Contract, #1200)"`
+---- pool::bad_debt::tests::test_bad_debt_orphaned_same_reserve_cycle stdout ----
+thread 'pool::bad_debt::tests::test_bad_debt_orphaned_same_reserve_cycle' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(WasmVm, InvalidAction)
+
+Event log (newest first):
+   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:"escalating error to panic"
+   1: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:["contract call failed", set_price_stable, [[50]]]
+   2: [Failed Diagnostic Event (not emitted)] contract:CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, topics:[error, Error(WasmVm, InvalidAction)], data:["VM call trapped: UnreachableCodeReached", set_price_stable]
+   3: [Diagnostic Event] topics:[fn_call, CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, set_price_stable], data:[50]
+
+Writing test snapshot file for test "pool::bad_debt::tests::test_bad_debt_orphaned_same_reserve_cycle" to "test_snapshots/pool/bad_debt/tests/test_bad_debt_orphaned_same_reserve_cycle.1.json".
+
+---- pool::config::tests::test_execute_set_reserve_update_during_setup stdout ----
+thread 'pool::config::tests::test_execute_set_reserve_update_during_setup' panicked at pool/src/pool/config.rs:1120:13:
+assertion failed: res_data.backstop_credit > 0
+Writing test snapshot file for test "pool::config::tests::test_execute_set_reserve_update_during_setup" to "test_snapshots/pool/config/tests/test_execute_set_reserve_update_during_setup.1.json".
+
+---- pool::bad_debt::tests::test_custody_rejects_pool_address_user_emissions stdout ----
+thread 'pool::bad_debt::tests::test_custody_rejects_pool_address_user_emissions' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(WasmVm, InvalidAction)
+
+Event log (newest first):
+   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:"escalating error to panic"
+   1: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:["contract call failed", set_price_stable, [[50]]]
+   2: [Failed Diagnostic Event (not emitted)] contract:CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, topics:[error, Error(WasmVm, InvalidAction)], data:["VM call trapped: UnreachableCodeReached", set_price_stable]
+   3: [Diagnostic Event] topics:[fn_call, CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, set_price_stable], data:[50]
+
+Writing test snapshot file for test "pool::bad_debt::tests::test_custody_rejects_pool_address_user_emissions" to "test_snapshots/pool/bad_debt/tests/test_custody_rejects_pool_address_user_emissions.1.json".
+note: panic did not contain expected string
+      panic message: `"HostError: Error(WasmVm, InvalidAction)\n\nEvent log (newest first):\n   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:\"escalating error to panic\"\n   1: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:[\"contract call failed\", set_price_stable, [[50]]]\n   2: [Failed Diagnostic Event (not emitted)] contract:CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, topics:[error, Error(WasmVm, InvalidAction)], data:[\"VM call trapped: UnreachableCodeReached\", set_price_stable]\n   3: [Diagnostic Event] topics:[fn_call, CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, set_price_stable], data:[50]\n"`,
+ expected substring: `"Error(Contract, #1200)"`
+---- pool::gulp::tests::test_gulp_settles_collateral_relocated_by_bad_debt stdout ----
+thread 'pool::gulp::tests::test_gulp_settles_collateral_relocated_by_bad_debt' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(WasmVm, InvalidAction)
+
+Event log (newest first):
+   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:"escalating error to panic"
+   1: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:["contract call failed", set_price_stable, [[50]]]
+   2: [Failed Diagnostic Event (not emitted)] contract:CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, topics:[error, Error(WasmVm, InvalidAction)], data:["VM call trapped: UnreachableCodeReached", set_price_stable]
+   3: [Diagnostic Event] topics:[fn_call, CDBNDHAVTZMXQMFS2GBJK4RBJFARUFYQZCWZZWYBLJGXZLB5KTENOHZS, set_price_stable], data:[50]
+
+Writing test snapshot file for test "pool::gulp::tests::test_gulp_settles_collateral_relocated_by_bad_debt" to "test_snapshots/pool/gulp/tests/test_gulp_settles_collateral_relocated_by_bad_debt.1.json".
+
+---- pool::actions::tests::test_fill_bad_debt_auction stdout ----
+thread 'pool::actions::tests::test_fill_bad_debt_auction' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(Contract, #1200)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARQG5, topics:[error, Error(Contract, #1200)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARQG5, topics:[error, Error(Contract, #1200)], data:["failing with contract error", 1200]
+
+Writing test snapshot file for test "pool::actions::tests::test_fill_bad_debt_auction" to "test_snapshots/pool/actions/tests/test_fill_bad_debt_auction.1.json".
+
+---- pool::bad_debt::tests::test_check_and_handle_user_bad_debt_with_collateral stdout ----
+thread 'pool::bad_debt::tests::test_check_and_handle_user_bad_debt_with_collateral' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(WasmVm, InvalidAction)
+
+Event log (newest first):
+   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:"escalating error to panic"
+   1: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:["contract call failed", set_price_stable, [[10000000, 10000000]]]
+   2: [Failed Diagnostic Event (not emitted)] contract:CDNHTIE2GANHCMIKRZQEC26N6YNJ4M3EWEQ3IXO6AVVO7TANOHBNXAVU, topics:[error, Error(WasmVm, InvalidAction)], data:["VM call trapped: UnreachableCodeReached", set_price_stable]
+   3: [Diagnostic Event] topics:[fn_call, CDNHTIE2GANHCMIKRZQEC26N6YNJ4M3EWEQ3IXO6AVVO7TANOHBNXAVU, set_price_stable], data:[10000000, 10000000]
+
+Writing test snapshot file for test "pool::bad_debt::tests::test_check_and_handle_user_bad_debt_with_collateral" to "test_snapshots/pool/bad_debt/tests/test_check_and_handle_user_bad_debt_with_collateral.1.json".
+
+---- pool::actions::tests::test_fill_interest_auction stdout ----
+thread 'pool::actions::tests::test_fill_interest_auction' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(Contract, #1200)
+
+Event log (newest first):
+   0: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1200)], data:"escalating error to panic"
+   1: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[error, Error(Contract, #1200)], data:["failing with contract error", 1200]
+   2: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAX5, topics:[fn_return, balance], data:500000000
+   3: [Diagnostic Event] contract:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOLZM, topics:[fn_call, CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVAX5, balance], data:CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXI7N
+
+Writing test snapshot file for test "pool::actions::tests::test_fill_interest_auction" to "test_snapshots/pool/actions/tests/test_fill_interest_auction.1.json".
+
+---- pool::bad_debt::tests::test_check_and_handle_user_bad_debt stdout ----
+thread 'pool::bad_debt::tests::test_check_and_handle_user_bad_debt' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(WasmVm, InvalidAction)
+
+Event log (newest first):
+   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:"escalating error to panic"
+   1: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:["contract call failed", set_price_stable, [[10000000, 10000000]]]
+   2: [Failed Diagnostic Event (not emitted)] contract:CCLYTZZ7FAN6SSHV4QW2LEH7PMSQWBXM4T5A66SUPGJXEFXASZTM7YHA, topics:[error, Error(WasmVm, InvalidAction)], data:["VM call trapped: UnreachableCodeReached", set_price_stable]
+   3: [Diagnostic Event] topics:[fn_call, CCLYTZZ7FAN6SSHV4QW2LEH7PMSQWBXM4T5A66SUPGJXEFXASZTM7YHA, set_price_stable], data:[10000000, 10000000]
+
+Writing test snapshot file for test "pool::bad_debt::tests::test_check_and_handle_user_bad_debt" to "test_snapshots/pool/bad_debt/tests/test_check_and_handle_user_bad_debt.1.json".
+
+---- pool::bad_debt::tests::test_bad_debt_user_panics_no_change stdout ----
+thread 'pool::bad_debt::tests::test_bad_debt_user_panics_no_change' panicked at /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-env-host-22.1.3/src/host.rs:847:9:
+HostError: Error(WasmVm, InvalidAction)
+
+Event log (newest first):
+   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:"escalating error to panic"
+   1: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:["contract call failed", set_price_stable, [[10000000, 10000000]]]
+   2: [Failed Diagnostic Event (not emitted)] contract:CDNHTIE2GANHCMIKRZQEC26N6YNJ4M3EWEQ3IXO6AVVO7TANOHBNXAVU, topics:[error, Error(WasmVm, InvalidAction)], data:["VM call trapped: UnreachableCodeReached", set_price_stable]
+   3: [Diagnostic Event] topics:[fn_call, CDNHTIE2GANHCMIKRZQEC26N6YNJ4M3EWEQ3IXO6AVVO7TANOHBNXAVU, set_price_stable], data:[10000000, 10000000]
+
+Writing test snapshot file for test "pool::bad_debt::tests::test_bad_debt_user_panics_no_change" to "test_snapshots/pool/bad_debt/tests/test_bad_debt_user_panics_no_change.1.json".
+note: panic did not contain expected string
+      panic message: `"HostError: Error(WasmVm, InvalidAction)\n\nEvent log (newest first):\n   0: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:\"escalating error to panic\"\n   1: [Diagnostic Event] topics:[error, Error(WasmVm, InvalidAction)], data:[\"contract call failed\", set_price_stable, [[10000000, 10000000]]]\n   2: [Failed Diagnostic Event (not emitted)] contract:CDNHTIE2GANHCMIKRZQEC26N6YNJ4M3EWEQ3IXO6AVVO7TANOHBNXAVU, topics:[error, Error(WasmVm, InvalidAction)], data:[\"VM call trapped: UnreachableCodeReached\", set_price_stable]\n   3: [Diagnostic Event] topics:[fn_call, CDNHTIE2GANHCMIKRZQEC26N6YNJ4M3EWEQ3IXO6AVVO7TANOHBNXAVU, set_price_stable], data:[10000000, 10000000]\n"`,
+ expected substring: `"Error(Contract, #1200)"`
+
+failures:
+    auctions::auction::tests::test_fill
+    auctions::auction::tests::test_partial_partial_full_fill
+    auctions::backstop_interest_auction::tests::test_create_interest_auction_14_decimal_oracle
+    auctions::backstop_interest_auction::tests::test_create_interest_auction_2_decimal_oracle
+    auctions::bad_debt_auction::tests::test_create_bad_debt_auction_oracle_14_decimals
+    auctions::bad_debt_auction::tests::test_create_bad_debt_auction_oracle_2_decimals
+    auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_bad_full_liq
+    auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_full_liquidation
+    auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_too_large
+    auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_too_small
+    auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_weird_scalar
+    auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_assigns_bad_debt
+    pool::actions::tests::test_fill_bad_debt_auction
+    pool::actions::tests::test_fill_interest_auction
+    pool::bad_debt::tests::test_bad_debt_backstop_rejection_precedes_auction
+    pool::bad_debt::tests::test_bad_debt_orphaned_same_reserve_cycle
+    pool::bad_debt::tests::test_bad_debt_user
+    pool::bad_debt::tests::test_bad_debt_user_panics_no_change
+    pool::bad_debt::tests::test_check_and_handle_user_bad_debt
+    pool::bad_debt::tests::test_check_and_handle_user_bad_debt_with_collateral
+    pool::bad_debt::tests::test_custody_rejects_pool_address_user_emissions
+    pool::bad_debt::tests::test_custody_rejects_pool_map_b_token_emissions
+    pool::bad_debt::tests::test_custody_rejects_reserve_b_token_emission_data
+    pool::config::tests::test_execute_set_reserve_applies_queued_disable_only_transition
+    pool::config::tests::test_execute_set_reserve_update_during_setup
+    pool::gulp::tests::test_gulp_settles_collateral_relocated_by_bad_debt
+
+test result: FAILED. 320 passed; 26 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.12s
+
+error: test failed, to rerun pass `-p pool --lib`

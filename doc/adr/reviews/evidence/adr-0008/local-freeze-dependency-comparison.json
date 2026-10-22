@@ -1,0 +1,10 @@
+{
+  "pool": {
+    "equal_after_source_root_normalization": true,
+    "normalized_sha256": "5dfc3933ea4f22f06f43d906951fa38e72a220ec2fe01cf8c448a221db200f71"
+  },
+  "backstop": {
+    "equal_after_source_root_normalization": true,
+    "normalized_sha256": "0034ec1482e31380a4ef6674128cceea80551231044351c7b863d61c2fbb2a4f"
+  }
+}

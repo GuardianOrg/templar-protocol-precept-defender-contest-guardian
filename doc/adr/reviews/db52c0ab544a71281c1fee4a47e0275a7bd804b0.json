@@ -1,0 +1,535 @@
+{
+  "schema_version": 1,
+  "bundle_hash": "db52c0ab544a71281c1fee4a47e0275a7bd804b0",
+  "primary": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+  "bundle": [
+    {
+      "path": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+      "blob": "e55cd7c7a348295d92839cca7331ab417ab6f454"
+    },
+    {
+      "path": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+      "blob": "b85e4c549b0ccd0fb8f1fdc3071aa5c9ef98368a"
+    }
+  ],
+  "coupling_reason": "ADR0009 governs the mandatory migration and retirement of the ADR0008 cohort; its canary authority must compose with the unchanged launch profile.",
+  "custody": {
+    "type": "COMMIT",
+    "location": "ab41d578f38cca675e480ecc091a9753afe57d59"
+  },
+  "preflight": [
+    {
+      "command": "bin/adr --robot lint && git diff --check && python3 /tmp/precept-rounding-terminal-smoke.py",
+      "exit_code": 0,
+      "result": "PASS: ADR lint/diff; $25.01 fully attributed residue transitions from pre-handoff serviced tail to drained with rounding abandoned in place; five negative terminal controls and tail/valuation boundaries. Decision model only, not exact-Wasm or reference-model attribution proof.",
+      "artifact_hashes": {
+        "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md": "e55cd7c7a348295d92839cca7331ab417ab6f454",
+        "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md": "b85e4c549b0ccd0fb8f1fdc3071aa5c9ef98368a",
+        "precept-rounding-terminal-smoke.py": "d62d9d3909fec2266b9fa1f6904bae1b699fb52f"
+      },
+      "reproduction_files": {
+        "precept-rounding-terminal-smoke.py": "\"\"\"ADR decision-model smoke; not a deployed contract/attribution-model test.\"\"\"\nfrom dataclasses import dataclass, replace\n\nUSD = 10**7\nTRIPWIRE = 25 * USD\n\n\ndef rounding_usd(reserves):\n    # tuples: exact attributed base units, decimals, live USD-7, stress USD-7\n    return sum((q * max(live, stress) + 10**decimals - 1) // 10**decimals\n               for q, decimals, live, stress in reserves)\n\n\n@dataclass(frozen=True)\nclass Retirement:\n    raw: int\n    model_rounding: int\n    represented_units: int = 0\n    other_terminal_gates: bool = True\n    incident: bool = True\n    investigated: bool = True\n    sink_owned: bool = True\n\n\ndef disposition(state):\n    if (state.raw != state.model_rounding or state.represented_units != 0\n            or not state.other_terminal_gates or not state.sink_owned\n            or (state.incident and not state.investigated)):\n        return \"serviced-tail\"\n    return \"drained: rounding abandoned in place\"\n\n\npre_handoff = Retirement(raw=25_010_000, model_rounding=25_010_000, sink_owned=False)\nassert disposition(pre_handoff) == \"serviced-tail\"\nfixture = replace(pre_handoff, sink_owned=True)\nassert rounding_usd([(fixture.raw, 6, USD, USD)]) == 250_100_000 > TRIPWIRE\nassert disposition(fixture) == \"drained: rounding abandoned in place\"\nfor blocked in (replace(fixture, raw=fixture.raw + 1),\n                replace(fixture, represented_units=1),\n                replace(fixture, other_terminal_gates=False),\n                replace(fixture, investigated=False),\n                replace(fixture, sink_owned=False)):\n    assert disposition(blocked) == \"serviced-tail\"\n# Further exact tail rounding changes residue, not terminal admissibility.\ntail = replace(fixture, raw=25_030_000, model_rounding=25_030_000)\nassert disposition(tail) == disposition(fixture)\n# Greater live/stress price and per-reserve upward rounding drive operations only.\nassert rounding_usd([(25_000_000, 6, USD, USD)]) == TRIPWIRE\nassert rounding_usd([(24_990_000, 6, USD, USD)]) < TRIPWIRE\nassert rounding_usd([(24_990_000, 6, USD, USD + 10_000)]) > TRIPWIRE\nassert rounding_usd([(1, 8, USD, USD), (1, 8, USD, USD)]) == 2\n# No valuation input exists in disposition: unavailable/later prices cannot\n# manufacture a claim, undo the archived incident, or prevent sink terminality.\nassert disposition(fixture) == disposition(tail)\nprint(\"PASS: $25.01 incident -> drained with exact rounding abandoned in place; \"\n      \"5 negative terminal controls; tail-rounding and valuation boundaries. \"\n      \"Decision model only, not exact-Wasm or reference-model attribution proof.\")\n"
+      }
+    },
+    {
+      "command": "Ponytail complete delta against 62c49f2a0c86d2c1ee8523fe41a5fb500adfbb31",
+      "exit_code": 0,
+      "result": "PASS after correcting fixture to pre-handoff prerequisites; no remaining actionable safe shrink/consistency issue.",
+      "runtime_result": "history://LiquidityPonytail"
+    }
+  ],
+  "reviews": [
+    {
+      "run": 3,
+      "pair": 1,
+      "attempts": {
+        "architect": [
+          {
+            "runtime_result": "history://LiquidityCorrectionArchitect",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "architect",
+              "run": 3,
+              "pair": 1,
+              "bundle_hash": "db52c0ab544a71281c1fee4a47e0275a7bd804b0",
+              "verdict": "APPROVE",
+              "blockers": [],
+              "prior_blocker_disposition": [],
+              "tradeoff_tension": "Operational sensitivity versus terminal liveness: a 25-USD per-pool tripwire valued at greater-of-live/stress prices is deliberately tight enough to surface any reference-model mismatch early, which means fully explained, harmless rounding can also trip containment (absorbing status 4) on a pool whose caps are 2,000x larger, and after retirement starts every further exit or price-only revaluation can cross it; the bundle resolves this by making the tripwire purely operational (containment plus investigated incident) while terminal admissibility uses only exact units and claim reconciliation, so no residue, breach, or price state can ever strand a pool short of sink handoff or manufacture a claim, sweep, or estate-service obligation.",
+              "evidence_checked": [
+                "Identity: git rev-parse HEAD = ab41d578f38cca675e480ecc091a9753afe57d59; git hash-object /tmp/precept-rounding-parent.manifest = db52c0ab544a71281c1fee4a47e0275a7bd804b0; ADR0008 blob e55cd7c7a348295d92839cca7331ab417ab6f454; ADR0009 blob b85e4c549b0ccd0fb8f1fdc3071aa5c9ef98368a; manifest primary is ADR0009; doc/adr clean except the untracked candidate receipt db52c0ab...json which is not part of the bundle; git log 62c49f2..HEAD is exactly one commit",
+                "Complete delta 62c49f2..HEAD read unelided (artifact://4431): ADR0008 230-232, 327-338, 411-422, 525-527, 539-542, 654-656; ADR0009 33-34, 58-59, 436-438, 460-466, 489-492, 674-682",
+                "Vocabulary sweep of both full files for rounding/tripwire/25-USD/reference model/unrepresented/lifetime/single-transition/raw balance/unexplained: no residual text claims raw-zero terminality, a USD terminal ceiling, a lifetime rounding bound from one-transition tests, a sweep, donation relabelling, or a new claim; stress prices are already defined at ADR0008:107-108 and 302; the existing monitoring rule referenced at 332-333 is ADR0008:321-325",
+                "On-chain terminal handoff unchanged: ADR0008:206-229 policy surface has no token read/transfer/rescue; propose_retirement live-reads status 4 or all-disabled, resolved queues, and bound terminal state; new 230-232 only states that this bound state is represented accounting and that reference-model attribution is operator evidence, which matches the policy's actual capability",
+                "Stock behavior at pinned 6cf6dd1: pool.rs:75-82 status 4 blocks supply (0) and collateral supply (2) while withdraw, repay, and liquidation fills remain allowed, so 'containment preserving safe exits' is stock-feasible; stock rounding directions (to_b_token_down on supply, ceil burn on withdraw, to_d_token_up on borrow, to_d_token_down on repay, ceil b_rate decrease on default per ADR0008:277 and user.rs default_liabilities) never move value out of the pool, so attributed rounding is nonnegative per source and D is nondecreasing as ADR0009:410-411 states",
+                "Cross-check with the retained liquidity invariants: ADR0009:406-415 vault raw gate is deficit-only, treats explained stock-rounding increases as non-blocking and unexplained increases as blocking; ADR0009:417-418 and acceptance 8 (595-599) keep terminal idle/unexplained value at zero while explained residue may be nonzero; ADR0008:148-150 keeps unsolicited/rounding surplus out of b_supply, exit headroom, and caps; no contradiction introduced",
+                "Cross-check with canary/bridge invariants (ADR0009:177-205, 297-326, 545-567): untouched by this delta",
+                "Global checklist: requirements (caps, restrictions, objective gates, no incentives, no feature creep, migration/retirement semantics unchanged; user-specified inventory items each located: $25 per-pool tripwire at greater live/stress with 7-decimal round-up ADR0008:327-331; forecast/observed breach -> containment with safe exits 331-333; retained investigated incident 334-335, 415, 421-422, ADR0009:437-438; abandonment in place with original source and no claim/transfer 415-417, ADR0009:461-466; no USD headroom/current-price terminal requirement 418-420, ADR0009:465-466, 491-492; unchanged claim/accounting/queue/authority/sink gates 417-418, 424-428, ADR0009:676-678; no estate service solely for residue 420-421, ADR0009:436-437; no single-transition lifetime claim 336-337, 527; rejected sweep/relabel/new claim/lifetime-proof/new verifier 416-417, 338, ADR0009:465-466, ADR0008:310-312); decision/alternative consistency (alternatives 8-9 at ADR0009:521-525 still reject raw-minus-buffer gating and gulp recognition; new text adds no surplus-recognition or transfer authority); funds/auth boundaries (no new authority, transfer, or claim; on-chain handoff semantics unchanged); compat/ops (tripwire is monitoring plus existing status-4/contain paths; unavailable valuation handled by existing route-closure rule and last-valid-input archival); maintenance (reconciliation is replay of the pinned fork's own arithmetic; no bespoke verifier or schema); lifecycle (definition, section text, acceptance 8/10, invariants, pre-mortem 602/622, and test plan all updated coherently)"
+              ],
+              "steelman": "The strongest alternative is the old draft's reading: treat the 25-USD figure as a hard terminal ceiling with a cure budget, so a pool cannot hand off while carrying more than 25 USD of physical surplus. It sounds safer because it forces the surplus to be dealt with, but the bundle's counterargument is decisive: with gulp disabled, surplus recognition removed, and no transfer authority, the only cures are the exact things the user forbids (sweep, donation relabelling, new claim, or a supplier compensation path), the ceiling is price-dependent so a pool could flip between admissible and inadmissible on revaluation with no state change, and a pool with only explained residue would otherwise be un-retirable, owing indefinite oracle/TTL/keeper service for value nobody can claim. A second alternative, having the policy contract read raw balance and enforce residue rules on chain, would be operational policy pretending to be an invariant, requires the policy to reconstruct off-chain attribution it cannot observe, and adds surface to an immutable contract; the bundle correctly keeps that evidence in the reviewed terminal record (ADR0008:230-232). The selected split is the minimal design that keeps the tripwire's early-warning value without inventing authority or a lifetime proof.",
+              "synthesis": "Identity matches the frozen bundle. The delta does exactly what the user asked: it makes explicit, inside the current architecture, that the 25-USD figure is an operating tripwire (greater-of-live/stress valuation, 7-decimal round-up, forecast or observed breach closes intake and starts containment while safe exits continue, incident retained through revaluation) and that terminal admissibility is exact-unit and claim reconciliation only, with fully explained rounding residue abandoned in place under its original source even above the tripwire, no sweep, relabelling, new claim, USD ceiling, current-price requirement, or estate-service obligation, and unexplained units or any withdrawable claim still blocking. The 25.01-USD exactly-attributed fixture is now a normative regression in both ADRs, including the tripwire-crossing-during-tail, price-only revaluation, and unavailable-price repeats and the negative gates. Stock feasibility of containment-with-exits and nonnegative rounding attribution was verified from source. Nothing conflicts with the retained liquidity, canary, or bridge invariants and no on-chain semantics change. No blockers, no file corrections.",
+              "risks": [
+                "No required change: the tripwire is cheaply reachable by an adversary on reserves whose base unit has meaningful USD value (e.g. a high-priced 7-decimal asset where each ceil-burn withdrawal can strand about one base unit), because containment fires even for fully explained rounding; the consequence is early containment of a temporary pool with safe exits preserved, not a funds loss, so this is an operational/reserve-selection consideration and a good reason the ADR keeps containment reversible only via the planned migration, never via sweep.",
+                "No required change: 'pinned reference model' is named but not defined as an artifact; under ADR0008:295 and 310-312 it must be understood as exact replay of the pinned fork source's own rounding arithmetic over the pool's transaction history, not a second production verifier or bespoke simulator; implementation review should reject any independent arithmetic.",
+                "No required change: 'forecast sum' is an operational judgment (projected rounding from planned batches/exits); it cannot be griefed into a claim and errs toward closing intake, which is fail-closed.",
+                "No required change: the exact-Wasm 25.01-USD fixture must construct model-attributed surplus honestly (through stock operations or a documented direct raw-balance transfer whose attribution is stated), otherwise the fixture proves only that the policy ignores raw balance, which is a weaker property than the regression intends.",
+                "No required change: because terminal residue evidence is off-chain operator record, the 'unexplained units block retirement' gate is enforced by review and approvals, not by the contract; the bundle states this honestly at ADR0008:230-232 and this was already the location of the section-9 terminal ledger before the delta."
+              ],
+              "file_corrections": [],
+              "principle_violations": []
+            }
+          }
+        ],
+        "critic": [
+          {
+            "runtime_result": "history://LiquidityCorrectionCritic",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "critic",
+              "pair": 1,
+              "bundle_hash": "db52c0ab544a71281c1fee4a47e0275a7bd804b0",
+              "verdict": "APPROVE",
+              "blockers": [],
+              "prior_blocker_disposition": [],
+              "tradeoff_tension": "The previous USD terminal ceiling was operationally simple but made retirement hostage to cumulative exact stock rounding that no claim owns and no authorized path can sweep. The corrected decision keeps the per-pool 25-USD greater-live-or-stress operating tripwire, route closure, containment, attribution, investigation, and retained incident evidence, while making terminality depend on exact represented obligations and sink ownership rather than raw balance or current valuation. This deliberately accepts physically stranded value only when exact source attribution proves it unrepresented and every independent claim, accounting, queue, authority, migration, and sink gate has closed.",
+              "evidence_checked": [
+                "/tmp/precept-rounding-parent.manifest:1-4; git hash-object = db52c0ab544a71281c1fee4a47e0275a7bd804b0",
+                "commit ab41d578f38cca675e480ecc091a9753afe57d59; ADR0008 blob e55cd7c7a348295d92839cca7331ab417ab6f454; ADR0009 blob b85e4c549b0ccd0fb8f1fdc3071aa5c9ef98368a; both bound worktree files match the commit",
+                "complete 62c49f2..ab41d578 delta: ADR0008:230-232,327-338,411-422,525-527,539-542,654-656; ADR0009:33-34,58-59,436-438,460-466,489-492,674-682",
+                "ADR0008:132-180 fork restrictions; 201-236 policy authority and terminal handoff; 317-345 operations; 389-428 tail; 487-545 acceptance",
+                "ADR0009:424-492 incident and objective terminal lifecycle; 504-525 alternatives; 547-613 acceptance; 615-687 verification; 689-706 risk table; 747-766 invariants",
+                "pinned stock 6cf6dd1ca712ea3cf17a767fe49b7da01f80b909 pool/src/pool/actions.rs:283-383,391-437; reserve.rs:35-107,142-235; user.rs:83-115; pool.rs:71-82",
+                "/tmp/precept-rounding-terminal-smoke.py exact Git blob d62d9d3909fec2266b9fa1f6904bae1b699fb52f, inspected as a decision-model oracle; candidate receipt records PASS but explicitly does not claim exact-Wasm or attribution-model proof",
+                "agent://LiquidityCorrectionArchitect independently APPROVE on the same db52c0ab544a71281c1fee4a47e0275a7bd804b0 bundle"
+              ],
+              "architect_disposition": [
+                {
+                  "id": "A1",
+                  "status": "AGREE",
+                  "evidence": [
+                    "Architect approval binds the same manifest, commit, blobs, and complete delta; independent review confirms its no-blocker conclusion without treating that approval as dispositive."
+                  ]
+                }
+              ],
+              "consequence_simulations": [
+                {
+                  "case": "threshold and per-reserve rounding",
+                  "result": "At 1 USD with six asset decimals, 24,990,000 attributed base units value to 24.99 USD and do not cross; 25,000,000 equal 25.00 and the decision triggers only above; 25,010,000 value to 25.01 and trigger route closure/containment. Two one-base-unit eight-decimal residues each round separately to one USD-7 unit before summing, so aggregation cannot round the alert downward.",
+                  "evidence": [
+                    "ADR0008:327-338",
+                    "smoke input d62d9d3909fec2266b9fa1f6904bae1b699fb52f"
+                  ]
+                },
+                {
+                  "case": "price-only breach and missing valuation",
+                  "result": "A 24.99-token residue crosses when the approved stress price rises above live; the incident remains after a later price decrease. If current valuation is unavailable, official intake remains closed and the incident/last valid inputs are archived, but valuation absence alone does not manufacture a claim or block final sink handoff after all exact-unit gates pass.",
+                  "evidence": [
+                    "ADR0008:329-335,418-422",
+                    "ADR0009:464-466,678-682"
+                  ]
+                },
+                {
+                  "case": "25.01 USD terminal residue",
+                  "result": "With no liabilities, auctions, withdrawable b-token claim, backstop obligation, migration idle/reservation/authorization, queue, route conflict, or missing sink ownership, 25.01 USD of exactly model-attributed rounding remains in the pool unchanged and the lineage may become drained. Before sink ownership the same state remains a serviced tail. One unexplained base unit, any represented withdrawable unit, an uninvestigated breach, or any other terminal predicate still blocks.",
+                  "evidence": [
+                    "ADR0008:411-428,539-542",
+                    "ADR0009:447-488,674-682"
+                  ]
+                },
+                {
+                  "case": "tail action after breach",
+                  "result": "A permitted repay, withdraw, liquidation, or retirement action may add exact stock rounding and push residue farther above 25 USD without being rejected solely for tripwire headroom. The incident and exact source reconciliation are updated; status 4 blocks new supply/borrow while preserving safe exits, and only the later complete terminal proof ends service.",
+                  "evidence": [
+                    "ADR0008:331-338",
+                    "ADR0009:489-492",
+                    "stock pool.rs:75-82"
+                  ]
+                },
+                {
+                  "case": "donation and attribution separation",
+                  "result": "Zero donation leaves only modeled rounding; a known unsolicited transfer remains separately source-labelled abandoned value and never becomes rounding, b_supply, headroom, or a claim; an unclassified increase of even one base unit blocks routing/terminality. Donation size therefore cannot expand represented accounting or bypass terminal proof.",
+                  "evidence": [
+                    "ADR0008:145-150,327-330,415-418",
+                    "ADR0009:460-466,595-598"
+                  ]
+                }
+              ],
+              "alternative_fairness": "Raw-balance zero or a fixed USD terminal ceiling is easy to state but is neither claim-sensitive nor live when stock rounding accumulates and no sweep exists. Adding a rescue/sweep or recognizing the tokens through gulp would enlarge authority and reopen sealed surplus/backstop economics; ADR0009 alternatives 8-9 correctly reject raw-balance gating and gulp recognition. Creating a claim or relabelling rounding as donation misstates ownership. No launch remains the simplest alternative and is still preferred if the profile cannot satisfy its abandonment gates. Exact source attribution plus operational tripwire/containment is the narrowest option that preserves both accounting truth and retirement liveness.",
+              "requirement_coverage": [
+                {
+                  "requirement": "Separate operational tripwire from terminal admissibility",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0008:327-338,411-422,525-527,654-656",
+                    "ADR0009:58-59,436-438,464-466,489-492"
+                  ]
+                },
+                {
+                  "requirement": "Widen only to objectively unrepresented residue",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0008:411-418",
+                    "ADR0009:447-466"
+                  ]
+                },
+                {
+                  "requirement": "Preserve exact source and forbid sweep, relabelling, claim creation, and gulp recognition",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0008:145-150,414-417",
+                    "ADR0009:461-466,521-525,674-682"
+                  ]
+                },
+                {
+                  "requirement": "Keep the 25-USD per-pool guard using exact units and conservative valuation",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0008:327-335"
+                  ]
+                },
+                {
+                  "requirement": "Retain incident lifecycle and distinguish pre/post-retirement service",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0008:334-338,415-422",
+                    "ADR0009:428-438,484-492,674-682"
+                  ]
+                },
+                {
+                  "requirement": "Leave all claims, accounting, authority, queues, migration, and sink predicates intact",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0008:224-232,401-428",
+                    "ADR0009:447-482,674-682"
+                  ]
+                },
+                {
+                  "requirement": "Do not infer a lifetime bound from one transition",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0008:336-338,525-527"
+                  ]
+                },
+                {
+                  "requirement": "Bind future proof to exact release behavior without claiming the smoke is native proof",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0009:619-656,674-682",
+                    "candidate receipt preflight disclaimer"
+                  ]
+                }
+              ],
+              "risk_and_verification_findings": [
+                {
+                  "risk": "Operator attribution could conceal a donation or accounting discrepancy.",
+                  "disposition": "Mitigated by exact per-asset base units, pinned model/version, transaction-delta evidence, separate donation/orphan sources, investigated incident retention, and fail-closed unexplained-unit controls. The immutable policy intentionally checks represented on-chain state; operator evidence cannot create a claim or transfer authority.",
+                  "evidence": [
+                    "ADR0008:230-232,327-335,411-418",
+                    "ADR0009:460-466,674-680"
+                  ]
+                },
+                {
+                  "risk": "Rounding can accumulate beyond a one-transition launch fixture or cross solely through revaluation.",
+                  "disposition": "Explicitly accepted and operationally contained; the ADR disclaims a lifetime proof, retains breach history, preserves safe exits, updates reconciliation through handoff, and does not make current USD valuation a terminal predicate.",
+                  "evidence": [
+                    "ADR0008:331-338,418-422,525-527",
+                    "ADR0009:489-492,678-682"
+                  ]
+                },
+                {
+                  "risk": "Future implementation could test only prose/model behavior and diverge from stock Wasm.",
+                  "disposition": "Kept as an implementation gate rather than falsely claimed complete: exact-Wasm borrower/vault differential tests and exact-Wasm policy-handoff tests are mandatory; the current smoke is correctly labelled decision-model-only.",
+                  "evidence": [
+                    "ADR0009:642-656,681-682",
+                    "candidate receipt preflight disclaimer"
+                  ]
+                },
+                {
+                  "risk": "Retirement could terminate service while a real claimant or operational authority remains.",
+                  "disposition": "Blocked by the unchanged exhaustive ledger, claim, auction, emissions, backstop, vault, reservation, transaction, route, queue, status, and sink predicates plus negative terminal controls.",
+                  "evidence": [
+                    "ADR0009:447-488,674-680"
+                  ]
+                }
+              ],
+              "deliberate_assessment": "APPROVE. The exact frozen bundle repairs the user-reported compositional bug without weakening ADR0008's disabled-gulp/unrepresented-accounting model or ADR0009's claim, conservation, liveness, authority, and terminal gates. It supplies the requested exact-source lifecycle, operational tripwire, containment, retained evidence, conservative valuation, negative controls, and exact-Wasm future guard. No blocker or hidden correction remains. This is ADR-only design approval, not human acceptance, implementation authorization, exact-Wasm validation, or production-readiness proof."
+            }
+          }
+        ]
+      },
+      "prior_blocker_disposition": [],
+      "terminal_status": "CONSENSUS_APPROVED"
+    },
+    {
+      "run": 3,
+      "pair": 2,
+      "attempts": {
+        "architect": [
+          {
+            "runtime_result": "history://LiquidityCorrectionArchitect",
+            "error": "INVALID JSON contract: prior_blocker_disposition used RETRACTED_AND_CORRECTED instead of CLOSED|OPEN|SUPERSEDED; reviewer emitted corrected complete same-hash JSON with no substantive change.",
+            "result": null
+          },
+          {
+            "runtime_result": "agent://LiquidityCorrectionArchitect",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "architect",
+              "run": 3,
+              "pair": 2,
+              "bundle_hash": "db52c0ab544a71281c1fee4a47e0275a7bd804b0",
+              "verdict": "APPROVE",
+              "blockers": [],
+              "prior_blocker_disposition": [
+                {
+                  "id": "R3P1-RISK2-INTERPRETATION",
+                  "status": "SUPERSEDED",
+                  "evidence": "Pair-1 risk 2 incorrectly glossed the pinned reference model as replay of the fork implementation and said independent arithmetic should be rejected. The frozen parent says attribution retains model/version and transaction-delta evidence (ADR0008:411-415), exact reference-model reconciliation is required (ADR0009:460-466), and the terminal-residue plan includes differential/exact-Wasm evidence (ADR0009:671-682). Correct interpretation: the independent reference model implements the intended pinned arithmetic and is compared with the exact Wasm; replay of implementation behavior alone cannot establish attribution because it could reproduce the same fork defect. This correction changes only the review interpretation; the parent bytes require no edit."
+                },
+                {
+                  "id": "R3P1-RISK4-INTERPRETATION",
+                  "status": "SUPERSEDED",
+                  "evidence": "Pair-1 risk 4 incorrectly allowed a documented direct raw-balance transfer to construct 'model-attributed rounding.' The frozen parent requires separate original-source classification for settled-orphan value, unsolicited transfers, and model-attributed rounding (ADR0009:460-466; ADR0008:327-330, 411-417). A production transfer remains a donation or other unsolicited transfer and can never become rounding merely because its amount matches a modeled delta. A synthetic test fixture may encode a known independent-model output as initial state, but the differential/exact-Wasm regression must establish the operation-derived rounding behavior. This correction changes only the review interpretation; the parent bytes require no edit."
+                }
+              ],
+              "tradeoff_tension": "Independent attribution versus implementation fidelity: an independent reference model can detect a fork arithmetic defect that implementation replay would reproduce, but independence creates a second implementation that can itself drift or misstate intended pinned arithmetic. The bundle limits that risk by versioning the model, retaining per-transaction delta evidence and original source, and requiring differential/exact-Wasm regression. This evidence burden is heavier than replaying the fork, but it is necessary because terminal abandonment is irreversible and must not relabel donations or implementation bugs as rounding.",
+              "evidence_checked": [
+                "Frozen identity carried forward from the already verified pair-1 snapshot without rerunning commands, as directed: custody commit ab41d578f38cca675e480ecc091a9753afe57d59; manifest /tmp/precept-rounding-parent.manifest hash db52c0ab544a71281c1fee4a47e0275a7bd804b0; ADR0008 blob e55cd7c7a348295d92839cca7331ab417ab6f454; ADR0009 blob b85e4c549b0ccd0fb8f1fdc3071aa5c9ef98368a; primary ADR0009",
+                "Complete frozen delta versus 62c49f2 was previously read unelided: ADR0008:230-232, 327-338, 411-422, 525-527, 539-542, 654-656; ADR0009:33-34, 58-59, 436-438, 460-466, 489-492, 671-682",
+                "Attribution boundary corrected: ADR0008:327-330 requires exact base-unit deltas against the pinned reference model separately from donations and orphan-settlement value; ADR0008:411-417 requires model/version plus transaction-delta evidence and preserves original rounding source without donation reclassification; ADR0009:460-466 archives settled-orphan value, unsolicited transfers, and model-attributed rounding separately by original source and exact units",
+                "The reference-model evidence is independent evidence of intended pinned arithmetic, not a reproduction of implementation bytes. Fork replay alone is insufficient because it cannot distinguish intended rounding from a fork bug. Model/version custody, transaction-delta evidence, and differential/exact-Wasm regression jointly close that common-mode failure without adding a production verifier or model engine",
+                "Fixture boundary corrected: synthetic initial state may represent a known independent-model result for a focused policy-handoff test, but production source classification is immutable. A direct transfer is an unsolicited transfer/donation; matching a modeled amount does not make it rounding. Exact-Wasm/differential coverage must exercise operation-derived rounding behavior rather than infer attribution from raw positive balance",
+                "On-chain/off-chain authority remains honest: ADR0008:224-232 makes the policy handoff check represented accounting and leaves reference-model attribution to the reviewed terminal record; the contract does not claim to identify source or prove off-chain attribution. Unexplained units and represented claims still block approval before the operator invokes handoff (ADR0008:415-418; ADR0009:463-466)",
+                "Operational rule remains separate from terminal proof: greater-of-live/stress seven-decimal valuation drives the 25-USD intake/containment tripwire (ADR0008:327-338), while exact units, source attribution, represented-claim absence, investigated incident, full terminal proof, and sink ownership govern retirement (ADR0008:411-422; ADR0009:460-492)",
+                "Funds/auth boundaries unchanged: no sweep, transfer authority, gulp credit, new claim, supplier compensation, donation relabelling, or current-price terminal gate is added; raw balance does not enter stock headroom or the accounting withdrawal cap (ADR0008:148-150; ADR0009:406-415)",
+                "Compatibility and migration remain unchanged: status 4/all-disabled containment preserves safe repayment, withdrawal, liquidation, and migration; all vault, user, treasury, protocol, queue, migration-authority, and sink predicates remain mandatory; canary, bridge, inventory-buffer, and donation-invariant rules are untouched",
+                "Maintenance boundary: the independent reference model is review/release evidence, not a new production service, codec, on-chain verifier, or lifetime estate. After full proof and sink ownership, explained residue alone creates no oracle/TTL/keeper obligation; evidence and investigated incidents remain retained",
+                "Global checklist rerun on interpretation: requirements and alternatives remain consistent; funds and authorization cannot be created by attribution; implementation replay is not accepted as independent proof; direct transfers cannot be relabelled; operational failure modes fail closed on unknown units or missing evidence; terminal lifecycle remains one-way and source preserving"
+              ],
+              "steelman": "The strongest counterargument to the selected independent-model approach is that exact fork replay is simpler, cheaper to maintain, and guaranteed to match deployed behavior; a separately implemented model can diverge through its own rounding, scale, or event-order bug and falsely classify residue. That alternative is not defensible for irreversible abandonment: replay shares the deployed fork's failure mode and would faithfully reproduce the very bug attribution is meant to detect. The selected evidence stack—independent intended-arithmetic model, explicit version, exact per-transaction deltas, original-source custody, and differential/exact-Wasm regression—trades maintenance simplicity for protection against common-mode defects. It remains temporary evidence tooling rather than product authority. Treating any direct transfer as a convenient test substitute is also rejected: source classification, not numerical equality, controls whether residue is rounding.",
+              "synthesis": "The exact frozen parent remains APPROVE after correcting two pair-1 review glosses. The ADR does not authorize implementation-source replay as the attribution oracle: fully model-attributed rounding requires an independent model of intended pinned arithmetic, versioned transaction-delta evidence, and differential/exact-Wasm comparison; fork replay alone is insufficient. Nor may a production direct transfer be labelled rounding: donations, unsolicited transfers, orphan-settlement value, and operation-derived rounding retain distinct original sources. Synthetic fixture state may encode a known independent-model output, but production attribution and exact-Wasm evidence must remain operation-derived. With those interpretations, the frozen text cleanly separates the $25 operating tripwire from exact-unit terminal admissibility, preserves every funds/auth/migration/sink gate, adds no sweep or new claim, and avoids a new production verifier or lifetime estate. No ADR correction is required.",
+              "risks": [
+                "No required change: independent reference-model arithmetic can drift from intended semantics; model/version custody, transaction-delta evidence, and differential tests against exact Wasm are mandatory mitigations. Passing implementation replay alone is not evidence.",
+                "No required change: a synthetic terminal-state fixture proves handoff behavior but not rounding attribution by itself; the companion differential/exact-Wasm regression must establish that the encoded residue is the output of intended operation arithmetic.",
+                "No required change: source classification is review evidence outside the policy contract. Missing or contradictory transaction deltas, model/version, or original-source evidence must leave units unexplained and block terminal approval; the contract must not infer classification from balance amount.",
+                "No required change: a direct raw-balance transfer matching an expected rounding amount remains a donation or unsolicited transfer. Tooling that relabels it as rounding would violate the frozen source-preservation rule and must be rejected during implementation review.",
+                "No required change: the 25-USD tripwire may contain a pool on benign, fully explained rounding or revaluation; this is the accepted fail-closed operational cost, while safe exits and terminal handoff remain available after investigation.",
+                "No required change: the independent model is evidence tooling only. Promoting it into a production verifier, oracle, codec, or lifetime service would expand maintenance and authority beyond this ADR."
+              ],
+              "file_corrections": [],
+              "principle_violations": []
+            }
+          }
+        ],
+        "critic": [
+          {
+            "runtime_result": "history://LiquidityCorrectionCritic",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "critic",
+              "run": 3,
+              "pair": 2,
+              "bundle_hash": "db52c0ab544a71281c1fee4a47e0275a7bd804b0",
+              "verdict": "APPROVE",
+              "blockers": [],
+              "prior_blocker_disposition": [
+                {
+                  "id": "R3P1-RISK2-INTERPRETATION",
+                  "status": "SUPERSEDED",
+                  "evidence": [
+                    "ADR0008:327-330 calls for a pinned reference model and exact base-unit reconciliation, while 411-415 preserves model/version and transaction-delta evidence; ADR0009:460-466 requires exact reference-model reconciliation by original source. Those clauses describe independent evidence of intended pinned arithmetic, not replay of the deployed fork. Fork replay alone shares the implementation failure mode and cannot establish that residue is intended rounding. The future terminal fixture and exact-Wasm handoff requirements at ADR0009:674-682 compose with that independent attribution evidence; no parent edit is required."
+                  ]
+                },
+                {
+                  "id": "R3P1-RISK4-INTERPRETATION",
+                  "status": "SUPERSEDED",
+                  "evidence": [
+                    "ADR0008:327-330 explicitly separates rounding from donations and orphan-settlement value; 411-417 requires retained rounding source and transaction-delta evidence and forbids donation reclassification; ADR0009:460-466 archives settled-orphan value, unsolicited transfers, and model-attributed rounding separately by original source. Therefore a production direct transfer remains an unsolicited transfer or donation even when its amount numerically matches model output. A synthetic fixture may initialize a known independent-model state for focused handoff behavior, but it cannot prove production operation-derived attribution."
+                  ]
+                }
+              ],
+              "tradeoff_tension": "An independent model of intended pinned arithmetic can detect a deployed-fork arithmetic defect that implementation replay would faithfully reproduce, but it creates a second arithmetic implementation that can itself drift. The frozen decision accepts that maintenance burden because abandonment is irreversible, then constrains it with identified model/version custody, exact per-transaction deltas, immutable original-source classification, fail-closed unexplained units, and future comparison with exact release Wasm. It deliberately keeps this as reviewed evidence rather than a production oracle, codec, model engine, or on-chain authority.",
+              "evidence_checked": [
+                "/tmp/precept-rounding-architect2-final.json in full: valid run-3 pair-2 APPROVE for db52c0ab544a71281c1fee4a47e0275a7bd804b0; both pair-1 interpretation IDs superseded with no ADR correction",
+                "Frozen identities carried forward without rerunning commands as directed: commit ab41d578f38cca675e480ecc091a9753afe57d59; manifest db52c0ab544a71281c1fee4a47e0275a7bd804b0; ADR0008 e55cd7c7a348295d92839cca7331ab417ab6f454; ADR0009 b85e4c549b0ccd0fb8f1fdc3071aa5c9ef98368a",
+                "Previously read complete unchanged bundle and delta: ADR0008:230-232,327-338,411-422,525-527,539-542,654-656; ADR0009:33-34,58-59,436-438,460-466,489-492,674-682",
+                "ADR0008:145-150 keeps unsolicited underlying unrepresented and raw balance out of b_supply, headroom, and official caps; ADR0008:224-232 limits policy handoff to represented on-chain state and assigns attribution to the reviewed record",
+                "ADR0008:327-338 establishes exact base-unit reference-model reconciliation, separate original-source classes, conservative tripwire valuation, containment, retained incident evidence, safe exits, and no lifetime inference",
+                "ADR0008:389-428 distinguishes zero-unit represented claims from fully explained unrepresented physical residue, retains source/model/version/transaction evidence, forbids relabelling/sweep/claim/gulp, and ends service only after full proof plus sink ownership",
+                "ADR0009:406-419 preserves donation-invariant vault accounting, deficit/raw sufficiency checks, immutable source classification, and zero unexplained migration value",
+                "ADR0009:424-492 preserves one-way incident handling, exhaustive claim/accounting/queue/authority/migration/route/sink gates, separately archived source classes, and terminal handling for retirement-generated rounding",
+                "ADR0009:504-525 fairly rejects raw-balance gating and gulp recognition while retaining no-launch as the simplest alternative",
+                "ADR0009:615-687 requires model/property, integration, terminal-residue, and exact-Wasm evidence; the inspected d62d9d3909fec2266b9fa1f6904bae1b699fb52f smoke remains expressly decision-model-only and is not native or attribution proof",
+                "Pinned stock source previously inspected at 6cf6dd1ca712ea3cf17a767fe49b7da01f80b909: stock floor/ceil directions and status-4 action dispatch remain material implementation evidence but are not substituted for an independent intended-arithmetic model"
+              ],
+              "architect_disposition": [
+                {
+                  "id": "R3P2-A1",
+                  "status": "AGREE",
+                  "evidence": [
+                    "Agree that R3P1-RISK2 was a review error: exact implementation replay is not independent attribution evidence, and the frozen reference-model/model-version/transaction-delta clauses already require the stronger reading."
+                  ]
+                },
+                {
+                  "id": "R3P2-A2",
+                  "status": "AGREE",
+                  "evidence": [
+                    "Agree that R3P1-RISK4 was a review error: original transaction source controls classification, so a production transfer cannot become rounding through numerical coincidence."
+                  ]
+                },
+                {
+                  "id": "R3P2-A3",
+                  "status": "AGREE",
+                  "evidence": [
+                    "Independent global recheck finds no funds, authority, lifecycle, compatibility, operations, or maintenance blocker in the unchanged frozen bundle."
+                  ]
+                }
+              ],
+              "consequence_simulations": [
+                {
+                  "case": "implementation bug versus intended arithmetic",
+                  "result": "Suppose the exact release Wasm leaves 101 base units after an operation while the independent pinned-arithmetic model predicts 100. Replaying the fork would reproduce 101 and falsely call all of it rounding; the required independent reconciliation instead leaves the extra unit unexplained, so route/terminal approval blocks until reconciled. This is why fork replay alone is insufficient.",
+                  "evidence": [
+                    "ADR0008:327-330,411-418",
+                    "ADR0009:460-466,674-682"
+                  ]
+                },
+                {
+                  "case": "numerically matching direct transfer",
+                  "result": "Suppose the independent model predicts 100 base units of operation-derived rounding and a user directly transfers exactly 100 base units. The transfer event fixes those new units' source as unsolicited transfer/donation; numerical equality cannot merge them into the rounding class. The ledger may separately retain 100 rounding plus 100 unsolicited units if both exist, but any missing source/delta evidence leaves the amount unexplained and blocks.",
+                  "evidence": [
+                    "ADR0008:327-330,414-418",
+                    "ADR0009:460-466"
+                  ]
+                },
+                {
+                  "case": "synthetic fixture boundary",
+                  "result": "A policy-handoff fixture may initialize 25.01 USD of state known from the independent model and prove that raw positive balance or tripwire excess alone does not make the on-chain policy reject. That fixture does not prove how production units arose; the full implementation evidence must retain the operation transaction deltas and compare intended model output with exact release behavior before classifying production residue as rounding.",
+                  "evidence": [
+                    "ADR0008:230-232,539-542",
+                    "ADR0009:674-682"
+                  ]
+                },
+                {
+                  "case": "correctly attributed terminal residue",
+                  "result": "When operation-derived residue matches the identified independent model, all source/delta evidence and breach investigation are retained, and every represented claim, accounting, auction, queue, authorization, migration, route, and sink predicate passes, 25.01 USD or more may remain physically unchanged and the lineage can retire. One unexplained base unit or any other unmet predicate still blocks; no transfer, relabelling, claim, gulp credit, or current-price test is introduced.",
+                  "evidence": [
+                    "ADR0008:411-428,539-542",
+                    "ADR0009:447-492,674-682"
+                  ]
+                }
+              ],
+              "alternative_fairness": "Exact fork replay is cheaper and guaranteed to match deployed output, but that is precisely its defect as attribution evidence: it cannot expose common-mode implementation arithmetic errors. A production on-chain verifier or new model engine would make evidence operational authority and add lifecycle/upgrade burden the ADR does not need. Direct-transfer fixtures are simple for raw-balance handoff testing but cannot prove source attribution. The selected independent intended-arithmetic model plus model/version custody, transaction deltas, exact-Wasm comparison, and separate source classes is the least authority-expanding design that can justify irreversible abandonment. Raw-zero/25-USD terminal ceilings and gulp/sweep alternatives remain correctly rejected for liveness or sealed-economics reasons.",
+              "requirement_coverage": [
+                {
+                  "requirement": "Reference-model attribution is independent of the implementation under test",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0008:327-330,411-415",
+                    "ADR0009:460-466"
+                  ]
+                },
+                {
+                  "requirement": "Exact release behavior is compared without treating model-only smoke as native proof",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0009:615-682",
+                    "smoke disclaimer in retained candidate receipt"
+                  ]
+                },
+                {
+                  "requirement": "Production direct transfers retain original source and can never be relabelled as rounding",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0008:327-330,414-417",
+                    "ADR0009:460-466"
+                  ]
+                },
+                {
+                  "requirement": "Synthetic initialized fixtures test policy behavior but do not establish production attribution",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0008:230-232,539-542",
+                    "ADR0009:674-682"
+                  ]
+                },
+                {
+                  "requirement": "No new model engine, codec, schema, production verifier, transfer, claim, sweep, or gulp authority",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0008:206-232,309-315,411-422",
+                    "ADR0009:460-466,681-682"
+                  ]
+                },
+                {
+                  "requirement": "All operational tripwire, fail-closed unknown-unit, safe-exit, terminal, and sink invariants remain unchanged",
+                  "status": "COVERED",
+                  "evidence": [
+                    "ADR0008:327-345,411-428",
+                    "ADR0009:424-492,674-682"
+                  ]
+                }
+              ],
+              "risk_and_verification_findings": [
+                {
+                  "risk": "An independent model may drift in scale, rounding order, or intended semantics.",
+                  "disposition": "No required change. Identify and retain model/version, reconcile exact per-transaction base-unit deltas, compare against exact release Wasm, and treat any mismatch as unexplained rather than rounding.",
+                  "evidence": [
+                    "ADR0008:327-330,411-418",
+                    "ADR0009:460-466,674-682"
+                  ]
+                },
+                {
+                  "risk": "A handoff test may pass with injected raw balance while failing to prove operation-derived attribution.",
+                  "disposition": "No required change. Raw-balance injection is valid only for focused policy-handoff behavior; implementation acceptance still requires the model/source/transaction evidence and future exact-Wasm coverage. The existing smoke truthfully disclaims native attribution proof.",
+                  "evidence": [
+                    "ADR0008:230-232",
+                    "ADR0009:674-682"
+                  ]
+                },
+                {
+                  "risk": "Tooling may classify by amount and relabel a matching donation as rounding.",
+                  "disposition": "No required change. Frozen source-separation and no-reclassification clauses make this invalid; production review must reject it and leave contradictory or missing units unexplained.",
+                  "evidence": [
+                    "ADR0008:327-330,414-418",
+                    "ADR0009:460-466"
+                  ]
+                },
+                {
+                  "risk": "The evidence model could be promoted into an unintended permanent service or authority.",
+                  "disposition": "No required change. The model is retained review/release evidence only; the policy does not inspect it, and no oracle/TTL/keeper estate exists solely for fully explained residue after full proof and sink ownership.",
+                  "evidence": [
+                    "ADR0008:230-232,418-422",
+                    "ADR0009:436-438"
+                  ]
+                }
+              ],
+              "deliberate_assessment": "APPROVE. Both pair-1 interpretation errors are SUPERSEDED: the frozen ADR requires an independent identified reference model of intended pinned arithmetic with model/version and operation transaction-delta custody plus future exact-Wasm evidence, not implementation replay; and original source is immutable, so a production direct transfer never becomes rounding merely because its amount matches. Synthetic model-derived initialization remains valid for focused handoff testing but is not attribution proof. Rechecking the unchanged bundle under those corrected interpretations finds no hidden correction or blocker. This is ADR-only approval, not human acceptance, implementation authorization, completed model tooling, native regression execution, or production-readiness proof."
+            }
+          }
+        ]
+      },
+      "prior_blocker_disposition": [
+        {
+          "id": "R3P1-RISK2-INTERPRETATION",
+          "status": "SUPERSEDED",
+          "evidence": [
+            "ADR0008:327-330 calls for a pinned reference model and exact base-unit reconciliation, while 411-415 preserves model/version and transaction-delta evidence; ADR0009:460-466 requires exact reference-model reconciliation by original source. Those clauses describe independent evidence of intended pinned arithmetic, not replay of the deployed fork. Fork replay alone shares the implementation failure mode and cannot establish that residue is intended rounding. The future terminal fixture and exact-Wasm handoff requirements at ADR0009:674-682 compose with that independent attribution evidence; no parent edit is required."
+          ]
+        },
+        {
+          "id": "R3P1-RISK4-INTERPRETATION",
+          "status": "SUPERSEDED",
+          "evidence": [
+            "ADR0008:327-330 explicitly separates rounding from donations and orphan-settlement value; 411-417 requires retained rounding source and transaction-delta evidence and forbids donation reclassification; ADR0009:460-466 archives settled-orphan value, unsolicited transfers, and model-attributed rounding separately by original source. Therefore a production direct transfer remains an unsolicited transfer or donation even when its amount numerically matches model output. A synthetic fixture may initialize a known independent-model state for focused handoff behavior, but it cannot prove production operation-derived attribution."
+          ]
+        }
+      ],
+      "terminal_status": "CONSENSUS_APPROVED"
+    }
+  ]
+}

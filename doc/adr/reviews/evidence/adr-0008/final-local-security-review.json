@@ -1,0 +1,90 @@
+{
+  "source_commit": "273a5131da1f7407887a4a40867c992790809f3d",
+  "evidence_payload_commit": "8a0b063eac2daa43c90e94cb2eb47b4f5a1e3d2a",
+  "reviewer": "FinalFrozenSecurity",
+  "review": {
+    "coverage_summary": "ACCEPT-LOCAL-SOURCE/EVIDENCE \u2014 final security lane, exact frozen pair only. Source HEAD/ref independently read as 273a5131da1f7407887a4a40867c992790809f3d; its reflog records production parent 23abc743035994a5c0f18855c8cb8f54795dbce8 and preserved docs ancestry 6c3bbb46f89653b13bec7c39e4b811161c82c765. Evidence HEAD/ref independently read as 8a0b063eac2daa43c90e94cb2eb47b4f5a1e3d2a. Receipts bind differential baseline 6cf6dd1ca712ea3cf17a767fe49b7da01f80b909. No source defect or unfulfilled security-side local acceptance condition survived review.\n\nProduction tracing covered zero-take initialization and disabled updates; post-activation disable-only reserve changes; absorbing status 4; disabled flash/interest/bad-debt-auction paths; strict positive/fresh prices; public supplier-loss default; pool-address collateral custody; debt-zero orphan settlement; rollback after final liquidation fill; and all six ADR0011 ABI-preserving first-statement traps. The direct-default path checks raw collateral, rejects auction/backstop/emissions contradictions before mutation, burns debt shares, applies ceiling-rounded supplier loss clamped at zero, moves collateral shares to pool-owned noncollateral supply, and stores atomically. Pool-owned position identities are blocked from submit. The critical final-fill regression establishes the exposed filler is healthy before the call, observes contract error 1205 plus byte-equal ledger/auction rollback, then uses an independently funded filler to prove the same fill succeeds and to assert debt burn, custody, reserve loss, auction deletion, and post-fill health consequences.\n\nVerification was reviewed, not rerun. The committed receipts report 490 native/Wasm tests passed (0 failed; 1 intentionally ignored differential in the ordinary suite), exact differential 1/1 passed in 243.32s, and exact generated property 10,000/10,000 at seed 9110008 in 28184.17s. The terminal property transcript records 1 passed, 0 failed, 0 filtered and the Wasm-registered bounds. The rejected standalone differential selected zero tests and is explicitly quarantined in exact-local-candidate.json; the accepted transcript is logs/exact-local-differential-executed.log and records 1 passed, 0 failed, 0 ignored, 0 filtered. Differential review covered common-domain raw and normalized snapshots, full failed-call event records, six stock-positive prepared trap controls, exact divergent controls, role-specific pool/backstop/factory executable normalization, TTL-swap detection with distinct role TTLs, and reverse recovery. Exact artifact receipts report all three producer roots equal, pool/backstop/factory ABI hashes equal to baseline, and factory Wasm byte-equal; payload and differential manifests retain hashes for the frozen corpus/archive. I did not run builds, tests, linters, formatters, payloads, or network calls.\n\nIssue history was reviewed in full: all 19 recorded development/review problems at evidence-report lines 172-194 have a final disposition. These include wrong-toolchain lockfile contamination, migrated emissions fixtures, factory nonzero-take fixtures, sealed-reserve control repair, sequence-based auction maturity, three final-fill oracle defects (identity/status, weak emissions discriminator, and outcome-tolerant 1200), failed-call event API confusion, stale-Wasm mtime suspicion, role-normalization TTL masking, missing raw/normalized observations, lost earlier 10k evidence, dirty-tree provenance labeling, void-return evidence, vacuous auction-storage assertion, cleanup defects, hash-reuse integration errors, and unsupported agent claims. Superseded/rejected artifacts remain clearly labeled and are not used for this verdict.\n\nThis is local security acceptance of the exact committed source/evidence pair, not production, publication, external-audit, routing, activation, or deployment approval. The report\u2019s \u201cpending\u201d wording describes its pre-commit/pre-final-review checkpoint; the evidence branch ref now proves the payload commit exists. The sequential correctness/maintenance review must still accept this same pair before combined local final acceptance.",
+    "findings": [],
+    "reviewed_paths": [
+      "/home/common/projects/templar/AGENTS.md",
+      "/home/common/projects/templar/2026-09-11-adr-0008-blend-security-fork-plan.md",
+      "/home/common/projects/templar/2026-09-11-adr-0011-blend-backstop-fork-plan.md",
+      "/home/common/projects/templar/blend-contracts-v2/.git/HEAD",
+      "/home/common/projects/templar/blend-contracts-v2/.git/refs/heads/adr/0008-0011-local-security-fork",
+      "/home/common/projects/templar/blend-contracts-v2/.git/logs/refs/heads/adr/0008-0011-local-security-fork",
+      "/home/common/projects/templar/blend-contracts-v2/backstop/src/contract.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/contract.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/errors.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/events.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/auctions/auction.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/auctions/user_liquidation_auction.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/pool/actions.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/pool/bad_debt.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/pool/config.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/pool/gulp.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/pool/health_factor.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/pool/pool.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/pool/reserve.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/pool/status.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/pool/submit.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/pool/user.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool/src/storage.rs",
+      "/home/common/projects/templar/blend-contracts-v2/pool-factory/src/pool_factory.rs",
+      "/home/common/projects/templar/blend-contracts-v2/test-suites/tests/test_backstop_emissions_traps.rs",
+      "/home/common/projects/templar/blend-contracts-v2/test-suites/tests/test_pool_default_orphan_scenarios.rs",
+      "/home/common/projects/templar/blend-contracts-v2/test-suites/tests/adr8_differential.rs",
+      "/home/common/projects/templar/blend-contracts-v2/test-suites/src/adr8_properties.rs",
+      "/home/common/projects/templar/blend-contracts-v2/test-suites/src/adr8_stock_controls.rs",
+      "/home/common/projects/templar/blend-contracts-v2/test-suites/src/differential/mod.rs",
+      "/home/common/projects/templar/blend-contracts-v2/test-suites/src/differential/negative_controls.rs",
+      "/home/common/projects/templar/blend-contracts-v2/test-suites/src/differential/observation.rs",
+      "/home/common/projects/templar/precept/AGENTS.md",
+      "/home/common/projects/templar/precept/.git/HEAD",
+      "/home/common/projects/templar/precept/.git/refs/heads/chore/accept-adr-8-11",
+      "/home/common/projects/templar/precept/.git/logs/refs/heads/chore/accept-adr-8-11",
+      "/home/common/projects/templar/precept/doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+      "/home/common/projects/templar/precept/doc/adr/0011-disable-activation-shim-backstop-emissions-while-preserving-its-abi.md",
+      "/home/common/projects/templar/precept/doc/adr/reviews/adr-0008-blend-fork-implementation-evidence.md",
+      "/home/common/projects/templar/precept/doc/adr/reviews/evidence/adr-0008/exact-local-candidate.json",
+      "/home/common/projects/templar/precept/doc/adr/reviews/evidence/adr-0008/exact-local-artifacts.json",
+      "/home/common/projects/templar/precept/doc/adr/reviews/evidence/adr-0008/exact-local-payload-manifest.json",
+      "/home/common/projects/templar/precept/doc/adr/reviews/evidence/adr-0008/exact-local-differential-manifest.json",
+      "/home/common/projects/templar/precept/doc/adr/reviews/evidence/adr-0008/exact-local-differential.tar.gz",
+      "/home/common/projects/templar/precept/doc/adr/reviews/evidence/adr-0008/harness/Cargo.toml",
+      "/home/common/projects/templar/precept/doc/adr/reviews/evidence/adr-0008/harness/src/lib.rs",
+      "/home/common/projects/templar/precept/doc/adr/reviews/evidence/adr-0008/logs/exact-local-verifier-build-test.log",
+      "/home/common/projects/templar/precept/doc/adr/reviews/evidence/adr-0008/logs/exact-local-rebuild.log",
+      "/home/common/projects/templar/precept/doc/adr/reviews/evidence/adr-0008/logs/exact-local-differential-executed.log",
+      "/home/common/projects/templar/precept/doc/adr/reviews/evidence/adr-0008/logs/exact-local-property-10000-running.log"
+    ],
+    "deferred": [
+      {
+        "reason": "Sequential correctness/maintenance acceptance must follow this security result against the unchanged source 273a5131da1f7407887a4a40867c992790809f3d and evidence 8a0b063eac2daa43c90e94cb2eb47b4f5a1e3d2a before combined local acceptance.",
+        "paths": [
+          "/home/common/projects/templar/precept/doc/adr/reviews/adr-0008-blend-fork-implementation-evidence.md"
+        ]
+      },
+      {
+        "reason": "User-authorized prepublication-only gate: complete the commercial comparison and record the owner-approved explicit hard abandonment date before publication; this is not a local source blocker.",
+        "paths": [
+          "/home/common/projects/templar/2026-09-11-adr-0008-blend-security-fork-plan.md",
+          "/home/common/projects/templar/precept/doc/adr/reviews/adr-0008-blend-fork-implementation-evidence.md"
+        ]
+      },
+      {
+        "reason": "Prepublication custody remains: evidence-before-source remote publication, remote payload verification, protected publication controls, PR review/CI, and vendor-pin movement. Local clone evidence does not satisfy those remote gates.",
+        "paths": [
+          "/home/common/projects/templar/precept/doc/adr/reviews/adr-0008-blend-fork-implementation-evidence.md",
+          "/home/common/projects/templar/precept/doc/adr/reviews/evidence/adr-0008/exact-local-payload-manifest.json"
+        ]
+      },
+      {
+        "reason": "Production-only requirements remain outside this local verdict: deployed authority-tree and policy/proxy/shim verification, external audit, canary, active-network size, operational/maintenance/migration gates, routing, activation, and deployment approval.",
+        "paths": [
+          "/home/common/projects/templar/precept/doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+          "/home/common/projects/templar/precept/doc/adr/0011-disable-activation-shim-backstop-emissions-while-preserving-its-abi.md"
+        ]
+      }
+    ]
+  }
+}

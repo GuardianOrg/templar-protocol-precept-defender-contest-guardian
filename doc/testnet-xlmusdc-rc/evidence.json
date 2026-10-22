@@ -1,0 +1,437 @@
+{
+  "network": "testnet",
+  "passphrase": "Test SDF Network ; September 2015",
+  "rpc_url": "https://soroban-testnet.stellar.org",
+  "pool_admin": "GCNQ4ZLK45KOYNIQLIYI7GT6TYWGK2OZEVZEY7A3W5L7QSPBNCBWSJAQ",
+  "publisher": "GATYQZTJL6LTCFC4FMR3FAEFSCCMS5Z6ECGC6WPGN5NTWIS6UEGM7DTP",
+  "contracts": {
+    "adapter": "CB77ZJF6LSIYK3IJMQI5WA4WQRVQNCWKYA6P574SPOHUTBOFIY2OADF7",
+    "backstop": "CCBFS4UZTOPYXOJR3LIGICDRAZZCS5HRQZ624FPWWN4VMKRYJ77S4CFN",
+    "comet": "CCZQTLMYM47QMLKPDO5RVRGDFTHKBPVM2WGG55I4IWZCG66SLRQXE2JM",
+    "emitter": "CDJUIFOCSCOILCEKLZP7DDYVK6LWH6QGDIILKDJTHO276VDOIJVXGE3B",
+    "factory": "CAUYYNZC3TP6K4JWRSEKBZJZRQEIJYB65F2O77RQMS3KI2S5MYYMOLCN",
+    "oracle_runtime": "CDISQG4F6QKJCZEMSSQUWJN7KTK6A2FG2L3P3H2YK47MBUJK7DQ5MUDH",
+    "pool": "CCWMK5KJ3ICQ7QXI3RWIHUP3O3ARJJMMF6PESTZXSQHL2EJSUD6YMOBE",
+    "source": "CDCWMERBQSEA5N4X5BKLPIQRWNYVJL2MIKPR4MROOQMS3Q6AJU7V2FLG"
+  },
+  "tokens": {
+    "blnd": "CAKMGYLHMPLDRD4CYEJFZSBITAU7GRVOUGTQS7XWBD7NPPIS34TVGXBY",
+    "synthetic_usdc": "CCO5BBE67QMDQDUZM2DEVHF2AVK7PZ6BPO2OBLADSN6NTTQUML7NRHJW",
+    "usdc": "CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA",
+    "xlm": "CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC"
+  },
+  "fork_commit": "ffeca2683162e8e32321c27f1652903d7990d7ac",
+  "artifacts": {
+    "pool": {
+      "sha256": "441e95a552c7397ce65ba2cef7332e02ec85ee0d3da1d944d587702c21266c6b",
+      "size_bytes": 54016
+    },
+    "backstop": {
+      "sha256": "6bd13007c020b617c43c718c2ad3d2d13605d4d42fa8f739da2293f8a4e293a0",
+      "size_bytes": 22701
+    },
+    "factory": {
+      "sha256": "80abaf3c68fd15adade9f82165baa9b50d85800e497c99b45809e1fbd7397de2",
+      "size_bytes": 3149
+    },
+    "token": {
+      "sha256": "dd77fe6e7554cdf3d4ab32730fc2c9fb1039f0b16c5ed99769ae62b9809801f1",
+      "size_bytes": 6223
+    },
+    "source": {
+      "sha256": "7ac962b0eb5c51a4df2f5d9a0471bc1aea0d9e2508477df0ea65a46dfca9ea70",
+      "size_bytes": 11047
+    },
+    "comet": {
+      "sha256": "5d721fa580714291f6846fc01738e86d70acb47e449ea75312e272a0f7436dd8",
+      "size_bytes": 29046
+    },
+    "emitter": {
+      "sha256": "438a5528cff17ede6fe515f095c43c5f15727af17d006971485e52462e7e7b89",
+      "size_bytes": 10448
+    },
+    "adapter": {
+      "sha256": "bbdeee7b29d0b6e86af86cbf4ff1e9b76c34a2d27b088134a61151d46e3e17fb",
+      "size_bytes": 13562
+    },
+    "backend-oracle": {
+      "sha256": "f0980219efdeff6a1936d33e339eb59e56257da74537703ed490c45f28786f18",
+      "size_bytes": 8331
+    }
+  },
+  "oracle": {
+    "base": "USD",
+    "decimals": 7,
+    "max_age_secs": 300,
+    "max_clock_drift_secs": 15,
+    "min_sources": 1,
+    "resolution": 1
+  },
+  "oracle_trust": "backend and dedicated publishing key; no on-chain Pyth signatures",
+  "build": {
+    "blend_rust": "1.81.0",
+    "blend_optimizer_cli": "22.6.0",
+    "bridge_rust": "1.89.0",
+    "bridge_sdk": "25.3.0",
+    "bridge_producer_cli": "26.1.0",
+    "adapter": "unchanged qualified bytes; producer 26.0.0",
+    "runtime_cli": "26.1.0"
+  },
+  "verification": {
+    "abtest_tests_passed": 573,
+    "bridge_tests_passed": 8,
+    "keeper_tests_passed": 28,
+    "clippy": "abtest and bridge passed with warnings denied",
+    "adr_lint": "passed",
+    "lending": "supply 10 USDC, collateral 50 XLM, borrow 1 USDC, repay all, withdraw all; both actors empty",
+    "price_expiry": "real quotes expired without repricing: bridge and adapter null for both assets; keeper resumed and fresh prices returned",
+    "disabled_auctions": "bad-debt and interest auction simulations rejected with contract error 1200",
+    "explorer": "actual unsigned testnet TUI opened and loaded live pool ABI; clean quit",
+    "protected_market_status": "not applicable: four-asset protected proxy diagnostics report not-ready; not a release oracle verdict"
+  },
+  "operations": [
+    {
+      "step": "01-supply-usdc",
+      "exit": 0,
+      "observed_at": 1791555039,
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {
+          "1": "100000000"
+        }
+      },
+      "transaction_hash": "030ceaeba895ecf5f8aae71e0056aa82288a10d787a58bd22fd2b32e30a8e7df"
+    },
+    {
+      "step": "02-collateral-xlm",
+      "exit": 0,
+      "observed_at": 1791555042,
+      "result": {
+        "collateral": {
+          "0": "500000000"
+        },
+        "liabilities": {},
+        "supply": {}
+      },
+      "transaction_hash": "c44dc487559ef065e2fc260d1a3221322a8525372246328d1f20eb05a749e1ba"
+    },
+    {
+      "step": "03-borrow-usdc",
+      "exit": 0,
+      "observed_at": 1791555047,
+      "result": {
+        "collateral": {
+          "0": "500000000"
+        },
+        "liabilities": {
+          "1": "10000000"
+        },
+        "supply": {}
+      },
+      "transaction_hash": "6bedf1994b8b5a7906e2aa2045c080e4875ed584e97d08c03eb3e3145a4d9ba2"
+    },
+    {
+      "step": "04-repay-usdc",
+      "exit": 0,
+      "observed_at": 1791555053,
+      "result": {
+        "collateral": {
+          "0": "500000000"
+        },
+        "liabilities": {},
+        "supply": {}
+      },
+      "transaction_hash": "f623a6fe74a298647026d6fb58ff6401df3d1c1c17f48eeb93de8406d9540d4a"
+    },
+    {
+      "step": "05-withdraw-collateral",
+      "exit": 0,
+      "observed_at": 1791555057,
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      },
+      "transaction_hash": "38afa7a46298548e40f4256ba216624848ccd8d0e8ed941e66a31992b7586172"
+    },
+    {
+      "step": "06-withdraw-supply",
+      "exit": 0,
+      "observed_at": 1791555062,
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      },
+      "transaction_hash": "1941a8b037c681fc4a890fd332e5975d8a60f8b85b24cb8d051fc2101cc8abec"
+    },
+    {
+      "step": "07-reject-bad-debt-auction",
+      "exit": 1,
+      "observed_at": 1791555162,
+      "result": null,
+      "refusal": "Error(Contract, #1200)"
+    },
+    {
+      "step": "08-reject-interest-auction",
+      "exit": 1,
+      "observed_at": 1791555163,
+      "result": null,
+      "refusal": "Error(Contract, #1200)"
+    },
+    {
+      "step": "after-rc-frodo",
+      "exit": 0,
+      "observed_at": 1791555062,
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      }
+    },
+    {
+      "step": "after-rc-sam",
+      "exit": 0,
+      "observed_at": 1791555063,
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      }
+    },
+    {
+      "step": "before-rc-frodo",
+      "exit": 0,
+      "observed_at": 1791555031,
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      }
+    },
+    {
+      "step": "before-rc-sam",
+      "exit": 0,
+      "observed_at": 1791555031,
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      }
+    },
+    {
+      "step": "borrowed-sam",
+      "exit": 0,
+      "observed_at": 1791555048,
+      "result": {
+        "collateral": {
+          "0": "500000000"
+        },
+        "liabilities": {
+          "1": "10000000"
+        },
+        "supply": {}
+      }
+    },
+    {
+      "step": "borrowed-usdc-reserve",
+      "exit": 0,
+      "observed_at": 1791555048,
+      "result": {
+        "asset": "CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA",
+        "config": {
+          "c_factor": 9000000,
+          "decimals": 7,
+          "enabled": true,
+          "index": 1,
+          "l_factor": 9500000,
+          "max_util": 9500000,
+          "r_base": 100000,
+          "r_one": 500000,
+          "r_three": 15000000,
+          "r_two": 5000000,
+          "reactivity": 20,
+          "supply_cap": "170141183460469231731687303715884105727",
+          "util": 8500000
+        },
+        "data": {
+          "b_rate": "1000000000000",
+          "b_supply": "100000000",
+          "backstop_credit": "0",
+          "d_rate": "1000000000000",
+          "d_supply": "10000000",
+          "ir_mod": "10000000",
+          "last_time": 1791555047
+        },
+        "scalar": "10000000"
+      }
+    },
+    {
+      "step": "final-admin",
+      "exit": 0,
+      "observed_at": 1791555733,
+      "result": "GCNQ4ZLK45KOYNIQLIYI7GT6TYWGK2OZEVZEY7A3W5L7QSPBNCBWSJAQ"
+    },
+    {
+      "step": "final-config",
+      "exit": 0,
+      "observed_at": 1791555732,
+      "result": {
+        "bstop_rate": 0,
+        "max_positions": 6,
+        "min_collateral": "10000000",
+        "oracle": "CB77ZJF6LSIYK3IJMQI5WA4WQRVQNCWKYA6P574SPOHUTBOFIY2OADF7",
+        "status": 1
+      }
+    },
+    {
+      "step": "final-reserve-usdc",
+      "exit": 0,
+      "observed_at": 1791555734,
+      "result": {
+        "asset": "CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA",
+        "config": {
+          "c_factor": 9000000,
+          "decimals": 7,
+          "enabled": true,
+          "index": 1,
+          "l_factor": 9500000,
+          "max_util": 9500000,
+          "r_base": 100000,
+          "r_one": 500000,
+          "r_three": 15000000,
+          "r_two": 5000000,
+          "reactivity": 20,
+          "supply_cap": "170141183460469231731687303715884105727",
+          "util": 8500000
+        },
+        "data": {
+          "b_rate": "1000000010000",
+          "b_supply": "0",
+          "backstop_credit": "0",
+          "d_rate": "1000000002519",
+          "d_supply": "0",
+          "ir_mod": "9999925",
+          "last_time": 1791555732
+        },
+        "scalar": "10000000"
+      }
+    },
+    {
+      "step": "final-reserve-xlm",
+      "exit": 0,
+      "observed_at": 1791555733,
+      "result": {
+        "asset": "CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC",
+        "config": {
+          "c_factor": 7500000,
+          "decimals": 7,
+          "enabled": true,
+          "index": 0,
+          "l_factor": 8000000,
+          "max_util": 9500000,
+          "r_base": 100000,
+          "r_one": 500000,
+          "r_three": 15000000,
+          "r_two": 5000000,
+          "reactivity": 20,
+          "supply_cap": "170141183460469231731687303715884105727",
+          "util": 5000000
+        },
+        "data": {
+          "b_rate": "1000000000000",
+          "b_supply": "0",
+          "backstop_credit": "0",
+          "d_rate": "1000000000000",
+          "d_supply": "0",
+          "ir_mod": "10000000",
+          "last_time": 1791555732
+        },
+        "scalar": "10000000"
+      }
+    },
+    {
+      "step": "fresh-after-stale-usdc",
+      "exit": 0,
+      "observed_at": 1791555577,
+      "result": {
+        "price": "9998993",
+        "timestamp": 1791555559
+      }
+    },
+    {
+      "step": "fresh-after-stale-xlm",
+      "exit": 0,
+      "observed_at": 1791555576,
+      "result": {
+        "price": "1927742",
+        "timestamp": 1791555559
+      }
+    },
+    {
+      "step": "fresh-before-stale-usdc",
+      "exit": 0,
+      "observed_at": 1791555248,
+      "result": {
+        "price": "9998808",
+        "timestamp": 1791555226
+      }
+    },
+    {
+      "step": "fresh-before-stale-xlm",
+      "exit": 0,
+      "observed_at": 1791555247,
+      "result": {
+        "price": "1923500",
+        "timestamp": 1791555226
+      }
+    },
+    {
+      "step": "repaid-sam",
+      "exit": 0,
+      "observed_at": 1791555054,
+      "result": {
+        "collateral": {
+          "0": "500000000"
+        },
+        "liabilities": {},
+        "supply": {}
+      }
+    },
+    {
+      "step": "stale-adapter-usdc",
+      "exit": 0,
+      "observed_at": 1791555558,
+      "result": null
+    },
+    {
+      "step": "stale-adapter-xlm",
+      "exit": 0,
+      "observed_at": 1791555557,
+      "result": null
+    },
+    {
+      "step": "stale-oracle_runtime-usdc",
+      "exit": 0,
+      "observed_at": 1791555558,
+      "result": null
+    },
+    {
+      "step": "stale-oracle_runtime-xlm",
+      "exit": 0,
+      "observed_at": 1791555557,
+      "result": null
+    }
+  ],
+  "keeper": {
+    "service": "templar-rc-backend-prices.service",
+    "timer": "templar-rc-backend-prices.timer",
+    "enabled": true,
+    "interval_after_completion_seconds": 30,
+    "last_observed_result": "success",
+    "original_lab_timer": "active, unchanged",
+    "unresolved_markers": 0,
+    "observed_cycles": "published and unchanged cycles both completed and verified"
+  }
+}

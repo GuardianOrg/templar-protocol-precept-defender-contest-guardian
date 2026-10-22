@@ -1,0 +1,20 @@
+{
+  "pool": {
+    "size": 53921,
+    "sha256": "351257924a5499a6c7c947a7c81e27ffce51ed013650cd52ce188d50cff5c96d",
+    "spec_equal": true,
+    "wasm_equal": false
+  },
+  "backstop": {
+    "size": 22701,
+    "sha256": "6bd13007c020b617c43c718c2ad3d2d13605d4d42fa8f739da2293f8a4e293a0",
+    "spec_equal": true,
+    "wasm_equal": false
+  },
+  "pool_factory": {
+    "size": 3149,
+    "sha256": "80abaf3c68fd15adade9f82165baa9b50d85800e497c99b45809e1fbd7397de2",
+    "spec_equal": true,
+    "wasm_equal": true
+  }
+}

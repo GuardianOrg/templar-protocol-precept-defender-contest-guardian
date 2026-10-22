@@ -1,0 +1,495 @@
+   Compiling pool v2.0.0 (/home/common/projects/templar/blend-contracts-v2/pool)
+warning: unused imports: `dependencies::EmitterClient` and `emissions`
+ --> backstop/src/contract.rs:4:5
+  |
+4 |     dependencies::EmitterClient,
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5 |     emissions,
+  |     ^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `claim::execute_claim`
+ --> backstop/src/emissions/mod.rs:2:9
+  |
+2 | pub use claim::execute_claim;
+  |         ^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `add_to_reward_zone`, `distribute`, `gulp_emissions`, and `remove_from_reward_zone`
+ --> backstop/src/emissions/mod.rs:8:19
+  |
+8 | pub use manager::{add_to_reward_zone, distribute, gulp_emissions, remove_from_reward_zone};
+  |                   ^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^  ^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `pool`
+   --> backstop/src/contract.rs:268:31
+    |
+268 |     fn gulp_emissions(e: Env, pool: Address) -> i128 {
+    |                               ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `to_add`
+   --> backstop/src/contract.rs:272:27
+    |
+272 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                           ^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_add`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:272:44
+    |
+272 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                                            ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:276:30
+    |
+276 |     fn remove_reward(e: Env, to_remove: Address) {
+    |                              ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `from`
+   --> backstop/src/contract.rs:280:22
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                      ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `pool_addresses`
+   --> backstop/src/contract.rs:280:37
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                     ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_pool_addresses`
+
+warning: unused variable: `min_lp_tokens_out`
+   --> backstop/src/contract.rs:280:67
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                                                   ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_lp_tokens_out`
+
+warning: function `is_pool_above_threshold` is never used
+   --> backstop/src/backstop/pool.rs:105:8
+    |
+105 | pub fn is_pool_above_threshold(pool_backstop_data: &PoolBackstopData) -> bool {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_RZ_SIZE` is never used
+ --> backstop/src/constants.rs:8:11
+  |
+8 | pub const MAX_RZ_SIZE: u32 = 30;
+  |           ^^^^^^^^^^^
+
+warning: function `execute_claim` is never used
+  --> backstop/src/emissions/claim.rs:13:8
+   |
+13 | pub fn execute_claim(
+   |        ^^^^^^^^^^^^^
+
+warning: function `claim_emissions` is never used
+  --> backstop/src/emissions/distributor.rs:37:15
+   |
+37 | pub(super) fn claim_emissions(
+   |               ^^^^^^^^^^^^^^^
+
+warning: function `add_to_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:18:8
+   |
+18 | pub fn add_to_reward_zone(e: &Env, to_add: Address, to_remove: Option<Address>) {
+   |        ^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_from_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:58:8
+   |
+58 | pub fn remove_from_reward_zone(e: &Env, to_remove: Address) {
+   |        ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_pool` is never used
+  --> backstop/src/emissions/manager.rs:73:4
+   |
+73 | fn remove_pool(e: &Env, reward_zone: &mut Vec<Address>, to_remove: &Address) {
+   |    ^^^^^^^^^^^
+
+warning: function `require_distribute_run_recently` is never used
+  --> backstop/src/emissions/manager.rs:87:4
+   |
+87 | fn require_distribute_run_recently(e: &Env) {
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `distribute` is never used
+  --> backstop/src/emissions/manager.rs:96:8
+   |
+96 | pub fn distribute(e: &Env) -> i128 {
+   |        ^^^^^^^^^^
+
+warning: function `gulp_emissions` is never used
+   --> backstop/src/emissions/manager.rs:209:8
+    |
+209 | pub fn gulp_emissions(e: &Env, pool: &Address) -> (i128, i128) {
+    |        ^^^^^^^^^^^^^^
+
+warning: function `set_backstop_emission_eps` is never used
+   --> backstop/src/emissions/manager.rs:253:8
+    |
+253 | pub fn set_backstop_emission_eps(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated functions `distribute`, `gulp_emissions`, `rw_zone_add`, `rw_zone_remove`, and `claim` are never used
+   --> backstop/src/events.rs:84:12
+    |
+5   | impl BackstopEvents {
+    | ------------------- associated functions in this implementation
+...
+84  |     pub fn distribute(e: &Env, new_tokens_emitted: i128) {
+    |            ^^^^^^^^^^
+...
+98  |     pub fn gulp_emissions(
+    |            ^^^^^^^^^^^^^^
+...
+117 |     pub fn rw_zone_add(e: &Env, to_add: Address, to_remove: Option<Address>) {
+    |            ^^^^^^^^^^^
+...
+129 |     pub fn rw_zone_remove(e: &Env, to_remove: Address) {
+    |            ^^^^^^^^^^^^^^
+...
+142 |     pub fn claim(e: &Env, from: Address, amount: i128) {
+    |            ^^^^^
+
+warning: constant `LAST_DISTRO_KEY` is never used
+  --> backstop/src/storage.rs:61:7
+   |
+61 | const LAST_DISTRO_KEY: &str = "LastDist";
+   |       ^^^^^^^^^^^^^^^
+
+warning: constant `BACKFILL_EMISSIONS_KEY` is never used
+  --> backstop/src/storage.rs:64:7
+   |
+64 | const BACKFILL_EMISSIONS_KEY: &str = "BackfillEmis";
+   |       ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: constant `BACKFILL_STATUS_KEY` is never used
+  --> backstop/src/storage.rs:65:7
+   |
+65 | const BACKFILL_STATUS_KEY: &str = "Backfill";
+   |       ^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_emitter` is never used
+   --> backstop/src/storage.rs:117:8
+    |
+117 | pub fn get_emitter(e: &Env) -> Address {
+    |        ^^^^^^^^^^^
+
+warning: function `get_last_distribution_time` is never used
+   --> backstop/src/storage.rs:288:8
+    |
+288 | pub fn get_last_distribution_time(e: &Env) -> u64 {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_last_distribution_time` is never used
+   --> backstop/src/storage.rs:302:8
+    |
+302 | pub fn set_last_distribution_time(e: &Env, timestamp: &u64) {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_reward_zone` is never used
+   --> backstop/src/storage.rs:328:8
+    |
+328 | pub fn set_reward_zone(e: &Env, reward_zone: &Vec<Address>) {
+    |        ^^^^^^^^^^^^^^^
+
+warning: function `get_backfill_emissions` is never used
+   --> backstop/src/storage.rs:340:8
+    |
+340 | pub fn get_backfill_emissions(e: &Env) -> i128 {
+    |        ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_backfill_emissions` is never used
+   --> backstop/src/storage.rs:354:8
+    |
+354 | pub fn set_backfill_emissions(e: &Env, emissions: &i128) {
+    |        ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_backfill_status` is never used
+   --> backstop/src/storage.rs:368:8
+    |
+368 | pub fn get_backfill_status(e: &Env) -> Option<bool> {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_backfill_status` is never used
+   --> backstop/src/storage.rs:382:8
+    |
+382 | pub fn set_backfill_status(e: &Env, status: &bool) {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_rz_emis` is never used
+   --> backstop/src/storage.rs:397:8
+    |
+397 | pub fn get_rz_emis(e: &Env, pool: &Address) -> RzEmissions {
+    |        ^^^^^^^^^^^
+
+warning: function `set_rz_emis` is never used
+   --> backstop/src/storage.rs:416:8
+    |
+416 | pub fn set_rz_emis(e: &Env, pool: &Address, emissions: &RzEmissions) {
+    |        ^^^^^^^^^^^
+
+warning: function `get_drop_list` is never used
+   --> backstop/src/storage.rs:498:8
+    |
+498 | pub fn get_drop_list(e: &Env) -> Vec<(Address, i128)> {
+    |        ^^^^^^^^^^^^^
+
+warning: `backstop` (lib) generated 36 warnings (run `cargo fix --lib -p backstop` to apply 3 suggestions)
+warning: unused import: `execute_update_pool`
+  --> pool/src/pool/mod.rs:10:26
+   |
+10 |     execute_set_reserve, execute_update_pool,
+   |                          ^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `execute_submit_with_flash_loan`
+  --> pool/src/pool/mod.rs:20:34
+   |
+20 | pub use submit::{execute_submit, execute_submit_with_flash_loan};
+   |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `backstop_take_rate`
+   --> pool/src/contract.rs:392:28
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                            ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_backstop_take_rate`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `max_positions`
+   --> pool/src/contract.rs:392:53
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                     ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_max_positions`
+
+warning: unused variable: `min_collateral`
+   --> pool/src/contract.rs:392:73
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                                         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_collateral`
+
+warning: unused variable: `from`
+   --> pool/src/contract.rs:480:9
+    |
+480 |         from: Address,
+    |         ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `flash_loan`
+   --> pool/src/contract.rs:481:9
+    |
+481 |         flash_loan: FlashLoan,
+    |         ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_flash_loan`
+
+warning: unused variable: `requests`
+   --> pool/src/contract.rs:482:9
+    |
+482 |         requests: Vec<Request>,
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_requests`
+
+warning: associated functions `update_pool`, `bad_debt`, and `flash_loan` are never used
+   --> pool/src/events.rs:30:12
+    |
+7   | impl PoolEvents {
+    | --------------- associated functions in this implementation
+...
+30  |     pub fn update_pool(
+    |            ^^^^^^^^^^^
+...
+157 |     pub fn bad_debt(e: &Env, user: Address, asset: Address, d_tokens: i128) {
+    |            ^^^^^^^^
+...
+306 |     pub fn flash_loan(
+    |            ^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: function `execute_update_pool` is never used
+  --> pool/src/pool/config.rs:47:8
+   |
+47 | pub fn execute_update_pool(
+   |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `execute_submit_with_flash_loan` is never used
+  --> pool/src/pool/submit.rs:70:8
+   |
+70 | pub fn execute_submit_with_flash_loan(
+   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: method `has_collateral` is never used
+   --> pool/src/pool/user.rs:119:12
+    |
+43  | impl User {
+    | --------- method in this implementation
+...
+119 |     pub fn has_collateral(&self) -> bool {
+    |            ^^^^^^^^^^^^^^
+
+warning: `pool` (lib) generated 12 warnings (run `cargo fix --lib -p pool` to apply 2 suggestions)
+   Compiling mock-pool-factory v0.0.0 (/home/common/projects/templar/blend-contracts-v2/mocks/mock-pool-factory)
+   Compiling moderc3156-example v0.1.0 (/home/common/projects/templar/blend-contracts-v2/mocks/moderc3156)
+   Compiling test-suites v0.0.0 (/home/common/projects/templar/blend-contracts-v2/test-suites)
+   Compiling backstop v2.0.0 (/home/common/projects/templar/blend-contracts-v2/backstop)
+warning: associated functions `distribute`, `gulp_emissions`, `rw_zone_add`, `rw_zone_remove`, and `claim` are never used
+   --> backstop/src/events.rs:84:12
+    |
+5   | impl BackstopEvents {
+    | ------------------- associated functions in this implementation
+...
+84  |     pub fn distribute(e: &Env, new_tokens_emitted: i128) {
+    |            ^^^^^^^^^^
+...
+98  |     pub fn gulp_emissions(
+    |            ^^^^^^^^^^^^^^
+...
+117 |     pub fn rw_zone_add(e: &Env, to_add: Address, to_remove: Option<Address>) {
+    |            ^^^^^^^^^^^
+...
+129 |     pub fn rw_zone_remove(e: &Env, to_remove: Address) {
+    |            ^^^^^^^^^^^^^^
+...
+142 |     pub fn claim(e: &Env, from: Address, amount: i128) {
+    |            ^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+error[E0277]: the trait bound `soroban_sdk::Val: TryFromVal<Env, &soroban_sdk::Vec<(soroban_sdk::Address, i128)>>` is not satisfied
+   --> test-suites/src/test_fixture.rs:120:74
+    |
+117 |             e.register_at(
+    |               ----------- required by a bound introduced by this call
+...
+120 |                 (&lp, &emitter_id, &blnd_id, &usdc_id, &pool_factory_id, &drop_list),
+    |                                                                          ^^^^^^^^^^ the trait `TryFromVal<Env, &soroban_sdk::Vec<(soroban_sdk::Address, i128)>>` is not implemented for `soroban_sdk::Val`, which is required by `(&soroban_sdk::Address, &soroban_sdk::Address, &soroban_sdk::Address, &soroban_sdk::Address, &soroban_sdk::Address, &soroban_sdk::Vec<(soroban_sdk::Address, i128)>): ConstructorArgs`
+    |
+    = help: the following other types implement trait `TryFromVal<E, V>`:
+              `soroban_sdk::Val` implements `TryFromVal<E, &()>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1)>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1, T2)>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1, T2, T3)>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1, T2, T3, T4)>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1, T2, T3, T4, T5)>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1, T2, T3, T4, T5, T6)>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1, T2, T3, T4, T5, T6, T7)>`
+            and 339 others
+    = note: required for `soroban_sdk::Val` to implement `FromVal<Env, &soroban_sdk::Vec<(soroban_sdk::Address, i128)>>`
+    = note: required for `&soroban_sdk::Vec<(soroban_sdk::Address, i128)>` to implement `IntoVal<Env, soroban_sdk::Val>`
+    = note: required for `(&Address, &Address, &Address, &Address, &Address, &Vec<(Address, i128)>)` to implement `ConstructorArgs`
+note: required by a bound in `Env::register_at`
+   --> /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:743:12
+    |
+735 |     pub fn register_at<C, A>(
+    |            ----------- required by a bound in this associated function
+...
+743 |         A: ConstructorArgs,
+    |            ^^^^^^^^^^^^^^^ required by this bound in `Env::register_at`
+    = note: the full name for the type has been written to '/home/common/projects/templar/blend-contracts-v2/target/debug/deps/test_suites-0347bac9b0b2eb50.long-type-227316040325277563.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+
+error[E0599]: no method named `admin` found for struct `MockTokenClient` in the current scope
+   --> test-suites/src/test_fixture.rs:140:32
+    |
+140 |         assert_eq!(blnd_client.admin(), emitter_id);
+    |                                ^^^^^
+    |
+help: there is a method `set_admin` with a similar name, but with different arguments
+   --> /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sep-41-token-1.2.0/src/testutils/mod.rs:2:5
+    |
+2   |     soroban_sdk::contractimport!(file = "./src/testutils/mock_sep_41_token.wasm");
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    = note: this error originates in the attribute macro `soroban_sdk::contractclient` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0277]: the trait bound `soroban_sdk::Val: TryFromVal<Env, &soroban_sdk::Vec<(soroban_sdk::Address, i128)>>` is not satisfied
+   --> test-suites/src/test_fixture.rs:120:74
+    |
+117 |             e.register_at(
+    |               ----------- required by a bound introduced by this call
+...
+120 |                 (&lp, &emitter_id, &blnd_id, &usdc_id, &pool_factory_id, &drop_list),
+    |                                                                          ^^^^^^^^^^ the trait `TryFromVal<Env, &soroban_sdk::Vec<(soroban_sdk::Address, i128)>>` is not implemented for `soroban_sdk::Val`, which is required by `(&soroban_sdk::Address, &soroban_sdk::Address, &soroban_sdk::Address, &soroban_sdk::Address, &soroban_sdk::Address, &soroban_sdk::Vec<(soroban_sdk::Address, i128)>): ConstructorArgs`
+    |
+    = help: the following other types implement trait `TryFromVal<E, V>`:
+              `soroban_sdk::Val` implements `TryFromVal<E, &()>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1)>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1, T2)>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1, T2, T3)>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1, T2, T3, T4)>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1, T2, T3, T4, T5)>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1, T2, T3, T4, T5, T6)>`
+              `soroban_sdk::Val` implements `TryFromVal<E, &(T0, T1, T2, T3, T4, T5, T6, T7)>`
+            and 339 others
+    = note: required for `soroban_sdk::Val` to implement `FromVal<Env, &soroban_sdk::Vec<(soroban_sdk::Address, i128)>>`
+    = note: required for `&soroban_sdk::Vec<(soroban_sdk::Address, i128)>` to implement `IntoVal<Env, soroban_sdk::Val>`
+    = note: required for `(&Address, &Address, &Address, &Address, &Address, &Vec<(Address, i128)>)` to implement `ConstructorArgs`
+note: required by a bound in `Env::register_at`
+   --> /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:743:12
+    |
+735 |     pub fn register_at<C, A>(
+    |            ----------- required by a bound in this associated function
+...
+743 |         A: ConstructorArgs,
+    |            ^^^^^^^^^^^^^^^ required by this bound in `Env::register_at`
+    = note: the full name for the type has been written to '/home/common/projects/templar/blend-contracts-v2/target/debug/deps/test_suites-6926879f5c144402.long-type-11573222122670263876.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+
+Some errors have detailed explanations: E0277, E0599.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `test-suites` (lib test) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `test-suites` (lib) due to 2 previous errors
+warning: unused variable: `backstop_client`
+   --> pool/src/pool/bad_debt.rs:682:17
+    |
+682 |         let (_, backstop_client) = create_backstop(&e, &pool, &lp_token, &usdc, &blnd);
+    |                 ^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_backstop_client`
+
+warning: unused variable: `bombadil`
+    --> pool/src/pool/bad_debt.rs:1019:13
+     |
+1019 |         let bombadil = Address::generate(&e);
+     |             ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_bombadil`
+
+warning: function `test_create_bad_debt_auction_rejected` is never used
+   --> pool/src/auctions/auction.rs:305:8
+    |
+305 |     fn test_create_bad_debt_auction_rejected() {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: function `test_create_interest_auction_rejected` is never used
+   --> pool/src/auctions/auction.rs:440:8
+    |
+440 |     fn test_create_interest_auction_rejected() {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `test_fill_bad_debt_auction_rejected_before_side_effects` is never used
+    --> pool/src/auctions/auction.rs:3019:8
+     |
+3019 |     fn test_fill_bad_debt_auction_rejected_before_side_effects() {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `test_fill_interest_auction_rejected_before_side_effects` is never used
+    --> pool/src/auctions/auction.rs:3056:8
+     |
+3056 |     fn test_fill_interest_auction_rejected_before_side_effects() {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated functions `update_pool` and `bad_debt` are never used
+   --> pool/src/events.rs:30:12
+    |
+7   | impl PoolEvents {
+    | --------------- associated functions in this implementation
+...
+30  |     pub fn update_pool(
+    |            ^^^^^^^^^^^
+...
+157 |     pub fn bad_debt(e: &Env, user: Address, asset: Address, d_tokens: i128) {
+    |            ^^^^^^^^
+
+warning: `backstop` (lib test) generated 12 warnings (11 duplicates)
+warning: `pool` (lib test) generated 15 warnings (8 duplicates)

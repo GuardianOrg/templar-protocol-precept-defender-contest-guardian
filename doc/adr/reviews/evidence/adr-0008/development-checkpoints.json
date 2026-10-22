@@ -1,0 +1,36 @@
+{
+  "status": "development-checkpoints-not-frozen-candidate-acceptance",
+  "source_binding": "Uncommitted development tree at each invocation; final exact-commit rebuild/replay still required.",
+  "logs": [
+    {
+      "path": "logs/checkpoint-full-workspace-486-passing.log",
+      "sha256": "21a3f9e0b8dd8226f04262896176ffc5ad388548acdc90ba7e46e2fa6b5c8268",
+      "bytes": 60127,
+      "suites": 20,
+      "passed": 486,
+      "failed": 0
+    },
+    {
+      "path": "logs/checkpoint-public-default-and-six-traps-passing.log",
+      "sha256": "eb1443165e68a8d4f08407297307d0f4ece823f7193693f17eedf294a4c8ae63",
+      "bytes": 14614,
+      "suites": 2,
+      "passed": 5,
+      "failed": 0
+    },
+    {
+      "path": "logs/checkpoint-backstop-native-passing.log",
+      "sha256": "6b76ebd715d0be2655cce505bfebe2d15911bc9271ac299d183daa2ceb701c9c",
+      "bytes": 18199,
+      "suites": 1,
+      "passed": 115,
+      "failed": 0
+    },
+    {
+      "path": "logs/kani-disable-only-transition.log",
+      "sha256": "2c6028fb07711f036c5f8b0f85f3f0c4da2a029fb38d83eda2e4f713d8dced5b",
+      "bytes": 51248
+    }
+  ],
+  "kani_scope": "Runtime-shared reserve disable-only predicate: 254 checks, 0 failures; not accounting, Env, host, or full-protocol proof."
+}

@@ -1,0 +1,1084 @@
+Kani Rust Verifier 0.67.0 (cargo plugin)
+   Compiling proc-macro2 v1.0.92
+   Compiling unicode-ident v1.0.11
+   Compiling version_check v0.9.4
+   Compiling typenum v1.16.0
+   Compiling serde v1.0.192
+   Compiling autocfg v1.1.0
+   Compiling serde_json v1.0.108
+   Compiling itoa v1.0.9
+   Compiling cfg-if v1.0.0
+   Compiling ryu v1.0.15
+   Compiling subtle v2.5.0
+   Compiling libc v0.2.150
+   Compiling const-oid v0.9.4
+   Compiling generic-array v0.14.7
+   Compiling semver v1.0.18
+   Compiling thiserror v1.0.43
+   Compiling strsim v0.10.0
+   Compiling fnv v1.0.7
+   Compiling ident_case v1.0.1
+   Compiling num-traits v0.2.17
+   Compiling syn v1.0.109
+   Compiling num-integer v0.1.45
+   Compiling getrandom v0.2.11
+   Compiling paste v1.0.14
+   Compiling rustc_version v0.4.1
+   Compiling num-bigint v0.4.3
+   Compiling rand_core v0.6.4
+   Compiling data-encoding v2.6.0
+   Compiling quote v1.0.37
+   Compiling ppv-lite86 v0.2.17
+   Compiling escape-bytes v0.1.1
+   Compiling rand_chacha v0.3.1
+   Compiling syn v2.0.90
+   Compiling ff v0.13.0
+   Compiling rand v0.8.5
+   Compiling ahash v0.8.11
+   Compiling either v1.8.1
+   Compiling base16ct v0.2.0
+   Compiling group v0.13.0
+   Compiling itertools v0.10.5
+   Compiling libm v0.2.7
+   Compiling ark-std v0.4.0
+   Compiling zerocopy v0.7.35
+   Compiling once_cell v1.18.0
+   Compiling cpufeatures v0.2.9
+   Compiling hashbrown v0.13.2
+   Compiling curve25519-dalek v4.1.3
+   Compiling hashbrown v0.14.3
+   Compiling indexmap-nostd v0.4.0
+   Compiling equivalent v1.0.1
+   Compiling downcast-rs v1.2.0
+   Compiling wasmparser-nostd v0.100.1
+   Compiling wasmi_core v0.13.0
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.6
+   Compiling prettyplease v0.2.10
+   Compiling smallvec v1.11.0
+   Compiling spin v0.9.8
+   Compiling indexmap v2.1.0
+   Compiling wasmi_arena v0.4.0
+   Compiling base64 v0.13.1
+   Compiling digest v0.10.7
+   Compiling ethnum v1.5.0
+   Compiling keccak v0.1.4
+   Compiling soroban-env-host v22.1.3
+   Compiling wasmparser v0.116.1
+   Compiling static_assertions v1.1.0
+   Compiling sha2 v0.10.8
+   Compiling hex-literal v0.4.1
+   Compiling soroban-sdk v22.0.7
+   Compiling cast v0.3.0
+   Compiling ark-serialize-derive v0.4.2
+   Compiling ark-ff-macros v0.4.2
+   Compiling derivative v2.2.0
+   Compiling ark-ff-asm v0.4.2
+   Compiling serde_derive v1.0.192
+   Compiling zeroize_derive v1.4.2
+   Compiling darling_core v0.20.3
+   Compiling thiserror-impl v1.0.43
+   Compiling num-derive v0.4.1
+   Compiling zeroize v1.8.1
+   Compiling der v0.7.7
+   Compiling crypto-bigint v0.5.2
+   Compiling signature v2.1.0
+   Compiling ark-serialize v0.4.2
+   Compiling hmac v0.12.1
+   Compiling sec1 v0.7.3
+   Compiling rfc6979 v0.4.0
+   Compiling ark-ff v0.4.2
+   Compiling curve25519-dalek-derive v0.1.0
+   Compiling elliptic-curve v0.13.8
+   Compiling ed25519 v2.2.2
+   Compiling soroban-wasmi v0.31.1-soroban.20.0.1
+   Compiling sha3 v0.10.8
+   Compiling ecdsa v0.16.9
+   Compiling darling_macro v0.20.3
+   Compiling primeorder v0.13.6
+   Compiling darling v0.20.3
+   Compiling p256 v0.13.2
+   Compiling serde_with_macros v3.4.0
+   Compiling k256 v0.13.4
+   Compiling soroban-builtin-sdk-macros v22.1.3
+   Compiling ed25519-dalek v2.1.1
+   Compiling bytes-lit v0.0.5
+   Compiling hex v0.4.3
+   Compiling serde_with v3.4.0
+   Compiling ark-poly v0.4.2
+   Compiling ark-ec v0.4.2
+   Compiling crate-git-revision v0.0.6
+   Compiling stellar-strkey v0.0.9
+   Compiling stellar-xdr v22.1.0
+   Compiling soroban-env-common v22.1.3
+   Compiling soroban-sdk-macros v22.0.7
+   Compiling ark-bls12-381 v0.4.0
+   Compiling soroban-spec v22.0.7
+   Compiling soroban-env-macros v22.1.3
+   Compiling soroban-spec-rust v22.0.7
+   Compiling soroban-ledger-snapshot v22.0.7
+   Compiling soroban-fixed-point-math v1.3.0
+   Compiling moderc3156 v0.1.0 (https://github.com/xycloo/xycloans?rev=d9a7ae1#d9a7ae16)
+   Compiling sep-40-oracle v1.2.0
+   Compiling sep-41-token v1.2.0
+   Compiling pool v2.0.0 (/home/common/projects/templar/blend-contracts-v2/pool)
+warning: unused import: `execute_update_pool`
+  --> pool/src/pool/mod.rs:10:26
+   |
+10 |     execute_set_reserve, execute_update_pool,
+   |                          ^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `execute_submit_with_flash_loan`
+  --> pool/src/pool/mod.rs:20:34
+   |
+20 | pub use submit::{execute_submit, execute_submit_with_flash_loan};
+   |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `backstop_take_rate`
+   --> pool/src/contract.rs:392:28
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                            ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_backstop_take_rate`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `max_positions`
+   --> pool/src/contract.rs:392:53
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                     ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_max_positions`
+
+warning: unused variable: `min_collateral`
+   --> pool/src/contract.rs:392:73
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                                         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_collateral`
+
+warning: unused variable: `from`
+   --> pool/src/contract.rs:480:9
+    |
+480 |         from: Address,
+    |         ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `flash_loan`
+   --> pool/src/contract.rs:481:9
+    |
+481 |         flash_loan: FlashLoan,
+    |         ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_flash_loan`
+
+warning: unused variable: `requests`
+   --> pool/src/contract.rs:482:9
+    |
+482 |         requests: Vec<Request>,
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_requests`
+
+warning: associated functions `update_pool`, `bad_debt`, and `flash_loan` are never used
+   --> pool/src/events.rs:30:12
+    |
+  7 | impl PoolEvents {
+    | --------------- associated functions in this implementation
+...
+ 30 |     pub fn update_pool(
+    |            ^^^^^^^^^^^
+...
+157 |     pub fn bad_debt(e: &Env, user: Address, asset: Address, d_tokens: i128) {
+    |            ^^^^^^^^
+...
+306 |     pub fn flash_loan(
+    |            ^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `execute_update_pool` is never used
+  --> pool/src/pool/config.rs:47:8
+   |
+47 | pub fn execute_update_pool(
+   |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `execute_submit_with_flash_loan` is never used
+  --> pool/src/pool/submit.rs:70:8
+   |
+70 | pub fn execute_submit_with_flash_loan(
+   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: method `has_collateral` is never used
+   --> pool/src/pool/user.rs:119:12
+    |
+ 43 | impl User {
+    | --------- method in this implementation
+...
+119 |     pub fn has_collateral(&self) -> bool {
+    |            ^^^^^^^^^^^^^^
+
+warning: Found the following unsupported constructs:
+             - caller_location (1)
+             - foreign function (1)
+         
+         Verification will fail if one or more of these constructs is reachable.
+         See https://model-checking.github.io/kani/rust-feature-support.html for more details.
+
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 31.90s
+Checking harness pool::config::verification::prove_disable_only_transition...
+CBMC 6.8.0 (cbmc-6.8.0)
+CBMC version 6.8.0 (cbmc-6.8.0) 64-bit x86_64 linux
+Reading GOTO program from file /tmp/adr8-local-20260913.RLSEWPiF/kani-target/kani/x86_64-unknown-linux-gnu/debug/deps/pool__RNvNtNtNtCs6jmWA5Pfhs0_4pool4pool6config12verification29prove_disable_only_transition.out
+Generating GOTO Program
+Adding CPROVER library (x86_64)
+Removal of function pointers and virtual functions
+Generic Property Instrumentation
+Running with 16 object bits, 48 offset bits (user-specified)
+Starting Bounded Model Checking
+aborting path on assume(false) at file pool/src/pool/config.rs line 1620 column 9 function pool::config::verification::prove_disable_only_transition thread 0
+aborting path on assume(false) at file pool/src/pool/config.rs line 1642 column 9 function pool::config::verification::prove_disable_only_transition thread 0
+aborting path on assume(false) at file /home/runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/panicking.rs line 439 column 17 function core::panicking::assert_failed_inner thread 0
+aborting path on assume(false) at file /home/runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/panicking.rs line 394 column 5 function core::panicking::assert_failed::<bool, bool> thread 0
+aborting path on assume(false) at file /home/runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs line 51 column 21 function pool::config::verification::prove_disable_only_transition thread 0
+Runtime Symex: 0.0669546s
+size of program expression: 3322 steps
+slicing removed 2033 assignments
+Generated 576 VCC(s), 3 remaining after simplification
+Runtime Postprocess Equation: 0.0007343s
+Passing problem to propositional reduction
+converting SSA
+Runtime Convert SSA: 0.00391855s
+Running propositional reduction
+Post-processing
+Runtime Post-process: 0.000183628s
+Solving with CaDiCaL 2.0.0
+3315 variables, 4310 clauses
+SAT checker: instance is UNSATISFIABLE
+Runtime Solver: 0.000892358s
+Runtime decision procedure: 0.00489204s
+
+RESULTS:
+Check 1: pool::config::verification::prove_disable_only_transition.assertion.1
+	 - Status: SUCCESS
+	 - Description: "assertion failed: !is_disable_only(&current, &candidate)"
+	 - Location: pool/src/pool/config.rs:1620:9 in function pool::config::verification::prove_disable_only_transition
+
+Check 2: pool::config::verification::prove_disable_only_transition.assertion.2
+	 - Status: SUCCESS
+	 - Description: "assertion failed: !is_disable_only(&current, &candidate)"
+	 - Location: pool/src/pool/config.rs:1622:9 in function pool::config::verification::prove_disable_only_transition
+
+Check 3: pool::config::verification::prove_disable_only_transition.assertion.3
+	 - Status: SUCCESS
+	 - Description: "assertion failed: !is_disable_only(&current, &candidate)"
+	 - Location: pool/src/pool/config.rs:1642:9 in function pool::config::verification::prove_disable_only_transition
+
+Check 4: core::panicking::assert_failed_inner.unreachable.1
+	 - Status: SUCCESS
+	 - Description: "unreachable code"
+	 - Location: pool/src/lib.rs:0:0 in function core::panicking::assert_failed_inner
+
+Check 5: core::panicking::assert_failed_inner.assertion.1
+	 - Status: SUCCESS
+	 - Description: "This is a placeholder message; Kani doesn't support message formatted at runtime"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/panicking.rs:434:23 in function core::panicking::assert_failed_inner
+
+Check 6: core::panicking::assert_failed_inner.assertion.2
+	 - Status: SUCCESS
+	 - Description: "This is a placeholder message; Kani doesn't support message formatted at runtime"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/panicking.rs:439:17 in function core::panicking::assert_failed_inner
+
+Check 7: pool::config::verification::prove_disable_only_transition.pointer_dereference.1
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs:46:22 in function pool::config::verification::prove_disable_only_transition
+
+Check 8: pool::config::verification::prove_disable_only_transition.pointer_dereference.2
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs:46:22 in function pool::config::verification::prove_disable_only_transition
+
+Check 9: pool::config::verification::prove_disable_only_transition.pointer_dereference.3
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs:46:22 in function pool::config::verification::prove_disable_only_transition
+
+Check 10: pool::config::verification::prove_disable_only_transition.pointer_dereference.4
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs:46:22 in function pool::config::verification::prove_disable_only_transition
+
+Check 11: pool::config::verification::prove_disable_only_transition.pointer_dereference.5
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs:46:22 in function pool::config::verification::prove_disable_only_transition
+
+Check 12: pool::config::verification::prove_disable_only_transition.pointer_dereference.6
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs:46:22 in function pool::config::verification::prove_disable_only_transition
+
+Check 13: pool::config::verification::prove_disable_only_transition.pointer_dereference.7
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs:46:35 in function pool::config::verification::prove_disable_only_transition
+
+Check 14: pool::config::verification::prove_disable_only_transition.pointer_dereference.8
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs:46:35 in function pool::config::verification::prove_disable_only_transition
+
+Check 15: pool::config::verification::prove_disable_only_transition.pointer_dereference.9
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs:46:35 in function pool::config::verification::prove_disable_only_transition
+
+Check 16: pool::config::verification::prove_disable_only_transition.pointer_dereference.10
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs:46:35 in function pool::config::verification::prove_disable_only_transition
+
+Check 17: pool::config::verification::prove_disable_only_transition.pointer_dereference.11
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs:46:35 in function pool::config::verification::prove_disable_only_transition
+
+Check 18: pool::config::verification::prove_disable_only_transition.pointer_dereference.12
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs:46:35 in function pool::config::verification::prove_disable_only_transition
+
+Check 19: pool::config::verification::prove_disable_only_transition.pointer_dereference.13
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: ../../../../runner/.rustup/toolchains/nightly-2025-11-21-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/macros/mod.rs:51:85 in function pool::config::verification::prove_disable_only_transition
+
+Check 20: <storage::ReserveConfig as core::clone::Clone>::clone.pointer_dereference.1
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/storage.rs:46:5 in function <storage::ReserveConfig as core::clone::Clone>::clone
+
+Check 21: <storage::ReserveConfig as core::clone::Clone>::clone.pointer_dereference.2
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/storage.rs:46:5 in function <storage::ReserveConfig as core::clone::Clone>::clone
+
+Check 22: <storage::ReserveConfig as core::clone::Clone>::clone.pointer_dereference.3
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/storage.rs:46:5 in function <storage::ReserveConfig as core::clone::Clone>::clone
+
+Check 23: <storage::ReserveConfig as core::clone::Clone>::clone.pointer_dereference.4
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/storage.rs:46:5 in function <storage::ReserveConfig as core::clone::Clone>::clone
+
+Check 24: <storage::ReserveConfig as core::clone::Clone>::clone.pointer_dereference.5
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/storage.rs:46:5 in function <storage::ReserveConfig as core::clone::Clone>::clone
+
+Check 25: <storage::ReserveConfig as core::clone::Clone>::clone.pointer_dereference.6
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/storage.rs:46:5 in function <storage::ReserveConfig as core::clone::Clone>::clone
+
+Check 26: <storage::ReserveConfig as core::clone::Clone>::clone.pointer_dereference.7
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/storage.rs:47:5 in function <storage::ReserveConfig as core::clone::Clone>::clone
+
+Check 27: <storage::ReserveConfig as core::clone::Clone>::clone.pointer_dereference.8
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/storage.rs:47:5 in function <storage::ReserveConfig as core::clone::Clone>::clone
+
+Check 28: <storage::ReserveConfig as core::clone::Clone>::clone.pointer_dereference.9
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/storage.rs:47:5 in function <storage::ReserveConfig as core::clone::Clone>::clone
+
+Check 29: <storage::ReserveConfig as core::clone::Clone>::clone.pointer_dereference.10
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/storage.rs:47:5 in function <storage::ReserveConfig as core::clone::Clone>::clone
+
+Check 30: <storage::ReserveConfig as core::clone::Clone>::clone.pointer_dereference.11
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/storage.rs:47:5 in function <storage::ReserveConfig as core::clone::Clone>::clone
+
+Check 31: <storage::ReserveConfig as core::clone::Clone>::clone.pointer_dereference.12
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/storage.rs:47:5 in function <storage::ReserveConfig as core::clone::Clone>::clone
+
+Check 32: <storage::ReserveConfig as core::clone::Clone>::clone.pointer_dereference.13
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/storage.rs:48:5 in function <storage::ReserveConfig as core::clone::Clone>::clon
+[…454ln elided…]
+function pool::config::is_disable_only
+
+Check 124: pool::config::is_disable_only.pointer_dereference.26
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:208:12 in function pool::config::is_disable_only
+
+Check 125: pool::config::is_disable_only.pointer_dereference.27
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:208:12 in function pool::config::is_disable_only
+
+Check 126: pool::config::is_disable_only.pointer_dereference.28
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:208:12 in function pool::config::is_disable_only
+
+Check 127: pool::config::is_disable_only.pointer_dereference.29
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:208:12 in function pool::config::is_disable_only
+
+Check 128: pool::config::is_disable_only.pointer_dereference.30
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:208:12 in function pool::config::is_disable_only
+
+Check 129: pool::config::is_disable_only.pointer_dereference.31
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:208:32 in function pool::config::is_disable_only
+
+Check 130: pool::config::is_disable_only.pointer_dereference.32
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:208:32 in function pool::config::is_disable_only
+
+Check 131: pool::config::is_disable_only.pointer_dereference.33
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:208:32 in function pool::config::is_disable_only
+
+Check 132: pool::config::is_disable_only.pointer_dereference.34
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:208:32 in function pool::config::is_disable_only
+
+Check 133: pool::config::is_disable_only.pointer_dereference.35
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:208:32 in function pool::config::is_disable_only
+
+Check 134: pool::config::is_disable_only.pointer_dereference.36
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:208:32 in function pool::config::is_disable_only
+
+Check 135: pool::config::is_disable_only.pointer_dereference.37
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:209:12 in function pool::config::is_disable_only
+
+Check 136: pool::config::is_disable_only.pointer_dereference.38
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:209:12 in function pool::config::is_disable_only
+
+Check 137: pool::config::is_disable_only.pointer_dereference.39
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:209:12 in function pool::config::is_disable_only
+
+Check 138: pool::config::is_disable_only.pointer_dereference.40
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:209:12 in function pool::config::is_disable_only
+
+Check 139: pool::config::is_disable_only.pointer_dereference.41
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:209:12 in function pool::config::is_disable_only
+
+Check 140: pool::config::is_disable_only.pointer_dereference.42
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:209:12 in function pool::config::is_disable_only
+
+Check 141: pool::config::is_disable_only.pointer_dereference.43
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:209:32 in function pool::config::is_disable_only
+
+Check 142: pool::config::is_disable_only.pointer_dereference.44
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:209:32 in function pool::config::is_disable_only
+
+Check 143: pool::config::is_disable_only.pointer_dereference.45
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:209:32 in function pool::config::is_disable_only
+
+Check 144: pool::config::is_disable_only.pointer_dereference.46
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:209:32 in function pool::config::is_disable_only
+
+Check 145: pool::config::is_disable_only.pointer_dereference.47
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:209:32 in function pool::config::is_disable_only
+
+Check 146: pool::config::is_disable_only.pointer_dereference.48
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:209:32 in function pool::config::is_disable_only
+
+Check 147: pool::config::is_disable_only.pointer_dereference.49
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:210:12 in function pool::config::is_disable_only
+
+Check 148: pool::config::is_disable_only.pointer_dereference.50
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:210:12 in function pool::config::is_disable_only
+
+Check 149: pool::config::is_disable_only.pointer_dereference.51
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:210:12 in function pool::config::is_disable_only
+
+Check 150: pool::config::is_disable_only.pointer_dereference.52
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:210:12 in function pool::config::is_disable_only
+
+Check 151: pool::config::is_disable_only.pointer_dereference.53
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:210:12 in function pool::config::is_disable_only
+
+Check 152: pool::config::is_disable_only.pointer_dereference.54
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:210:12 in function pool::config::is_disable_only
+
+Check 153: pool::config::is_disable_only.pointer_dereference.55
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:210:32 in function pool::config::is_disable_only
+
+Check 154: pool::config::is_disable_only.pointer_dereference.56
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:210:32 in function pool::config::is_disable_only
+
+Check 155: pool::config::is_disable_only.pointer_dereference.57
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:210:32 in function pool::config::is_disable_only
+
+Check 156: pool::config::is_disable_only.pointer_dereference.58
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:210:32 in function pool::config::is_disable_only
+
+Check 157: pool::config::is_disable_only.pointer_dereference.59
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:210:32 in function pool::config::is_disable_only
+
+Check 158: pool::config::is_disable_only.pointer_dereference.60
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:210:32 in function pool::config::is_disable_only
+
+Check 159: pool::config::is_disable_only.pointer_dereference.61
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:211:12 in function pool::config::is_disable_only
+
+Check 160: pool::config::is_disable_only.pointer_dereference.62
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:211:12 in function pool::config::is_disable_only
+
+Check 161: pool::config::is_disable_only.pointer_dereference.63
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:211:12 in function pool::config::is_disable_only
+
+Check 162: pool::config::is_disable_only.pointer_dereference.64
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:211:12 in function pool::config::is_disable_only
+
+Check 163: pool::config::is_disable_only.pointer_dereference.65
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:211:12 in function pool::config::is_disable_only
+
+Check 164: pool::config::is_disable_only.pointer_dereference.66
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:211:12 in function pool::config::is_disable_only
+
+Check 165: pool::config::is_disable_only.pointer_dereference.67
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:211:28 in function pool::config::is_disable_only
+
+Check 166: pool::config::is_disable_only.pointer_dereference.68
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:211:28 in function pool::config::is_disable_only
+
+Check 167: pool::config::is_disable_only.pointer_dereference.69
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:211:28 in function pool::config::is_disable_only
+
+Check 168: pool::config::is_disable_only.pointer_dereference.70
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:211:28 in function pool::config::is_disable_only
+
+Check 169: pool::config::is_disable_only.pointer_dereference.71
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:211:28 in function pool::config::is_disable_only
+
+Check 170: pool::config::is_disable_only.pointer_dereference.72
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:211:28 in function pool::config::is_disable_only
+
+Check 171: pool::config::is_disable_only.pointer_dereference.73
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:212:12 in function pool::config::is_disable_only
+
+Check 172: pool::config::is_disable_only.pointer_dereference.74
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:212:12 in function pool::config::is_disable_only
+
+Check 173: pool::config::is_disable_only.pointer_dereference.75
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:212:12 in function pool::config::is_disable_only
+
+Check 174: pool::config::is_disable_only.pointer_dereference.76
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:212:12 in function pool::config::is_disable_only
+
+Check 175: pool::config::is_disable_only.pointer_dereference.77
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:212:12 in function pool::config::is_disable_only
+
+Check 176: pool::config::is_disable_only.pointer_dereference.78
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:212:12 in function pool::config::is_disable_only
+
+Check 177: pool::config::is_disable_only.pointer_dereference.79
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:212:32 in function pool::config::is_disable_only
+
+Check 178: pool::config::is_disable_only.pointer_dereference.80
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:212:32 in function pool::config::is_disable_only
+
+Check 179: pool::config::is_disable_only.pointer_dereference.81
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:212:32 in function pool::config::is_disable_only
+
+Check 180: pool::config::is_disable_only.pointer_dereference.82
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:212:32 in function pool::config::is_disable_only
+
+Check 181: pool::config::is_disable_only.pointer_dereference.83
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:212:32 in function pool::config::is_disable_only
+
+Check 182: pool::config::is_disable_only.pointer_dereference.84
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:212:32 in function pool::config::is_disable_only
+
+Check 183: pool::config::is_disable_only.pointer_dereference.85
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:213:12 in function pool::config::is_disable_only
+
+Check 184: pool::config::is_disable_only.pointer_dereference.86
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:213:12 in function pool::config::is_disable_only
+
+Check 185: pool::config::is_disable_only.pointer_dereference.87
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:213:12 in function pool::config::is_disable_only
+
+Check 186: pool::config::is_disable_only.pointer_dereference.88
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:213:12 in function pool::config::is_disable_only
+
+Check 187: pool::config::is_disable_only.pointer_dereference.89
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:213:12 in function pool::config::is_disable_only
+
+Check 188: pool::config::is_disable_only.pointer_dereference.90
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:213:12 in function pool::config::is_disable_only
+
+Check 189: pool::config::is_disable_only.pointer_dereference.91
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:213:30 in function pool::config::is_disable_only
+
+Check 190: pool::config::is_disable_only.pointer_dereference.92
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:213:30 in function pool::config::is_disable_only
+
+Check 191: pool::config::is_disable_only.pointer_dereference.93
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:213:30 in function pool::config::is_disable_only
+
+Check 192: pool::config::is_disable_only.pointer_dereference.94
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:213:30 in function pool::config::is_disable_only
+
+Check 193: pool::config::is_disable_only.pointer_dereference.95
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:213:30 in function pool::config::is_disable_only
+
+Check 194: pool::config::is_disable_only.pointer_dereference.96
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:213:30 in function pool::config::is_disable_only
+
+Check 195: pool::config::is_disable_only.pointer_dereference.97
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:214:12 in function pool::config::is_disable_only
+
+Check 196: pool::config::is_disable_only.pointer_dereference.98
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:214:12 in function pool::config::is_disable_only
+
+Check 197: pool::config::is_disable_only.pointer_dereference.99
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:214:12 in function pool::config::is_disable_only
+
+Check 198: pool::config::is_disable_only.pointer_dereference.100
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:214:12 in function pool::config::is_disable_only
+
+Check 199: pool::config::is_disable_only.pointer_dereference.101
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:214:12 in function pool::config::is_disable_only
+
+Check 200: pool::config::is_disable_only.pointer_dereference.102
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:214:12 in function pool::config::is_disable_only
+
+Check 201: pool::config::is_disable_only.pointer_dereference.103
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:214:29 in function pool::config::is_disable_only
+
+Check 202: pool::config::is_disable_only.pointer_dereference.104
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:214:29 in function pool::config::is_disable_only
+
+Check 203: pool::config::is_disable_only.pointer_dereference.105
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:214:29 in function pool::config::is_disable_only
+
+Check 204: pool::config::is_disable_only.pointer_dereference.106
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:214:29 in function pool::config::is_disable_only
+
+Check 205: pool::config::is_disable_only.pointer_dereference.107
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:214:29 in function pool::config::is_disable_only
+
+Check 206: pool::config::is_disable_only.pointer_dereference.108
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:214:29 in function pool::config::is_disable_only
+
+Check 207: pool::config::is_disable_only.pointer_dereference.109
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:215:12 in function pool::config::is_disable_only
+
+Check 208: pool::config::is_disable_only.pointer_dereference.110
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:215:12 in function pool::config::is_disable_only
+
+Check 209: pool::config::is_disable_only.pointer_dereference.111
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:215:12 in function pool::config::is_disable_only
+
+Check 210: pool::config::is_disable_only.pointer_dereference.112
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:215:12 in function pool::config::is_disable_only
+
+Check 211: pool::config::is_disable_only.pointer_dereference.113
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:215:12 in function pool::config::is_disable_only
+
+Check 212: pool::config::is_disable_only.pointer_dereference.114
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:215:12 in function pool::config::is_disable_only
+
+Check 213: pool::config::is_disable_only.pointer_dereference.115
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:215:29 in function pool::config::is_disable_only
+
+Check 214: pool::config::is_disable_only.pointer_dereference.116
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:215:29 in function pool::config::is_disable_only
+
+Check 215: pool::config::is_disable_only.pointer_dereference.117
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:215:29 in function pool::config::is_disable_only
+
+Check 216: pool::config::is_disable_only.pointer_dereference.118
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:215:29 in function pool::config::is_disable_only
+
+Check 217: pool::config::is_disable_only.pointer_dereference.119
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:215:29 in function pool::config::is_disable_only
+
+Check 218: pool::config::is_disable_only.pointer_dereference.120
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:215:29 in function pool::config::is_disable_only
+
+Check 219: pool::config::is_disable_only.pointer_dereference.121
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:216:12 in function pool::config::is_disable_only
+
+Check 220: pool::config::is_disable_only.pointer_dereference.122
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:216:12 in function pool::config::is_disable_only
+
+Check 221: pool::config::is_disable_only.pointer_dereference.123
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:216:12 in function pool::config::is_disable_only
+
+Check 222: pool::config::is_disable_only.pointer_dereference.124
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:216:12 in function pool::config::is_disable_only
+
+Check 223: pool::config::is_disable_only.pointer_dereference.125
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:216:12 in function pool::config::is_disable_only
+
+Check 224: pool::config::is_disable_only.pointer_dereference.126
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:216:12 in function pool::config::is_disable_only
+
+Check 225: pool::config::is_disable_only.pointer_dereference.127
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:216:31 in function pool::config::is_disable_only
+
+Check 226: pool::config::is_disable_only.pointer_dereference.128
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:216:31 in function pool::config::is_disable_only
+
+Check 227: pool::config::is_disable_only.pointer_dereference.129
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:216:31 in function pool::config::is_disable_only
+
+Check 228: pool::config::is_disable_only.pointer_dereference.130
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:216:31 in function pool::config::is_disable_only
+
+Check 229: pool::config::is_disable_only.pointer_dereference.131
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:216:31 in function pool::config::is_disable_only
+
+Check 230: pool::config::is_disable_only.pointer_dereference.132
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:216:31 in function pool::config::is_disable_only
+
+Check 231: pool::config::is_disable_only.pointer_dereference.133
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:217:12 in function pool::config::is_disable_only
+
+Check 232: pool::config::is_disable_only.pointer_dereference.134
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:217:12 in function pool::config::is_disable_only
+
+Check 233: pool::config::is_disable_only.pointer_dereference.135
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:217:12 in function pool::config::is_disable_only
+
+Check 234: pool::config::is_disable_only.pointer_dereference.136
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:217:12 in function pool::config::is_disable_only
+
+Check 235: pool::config::is_disable_only.pointer_dereference.137
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:217:12 in function pool::config::is_disable_only
+
+Check 236: pool::config::is_disable_only.pointer_dereference.138
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:217:12 in function pool::config::is_disable_only
+
+Check 237: pool::config::is_disable_only.pointer_dereference.139
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:217:34 in function pool::config::is_disable_only
+
+Check 238: pool::config::is_disable_only.pointer_dereference.140
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:217:34 in function pool::config::is_disable_only
+
+Check 239: pool::config::is_disable_only.pointer_dereference.141
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:217:34 in function pool::config::is_disable_only
+
+Check 240: pool::config::is_disable_only.pointer_dereference.142
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:217:34 in function pool::config::is_disable_only
+
+Check 241: pool::config::is_disable_only.pointer_dereference.143
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:217:34 in function pool::config::is_disable_only
+
+Check 242: pool::config::is_disable_only.pointer_dereference.144
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:217:34 in function pool::config::is_disable_only
+
+Check 243: pool::config::is_disable_only.pointer_dereference.145
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:218:12 in function pool::config::is_disable_only
+
+Check 244: pool::config::is_disable_only.pointer_dereference.146
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:218:12 in function pool::config::is_disable_only
+
+Check 245: pool::config::is_disable_only.pointer_dereference.147
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:218:12 in function pool::config::is_disable_only
+
+Check 246: pool::config::is_disable_only.pointer_dereference.148
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:218:12 in function pool::config::is_disable_only
+
+Check 247: pool::config::is_disable_only.pointer_dereference.149
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:218:12 in function pool::config::is_disable_only
+
+Check 248: pool::config::is_disable_only.pointer_dereference.150
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:218:12 in function pool::config::is_disable_only
+
+Check 249: pool::config::is_disable_only.pointer_dereference.151
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer NULL"
+	 - Location: pool/src/pool/config.rs:218:34 in function pool::config::is_disable_only
+
+Check 250: pool::config::is_disable_only.pointer_dereference.152
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer invalid"
+	 - Location: pool/src/pool/config.rs:218:34 in function pool::config::is_disable_only
+
+Check 251: pool::config::is_disable_only.pointer_dereference.153
+	 - Status: SUCCESS
+	 - Description: "dereference failure: deallocated dynamic object"
+	 - Location: pool/src/pool/config.rs:218:34 in function pool::config::is_disable_only
+
+Check 252: pool::config::is_disable_only.pointer_dereference.154
+	 - Status: SUCCESS
+	 - Description: "dereference failure: dead object"
+	 - Location: pool/src/pool/config.rs:218:34 in function pool::config::is_disable_only
+
+Check 253: pool::config::is_disable_only.pointer_dereference.155
+	 - Status: SUCCESS
+	 - Description: "dereference failure: pointer outside object bounds"
+	 - Location: pool/src/pool/config.rs:218:34 in function pool::config::is_disable_only
+
+Check 254: pool::config::is_disable_only.pointer_dereference.156
+	 - Status: SUCCESS
+	 - Description: "dereference failure: invalid integer address"
+	 - Location: pool/src/pool/config.rs:218:34 in function pool::config::is_disable_only
+
+
+SUMMARY:
+ ** 0 of 254 failed
+
+VERIFICATION:- SUCCESSFUL
+Verification Time: 0.16684012s
+
+Manual Harness Summary:
+Complete - 1 successfully verified harnesses, 0 failures, 1 total.
+
+
+Wall time: 33.54 seconds

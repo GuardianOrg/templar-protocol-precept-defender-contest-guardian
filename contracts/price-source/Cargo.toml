@@ -1,0 +1,56 @@
+[package]
+name = "templar-price-source-contract"
+license = "GPL-3.0-only"
+repository = "https://github.com/Templar-Protocol/precept"
+edition = "2021"
+rust-version = "1.86"
+version = "0.1.0"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+path = "src/lib.rs"
+
+[workspace]
+
+[features]
+default = []
+testutils = ["soroban-sdk/testutils"]
+
+[dependencies]
+soroban-sdk = { version = "=25.3.0", features = ["alloc"] }
+stellar-access = "=0.7.1"
+stellar-macros = "=0.7.1"
+templar-proxy-oracle-soroban-common = { git = "https://github.com/Templar-Protocol/contracts", rev = "6477b1d7ef0e17ed4ba6e6fcfa9493d049cca4eb" }
+
+[dev-dependencies]
+soroban-sdk = { version = "=25.3.0", features = ["testutils", "alloc"] }
+templar-price-source-contract = { path = ".", features = ["testutils"] }
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = "fat"
+debug = false
+panic = "abort"
+strip = "symbols"
+overflow-checks = true
+
+[profile.release-soroban]
+inherits = "release"
+opt-level = "z"
+lto = "fat"
+debug = false
+panic = "abort"
+strip = "symbols"
+overflow-checks = false
+
+[profile.release-soroban.package."*"]
+overflow-checks = false
+
+[profile.release-soroban-checked]
+inherits = "release-soroban"
+overflow-checks = true
+
+[profile.release-soroban-checked.package."*"]
+overflow-checks = false

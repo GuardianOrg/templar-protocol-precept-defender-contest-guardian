@@ -1,0 +1,21 @@
+description = "Pinned stock Blend v2 against the ADR-0008/0011 security fork. Every scenario must agree except where the fork deliberately diverges: the trapped entrypoints, and residual debt defaulting to suppliers instead of the backstop."
+profile = "stock-vs-fork"
+
+[shared]
+token_wasm = "/home/common/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sep-41-token-1.2.0/src/testutils/mock_sep_41_token.wasm"
+oracle_wasm = "/home/common/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sep-40-oracle-1.2.0/src/testutils/mock_sep_40_oracle.wasm"
+comet_wasm = "/home/common/projects/templar/blend-contracts-v2/comet.wasm"
+emitter_wasm = "/home/common/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/blend-contract-sdk-1.22.0/wasm/emitter.wasm"
+
+# Pinned stock baseline (6cf6dd1), built by `make differential` in blend-contracts-v2.
+[a]
+label = "stock"
+pool_wasm = "/home/common/projects/templar/blend-contracts-v2/target/adr8-base/target/wasm32-unknown-unknown/optimized/pool.wasm"
+backstop_wasm = "/home/common/projects/templar/blend-contracts-v2/target/adr8-base/target/wasm32-unknown-unknown/optimized/backstop.wasm"
+factory_wasm = "/home/common/projects/templar/blend-contracts-v2/target/wasm32-unknown-unknown/optimized/pool_factory.wasm"
+
+[b]
+label = "fork"
+pool_wasm = "/home/common/projects/templar/blend-contracts-v2/target/wasm32-unknown-unknown/optimized/pool.wasm"
+backstop_wasm = "/home/common/projects/templar/blend-contracts-v2/target/wasm32-unknown-unknown/optimized/backstop.wasm"
+factory_wasm = "/home/common/projects/templar/blend-contracts-v2/target/wasm32-unknown-unknown/optimized/pool_factory.wasm"

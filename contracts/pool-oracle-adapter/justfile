@@ -1,0 +1,72 @@
+set dotenv-load := false
+# Recipes run in the crate directory even when invoked with -f from the repo root.
+# A literal path keeps this working on older `just` releases, which reject
+# function calls in settings.
+set working-directory := "."
+
+# Pin the target dir crate-local so the frozen paths below and the test's
+# env!("CARGO_MANIFEST_DIR") + "/target/..." read are true by construction,
+# immune to any ambient CARGO_TARGET_DIR / build.target-dir in the gate cwd.
+export CARGO_TARGET_DIR := justfile_directory() + "/target"
+
+stellar := env_var_or_default("STELLAR_BIN", "stellar")
+# Frozen artifact paths (relative to this crate directory).
+raw       := "target/wasm32v1-none/release-soroban-checked/pool_oracle_adapter.wasm"
+optimized := "target/wasm32v1-none/release-soroban-checked/pool_oracle_adapter.optimized.wasm"
+dir := justfile_directory()
+
+# Toolchain identity gate: Stellar CLI exactly 26.0.0, cargo/rustc 1.89.0, wasm32v1-none std installed.
+preflight:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cli=$(pool-adapter-env "{{stellar}}" --version 2>/dev/null)
+    [[ "$cli" =~ ^stellar[[:space:]]+26\.0\.0([[:space:]]|$) ]] || { echo "Expected Stellar CLI 26.0.0; got: $cli" >&2; exit 1; }
+    for tool in cargo rustc; do
+        version=$(pool-adapter-env "$tool" --version)
+        [[ "$version" == "$tool 1.89.0 "* ]] || { echo "Expected $tool 1.89.0; got: $version" >&2; exit 1; }
+    done
+    target_lib=$(pool-adapter-env rustc --print target-libdir --target wasm32v1-none)
+    compgen -G "$target_lib/libcore-*.rlib" >/dev/null || { echo "wasm32v1-none standard library is not installed" >&2; exit 1; }
+    cli_path=$(pool-adapter-env bash -c 'command -v "$1"' _ "{{stellar}}" 2>/dev/null) || { echo "Cannot resolve STELLAR_BIN='{{stellar}}' to an executable" >&2; exit 1; }
+    echo "PRODUCER: $cli_path sha256=$(sha256sum "$cli_path" | cut -d' ' -f1)"
+    echo "PASS: Stellar 26.0.0, Rust/Cargo 1.89.0, wasm32v1-none"
+
+fmt:
+    pool-adapter-env cargo fmt --all --check
+
+clippy:
+    pool-adapter-env cargo clippy --locked --all-targets -- -D warnings
+
+test-native:
+    pool-adapter-env cargo test --locked
+
+# Stellar CLI (26.0.0) is the artifact producer: it injects contract metadata and spec
+# entries cargo alone would not. No --out-dir: with cwd fixed to this crate, cargo's
+# own target dir already IS the frozen raw path, and --out-dir onto that same path
+# would self-copy the file onto itself.
+build:
+    pool-adapter-env "{{stellar}}" contract build --locked --profile release-soroban-checked --package pool-oracle-adapter
+
+optimize: build
+    pool-adapter-env "{{stellar}}" contract optimize --wasm "{{raw}}" --wasm-out "{{optimized}}"
+
+test-optimized-wasm: optimize
+    pool-adapter-env cargo test --locked --features wasm-smoke --test optimized_wasm
+
+spec-check: optimize
+    python3 scripts/check_spec.py "{{stellar}}" "{{optimized}}"
+
+size-check: optimize
+    @python3 -c 'import sys; from pathlib import Path; p = Path(sys.argv[1]); n = p.stat().st_size; print(f"Optimized WASM: {n} / 32768 bytes"); sys.exit(0 if 0 < n <= 32768 else "FAIL: optimized WASM must be 1..32768 bytes")' "{{optimized}}"
+
+# Dependency-ordered gate: fmt/clippy/test-native -> build -> optimize -> test-optimized-wasm -> spec-check -> size-check.
+# Local qualification is advisory; CI's SHA-pinned Stellar CLI 26.0.0 release is the reproducibility authority.
+audit-ready: preflight fmt clippy test-native build optimize test-optimized-wasm spec-check size-check
+    #!/usr/bin/env bash
+    set -euo pipefail
+    cli=$(pool-adapter-env bash -c 'command -v "$1"' _ "{{stellar}}")
+    echo "PRODUCER: $cli sha256=$(sha256sum "$cli" | cut -d' ' -f1)"
+    for a in "{{dir}}/{{raw}}" "{{dir}}/{{optimized}}"; do
+        echo "ARTIFACT: $a size=$(stat -c%s "$a") sha256=$(sha256sum "$a" | cut -d' ' -f1)"
+    done
+    echo "PASS: pool-oracle-adapter audit-ready"

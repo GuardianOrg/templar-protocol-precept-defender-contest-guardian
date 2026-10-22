@@ -1,0 +1,38 @@
+{
+  "source_commit": "273a5131da1f7407887a4a40867c992790809f3d",
+  "producer_roots": {
+    "verify": "/tmp/adr8-exact-local.xerov9sq/verify",
+    "rebuild": "/tmp/adr8-exact-local.xerov9sq/rebuild",
+    "harness": "/tmp/adr8-exact-local.xerov9sq/harness/blend-src"
+  },
+  "artifacts": {
+    "pool": {
+      "sha256": "351257924a5499a6c7c947a7c81e27ffce51ed013650cd52ce188d50cff5c96d",
+      "bytes": 53921,
+      "spec_sha256": "e2d5e75029a044fdaf107a6124d2e3a346f5cf180e1dbbbff51dbd4b34a89d95",
+      "spec_equal_base": true
+    },
+    "backstop": {
+      "sha256": "6bd13007c020b617c43c718c2ad3d2d13605d4d42fa8f739da2293f8a4e293a0",
+      "bytes": 22701,
+      "spec_sha256": "a0bfed1ea59382ebf9573867eb177d0e1da958adac51e037f8f981ec69ed853e",
+      "spec_equal_base": true
+    },
+    "pool_factory": {
+      "sha256": "80abaf3c68fd15adade9f82165baa9b50d85800e497c99b45809e1fbd7397de2",
+      "bytes": 3149,
+      "spec_sha256": "28bfa6de93228ce3af8c08e4df13f014594d4c6a741834ee00c74fb922b8eda4",
+      "spec_equal_base": true
+    }
+  },
+  "independent_rebuilds_equal": true,
+  "factory_equal_baseline": true,
+  "status": "Artifact/build/differential and 10000-case property gates passed; final evidence approval pending.",
+  "verifier_tests": {
+    "passed": 490,
+    "failed": 0,
+    "ignored": 1,
+    "suites": 22,
+    "log": "logs/exact-local-verifier-build-test.log"
+  }
+}

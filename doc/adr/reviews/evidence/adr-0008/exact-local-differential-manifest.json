@@ -1,0 +1,2671 @@
+{
+  "source_commit": "273a5131da1f7407887a4a40867c992790809f3d",
+  "archive": "exact-local-differential.tar.gz",
+  "archive_sha256": "15d01cf22578d2d62ae5f8cf056f477acfc72082183496b192e0bcab1832e92c",
+  "archive_bytes": 29369733,
+  "member_count": 532,
+  "common_observations": 84,
+  "normalized_pair_bytes_equal": true,
+  "members": [
+    {
+      "path": "exact-local-differential/000-init/normalized-base.json",
+      "bytes": 328519,
+      "sha256": "48fef25e841a73912e3a6b718ae71d7cfd38a72ba1bb78c53827484618864f2a"
+    },
+    {
+      "path": "exact-local-differential/000-init/normalized-fork.json",
+      "bytes": 328519,
+      "sha256": "48fef25e841a73912e3a6b718ae71d7cfd38a72ba1bb78c53827484618864f2a"
+    },
+    {
+      "path": "exact-local-differential/000-init/raw-base.json",
+      "bytes": 504419,
+      "sha256": "68c5f3fa3440a919d93f3c1c4406bd9cd10bebf9151b90a4b714b773c8316f5d"
+    },
+    {
+      "path": "exact-local-differential/000-init/raw-fork.json",
+      "bytes": 481785,
+      "sha256": "841a99504d549bccd1e8463f6258b18737e450f8ee99f9199afaaacf69f82c27"
+    },
+    {
+      "path": "exact-local-differential/000-init/step-000-result.txt",
+      "bytes": 85,
+      "sha256": "270b6c88644b6cb5a949a13cf88f52f2896d15ae3bdff1285e5c75a7ed2c4bae"
+    },
+    {
+      "path": "exact-local-differential/001-lending_mint_xlm/normalized-base.json",
+      "bytes": 329304,
+      "sha256": "9b785ad9698ed04e7b3ff181b6af2e265e93e3a9efe5912e0d51562c59378615"
+    },
+    {
+      "path": "exact-local-differential/001-lending_mint_xlm/normalized-fork.json",
+      "bytes": 329304,
+      "sha256": "9b785ad9698ed04e7b3ff181b6af2e265e93e3a9efe5912e0d51562c59378615"
+    },
+    {
+      "path": "exact-local-differential/001-lending_mint_xlm/raw-base.json",
+      "bytes": 505204,
+      "sha256": "3b31e88116b0d2bd66ea237a4ae82782328be3d8ca78b06d7a11b1a23df85111"
+    },
+    {
+      "path": "exact-local-differential/001-lending_mint_xlm/raw-fork.json",
+      "bytes": 482570,
+      "sha256": "f72ab9b44ec1490e66e28b9e29ea9ec0b9b89a666f973b3931924a7e8b391d11"
+    },
+    {
+      "path": "exact-local-differential/001-lending_mint_xlm/step-001-result.txt",
+      "bytes": 97,
+      "sha256": "2a8031ba02648d40ad686520a42f16221ef979c9b4a0d58911bd3c21ac902eed"
+    },
+    {
+      "path": "exact-local-differential/002-lending_mint_stable/normalized-base.json",
+      "bytes": 332074,
+      "sha256": "6a709afe01a4d6eaaf3c159a372e3421b61301da63bcfaac7256269828327e73"
+    },
+    {
+      "path": "exact-local-differential/002-lending_mint_stable/normalized-fork.json",
+      "bytes": 332074,
+      "sha256": "6a709afe01a4d6eaaf3c159a372e3421b61301da63bcfaac7256269828327e73"
+    },
+    {
+      "path": "exact-local-differential/002-lending_mint_stable/raw-base.json",
+      "bytes": 507974,
+      "sha256": "c45822d60d89033d60011e952f627c377e8ef96016f0d2f3ce0fe9b7722be123"
+    },
+    {
+      "path": "exact-local-differential/002-lending_mint_stable/raw-fork.json",
+      "bytes": 485340,
+      "sha256": "b66f5b79d1033d9d3864aea0942555a93192a44f19d9798fed80ed85d8622a60"
+    },
+    {
+      "path": "exact-local-differential/002-lending_mint_stable/step-002-result.txt",
+      "bytes": 100,
+      "sha256": "59d6620d5ade9275a0acedf18a7e0f2ec09d9ca2f61d91c5b0701c00e2628551"
+    },
+    {
+      "path": "exact-local-differential/003-supply_collateral/normalized-base.json",
+      "bytes": 339231,
+      "sha256": "cc85107daa88cb49886901919f6f474bed6aced3df793be04dc9ab58291724b8"
+    },
+    {
+      "path": "exact-local-differential/003-supply_collateral/normalized-fork.json",
+      "bytes": 339231,
+      "sha256": "cc85107daa88cb49886901919f6f474bed6aced3df793be04dc9ab58291724b8"
+    },
+    {
+      "path": "exact-local-differential/003-supply_collateral/raw-base.json",
+      "bytes": 515131,
+      "sha256": "1f026345cbb620d84535b1de6c20e5a815445d648ac53c64b6b267860f8ffb6f"
+    },
+    {
+      "path": "exact-local-differential/003-supply_collateral/raw-fork.json",
+      "bytes": 492497,
+      "sha256": "e9b1dca60ae1278a7a8101468704cc4f9496926a1635023642390e9ccb9e6588"
+    },
+    {
+      "path": "exact-local-differential/003-supply_collateral/step-003-result.txt",
+      "bytes": 1036,
+      "sha256": "f48ae0dc38e24265dbc77bc205c2f00db715ce54e942441aded02d3d6556b551"
+    },
+    {
+      "path": "exact-local-differential/004-borrow/normalized-base.json",
+      "bytes": 342331,
+      "sha256": "9c9df0ce30ea9b207185e2dd717f8014595cd35037850eebef7d985f7fbb2885"
+    },
+    {
+      "path": "exact-local-differential/004-borrow/normalized-fork.json",
+      "bytes": 342331,
+      "sha256": "9c9df0ce30ea9b207185e2dd717f8014595cd35037850eebef7d985f7fbb2885"
+    },
+    {
+      "path": "exact-local-differential/004-borrow/raw-base.json",
+      "bytes": 518231,
+      "sha256": "198e85fa10b7051d5e8ad12e3d84718e802a6407b368630f8c76c56292e60711"
+    },
+    {
+      "path": "exact-local-differential/004-borrow/raw-fork.json",
+      "bytes": 495597,
+      "sha256": "d9c032e460b95c9236f678946b7adf988f8733736be26b58566ebe47d8180225"
+    },
+    {
+      "path": "exact-local-differential/004-borrow/step-004-result.txt",
+      "bytes": 1209,
+      "sha256": "d3412cfe9c00f4b77d4c3d85427bc0c1f1a6e354f70a8f8fbe27b05103973539"
+    },
+    {
+      "path": "exact-local-differential/005-partial_repay/normalized-base.json",
+      "bytes": 345969,
+      "sha256": "1de29818169dd3dbdc01074701d050cadb1dd8a777fb2cbac16d82676ec877fc"
+    },
+    {
+      "path": "exact-local-differential/005-partial_repay/normalized-fork.json",
+      "bytes": 345969,
+      "sha256": "1de29818169dd3dbdc01074701d050cadb1dd8a777fb2cbac16d82676ec877fc"
+    },
+    {
+      "path": "exact-local-differential/005-partial_repay/raw-base.json",
+      "bytes": 521869,
+      "sha256": "359d06c4b569435816df1cf50693f489b6bb26f14ee19ba255f2761bd7d78c60"
+    },
+    {
+      "path": "exact-local-differential/005-partial_repay/raw-fork.json",
+      "bytes": 499235,
+      "sha256": "5dfc3aa94c5f1dcb41a80c48ef03e9214014128dab53dda7f831034097f6a14a"
+    },
+    {
+      "path": "exact-local-differential/005-partial_repay/step-005-result.txt",
+      "bytes": 1214,
+      "sha256": "5dde8ca335b4e4b560760572f2f4ddbdf317244f2eb964de13c399afdf1bbd0f"
+    },
+    {
+      "path": "exact-local-differential/006-repay_reserve/normalized-base.json",
+      "bytes": 344249,
+      "sha256": "01a8e6ad4bdfe009b9814887733c6edc757d1582eaeed2e441bfd2938c1529b6"
+    },
+    {
+      "path": "exact-local-differential/006-repay_reserve/normalized-fork.json",
+      "bytes": 344249,
+      "sha256": "01a8e6ad4bdfe009b9814887733c6edc757d1582eaeed2e441bfd2938c1529b6"
+    },
+    {
+      "path": "exact-local-differential/006-repay_reserve/raw-base.json",
+      "bytes": 520149,
+      "sha256": "c487507ddb454ddc0cf9c2e3734647da16ea0118dd97b0476b892d8904b9e071"
+    },
+    {
+      "path": "exact-local-differential/006-repay_reserve/raw-fork.json",
+      "bytes": 497515,
+      "sha256": "40f61d47679568cc1218940fa17a0d3fdb5cf6116bbf81911f0d8d3e2a964997"
+    },
+    {
+      "path": "exact-local-differential/006-repay_reserve/step-006-result.txt",
+      "bytes": 5386,
+      "sha256": "fd970b2ff281ebbd4364d50bcbc9500285dbf3d176aea658b76ef094bc881700"
+    },
+    {
+      "path": "exact-local-differential/007-full_repay/normalized-base.json",
+      "bytes": 349202,
+      "sha256": "8ed894c64a66c31c4dfc58c95bd0060ce7d94ba8e39175ffc9b274e32818eb09"
+    },
+    {
+      "path": "exact-local-differential/007-full_repay/normalized-fork.json",
+      "bytes": 349202,
+      "sha256": "8ed894c64a66c31c4dfc58c95bd0060ce7d94ba8e39175ffc9b274e32818eb09"
+    },
+    {
+      "path": "exact-local-differential/007-full_repay/raw-base.json",
+      "bytes": 525102,
+      "sha256": "e5e9ac54b60184d2722825b4e71c5e6cec4c31ad73af2420f5e501789d87f566"
+    },
+    {
+      "path": "exact-local-differential/007-full_repay/raw-fork.json",
+      "bytes": 502468,
+      "sha256": "f22c3c5f12c0322c1c5874e89a4311cfa61792ca2f74dcb5aaa53824ea640e35"
+    },
+    {
+      "path": "exact-local-differential/007-full_repay/step-007-result.txt",
+      "bytes": 1029,
+      "sha256": "4ee1c69b715ef72a40005330c9acbfb11e087df73270fc892bfb9588d069d0f1"
+    },
+    {
+      "path": "exact-local-differential/008-supply/normalized-base.json",
+      "bytes": 353266,
+      "sha256": "3617e634dc8bad9d461c5f1d85b567c9cb6714dd210c38f083e62a943c7e194b"
+    },
+    {
+      "path": "exact-local-differential/008-supply/normalized-fork.json",
+      "bytes": 353266,
+      "sha256": "3617e634dc8bad9d461c5f1d85b567c9cb6714dd210c38f083e62a943c7e194b"
+    },
+    {
+      "path": "exact-local-differential/008-supply/raw-base.json",
+      "bytes": 529166,
+      "sha256": "8b229e6a07aa160bca602f6b2d216566268835d782ab58642db0f752856c72c4"
+    },
+    {
+      "path": "exact-local-differential/008-supply/raw-fork.json",
+      "bytes": 506532,
+      "sha256": "7d1e40489572048aecd018142d2931ec2a6c36088c2b41d67379960162e56a17"
+    },
+    {
+      "path": "exact-local-differential/008-supply/step-008-result.txt",
+      "bytes": 1207,
+      "sha256": "7661c977e1823974e8d1a44f83b5b9d67bccedac7243ccd270840a56f9c92fd5"
+    },
+    {
+      "path": "exact-local-differential/009-withdraw_balance_before/normalized-base.json",
+      "bytes": 351542,
+      "sha256": "523cc1b39945dea4958f018ad7622b98a316f715e1d544402ba5530f9e5026c1"
+    },
+    {
+      "path": "exact-local-differential/009-withdraw_balance_before/normalized-fork.json",
+      "bytes": 351542,
+      "sha256": "523cc1b39945dea4958f018ad7622b98a316f715e1d544402ba5530f9e5026c1"
+    },
+    {
+      "path": "exact-local-differential/009-withdraw_balance_before/raw-base.json",
+      "bytes": 527442,
+      "sha256": "51c5f5811d4ea509707d12bdca1cc02e8132ec1167795f593e4e790f6b7e99eb"
+    },
+    {
+      "path": "exact-local-differential/009-withdraw_balance_before/raw-fork.json",
+      "bytes": 504808,
+      "sha256": "19e240953e5a3e24dceb13b5e0ce6f714cb66822ad6333f2599858ddcf07b1a8"
+    },
+    {
+      "path": "exact-local-differential/009-withdraw_balance_before/step-009-result.txt",
+      "bytes": 248,
+      "sha256": "e264f0a03db96018621d6e12083e3f663a9665b5f4642e1adc1be8245b6d3fb2"
+    },
+    {
+      "path": "exact-local-differential/010-withdraw/normalized-base.json",
+      "bytes": 355718,
+      "sha256": "4f07e8c67327d6dfd83c8c1924472de8b4dd26ffb934223cb82a89b5cf828671"
+    },
+    {
+      "path": "exact-local-differential/010-withdraw/normalized-fork.json",
+      "bytes": 355718,
+      "sha256": "4f07e8c67327d6dfd83c8c1924472de8b4dd26ffb934223cb82a89b5cf828671"
+    },
+    {
+      "path": "exact-local-differential/010-withdraw/raw-base.json",
+      "bytes": 531618,
+      "sha256": "f50e1b6e4a3963a7a2bb66204b099d5e8b25f349c961d5f8592a342370ef3821"
+    },
+    {
+      "path": "exact-local-differential/010-withdraw/raw-fork.json",
+      "bytes": 508984,
+      "sha256": "8d65761b9d832b232e462281d2c181936b9b178c65b2c6e95805dea537b3e375"
+    },
+    {
+      "path": "exact-local-differential/010-withdraw/step-010-result.txt",
+      "bytes": 1027,
+      "sha256": "d4207b5a46edacb7b6c12866a669ade0899cd3c96de6111426e63a040367525d"
+    },
+    {
+      "path": "exact-local-differential/011-withdraw_balance_after/normalized-base.json",
+      "bytes": 353992,
+      "sha256": "f5f5467772467a2533965d6bcb5798627c62356600024c5169987e494abf233c"
+    },
+    {
+      "path": "exact-local-differential/011-withdraw_balance_after/normalized-fork.json",
+      "bytes": 353992,
+      "sha256": "f5f5467772467a2533965d6bcb5798627c62356600024c5169987e494abf233c"
+    },
+    {
+      "path": "exact-local-differential/011-withdraw_balance_after/raw-base.json",
+      "bytes": 529892,
+      "sha256": "13b234521625fb441dff0c1f1010597f70ba54ee61fd58bd2c1efd73bb8f03ba"
+    },
+    {
+      "path": "exact-local-differential/011-withdraw_balance_after/raw-fork.json",
+      "bytes": 507258,
+      "sha256": "73d9c2a7f04174eac4ae2826386cc2ffeae76542d8483fea6e2cb4bbeca786b0"
+    },
+    {
+      "path": "exact-local-differential/011-withdraw_balance_after/step-011-result.txt",
+      "bytes": 249,
+      "sha256": "e57d069987ae116d4daf179f1b75314c320522481037d9ed8e9dbe517da391c1"
+    },
+    {
+      "path": "exact-local-differential/012-withdraw_collateral/normalized-base.json",
+      "bytes": 358318,
+      "sha256": "8c24093491ba075d40f4887d9758214025dd858ce665acaa5567c75c57a76e4d"
+    },
+    {
+      "path": "exact-local-differential/012-withdraw_collateral/normalized-fork.json",
+      "bytes": 358318,
+      "sha256": "8c24093491ba075d40f4887d9758214025dd858ce665acaa5567c75c57a76e4d"
+    },
+    {
+      "path": "exact-local-differential/012-withdraw_collateral/raw-base.json",
+      "bytes": 534218,
+      "sha256": "c1eae78cc97effdb7a7893abe9badcc92215a041e79424c5e4d63e01056eae66"
+    },
+    {
+      "path": "exact-local-differential/012-withdraw_collateral/raw-fork.json",
+      "bytes": 511584,
+      "sha256": "ce20c6e6575785bd1ae5e05b5a1f95653e3febcff53130fee3f67bcdda94f3d1"
+    },
+    {
+      "path": "exact-local-differential/012-withdraw_collateral/step-012-result.txt",
+      "bytes": 848,
+      "sha256": "2ce7462c5d1dbab547d3efc14d713c9e772ed6d24aa1744ba8c04d779ed513a1"
+    },
+    {
+      "path": "exact-local-differential/013-interest_reserve_before/normalized-base.json",
+      "bytes": 356450,
+      "sha256": "2035d308d6fb3e1a67e658a32126a048abc45e4f2afae0089e4ce5b374b342fb"
+    },
+    {
+      "path": "exact-local-differential/013-interest_reserve_before/normalized-fork.json",
+      "bytes": 356450,
+      "sha256": "2035d308d6fb3e1a67e658a32126a048abc45e4f2afae0089e4ce5b374b342fb"
+    },
+    {
+      "path": "exact-local-differential/013-interest_reserve_before/raw-base.json",
+      "bytes": 532350,
+      "sha256": "8a281484feeeb71cbd9a972960ea74b7aeac07e21d2ca0a622f5d52d3cba945f"
+    },
+    {
+      "path": "exact-local-differential/013-interest_reserve_before/raw-fork.json",
+      "bytes": 509716,
+      "sha256": "6855f00ad0d9826138e0a634e1046d59687e457c0ff211e7a2ab31ea0dab744f"
+    },
+    {
+      "path": "exact-local-differential/013-interest_reserve_before/step-013-result.txt",
+      "bytes": 5392,
+      "sha256": "85bd68b21e5401cbc471102a2c04c050447d310784bf94e8dc24b5bb1b125b5e"
+    },
+    {
+      "path": "exact-local-differential/014-interest_week_jump/normalized-base.json",
+      "bytes": 356450,
+      "sha256": "07570ce53374ae8b340efc61a30e3980f6d475acb7ba1c221c2587dff629c18b"
+    },
+    {
+      "path": "exact-local-differential/014-interest_week_jump/normalized-fork.json",
+      "bytes": 356450,
+      "sha256": "07570ce53374ae8b340efc61a30e3980f6d475acb7ba1c221c2587dff629c18b"
+    },
+    {
+      "path": "exact-local-differential/014-interest_week_jump/raw-base.json",
+      "bytes": 532350,
+      "sha256": "bc0f21400e87c9d29ac22b0b30019edd0ccd34516eb52cbeeee8bbfa144bb262"
+    },
+    {
+      "path": "exact-local-differential/014-interest_week_jump/raw-fork.json",
+      "bytes": 509716,
+      "sha256": "2b82f2241d5873bcb23054ff27396f52903e207328d1572ea78d3085b78e981d"
+    },
+    {
+      "path": "exact-local-differential/014-interest_week_jump/step-014-result.txt",
+      "bytes": 99,
+      "sha256": "d4d4bb5fb2dedb7c2d6ec8ef367d23a1122d91040115d9940e1b7f3dcf6bb7b4"
+    },
+    {
+      "path": "exact-local-differential/015-interest_sync_supply/normalized-base.json",
+      "bytes": 362234,
+      "sha256": "3e289e088bd68f1a4191fdfddeb0f4d69c507e12d627d9e11c792e34173633c8"
+    },
+    {
+      "path": "exact-local-differential/015-interest_sync_supply/normalized-fork.json",
+      "bytes": 362234,
+      "sha256": "3e289e088bd68f1a4191fdfddeb0f4d69c507e12d627d9e11c792e34173633c8"
+    },
+    {
+      "path": "exact-local-differential/015-interest_sync_supply/raw-base.json",
+      "bytes": 538134,
+      "sha256": "2d9095dfaaeb9ad7169c44f82ed0c31ee7a34be594bfe155d5ca6591f7c9ea09"
+    },
+    {
+      "path": "exact-local-differential/015-interest_sync_supply/raw-fork.json",
+      "bytes": 515500,
+      "sha256": "7d2af7c7e0fae99c8999eb898724a72d4e01d591ea637d315f748f8917dff0a0"
+    },
+    {
+      "path": "exact-local-differential/015-interest_sync_supply/step-015-result.txt",
+      "bytes": 2107,
+      "sha256": "5ef215e97411dca05a3988379916e3c70dd3efe5082d30939729a951902ed4b4"
+    },
+    {
+      "path": "exact-local-differential/016-interest_reserve_after/normalized-base.json",
+      "bytes": 360514,
+      "sha256": "7e7f9a7f5ff9d57e2209765d37c823954281cb604a653921f1adec73c2a0a042"
+    },
+    {
+      "path": "exact-local-differential/016-interest_reserve_after/normalized-fork.json",
+      "bytes": 360514,
+      "sha256": "7e7f9a7f5ff9d57e2209765d37c823954281cb604a653921f1adec73c2a0a042"
+    },
+    {
+      "path": "exact-local-differential/016-interest_reserve_after/raw-base.json",
+      "bytes": 536414,
+      "sha256": "78620c71b1d5c643da69848d975a9e8b6eeb24984380e5cb477c40d3e58fc409"
+    },
+    {
+      "path": "exact-local-differential/016-interest_reserve_after/raw-fork.json",
+      "bytes": 513780,
+      "sha256": "08078002e5ed4a436cb54c7e41b72fd7a0d5eec3b6a64ed968d22f3d5485fe4e"
+    },
+    {
+      "path": "exact-local-differential/016-interest_reserve_after/step-016-result.txt",
+      "bytes": 5389,
+      "sha256": "23e44974d4dec3addf03621eb9ec5340cd63d0553bb2649ecaa3e35449360264"
+    },
+    {
+      "path": "exact-local-differential/017-status_initial_config/normalized-base.json",
+      "bytes": 360522,
+      "sha256": "16eab89478415e29f4a2083f311286eadd46f00d6e17f5acb195e905c945d0c4"
+    },
+    {
+      "path": "exact-local-differential/017-status_initial_config/normalized-fork.json",
+      "bytes": 360522,
+      "sha256": "16eab89478415e29f4a2083f311286eadd46f00d6e17f5acb195e905c945d0c4"
+    },
+    {
+      "path": "exact-local-differential/017-status_initial_config/raw-base.json",
+      "bytes": 536422,
+      "sha256": "efd0d918c312989b6a90ed603cda03acf223ee8ffad89866239aec92d59b699d"
+    },
+    {
+      "path": "exact-local-differential/017-status_initial_config/raw-fork.json",
+      "bytes": 513788,
+      "sha256": "4b2cef04df83720d873453ebaadc306db6d6f512ce18b6eba991363b0b82e4ae"
+    },
+    {
+      "path": "exact-local-differential/017-status_initial_config/step-017-result.txt",
+      "bytes": 1494,
+      "sha256": "01580e7e6ca5c4a3a6d8b09d6c10651b878128aefd4a86f9aac0487c29c7862c"
+    },
+    {
+      "path": "exact-local-differential/018-set_status_on_ice/normalized-base.json",
+      "bytes": 362442,
+      "sha256": "d26f5007436c4c1c2757d9bf3350841e7e91cb6d78623329d45bf0acd13c33aa"
+    },
+    {
+      "path": "exact-local-differential/018-set_status_on_ice/normalized-fork.json",
+      "bytes": 362442,
+      "sha256": "d26f5007436c4c1c2757d9bf3350841e7e91cb6d78623329d45bf0acd13c33aa"
+    },
+    {
+      "path": "exact-local-differential/018-set_status_on_ice/raw-base.json",
+      "bytes": 538342,
+      "sha256": "43d30922dfe92077adf49c8f7516ed5259dc5dfedaa107915ea96ba97f7decbd"
+    },
+    {
+      "path": "exact-local-differential/018-set_status_on_ice/raw-fork.json",
+      "bytes": 515708,
+      "sha256": "0e8d2c483ca119bfba16ca5c1856dc5c32a026bda202c20c50c8ce5f354809a1"
+    },
+    {
+      "path": "exact-local-differential/018-set_status_on_ice/step-018-result.txt",
+      "bytes": 98,
+      "sha256": "45089cba0641c37c9d3214570ec342f06360b76fd5910607a6883397fbfbd755"
+    },
+    {
+      "path": "exact-local-differential/019-status_on_ice_config/normalized-base.json",
+      "bytes": 361895,
+      "sha256": "bbbab3f1809fb638db7e614bff364715108bc73406ed1afe4ca0c94046e848bc"
+    },
+    {
+      "path": "exact-local-differential/019-status_on_ice_config/normalized-fork.json",
+      "bytes": 361895,
+      "sha256": "bbbab3f1809fb638db7e614bff364715108bc73406ed1afe4ca0c94046e848bc"
+    },
+    {
+      "path": "exact-local-differential/019-status_on_ice_config/raw-base.json",
+      "bytes": 537795,
+      "sha256": "eec9667857ef24ae90eb2a63c8b83f0d05c13f33e383a7122ceee545bb67d05e"
+    },
+    {
+      "path": "exact-local-differential/019-status_on_ice_config/raw-fork.json",
+      "bytes": 515161,
+      "sha256": "64db6800e894e733d8e0d215d2d0a4ec73739bed5c7e1fbc21c209de5d474f2e"
+    },
+    {
+      "path": "exact-local-differential/019-status_on_ice_config/step-019-result.txt",
+      "bytes": 1493,
+      "sha256": "fefb1e9bde8445c26283558e9427c9f25dbb5edd41e6c12a238b12f8e8516a1c"
+    },
+    {
+      "path": "exact-local-differential/020-update_status_active/normalized-base.json",
+      "bytes": 362339,
+      "sha256": "a8eb93b5cde4209cc61211d4c2be99fbcdab7ede4b9ab8f2eb5f743249427c63"
+    },
+    {
+      "path": "exact-local-differential/020-update_status_active/normalized-fork.json",
+      "bytes": 362339,
+      "sha256": "a8eb93b5cde4209cc61211d4c2be99fbcdab7ede4b9ab8f2eb5f743249427c63"
+    },
+    {
+      "path": "exact-local-differential/020-update_status_active/raw-base.json",
+      "bytes": 538239,
+      "sha256": "e8a1364c2a6b926fe118ad1dc79d1960d81bd1b44c1055b8e8efa1b0d8fca521"
+    },
+    {
+      "path": "exact-local-differential/020-update_status_active/raw-fork.json",
+      "bytes": 515605,
+      "sha256": "8826c8aae5c8b6f84cd58a90311f21dd6fec130ff19ff564ca762d1a5d590cbc"
+    },
+    {
+      "path": "exact-local-differential/020-update_status_active/step-020-result.txt",
+      "bytes": 157,
+      "sha256": "d464310f14fa0c0acf18677039b8c3702ed3817de0471bcc947c7ffa0818baf3"
+    },
+    {
+      "path": "exact-local-differential/021-backstop_init/normalized-base.json",
+      "bytes": 328519,
+      "sha256": "48fef25e841a73912e3a6b718ae71d7cfd38a72ba1bb78c53827484618864f2a"
+    },
+    {
+      "path": "exact-local-differential/021-backstop_init/normalized-fork.json",
+      "bytes": 328519,
+      "sha256": "48fef25e841a73912e3a6b718ae71d7cfd38a72ba1bb78c53827484618864f2a"
+    },
+    {
+      "path": "exact-local-differential/021-backstop_init/raw-base.json",
+      "bytes": 504419,
+      "sha256": "68c5f3fa3440a919d93f3c1c4406bd9cd10bebf9151b90a4b714b773c8316f5d"
+    },
+    {
+      "path": "exact-local-differential/021-backstop_init/raw-fork.json",
+      "bytes": 481785,
+      "sha256": "841a99504d549bccd1e8463f6258b18737e450f8ee99f9199afaaacf69f82c27"
+    },
+    {
+      "path": "exact-local-differential/021-backstop_init/step-021-result.txt",
+      "bytes": 94,
+      "sha256": "ae72c4612222002575af25b78a54a4a5d65886ff5be4b50193110083e966eb41"
+    },
+    {
+      "path": "exact-local-differential/022-backstop_lp_funder_balance/normalized-base.json",
+      "bytes": 324795,
+      "sha256": "be87135d397c410b9066a100a82fa4096c50f3173271abc6b34a8089ee5af594"
+    },
+    {
+      "path": "exact-local-differential/022-backstop_lp_funder_balance/normalized-fork.json",
+      "bytes": 324795,
+      "sha256": "be87135d397c410b9066a100a82fa4096c50f3173271abc6b34a8089ee5af594"
+    },
+    {
+      "path": "exact-local-differential/022-backstop_lp_funder_balance/raw-base.json",
+      "bytes": 500695,
+      "sha256": "ff8ca4e93bbcc5a2b2c377d6cf3ad1d20dcbb8ed9ec52f4b4c3abc447c8ef551"
+    },
+    {
+      "path": "exact-local-differential/022-backstop_lp_funder_balance/raw-fork.json",
+      "bytes": 478061,
+      "sha256": "a3a05466778d8088ec3371fd9ebbc375dae32047db699b190aa56779321a21c9"
+    },
+    {
+      "path": "exact-local-differential/022-backstop_lp_funder_balance/step-022-result.txt",
+      "bytes": 253,
+      "sha256": "3757eeab5350059d9474ec410749e83900592dfdb984deb06f00cebc48a9069f"
+    },
+    {
+      "path": "exact-local-differential/023-backstop_lp_funding/normalized-base.json",
+      "bytes": 328572,
+      "sha256": "8ab62722b1c06b9224e22f78b8597117a8d3bd554cea0a8991515b8f4208eef1"
+    },
+    {
+      "path": "exact-local-differential/023-backstop_lp_funding/normalized-fork.json",
+      "bytes": 328572,
+      "sha256": "8ab62722b1c06b9224e22f78b8597117a8d3bd554cea0a8991515b8f4208eef1"
+    },
+    {
+      "path": "exact-local-differential/023-backstop_lp_funding/raw-base.json",
+      "bytes": 504472,
+      "sha256": "0d0982921cb9353c7450da69f90a3b63527262e819eaeb29f372abe66dbf1085"
+    },
+    {
+      "path": "exact-local-differential/023-backstop_lp_funding/raw-fork.json",
+      "bytes": 481838,
+      "sha256": "08e3200eb669cf34082a74d0d6eac3c605330adabfd41ff2b1d6b46f02785bde"
+    },
+    {
+      "path": "exact-local-differential/023-backstop_lp_funding/step-023-result.txt",
+      "bytes": 100,
+      "sha256": "cf307ba507b3baa52db660e2e5dcab98db17ab35b64b62f2fef929a029c7ff86"
+    },
+    {
+      "path": "exact-local-differential/024-backstop_deposit/normalized-base.json",
+      "bytes": 335047,
+      "sha256": "5dd50d193aed48f375991b47ed5a14db880affa6daf3c20df3af6459ee08bc94"
+    },
+    {
+      "path": "exact-local-differential/024-backstop_deposit/normalized-fork.json",
+      "bytes": 335047,
+      "sha256": "5dd50d193aed48f375991b47ed5a14db880affa6daf3c20df3af6459ee08bc94"
+    },
+    {
+      "path": "exact-local-differential/024-backstop_deposit/raw-base.json",
+      "bytes": 510947,
+      "sha256": "f91e218920488007bf5cb48027f32429f9a7ad50c6387173e7c7fabc6a009606"
+    },
+    {
+      "path": "exact-local-differential/024-backstop_deposit/raw-fork.json",
+      "bytes": 488313,
+      "sha256": "0f0607b63531ee0e4c972c470907a2e0092dbac2b6e81cf44a62febf86f2c6c2"
+    },
+    {
+      "path": "exact-local-differential/024-backstop_deposit/step-024-result.txt",
+      "bytes": 239,
+      "sha256": "7f8e7a25fd3c15ff7a06b4f6936af9b7aa678eb5d349817b0d6c4eae58d90f7a"
+    },
+    {
+      "path": "exact-local-differential/025-backstop_pool_data/normalized-base.json",
+      "bytes": 333316,
+      "sha256": "66d59d14d22dba52a84fdf1def1d255c4c0b5111c34530dd3e6ac80553859dd6"
+    },
+    {
+      "path": "exact-local-differential/025-backstop_pool_data/normalized-fork.json",
+      "bytes": 333316,
+      "sha256": "66d59d14d22dba52a84fdf1def1d255c4c0b5111c34530dd3e6ac80553859dd6"
+    },
+    {
+      "path": "exact-local-differential/025-backstop_pool_data/raw-base.json",
+      "bytes": 509216,
+      "sha256": "cd8c06732b9c74768ff09c4e12f22171e5c9f6bc0b887857ae01575498eb9042"
+    },
+    {
+      "path": "exact-local-differential/025-backstop_pool_data/raw-fork.json",
+      "bytes": 486582,
+      "sha256": "c0ecd7d876ffac59bbe8a383972e13ef87b0b1cc0f700f9cc9aeac17285fa70f"
+    },
+    {
+      "path": "exact-local-differential/025-backstop_pool_data/step-025-result.txt",
+      "bytes": 1725,
+      "sha256": "0e435ad93b7e406f6ca3b2e6cc5dc70376c1362554b5e396f7808fc2bd770014"
+    },
+    {
+      "path": "exact-local-differential/026-backstop_user_balance/normalized-base.json",
+      "bytes": 333324,
+      "sha256": "5a122e0485510b7d79388539dbf38bf85c4ca7d62267e35db56d74182df6c58b"
+    },
+    {
+      "path": "exact-local-differential/026-backstop_user_balance/normalized-fork.json",
+      "bytes": 333324,
+      "sha256": "5a122e0485510b7d79388539dbf38bf85c4ca7d62267e35db56d74182df6c58b"
+    },
+    {
+      "path": "exact-local-differential/026-backstop_user_balance/raw-base.json",
+      "bytes": 509224,
+      "sha256": "671c697c4aafa59161670525c34431a74fc5f3faa1f283d97aa5396098d9acb5"
+    },
+    {
+      "path": "exact-local-differential/026-backstop_user_balance/raw-fork.json",
+      "bytes": 486590,
+      "sha256": "40b8c5b43dc8ae498aaeffec272ac9c59085d3f92da907bddfa5b193016ee6f4"
+    },
+    {
+      "path": "exact-local-differential/026-backstop_user_balance/step-026-result.txt",
+      "bytes": 596,
+      "sha256": "966bf732d79b8b46d35e64fef54b60d8b061a18f32d7744f7a7068937a721f42"
+    },
+    {
+      "path": "exact-local-differential/027-backstop_queue/normalized-base.json",
+      "bytes": 336875,
+      "sha256": "ce07a00636a76c82ff5f463fa593d0203179bf37f7a0af9dd86bf5c18eff4de1"
+    },
+    {
+      "path": "exact-local-differential/027-backstop_queue/normalized-fork.json",
+      "bytes": 336875,
+      "sha256": "ce07a00636a76c82ff5f463fa593d0203179bf37f7a0af9dd86bf5c18eff4de1"
+    },
+    {
+      "path": "exact-local-differential/027-backstop_queue/raw-base.json",
+      "bytes": 512775,
+      "sha256": "b9ee1b77124f21c104e7e309c60944134642dc79f335b57e60e9bbbf1a1cbd30"
+    },
+    {
+      "path": "exact-local-differential/027-backstop_queue/raw-fork.json",
+      "bytes": 490141,
+      "sha256": "2701938449109c41bbcb43e6915a7a866091531237071b8dfa37b681b0522f74"
+    },
+    {
+      "path": "exact-local-differential/027-backstop_queue/step-027-result.txt",
+      "bytes": 597,
+      "sha256": "fd12a732784ced343cf5c9f283ce806cd24dbf13ed8036aae7438c2e0d227556"
+    },
+    {
+      "path": "exact-local-differential/028-backstop_dequeue/normalized-base.json",
+      "bytes": 338424,
+      "sha256": "cc011a929622ed34a77c39b564e6bf4f7cfd062d6789847bffd2f573b3e619a2"
+    },
+    {
+      "path": "exact-local-differential/028-backstop_dequeue/normalized-fork.json",
+      "bytes": 338424,
+      "sha256": "cc011a929622ed34a77c39b564e6bf4f7cfd062d6789847bffd2f573b3e619a2"
+    },
+    {
+      "path": "exact-local-differential/028-backstop_dequeue/raw-base.json",
+      "bytes": 514324,
+      "sha256": "37a91ac292d7f42f11eaf5a293ba71b0ed1f07544c067b2a2a2ea25d750e9cba"
+    },
+    {
+      "path": "exact-local-differential/028-backstop_dequeue/raw-fork.json",
+      "bytes": 491690,
+      "sha256": "1de2d7cd2b9474239212d6db03497723ffe07fdd53b5842e43a3e797e5f4a753"
+    },
+    {
+      "path": "exact-local-differential/028-backstop_dequeue/step-028-result.txt",
+      "bytes": 97,
+      "sha256": "39c6adab8803cd0d23bf05bf29c163edc6b837ace3e7d90285719fafd1aae173"
+    },
+    {
+      "path": "exact-local-differential/029-backstop_queue_expiry_jump/normalized-base.json",
+      "bytes": 338424,
+      "sha256": "62b8b18cb86f2c0c43c9f537736a44cfdfad8c3546d4c57e31a796ad777ef65c"
+    },
+    {
+      "path": "exact-local-differential/029-backstop_queue_expiry_jump/normalized-fork.json",
+      "bytes": 338424,
+      "sha256": "62b8b18cb86f2c0c43c9f537736a44cfdfad8c3546d4c57e31a796ad777ef65c"
+    },
+    {
+      "path": "exact-local-differential/029-backstop_queue_expiry_jump/raw-base.json",
+      "bytes": 514324,
+      "sha256": "1dd314dd2c995fe921e898d92ea1a2ca2b488bd3f788bcce7c944d18fc36aca3"
+    },
+    {
+      "path": "exact-local-differential/029-backstop_queue_expiry_jump/raw-fork.json",
+      "bytes": 491690,
+      "sha256": "d19f04335d7065893ad769f57050478cadc11bb49fe2f56e174e8ee9c19de62f"
+    },
+    {
+      "path": "exact-local-differential/029-backstop_queue_expiry_jump/step-029-result.txt",
+      "bytes": 107,
+      "sha256": "c075e9308a9a556cb9a85b04ebd436c5a421bff5b65eb4d6b0aebc685dd61781"
+    },
+    {
+      "path": "exact-local-differential/030-backstop_withdraw_balance_before/normalized-base.json",
+      "bytes": 337674,
+      "sha256": "03d2fc390cda1742de4b1d27fd20bc5fdc30e13dfdc9e18bd89c04e215a34d5c"
+    },
+    {
+      "path": "exact-local-differential/030-backstop_withdraw_balance_before/normalized-fork.json",
+      "bytes": 337674,
+      "sha256": "03d2fc390cda1742de4b1d27fd20bc5fdc30e13dfdc9e18bd89c04e215a34d5c"
+    },
+    {
+      "path": "exact-local-differential/030-backstop_withdraw_balance_before/raw-base.json",
+      "bytes": 513574,
+      "sha256": "d33b44a2a466547a432b07ca1d61f516c390f75b9ba0f02e15e92c292337c912"
+    },
+    {
+      "path": "exact-local-differential/030-backstop_withdraw_balance_before/raw-fork.json",
+      "bytes": 490940,
+      "sha256": "f09c399a46f88f1963b83fc0add61c9ed738c9064e2008a6e1cfd3aa2d32d509"
+    },
+    {
+      "path": "exact-local-differential/030-backstop_withdraw_balance_before/step-030-result.txt",
+      "bytes": 243,
+      "sha256": "c1d399e91c8cd03fdb22403c9820d4c8d79ba71c07ad8e104b7d4dd8e6eaf235"
+    },
+    {
+      "path": "exact-local-differential/031-backstop_withdraw/normalized-base.json",
+      "bytes": 340197,
+      "sha256": "8cf95650659a169247fb8cf6ceee511e7f841b23b473ca9c7f4d86d16fa15074"
+    },
+    {
+      "path": "exact-local-differential/031-backstop_withdraw/normalized-fork.json",
+      "bytes": 340197,
+      "sha256": "8cf95650659a169247fb8cf6ceee511e7f841b23b473ca9c7f4d86d16fa15074"
+    },
+    {
+      "path": "exact-local-differential/031-backstop_withdraw/raw-base.json",
+      "bytes": 516097,
+      "sha256": "41f0259c17ef9b8f6308936e8d5eadec858fbcdd3ba3cd3f6e1dfdcc44353999"
+    },
+    {
+      "path": "exact-local-differential/031-backstop_withdraw/raw-fork.json",
+      "bytes": 493463,
+      "sha256": "f4b381cab4991e7d7b93de60d218caa741b3f7364b3aee17150e452f5dab7ad1"
+    },
+    {
+      "path": "exact-local-differential/031-backstop_withdraw/step-031-result.txt",
+      "bytes": 238,
+      "sha256": "18cc1a8447b091c934e82013c8c8edc337edf6e3e65efd4b44e2e6fab8dbe341"
+    },
+    {
+      "path": "exact-local-differential/032-backstop_withdraw_balance_after/normalized-base.json",
+      "bytes": 338468,
+      "sha256": "612b75c0767efc7a037692f404cefa6829fd15f79dc46f33bcf4843f4c213100"
+    },
+    {
+      "path": "exact-local-differential/032-backstop_withdraw_balance_after/normalized-fork.json",
+      "bytes": 338468,
+      "sha256": "612b75c0767efc7a037692f404cefa6829fd15f79dc46f33bcf4843f4c213100"
+    },
+    {
+      "path": "exact-local-differential/032-backstop_withdraw_balance_after/raw-base.json",
+      "bytes": 514368,
+      "sha256": "04abff451b2d4fea81720c9eb8b13ad9f6309ea8aa9fa0afa7df870c6e586868"
+    },
+    {
+      "path": "exact-local-differential/032-backstop_withdraw_balance_after/raw-fork.json",
+      "bytes": 491734,
+      "sha256": "53aca081ef0971e6f6dfcb007e1f4bad2ec5962572dd653859dd2c29445d1954"
+    },
+    {
+      "path": "exact-local-differential/032-backstop_withdraw_balance_after/step-032-result.txt",
+      "bytes": 252,
+      "sha256": "199a431f7e5740df2247fe6b8597fc4ed3baf5c7ef3ce38fa785ce0c4dc6b973"
+    },
+    {
+      "path": "exact-local-differential/033-backstop_draw/normalized-base.json",
+      "bytes": 341752,
+      "sha256": "5875b95fe3bd6124b3c0ef5ce1a635746890aa012e63cd1887e59f594f1db85e"
+    },
+    {
+      "path": "exact-local-differential/033-backstop_draw/normalized-fork.json",
+      "bytes": 341752,
+      "sha256": "5875b95fe3bd6124b3c0ef5ce1a635746890aa012e63cd1887e59f594f1db85e"
+    },
+    {
+      "path": "exact-local-differential/033-backstop_draw/raw-base.json",
+      "bytes": 517652,
+      "sha256": "15f82aaf8720c5fdb459975d9bea5ef7028b4589d4d0cac2a9a039eee440a94f"
+    },
+    {
+      "path": "exact-local-differential/033-backstop_draw/raw-fork.json",
+      "bytes": 495018,
+      "sha256": "f94accfd3c4d497c754d0716656660ed27c35ef52e6e493b9fa419cad409947a"
+    },
+    {
+      "path": "exact-local-differential/033-backstop_draw/step-033-result.txt",
+      "bytes": 94,
+      "sha256": "e034bd33c709578a83dfe16e1ba2f2c33233e0e8e9e1b2ee42fdf2c564a49bbc"
+    },
+    {
+      "path": "exact-local-differential/034-backstop_donate_approve/normalized-base.json",
+      "bytes": 345830,
+      "sha256": "164be344fa79575b62097653e2fe8d4ebf08b7e805311319df22b7824f5331c1"
+    },
+    {
+      "path": "exact-local-differential/034-backstop_donate_approve/normalized-fork.json",
+      "bytes": 345830,
+      "sha256": "164be344fa79575b62097653e2fe8d4ebf08b7e805311319df22b7824f5331c1"
+    },
+    {
+      "path": "exact-local-differential/034-backstop_donate_approve/raw-base.json",
+      "bytes": 521730,
+      "sha256": "df2681c8b50e67485ff27036c54c9faa191c648c23511743ecd12561c0e93b6e"
+    },
+    {
+      "path": "exact-local-differential/034-backstop_donate_approve/raw-fork.json",
+      "bytes": 499096,
+      "sha256": "bc168b638743535992e3dd04ad18c0d4e11518fd839d506cdc0bb20e43d94e6e"
+    },
+    {
+      "path": "exact-local-differential/034-backstop_donate_approve/step-034-result.txt",
+      "bytes": 104,
+      "sha256": "c1588b5f486c2d46bcebaf71b4bdc324a95c9e3b38768b48bce04c1e6813ac0d"
+    },
+    {
+      "path": "exact-local-differential/035-backstop_donate_allowance_before/normalized-base.json",
+      "bytes": 344934,
+      "sha256": "b3b1c668d7e1d883cdc7fdba5bdbb0d5967aa0f416373ad25749188bca6d714a"
+    },
+    {
+      "path": "exact-local-differential/035-backstop_donate_allowance_before/normalized-fork.json",
+      "bytes": 344934,
+      "sha256": "b3b1c668d7e1d883cdc7fdba5bdbb0d5967aa0f416373ad25749188bca6d714a"
+    },
+    {
+      "path": "exact-local-differential/035-backstop_donate_allowance_before/raw-base.json",
+      "bytes": 520834,
+      "sha256": "2dbf356fed2465299e69dd34670eac491521c2958b501ce783d170a662868a65"
+    },
+    {
+      "path": "exact-local-differential/035-backstop_donate_allowance_before/raw-fork.json",
+      "bytes": 498200,
+      "sha256": "621cb9fa8e8d102bd08af29345b821b2b9bb0ffbc85ddc28c1d207d874701a39"
+    },
+    {
+      "path": "exact-local-differential/035-backstop_donate_allowance_before/step-035-result.txt",
+      "bytes": 251,
+      "sha256": "9de9d101a07c12f4046dcdf6853353385c8d941c3117c5465c2de166266ef8ab"
+    },
+    {
+      "path": "exact-local-differential/036-backstop_donate/normalized-base.json",
+      "bytes": 349802,
+      "sha256": "5a3eec091beec2bc3e997a5601ee91ade856d5eba3fcbc756b2feafefc54c0f4"
+    },
+    {
+      "path": "exact-local-differential/036-backstop_donate/normalized-fork.json",
+      "bytes": 349802,
+      "sha256": "5a3eec091beec2bc3e997a5601ee91ade856d5eba3fcbc756b2feafefc54c0f4"
+    },
+    {
+      "path": "exact-local-differential/036-backstop_donate/raw-base.json",
+      "bytes": 525702,
+      "sha256": "9b0c30d9a5307f9982f4ea7e0f17afcbf0b5a52e4fc518d55c418e7b388c5687"
+    },
+    {
+      "path": "exact-local-differential/036-backstop_donate/raw-fork.json",
+      "bytes": 503068,
+      "sha256": "9d38b1f7854acca0538db0226372ad1dd7f9bce58e8e8c77d87a24e210b69454"
+    },
+    {
+      "path": "exact-local-differential/036-backstop_donate/step-036-result.txt",
+      "bytes": 96,
+      "sha256": "17c0a42b41d1260dcf943f9b256fe384e776c02a4fb54c45a0819625eed9fd1d"
+    },
+    {
+      "path": "exact-local-differential/037-backstop_donate_allowance_after/normalized-base.json",
+      "bytes": 348318,
+      "sha256": "68a077f1af200c508781f09f698d794d8e643a57703dfcab4be7da0b0ae13395"
+    },
+    {
+      "path": "exact-local-differential/037-backstop_donate_allowance_after/normalized-fork.json",
+      "bytes": 348318,
+      "sha256": "68a077f1af200c508781f09f698d794d8e643a57703dfcab4be7da0b0ae13395"
+    },
+    {
+      "path": "exact-local-differential/037-backstop_donate_allowance_after/raw-base.json",
+      "bytes": 524218,
+      "sha256": "4c801c654677c21d692d41750cf0a82a8f23d771c1ebd8e0c2c64740eff51b3f"
+    },
+    {
+      "path": "exact-local-differential/037-backstop_donate_allowance_after/raw-fork.json",
+      "bytes": 501584,
+      "sha256": "935102dbb0260bc37df36eb4ae43137f614151520e553ef2dccdebc5fa73775f"
+    },
+    {
+      "path": "exact-local-differential/037-backstop_donate_allowance_after/step-037-result.txt",
+      "bytes": 242,
+      "sha256": "74640c378869f2f23790b204f0bdd893abe320f4c30869df3a61f729b386a10d"
+    },
+    {
+      "path": "exact-local-differential/038-backstop_reward_zone/normalized-base.json",
+      "bytes": 348326,
+      "sha256": "703bf9264c0e1fbbcbc5b0b7453b27c8dfe3191f1e97d4489aacae48133b2c74"
+    },
+    {
+      "path": "exact-local-differential/038-backstop_reward_zone/normalized-fork.json",
+      "bytes": 348326,
+      "sha256": "703bf9264c0e1fbbcbc5b0b7453b27c8dfe3191f1e97d4489aacae48133b2c74"
+    },
+    {
+      "path": "exact-local-differential/038-backstop_reward_zone/raw-base.json",
+      "bytes": 524226,
+      "sha256": "f9d768636d5a8665c5ee63ead696ccf6451cd30deeab8225fdd0f6327835401d"
+    },
+    {
+      "path": "exact-local-differential/038-backstop_reward_zone/raw-fork.json",
+      "bytes": 501592,
+      "sha256": "b23f6c9077b603938bda36f24b869249882d5da09066a8d48dd071041f26b835"
+    },
+    {
+      "path": "exact-local-differential/038-backstop_reward_zone/step-038-result.txt",
+      "bytes": 183,
+      "sha256": "5220d706a578ca3b6f048804dea063e1817bfced29cbe10705fca1a3e58b48d9"
+    },
+    {
+      "path": "exact-local-differential/039-liquidation_init/normalized-base.json",
+      "bytes": 328519,
+      "sha256": "48fef25e841a73912e3a6b718ae71d7cfd38a72ba1bb78c53827484618864f2a"
+    },
+    {
+      "path": "exact-local-differential/039-liquidation_init/normalized-fork.json",
+      "bytes": 328519,
+      "sha256": "48fef25e841a73912e3a6b718ae71d7cfd38a72ba1bb78c53827484618864f2a"
+    },
+    {
+      "path": "exact-local-differential/039-liquidation_init/raw-base.json",
+      "bytes": 504419,
+      "sha256": "68c5f3fa3440a919d93f3c1c4406bd9cd10bebf9151b90a4b714b773c8316f5d"
+    },
+    {
+      "path": "exact-local-differential/039-liquidation_init/raw-fork.json",
+      "bytes": 481785,
+      "sha256": "841a99504d549bccd1e8463f6258b18737e450f8ee99f9199afaaacf69f82c27"
+    },
+    {
+      "path": "exact-local-differential/039-liquidation_init/step-039-result.txt",
+      "bytes": 97,
+      "sha256": "b8d3de000dbc3d800a347126573c2147213ff5b73eb6ffeb872214a9d0d829df"
+    },
+    {
+      "path": "exact-local-differential/040-liq_supplier_funding/normalized-base.json",
+      "bytes": 330178,
+      "sha256": "8fcc450c27abdcba7024651ef7552ed800f37113f2a42751b4573713fc0e69b8"
+    },
+    {
+      "path": "exact-local-differential/040-liq_supplier_funding/normalized-fork.json",
+      "bytes": 330178,
+      "sha256": "8fcc450c27abdcba7024651ef7552ed800f37113f2a42751b4573713fc0e69b8"
+    },
+    {
+      "path": "exact-local-differential/040-liq_supplier_funding/raw-base.json",
+      "bytes": 506078,
+      "sha256": "3a35d6fab01077f604c3f61f3fe7c18ae829be8da30a05476f0c4ad1293442a8"
+    },
+    {
+      "path": "exact-local-differential/040-liq_supplier_funding/raw-fork.json",
+      "bytes": 483444,
+      "sha256": "3db975178bd5ed62d6830027ec485404fe188af3bb0d57e9e972cfbef06d27b4"
+    },
+    {
+      "path": "exact-local-differential/040-liq_supplier_funding/step-040-result.txt",
+      "bytes": 1925,
+      "sha256": "ef296d3ea4d808803e0e6f17dd86e8584a06c42ca295a4b63d692fce2fdbffbe"
+    },
+    {
+      "path": "exact-local-differential/041-liq_mint_xlm/normalized-base.json",
+      "bytes": 332949,
+      "sha256": "22445f6ce3eb1f3a1974f0d971cd3c6c8f76c577e6b7b514ce6397dccd856c7e"
+    },
+    {
+      "path": "exact-local-differential/041-liq_mint_xlm/normalized-fork.json",
+      "bytes": 332949,
+      "sha256": "22445f6ce3eb1f3a1974f0d971cd3c6c8f76c577e6b7b514ce6397dccd856c7e"
+    },
+    {
+      "path": "exact-local-differential/041-liq_mint_xlm/raw-base.json",
+      "bytes": 508849,
+      "sha256": "f9a9acbbc4ae9013bc16bf3fc727adcbb525b27a8a1d17047e225e5d5e55f089"
+    },
+    {
+      "path": "exact-local-differential/041-liq_mint_xlm/raw-fork.json",
+      "bytes": 486215,
+      "sha256": "ff9531bfa5a56f30fc2091e02c1e164eee093e66f5f5d141d73378c0b2c07173"
+    },
+    {
+      "path": "exact-local-differential/041-liq_mint_xlm/step-041-result.txt",
+      "bytes": 93,
+      "sha256": "38490d6e3770ddd99aa2633a116f35b1a0983d918f65cc1709810b6c2100fe86"
+    },
+    {
+      "path": "exact-local-differential/042-liq_mint_weth/normalized-base.json",
+      "bytes": 335722,
+      "sha256": "d8cf9133603125dceccd262c67d8c0aa7ede3c67537bca64b07c38744b6a2e9b"
+    },
+    {
+      "path": "exact-local-differential/042-liq_mint_weth/normalized-fork.json",
+      "bytes": 335722,
+      "sha256": "d8cf9133603125dceccd262c67d8c0aa7ede3c67537bca64b07c38744b6a2e9b"
+    },
+    {
+      "path": "exact-local-differential/042-liq_mint_weth/raw-base.json",
+      "bytes": 511622,
+      "sha256": "ed9b75620638c7b56e18ff2a890fdfdeb5f5e7e281b79f0c264c12575b99a7e9"
+    },
+    {
+      "path": "exact-local-differential/042-liq_mint_weth/raw-fork.json",
+      "bytes": 488988,
+      "sha256": "5690f13be4622a4ce9785ce3235fd80c7da312aefa6ab3de18ec1940d4f1e68d"
+    },
+    {
+      "path": "exact-local-differential/042-liq_mint_weth/step-042-result.txt",
+      "bytes": 94,
+      "sha256": "05f2c25ff34b165d16aebcfd1481c4d18d68c04e0094811b96387483ff8df9d7"
+    },
+    {
+      "path": "exact-local-differential/043-liq_borrow_open/normalized-base.json",
+      "bytes": 354793,
+      "sha256": "ffd73d1ac3099ca363969de77a009309535c91726d7143e76542f50e53fae858"
+    },
+    {
+      "path": "exact-local-differential/043-liq_borrow_open/normalized-fork.json",
+      "bytes": 354793,
+      "sha256": "ffd73d1ac3099ca363969de77a009309535c91726d7143e76542f50e53fae858"
+    },
+    {
+      "path": "exact-local-differential/043-liq_borrow_open/raw-base.json",
+      "bytes": 530693,
+      "sha256": "e0927042efc5e35647d883537d169d7ff407629ec190647fcfca4d6a29b124b5"
+    },
+    {
+      "path": "exact-local-differential/043-liq_borrow_open/raw-fork.json",
+      "bytes": 508059,
+      "sha256": "c71da6f178d57e1a4b4fa287afe18aa39b084905f69277cb25230a3122a13d9a"
+    },
+    {
+      "path": "exact-local-differential/043-liq_borrow_open/step-043-result.txt",
+      "bytes": 1584,
+      "sha256": "e409d30a42793bcb30cd8cc9c47182c37494a6568b9e6a13966ba6e9ed35ca03"
+    },
+    {
+      "path": "exact-local-differential/044-liq_interest_week/normalized-base.json",
+      "bytes": 354793,
+      "sha256": "304526e349acd2bd4cdb38aefe20e0c5f1c97f1ae1f3c1334791bdc1656bfcf0"
+    },
+    {
+      "path": "exact-local-differential/044-liq_interest_week/normalized-fork.json",
+      "bytes": 354793,
+      "sha256": "304526e349acd2bd4cdb38aefe20e0c5f1c97f1ae1f3c1334791bdc1656bfcf0"
+    },
+    {
+      "path": "exact-local-differential/044-liq_interest_week/raw-base.json",
+      "bytes": 530693,
+      "sha256": "a53f2f2f5d57cc43616306ee115529d9896a005e6f35729333e404d1c934590f"
+    },
+    {
+      "path": "exact-local-differential/044-liq_interest_week/raw-fork.json",
+      "bytes": 508059,
+      "sha256": "9b0fe86fbdf86df75257bdb813bbca05a7c8047b1d63e5a2387221dcf4a8c686"
+    },
+    {
+      "path": "exact-local-differential/044-liq_interest_week/step-044-result.txt",
+      "bytes": 98,
+      "sha256": "1d8924784b029f146f8f431284e37777410ad49892db8c5f701d8a029a88c94a"
+    },
+    {
+      "path": "exact-local-differential/045-liq_interest_week/normalized-base.json",
+      "bytes": 354793,
+      "sha256": "502f4e6c6384a91a00ef5b2bae405919ea97e222eb55e43f682067db03424496"
+    },
+    {
+      "path": "exact-local-differential/045-liq_interest_week/normalized-fork.json",
+      "bytes": 354793,
+      "sha256": "502f4e6c6384a91a00ef5b2bae405919ea97e222eb55e43f682067db03424496"
+    },
+    {
+      "path": "exact-local-differential/045-liq_interest_week/raw-base.json",
+      "bytes": 530693,
+      "sha256": "e0e9c53a3347286e86a351f5e5d4f4bec269697e9eebab4e63724a8c8a4650e7"
+    },
+    {
+      "path": "exact-local-differential/045-liq_interest_week/raw-fork.json",
+      "bytes": 508059,
+      "sha256": "1b83e17f6bbd5c81e72d9bf3f795905e17fa850c516beed5f6408eb5264e2b54"
+    },
+    {
+      "path": "exact-local-differential/045-liq_interest_week/step-045-result.txt",
+      "bytes": 98,
+      "sha256": "6d70cdf1aa9bddfe43c564a4a88c1216a16e6b819b3908e66bd7eedda04d05e5"
+    },
+    {
+      "path": "exact-local-differential/046-liq_interest_week/normalized-base.json",
+      "bytes": 354793,
+      "sha256": "54338a0c9ad445e0bc47883e6fb975fba0e91624c7ca1396bd1b72908ca129b7"
+    },
+    {
+      "path": "exact-local-differential/046-liq_interest_week/normalized-fork.json",
+      "bytes": 354793,
+      "sha256": "54338a0c9ad445e0bc47883e6fb975fba0e91624c7ca1396bd1b72908ca129b7"
+    },
+    {
+      "path": "exact-local-differential/046-liq_interest_week/raw-base.json",
+      "bytes": 530693,
+      "sha256": "b3f69884287bfea200495b2642716eb4afedd1384186876e1d664b663d12a19b"
+    },
+    {
+      "path": "exact-local-differential/046-liq_interest_week/raw-fork.json",
+      "bytes": 508059,
+      "sha256": "4c35792b5e46df91185cedc004ebe7c25ede4ebfa7cb2786a4e5a810929e9bbd"
+    },
+    {
+      "path": "exact-local-differential/046-liq_interest_week/step-046-result.txt",
+      "bytes": 98,
+      "sha256": "439a576f80e45e1bda7d40201c5ead5c1ab90a95fd3ede5550cdb41c91467b37"
+    },
+    {
+      "path": "exact-local-differential/047-liq_interest_week/normalized-base.json",
+      "bytes": 354793,
+      "sha256": "5416cca6ec26365dfd6eb688438a15d5b26382c6851acd746362bf1f47868b2f"
+    },
+    {
+      "path": "exact-local-differential/047-liq_interest_week/normalized-fork.json",
+      "bytes": 354793,
+      "sha256": "5416cca6ec26365dfd6eb688438a15d5b26382c6851acd746362bf1f47868b2f"
+    },
+    {
+      "path": "exact-local-differential/047-liq_interest_week/raw-base.json",
+      "bytes": 530693,
+      "sha256": "899c50e1d4d15a2bf11ea6b3de837a71cb406e90e16ebbbbf2c189e602e5e290"
+    },
+    {
+      "path": "exact-local-differential/047-liq_interest_week/raw-fork.json",
+      "bytes": 508059,
+      "sha256": "17a91dbd87e3031c76456622402ed519506cf37826493ae6839c62b89df71ab9"
+    },
+    {
+      "path": "exact-local-differential/047-liq_interest_week/step-047-result.txt",
+      "bytes": 98,
+      "sha256": "ecb8225b7d22be31a965b32c252513b114b12bef6b08e23a733cb8c7ce633989"
+    },
+    {
+      "path": "exact-local-differential/048-liq_interest_week/normalized-base.json",
+      "bytes": 354793,
+      "sha256": "40ba7dc703c401949297338e4cce4cdb9c95d2e96103c38cda0872c8abbb0b90"
+    },
+    {
+      "path": "exact-local-differential/048-liq_interest_week/normalized-fork.json",
+      "bytes": 354793,
+      "sha256": "40ba7dc703c401949297338e4cce4cdb9c95d2e96103c38cda0872c8abbb0b90"
+    },
+    {
+      "path": "exact-local-differential/048-liq_interest_week/raw-base.json",
+      "bytes": 530693,
+      "sha256": "705bb939a32f7646927acffcaf7a5186b768ddb24177b631aa69cafa783cce06"
+    },
+    {
+      "path": "exact-local-differential/048-liq_interest_week/raw-fork.json",
+      "bytes": 508059,
+      "sha256": "251a87b98ea200d6e4a8ee7181a38586f9894fa9502502c8f8546f53a0615427"
+    },
+    {
+      "path": "exact-local-differential/048-liq_interest_week/step-048-result.txt",
+      "bytes": 98,
+      "sha256": "5a29a361efa790411d85bff5b0c6948ce2d273c4f8e1405c67b37f2bfa78da88"
+    },
+    {
+      "path": "exact-local-differential/049-liq_interest_week/normalized-base.json",
+      "bytes": 354793,
+      "sha256": "d5bf1a272e814d081d50fcff8f86cb30fbb9b0f6b1ab7190f61b98ebfe6fc888"
+    },
+    {
+      "path": "exact-local-differential/049-liq_interest_week/normalized-fork.json",
+      "bytes": 354793,
+      "sha256": "d5bf1a272e814d081d50fcff8f86cb30fbb9b0f6b1ab7190f61b98ebfe6fc888"
+    },
+    {
+      "path": "exact-local-differential/049-liq_interest_week/raw-base.json",
+      "bytes": 530693,
+      "sha256": "9476cd6faab766f0942be7e418376342683011189466a7e36004e5fa1bc391f3"
+    },
+    {
+      "path": "exact-local-differential/049-liq_interest_week/raw-fork.json",
+      "bytes": 508059,
+      "sha256": "e1649438aea96423acc9a8f8183c1dbb5492180d18b1d7bf4fce5f12a83bb7b0"
+    },
+    {
+      "path": "exact-local-differential/049-liq_interest_week/step-049-result.txt",
+      "bytes": 98,
+      "sha256": "2f0d733766856f4d628ba3cc9f84ff3f5eeb93da102658d8edc8e5fac88c87d3"
+    },
+    {
+      "path": "exact-local-differential/050-liq_interest_week/normalized-base.json",
+      "bytes": 354793,
+      "sha256": "7fd2342cd537e7c4f280666b895450613d0baa9ca6bf5bff54c061f3237df5a7"
+    },
+    {
+      "path": "exact-local-differential/050-liq_interest_week/normalized-fork.json",
+      "bytes": 354793,
+      "sha256": "7fd2342cd537e7c4f280666b895450613d0baa9ca6bf5bff54c061f3237df5a7"
+    },
+    {
+      "path": "exact-local-differential/050-liq_interest_week/raw-base.json",
+      "bytes": 530693,
+      "sha256": "61010a69e718a415bc0e04d7dd5fa6db1d0d73a4484b2693b6e4d07ecd7cd2d8"
+    },
+    {
+      "path": "exact-local-differential/050-liq_interest_week/raw-fork.json",
+      "bytes": 508059,
+      "sha256": "1eea0af383c026b2348b524af24340b3630daba16c0cb05fe0b50c2d2350f2a2"
+    },
+    {
+      "path": "exact-local-differential/050-liq_interest_week/step-050-result.txt",
+      "bytes": 98,
+      "sha256": "5e475f5b393453b0ec29ba8c68425e3a482f76edda80cf6f09b8d5ea62ddaa9b"
+    },
+    {
+      "path": "exact-local-differential/051-liq_interest_week/normalized-base.json",
+      "bytes": 354793,
+      "sha256": "7a0826ad28a81d954780c7c224b715253852fd8067140ca6df8d25963d29df60"
+    },
+    {
+      "path": "exact-local-differential/051-liq_interest_week/normalized-fork.json",
+      "bytes": 354793,
+      "sha256": "7a0826ad28a81d954780c7c224b715253852fd8067140ca6df8d25963d29df60"
+    },
+    {
+      "path": "exact-local-differential/051-liq_interest_week/raw-base.json",
+      "bytes": 530693,
+      "sha256": "ba39d4fae8c127e366da8463023acc4749d663f32ba54968594f32048b7bcd98"
+    },
+    {
+      "path": "exact-local-differential/051-liq_interest_week/raw-fork.json",
+      "bytes": 508059,
+      "sha256": "288dbbacc2dfabb43ecca704bf0fa40f5a56a2dc8073dceee6c7ee050b0741ab"
+    },
+    {
+      "path": "exact-local-differential/051-liq_interest_week/step-051-result.txt",
+      "bytes": 98,
+      "sha256": "41ee43c622967883feac2a1915fc0fc4dbb4191d132ff30c1722135aee518179"
+    },
+    {
+      "path": "exact-local-differential/052-liq_interest_week/normalized-base.json",
+      "bytes": 354793,
+      "sha256": "9345a1ab97eedc6c30436f836b196482f76b2c49c1bb8a7350204e00ed00a31d"
+    },
+    {
+      "path": "exact-local-differential/052-liq_interest_week/normalized-fork.json",
+      "bytes": 354793,
+      "sha256": "9345a1ab97eedc6c30436f836b196482f76b2c49c1bb8a7350204e00ed00a31d"
+    },
+    {
+      "path": "exact-local-differential/052-liq_interest_week/raw-base.json",
+      "bytes": 530693,
+      "sha256": "dcfb366a9262fc88e6005e8dcaa07d2005336f203b4d5e1849d9bb1ad6bd12e0"
+    },
+    {
+      "path": "exact-local-differential/052-liq_interest_week/raw-fork.json",
+      "bytes": 508059,
+      "sha256": "c0578bd7b35737eb0cc025f9f32db11aef9b4e5ef11ecc73fcf193666a8f6494"
+    },
+    {
+      "path": "exact-local-differential/052-liq_interest_week/step-052-result.txt",
+      "bytes": 98,
+      "sha256": "a77fd539d3b338851508063f2d890bf2c9088bf2778bb3a3e1388cc4bf5d06e8"
+    },
+    {
+      "path": "exact-local-differential/053-liq_interest_week/normalized-base.json",
+      "bytes": 354793,
+      "sha256": "8b99c9fedf7841ab287d9d97bd0009ffb7b61140f9d4357ffd11aeeac31c1541"
+    },
+    {
+      "path": "exact-local-differential/053-liq_interest_week/normalized-fork.json",
+      "bytes": 354793,
+      "sha256": "8b99c9fedf7841ab287d9d97bd0009ffb7b61140f9d4357ffd11aeeac31c1541"
+    },
+    {
+      "path": "exact-local-differential/053-liq_interest_week/raw-base.json",
+      "bytes": 530693,
+      "sha256": "603c620c275ce798be9544ffcf5ec7cffe0deb8c42f4ed6442b8a5726f06d230"
+    },
+    {
+      "path": "exact-local-differential/053-liq_interest_week/raw-fork.json",
+      "bytes": 508059,
+      "sha256": "764a87bd5e47f64855dc545e0a661c56893c361c95ba391b914daef4db726c76"
+    },
+    {
+      "path": "exact-local-differential/053-liq_interest_week/step-053-result.txt",
+      "bytes": 98,
+      "sha256": "8c884f0583e26976790fc5bb630f4a0fbb160be39c847ef0a7d02231b6039ca0"
+    },
+    {
+      "path": "exact-local-differential/054-liq_interest_week/normalized-base.json",
+      "bytes": 354793,
+      "sha256": "2d899345dc5d47a9ce4ce1010bca5f719026280c2bd39555ba0188fb1e820369"
+    },
+    {
+      "path": "exact-local-differential/054-liq_interest_week/normalized-fork.json",
+      "bytes": 354793,
+      "sha256": "2d899345dc5d47a9ce4ce1010bca5f719026280c2bd39555ba0188fb1e820369"
+    },
+    {
+      "path": "exact-local-differential/054-liq_interest_week/raw-base.json",
+      "bytes": 530693,
+      "sha256": "040321b67d4502ee1c083ba9eae56173bd4ba567986e8dbd9a89707897e4cb63"
+    },
+    {
+      "path": "exact-local-differential/054-liq_interest_week/raw-fork.json",
+      "bytes": 508059,
+      "sha256": "1802e63e1ba8166271000c45c4da154a0cd54182abebe1192c3f9b9c39baad28"
+    },
+    {
+      "path": "exact-local-differential/054-liq_interest_week/step-054-result.txt",
+      "bytes": 98,
+      "sha256": "9833cd600584039940118ffdfdd90457fad7a70ce0903cdb3c531558f3964cfa"
+    },
+    {
+      "path": "exact-local-differential/055-liq_interest_week/normalized-base.json",
+      "bytes": 354793,
+      "sha256": "b67e413ba8640997588e2aa8d383923de1479d81af03a858080928c02b86f08d"
+    },
+    {
+      "path": "exact-local-differential/055-liq_interest_week/normalized-fork.json",
+      "bytes": 354793,
+      "sha256": "b67e413ba8640997588e2aa8d383923de1479d81af03a858080928c02b86f08d"
+    },
+    {
+      "path": "exact-local-differential/055-liq_interest_week/raw-base.json",
+      "bytes": 530693,
+      "sha256": "a7bfd1cab5ca635830feb5e822a0f36987790d2d57216f0df03591c3fbcf78f7"
+    },
+    {
+      "path": "exact-local-differential/055-liq_interest_week/raw-fork.json",
+      "bytes": 508059,
+      "sha256": "a51d02ada156bef1bb5316f189dfeef515e6ae0522da588f811ec80c29f0503e"
+    },
+    {
+      "path": "exact-local-differential/055-liq_interest_week/step-055-result.txt",
+      "bytes": 98,
+      "sha256": "87dfdf032c3f4552d6a6541df27596361ce74330bed71e0bc61ae65ebeede4e9"
+    },
+    {
+      "path": "exact-local-differential/056-partial_liq_new_auction/normalized-base.json",
+      "bytes": 355781,
+      "sha256": "2453e1f836bf2e937191be319d15dd372e5885852777fb0bd1425f6f57ee462c"
+    },
+    {
+      "path": "exact-local-differential/056-partial_liq_new_auction/normalized-fork.json",
+      "bytes": 355781,
+      "sha256": "2453e1f836bf2e937191be319d15dd372e5885852777fb0bd1425f6f57ee462c"
+    },
+    {
+      "path": "exact-local-differential/056-partial_liq_new_auction/raw-base.json",
+      "bytes": 531681,
+      "sha256": "9f265c884a93132d6906286b3f6d0634a75acdad29c386d73e428a8874345c9a"
+    },
+    {
+      "path": "exact-local-differential/056-partial_liq_new_auction/raw-fork.json",
+      "bytes": 509047,
+      "sha256": "ae045470b68f195f8f73cb89966b20fa9939cabbeced10dc2afc3c74dc56ad6a"
+    },
+    {
+      "path": "exact-local-differential/056-partial_liq_new_auction/step-056-result.txt",
+      "bytes": 2376,
+      "sha256": "98692f9de6b1d78677ba70a641557cdd100d3707fa057840d4ef72205edee507"
+    },
+    {
+      "path": "exact-local-differential/057-liq_filler_mint/normalized-base.json",
+      "bytes": 354760,
+      "sha256": "e6ae2d81512a29f200d808a90ad9dd9f10c74aac216baf2cbb27254079232f2d"
+    },
+    {
+      "path": "exact-local-differential/057-liq_filler_mint/normalized-fork.json",
+      "bytes": 354760,
+      "sha256": "e6ae2d81512a29f200d808a90ad9dd9f10c74aac216baf2cbb27254079232f2d"
+    },
+    {
+      "path": "exact-local-differential/057-liq_filler_mint/raw-base.json",
+      "bytes": 530660,
+      "sha256": "5995691c99872ad85c47d2827765dcccd16275fd5cc0d4fa9b666edc96d21650"
+    },
+    {
+      "path": "exact-local-differential/057-liq_filler_mint/raw-fork.json",
+      "bytes": 508026,
+      "sha256": "f593b2c6c43be819f9b34cef4adc4ff67db289a2d486b5a7e527691872943465"
+    },
+    {
+      "path": "exact-local-differential/057-liq_filler_mint/step-057-result.txt",
+      "bytes": 96,
+      "sha256": "9d714d85c495d4e7fad69464f24ec4d334a97c6ba8edf51910bfb1365258fc87"
+    },
+    {
+      "path": "exact-local-differential/058-liq_filler_collateral/normalized-base.json",
+      "bytes": 359414,
+      "sha256": "dc203b9d78dbeefcf15d0fa54717d29ae219e9a0501e9a17f12f74aa5438a8b8"
+    },
+    {
+      "path": "exact-local-differential/058-liq_filler_collateral/normalized-fork.json",
+      "bytes": 359414,
+      "sha256": "dc203b9d78dbeefcf15d0fa54717d29ae219e9a0501e9a17f12f74aa5438a8b8"
+    },
+    {
+      "path": "exact-local-differential/058-liq_filler_collateral/raw-base.json",
+      "bytes": 535314,
+      "sha256": "7a1229ee52424ce32d6054d10343572bc061ec956e07267736ced647b161d4c6"
+    },
+    {
+      "path": "exact-local-differential/058-liq_filler_collateral/raw-fork.json",
+      "bytes": 512680,
+      "sha256": "c915e3888d7d9fc212aa3e7764ed8851ad109b366d35cc4db13b46fc165ea955"
+    },
+    {
+      "path": "exact-local-differential/058-liq_filler_collateral/step-058-result.txt",
+      "bytes": 1930,
+      "sha256": "2730f35d12f81c845e7f705fa37955a629a4236ba42959f3d5bf2cad1fe2d988"
+    },
+    {
+      "path": "exact-local-differential/059-partial_liq_block_jump/normalized-base.json",
+      "bytes": 359414,
+      "sha256": "f9482fc2cba754b1d2f09b6dbabc2dc3ff76db02d2e50ffaea2cc5a81620b10e"
+    },
+    {
+      "path": "exact-local-differential/059-partial_liq_block_jump/normalized-fork.json",
+      "bytes": 359414,
+      "sha256": "f9482fc2cba754b1d2f09b6dbabc2dc3ff76db02d2e50ffaea2cc5a81620b10e"
+    },
+    {
+      "path": "exact-local-differential/059-partial_liq_block_jump/raw-base.json",
+      "bytes": 535314,
+      "sha256": "c0cee45a4fe70474fcfa1100583c054bda51b55c690abb8872e0426aa913005b"
+    },
+    {
+      "path": "exact-local-differential/059-partial_liq_block_jump/raw-fork.json",
+      "bytes": 512680,
+      "sha256": "4c3b0d8ba88357b4fdc10df71230d008d1e89170b0db178b1130a5ba60676432"
+    },
+    {
+      "path": "exact-local-differential/059-partial_liq_block_jump/step-059-result.txt",
+      "bytes": 103,
+      "sha256": "5c1cd451ecc2d05a7cbc43c9b64d43dcd90ad8ac2dcc8e602aa1d3387dad5bb6"
+    },
+    {
+      "path": "exact-local-differential/060-partial_liq_fill_25/normalized-base.json",
+      "bytes": 364029,
+      "sha256": "7372c82cc86720d4e6c3f6bf1cf61a9d744da43977390e918a659f9ed31519d5"
+    },
+    {
+      "path": "exact-local-differential/060-partial_liq_fill_25/normalized-fork.json",
+      "bytes": 364029,
+      "sha256": "7372c82cc86720d4e6c3f6bf1cf61a9d744da43977390e918a659f9ed31519d5"
+    },
+    {
+      "path": "exact-local-differential/060-partial_liq_fill_25/raw-base.json",
+      "bytes": 539929,
+      "sha256": "be615845b20f96dcee521a2e710cba28bfc4bdb96ec1f65b29b6b65a6ffcee54"
+    },
+    {
+      "path": "exact-local-differential/060-partial_liq_fill_25/raw-fork.json",
+      "bytes": 517295,
+      "sha256": "7be57a321a443a07684885742d4339bea699e9f358f5e60a8fa76c0b97c9d49b"
+    },
+    {
+      "path": "exact-local-differential/060-partial_liq_fill_25/step-060-result.txt",
+      "bytes": 1948,
+      "sha256": "2da9bd15f168cb111532d76da2f15acbf4646b02212d6b930376d966bec9bf77"
+    },
+    {
+      "path": "exact-local-differential/061-partial_liq_remaining_auction/normalized-base.json",
+      "bytes": 360498,
+      "sha256": "643b8cb15310034cfdbc6a3062ce95d2b73ed76bebfb7d8bf9f4dafc308b46c0"
+    },
+    {
+      "path": "exact-local-differential/061-partial_liq_remaining_auction/normalized-fork.json",
+      "bytes": 360498,
+      "sha256": "643b8cb15310034cfdbc6a3062ce95d2b73ed76bebfb7d8bf9f4dafc308b46c0"
+    },
+    {
+      "path": "exact-local-differential/061-partial_liq_remaining_auction/raw-base.json",
+      "bytes": 536398,
+      "sha256": "6babc808670822c9719914103ec1984c66aa5f3920e2bd1bbc746e382844ad68"
+    },
+    {
+      "path": "exact-local-differential/061-partial_liq_remaining_auction/raw-fork.json",
+      "bytes": 513764,
+      "sha256": "465a2bf0488bbe638cde1af1c2d95e5c2eba4adb9f707eca79fd767c97f5fabb"
+    },
+    {
+      "path": "exact-local-differential/061-partial_liq_remaining_auction/step-061-result.txt",
+      "bytes": 2382,
+      "sha256": "04cfae65ac6343bc8af34414912463abd6f6de972701e7da8f61c7cb53776123"
+    },
+    {
+      "path": "exact-local-differential/062-partial_liq_fill_remainder/normalized-base.json",
+      "bytes": 362014,
+      "sha256": "5b9aa6f5998341fac41094cb88caf409e428e62f6b1da0bbd0d82462f1ce8a2d"
+    },
+    {
+      "path": "exact-local-differential/062-partial_liq_fill_remainder/normalized-fork.json",
+      "bytes": 362014,
+      "sha256": "5b9aa6f5998341fac41094cb88caf409e428e62f6b1da0bbd0d82462f1ce8a2d"
+    },
+    {
+      "path": "exact-local-differential/062-partial_liq_fill_remainder/raw-base.json",
+      "bytes": 537914,
+      "sha256": "4848742d5d2c91721b663220cb18e8815140708b1040b13a87a1f3e690b4b908"
+    },
+    {
+      "path": "exact-local-differential/062-partial_liq_fill_remainder/raw-fork.json",
+      "bytes": 515280,
+      "sha256": "f3d7667543378963892933fc47f5ae6c61d67db211b3b967a9402f484d0d2ac3"
+    },
+    {
+      "path": "exact-local-differential/062-partial_liq_fill_remainder/step-062-result.txt",
+      "bytes": 1957,
+      "sha256": "4c5d059418c94d9f0939ab3339e36905900067b6ed5174ae19d8cdeb0ff3d619"
+    },
+    {
+      "path": "exact-local-differential/063-full_liq_reprice_weth/normalized-base.json",
+      "bytes": 360553,
+      "sha256": "59ebce94951de527f7bc280cc9a7ad5af45fb98c697c01500acf4128edd50f0e"
+    },
+    {
+      "path": "exact-local-differential/063-full_liq_reprice_weth/normalized-fork.json",
+      "bytes": 360553,
+      "sha256": "59ebce94951de527f7bc280cc9a7ad5af45fb98c697c01500acf4128edd50f0e"
+    },
+    {
+      "path": "exact-local-differential/063-full_liq_reprice_weth/raw-base.json",
+      "bytes": 536453,
+      "sha256": "2c9ef5079bbac798d16f8e1791d3f5fd9b1ac11e3be886706162670238f22276"
+    },
+    {
+      "path": "exact-local-differential/063-full_liq_reprice_weth/raw-fork.json",
+      "bytes": 513819,
+      "sha256": "a68ca90e7d9ef83e4d0119f103b0d861e78f228e9c0e75472015fdffcc640fc2"
+    },
+    {
+      "path": "exact-local-differential/063-full_liq_reprice_weth/step-063-result.txt",
+      "bytes": 102,
+      "sha256": "0012b065e4cda7f85d76d034d2b676ca41207184255db7c2a99c6f82642492f5"
+    },
+    {
+      "path": "exact-local-differential/064-full_liq_borrower_before/normalized-base.json",
+      "bytes": 360561,
+      "sha256": "1639439c0feaa9b857b3c38fe81846c171dea6b6b3ad37c359c728c94850b6b5"
+    },
+    {
+      "path": "exact-local-differential/064-full_liq_borrower_before/normalized-fork.json",
+      "bytes": 360561,
+      "sha256": "1639439c0feaa9b857b3c38fe81846c171dea6b6b3ad37c359c728c94850b6b5"
+    },
+    {
+      "path": "exact-local-differential/064-full_liq_borrower_before/raw-base.json",
+      "bytes": 536461,
+      "sha256": "08d1ffe7818dc9b6aeeaa25563947ed6cb425c2fbcda800c67c05875efd8541d"
+    },
+    {
+      "path": "exact-local-differential/064-full_liq_borrower_before/raw-fork.json",
+      "bytes": 513827,
+      "sha256": "169727a7760ba8dfb577e195fb23be79c66aef18bc175ae2676a6040cc95e32d"
+    },
+    {
+      "path": "exact-local-differential/064-full_liq_borrower_before/step-064-result.txt",
+      "bytes": 1583,
+      "sha256": "a8bb07fbe3396067264d820cbc7861e3e4a4fa48bed3ece2424414d2d75fced4"
+    },
+    {
+      "path": "exact-local-differential/065-full_liq_new_auction/normalized-base.json",
+      "bytes": 368765,
+      "sha256": "26f56328d985d4d337a67a9dcd64af9abe3f544316ee4cab3ff9abd6a072a6a7"
+    },
+    {
+      "path": "exact-local-differential/065-full_liq_new_auction/normalized-fork.json",
+      "bytes": 368765,
+      "sha256": "26f56328d985d4d337a67a9dcd64af9abe3f544316ee4cab3ff9abd6a072a6a7"
+    },
+    {
+      "path": "exact-local-differential/065-full_liq_new_auction/raw-base.json",
+      "bytes": 544665,
+      "sha256": "d9cb7b1e39ed1d805f2f4a51747be64ff2c122b5c60ee419598e3b9244710e50"
+    },
+    {
+      "path": "exact-local-differential/065-full_liq_new_auction/raw-fork.json",
+      "bytes": 522031,
+      "sha256": "a935aa3750bd50b570967b01ff6aef44397ba41bf21359d8345fcfda7cdc3cfe"
+    },
+    {
+      "path": "exact-local-differential/065-full_liq_new_auction/step-065-result.txt",
+      "bytes": 2365,
+      "sha256": "8df261aa82272cd6ec5630a52afb57e90f331dd7f4b922f8e102315e97f8f231"
+    },
+    {
+      "path": "exact-local-differential/066-full_liq_block_jump/normalized-base.json",
+      "bytes": 368765,
+      "sha256": "a09bd4e6457ab51faeafed460a78644bd2ea359f58b08dfafc07702deb1bdcd9"
+    },
+    {
+      "path": "exact-local-differential/066-full_liq_block_jump/normalized-fork.json",
+      "bytes": 368765,
+      "sha256": "a09bd4e6457ab51faeafed460a78644bd2ea359f58b08dfafc07702deb1bdcd9"
+    },
+    {
+      "path": "exact-local-differential/066-full_liq_block_jump/raw-base.json",
+      "bytes": 544665,
+      "sha256": "2812894a07d8a4c95527c0a78d1b119f0e8c44d963a70260b1902caa8fff6a24"
+    },
+    {
+      "path": "exact-local-differential/066-full_liq_block_jump/raw-fork.json",
+      "bytes": 522031,
+      "sha256": "87a58d40f444e0f2ef5990a229e4b7fcdb10cd24478bfcc65109a7c85df0a2f4"
+    },
+    {
+      "path": "exact-local-differential/066-full_liq_block_jump/step-066-result.txt",
+      "bytes": 100,
+      "sha256": "d8951c07ceb2c76dbdf46691f73b76c63a5eb836a9acf787134cc2f7c6f75dfd"
+    },
+    {
+      "path": "exact-local-differential/067-full_liq_custody_before/normalized-base.json",
+      "bytes": 365431,
+      "sha256": "42994ab15022c3bd9e21b5801e8ccb3f91b5e89960ba0c9d0a3ecd70c65dc780"
+    },
+    {
+      "path": "exact-local-differential/067-full_liq_custody_before/normalized-fork.json",
+      "bytes": 365431,
+      "sha256": "42994ab15022c3bd9e21b5801e8ccb3f91b5e89960ba0c9d0a3ecd70c65dc780"
+    },
+    {
+      "path": "exact-local-differential/067-full_liq_custody_before/raw-base.json",
+      "bytes": 541331,
+      "sha256": "ec55f2ab5cb749f4285ab28fcecf1d3262aa17508b9fbad357038ad65f01ed8c"
+    },
+    {
+      "path": "exact-local-differential/067-full_liq_custody_before/raw-fork.json",
+      "bytes": 518697,
+      "sha256": "8c4af52fcccc8087c5e23bb31e28b0bb6b428d05552e469bedb44e2fb6297e88"
+    },
+    {
+      "path": "exact-local-differential/067-full_liq_custody_before/step-067-result.txt",
+      "bytes": 852,
+      "sha256": "5bb0cc7bc4be87918eba944fc7f893e7905fdbbc1685a0acae3296a005feb7d9"
+    },
+    {
+      "path": "exact-local-differential/068-full_liq_fill/normalized-base.json",
+      "bytes": 365321,
+      "sha256": "3ddd1d7579fb23d6bb4afec795bf18ac2a5215fd1c66865bc9350471f0f29542"
+    },
+    {
+      "path": "exact-local-differential/068-full_liq_fill/normalized-fork.json",
+      "bytes": 365321,
+      "sha256": "3ddd1d7579fb23d6bb4afec795bf18ac2a5215fd1c66865bc9350471f0f29542"
+    },
+    {
+      "path": "exact-local-differential/068-full_liq_fill/raw-base.json",
+      "bytes": 541221,
+      "sha256": "8414b29d710dcb6d2f7487d6d26c0d306a92d3f970ab8dab849b3fa08ed90645"
+    },
+    {
+      "path": "exact-local-differential/068-full_liq_fill/raw-fork.json",
+      "bytes": 518587,
+      "sha256": "d8aee0d79d77cb698c8752b3f1f4b209bff28dc1395b252c69f5d5395fd4bece"
+    },
+    {
+      "path": "exact-local-differential/068-full_liq_fill/step-068-result.txt",
+      "bytes": 1934,
+      "sha256": "6b4aa872faa8772b049beb59b2b24295e435b71d631c88d5609646f5ad24cab5"
+    },
+    {
+      "path": "exact-local-differential/069-full_liq_borrower_after/normalized-base.json",
+      "bytes": 361783,
+      "sha256": "03045f21ed73fad15318043de52c2966eb67256f6cd9fc374524366053373cd6"
+    },
+    {
+      "path": "exact-local-differential/069-full_liq_borrower_after/normalized-fork.json",
+      "bytes": 361783,
+      "sha256": "03045f21ed73fad15318043de52c2966eb67256f6cd9fc374524366053373cd6"
+    },
+    {
+      "path": "exact-local-differential/069-full_liq_borrower_after/raw-base.json",
+      "bytes": 537683,
+      "sha256": "1f59981c36180fd3677be70f9194b6c889f1b1006b3b7079627e75051701c9b5"
+    },
+    {
+      "path": "exact-local-differential/069-full_liq_borrower_after/raw-fork.json",
+      "bytes": 515049,
+      "sha256": "52a9e0786c4d3bcbf2abbc313b82e73d6f4b5e35d328104063535cc8e55c7e9a"
+    },
+    {
+      "path": "exact-local-differential/069-full_liq_borrower_after/step-069-result.txt",
+      "bytes": 852,
+      "sha256": "8d719e02f3a7c3ed74cf95dacd0a4a0cff31759baa7cf8e8ab708ae7d4c3ef00"
+    },
+    {
+      "path": "exact-local-differential/070-full_liq_filler_after/normalized-base.json",
+      "bytes": 361791,
+      "sha256": "ab9bc975b188b23d05c2aab0e095fe3f9b5cd346e8005179faac63934ce1aaa6"
+    },
+    {
+      "path": "exact-local-differential/070-full_liq_filler_after/normalized-fork.json",
+      "bytes": 361791,
+      "sha256": "ab9bc975b188b23d05c2aab0e095fe3f9b5cd346e8005179faac63934ce1aaa6"
+    },
+    {
+      "path": "exact-local-differential/070-full_liq_filler_after/raw-base.json",
+      "bytes": 537691,
+      "sha256": "b92abd6a612774d63e1ac841444236d22596680e723e12576d6f880eb4b6b1ef"
+    },
+    {
+      "path": "exact-local-differential/070-full_liq_filler_after/raw-fork.json",
+      "bytes": 515057,
+      "sha256": "d82d92491a1a4fbca4d892852da3a4588b293400deda26d136b2911e85af3553"
+    },
+    {
+      "path": "exact-local-differential/070-full_liq_filler_after/step-070-result.txt",
+      "bytes": 1942,
+      "sha256": "76ff5ea3416129fcf6d50537d77316be36c0e9dbdf7a05cc5ddd06fbd9cfa69d"
+    },
+    {
+      "path": "exact-local-differential/071-full_liq_custody_after/normalized-base.json",
+      "bytes": 361799,
+      "sha256": "18e09ac0d7ba0c44e197338fec8d5e8c870f3953627c5a1b78f53834cee66ae4"
+    },
+    {
+      "path": "exact-local-differential/071-full_liq_custody_after/normalized-fork.json",
+      "bytes": 361799,
+      "sha256": "18e09ac0d7ba0c44e197338fec8d5e8c870f3953627c5a1b78f53834cee66ae4"
+    },
+    {
+      "path": "exact-local-differential/071-full_liq_custody_after/raw-base.json",
+      "bytes": 537699,
+      "sha256": "027c8e10fc0b488610575223d94da0ea56c4fa2ceb5e89c406ce236f29e49424"
+    },
+    {
+      "path": "exact-local-differential/071-full_liq_custody_after/raw-fork.json",
+      "bytes": 515065,
+      "sha256": "044cf9528016660df8f9a826e5ddc1669bd380a924414909c165972e5a2babe8"
+    },
+    {
+      "path": "exact-local-differential/071-full_liq_custody_after/step-071-result.txt",
+      "bytes": 851,
+      "sha256": "b8b21b34a85500cc0f6e1f55ea0afa11aa7b81c4277fc99bc053c5f782243019"
+    },
+    {
+      "path": "exact-local-differential/072-stale_init/normalized-base.json",
+      "bytes": 328519,
+      "sha256": "48fef25e841a73912e3a6b718ae71d7cfd38a72ba1bb78c53827484618864f2a"
+    },
+    {
+      "path": "exact-local-differential/072-stale_init/normalized-fork.json",
+      "bytes": 328519,
+      "sha256": "48fef25e841a73912e3a6b718ae71d7cfd38a72ba1bb78c53827484618864f2a"
+    },
+    {
+      "path": "exact-local-differential/072-stale_init/raw-base.json",
+      "bytes": 504419,
+      "sha256": "68c5f3fa3440a919d93f3c1c4406bd9cd10bebf9151b90a4b714b773c8316f5d"
+    },
+    {
+      "path": "exact-local-differential/072-stale_init/raw-fork.json",
+      "bytes": 481785,
+      "sha256": "841a99504d549bccd1e8463f6258b18737e450f8ee99f9199afaaacf69f82c27"
+    },
+    {
+      "path": "exact-local-differential/072-stale_init/step-072-result.txt",
+      "bytes": 91,
+      "sha256": "4ffe0e636b6a093cae1b6c81590e4bb1b74006ae033a17f45160ce51c18d59ec"
+    },
+    {
+      "path": "exact-local-differential/073-stale_mint_stable/normalized-base.json",
+      "bytes": 328425,
+      "sha256": "f8c75dba9846f17b3bcd1aa5ab59eb5a49ff6c863b00d0f9681062eee2a812e8"
+    },
+    {
+      "path": "exact-local-differential/073-stale_mint_stable/normalized-fork.json",
+      "bytes": 328425,
+      "sha256": "f8c75dba9846f17b3bcd1aa5ab59eb5a49ff6c863b00d0f9681062eee2a812e8"
+    },
+    {
+      "path": "exact-local-differential/073-stale_mint_stable/raw-base.json",
+      "bytes": 504325,
+      "sha256": "3e37e2406bf542d8de3f63db26521587921fa2da1b7ce7f9bd00f1e5512bf1a8"
+    },
+    {
+      "path": "exact-local-differential/073-stale_mint_stable/raw-fork.json",
+      "bytes": 481691,
+      "sha256": "e9940d05747119d3bd961fab10389c9906f231db67189c25e12767d0c8f89ac1"
+    },
+    {
+      "path": "exact-local-differential/073-stale_mint_stable/step-073-result.txt",
+      "bytes": 98,
+      "sha256": "87b123ced97c657aad2caa10353e5905fbe8f43da36d8c37e3398064f71271fe"
+    },
+    {
+      "path": "exact-local-differential/074-stale_borrow_open/normalized-base.json",
+      "bytes": 340864,
+      "sha256": "ef114c6dd8b851fac940a509eca2c9ad837df1ef0fc00ab1db1f00ee493cf4e9"
+    },
+    {
+      "path": "exact-local-differential/074-stale_borrow_open/normalized-fork.json",
+      "bytes": 340864,
+      "sha256": "ef114c6dd8b851fac940a509eca2c9ad837df1ef0fc00ab1db1f00ee493cf4e9"
+    },
+    {
+      "path": "exact-local-differential/074-stale_borrow_open/raw-base.json",
+      "bytes": 516764,
+      "sha256": "29525293036f3b1f14ed671f833f7aad0a602c9bf077820339721ca24ad647bf"
+    },
+    {
+      "path": "exact-local-differential/074-stale_borrow_open/raw-fork.json",
+      "bytes": 494130,
+      "sha256": "3ecdb56c40b8e00c20e43188933c532fe487e1cbc9e811511c478e4edb19a137"
+    },
+    {
+      "path": "exact-local-differential/074-stale_borrow_open/step-074-result.txt",
+      "bytes": 1214,
+      "sha256": "57e713e55ab1e45077e3b32e346c776b6c768aab10dcdf21d746bbcb6269ea5d"
+    },
+    {
+      "path": "exact-local-differential/075-stale_interest_jump/normalized-base.json",
+      "bytes": 340864,
+      "sha256": "fab817fa1f0b3192af72be9eaf1aa9818f57ec4570cc7b9e9b0579f394a9259e"
+    },
+    {
+      "path": "exact-local-differential/075-stale_interest_jump/normalized-fork.json",
+      "bytes": 340864,
+      "sha256": "fab817fa1f0b3192af72be9eaf1aa9818f57ec4570cc7b9e9b0579f394a9259e"
+    },
+    {
+      "path": "exact-local-differential/075-stale_interest_jump/raw-base.json",
+      "bytes": 516764,
+      "sha256": "fea3a7643029237691016c33bfecf330c5a708edf9aa9305059d660c6b5258c8"
+    },
+    {
+      "path": "exact-local-differential/075-stale_interest_jump/raw-fork.json",
+      "bytes": 494130,
+      "sha256": "78adad09f4145c0007bbf2bcc152aa3595f3b70be2ddaea934e4c211b9da1356"
+    },
+    {
+      "path": "exact-local-differential/075-stale_interest_jump/step-075-result.txt",
+      "bytes": 100,
+      "sha256": "c54b928c13b1d68915a1b042e3714ea9c7036cedc4b1a13caf99a131b70084ba"
+    },
+    {
+      "path": "exact-local-differential/076-stale_debt_reprice/normalized-base.json",
+      "bytes": 339351,
+      "sha256": "caf16069e6f1c0082af4e9f076979efdbd7d7ec8c94b859548dd9fa18faa3871"
+    },
+    {
+      "path": "exact-local-differential/076-stale_debt_reprice/normalized-fork.json",
+      "bytes": 339351,
+      "sha256": "caf16069e6f1c0082af4e9f076979efdbd7d7ec8c94b859548dd9fa18faa3871"
+    },
+    {
+      "path": "exact-local-differential/076-stale_debt_reprice/raw-base.json",
+      "bytes": 515251,
+      "sha256": "b8c7b94f330473cb4d4313cf515c597dbf3f80153f0f212ff9269ad059d3777a"
+    },
+    {
+      "path": "exact-local-differential/076-stale_debt_reprice/raw-fork.json",
+      "bytes": 492617,
+      "sha256": "55b09695ecc00917d5c82b1f9f9d477092d8a309b4b763c7e5c2864cecc7e298"
+    },
+    {
+      "path": "exact-local-differential/076-stale_debt_reprice/step-076-result.txt",
+      "bytes": 99,
+      "sha256": "95bcb75295f0ee156852750638aec4ba3fdc702c5f80e07a2af38e45d6011fd8"
+    },
+    {
+      "path": "exact-local-differential/077-stale_new_auction/normalized-base.json",
+      "bytes": 345724,
+      "sha256": "400efced9d80866c1f2f50c04e852b9565709b9b4e862610b8ab27394fcf3bf2"
+    },
+    {
+      "path": "exact-local-differential/077-stale_new_auction/normalized-fork.json",
+      "bytes": 345724,
+      "sha256": "400efced9d80866c1f2f50c04e852b9565709b9b4e862610b8ab27394fcf3bf2"
+    },
+    {
+      "path": "exact-local-differential/077-stale_new_auction/raw-base.json",
+      "bytes": 521624,
+      "sha256": "7d1d6b96969f460d7e0adc1999b20d7da2f213a41fa85071413bef5ec6ebb73b"
+    },
+    {
+      "path": "exact-local-differential/077-stale_new_auction/raw-fork.json",
+      "bytes": 498990,
+      "sha256": "60edd1f6625d97c15df4bb4d8d290c2caebdd339688801b06905b2987accfae9"
+    },
+    {
+      "path": "exact-local-differential/077-stale_new_auction/step-077-result.txt",
+      "bytes": 1508,
+      "sha256": "b7ebf918626b256c31171f470320b8afcf0f925dc6b8f1ec56c67208128d2791"
+    },
+    {
+      "path": "exact-local-differential/078-stale_early_block_jump/normalized-base.json",
+      "bytes": 345724,
+      "sha256": "1be14fe4a6d63f2318143c553f127555dfb3f3a3c151044021ee86df0d52edd4"
+    },
+    {
+      "path": "exact-local-differential/078-stale_early_block_jump/normalized-fork.json",
+      "bytes": 345724,
+      "sha256": "1be14fe4a6d63f2318143c553f127555dfb3f3a3c151044021ee86df0d52edd4"
+    },
+    {
+      "path": "exact-local-differential/078-stale_early_block_jump/raw-base.json",
+      "bytes": 521624,
+      "sha256": "55fd9276a4b874fee15db0317b8a75b032321e19e6d114ddf67b21371b3b47de"
+    },
+    {
+      "path": "exact-local-differential/078-stale_early_block_jump/raw-fork.json",
+      "bytes": 498990,
+      "sha256": "86f1b7c08f1afe9071f97f9131cced8f25348487e3fcf6b0126af0ff48610992"
+    },
+    {
+      "path": "exact-local-differential/078-stale_early_block_jump/step-078-result.txt",
+      "bytes": 103,
+      "sha256": "772c0184552600c3e4fa9f3dc4c4c1f93c3aca122c9a49841788ee1123cb0b51"
+    },
+    {
+      "path": "exact-local-differential/079-stale_early_delete/normalized-base.json",
+      "bytes": 343306,
+      "sha256": "77a0231ec6d65a24c382df92f3ec837f0af136d6235bb1342ae0396416d527e4"
+    },
+    {
+      "path": "exact-local-differential/079-stale_early_delete/normalized-fork.json",
+      "bytes": 343306,
+      "sha256": "77a0231ec6d65a24c382df92f3ec837f0af136d6235bb1342ae0396416d527e4"
+    },
+    {
+      "path": "exact-local-differential/079-stale_early_delete/raw-base.json",
+      "bytes": 519206,
+      "sha256": "8fa9c7d8eabefdf71b96acdef0756c1c5f4a04632a01ff7f1e764ccab5ec455a"
+    },
+    {
+      "path": "exact-local-differential/079-stale_early_delete/raw-fork.json",
+      "bytes": 496572,
+      "sha256": "9ff95344f138ff9c43b55f16a2d3db886ae0418905a17bb37e5904988cd7ee38"
+    },
+    {
+      "path": "exact-local-differential/079-stale_early_delete/step-079-result.txt",
+      "bytes": 171,
+      "sha256": "b2b24513ed02f26e7dc71f80d06a15105bf7973a31bf2832c740c0489c9c688e"
+    },
+    {
+      "path": "exact-local-differential/080-stale_auction_retained/normalized-base.json",
+      "bytes": 343314,
+      "sha256": "69573955bee34c6467a0cd65442321baccc0f3812e201df9167619f542be22c3"
+    },
+    {
+      "path": "exact-local-differential/080-stale_auction_retained/normalized-fork.json",
+      "bytes": 343314,
+      "sha256": "69573955bee34c6467a0cd65442321baccc0f3812e201df9167619f542be22c3"
+    },
+    {
+      "path": "exact-local-differential/080-stale_auction_retained/raw-base.json",
+      "bytes": 519214,
+      "sha256": "08a723531d9f20da5f093ac7bb15e697398a8a1b4b70e5b325f65859c7ebeba3"
+    },
+    {
+      "path": "exact-local-differential/080-stale_auction_retained/raw-fork.json",
+      "bytes": 496580,
+      "sha256": "3a7c7cc8c8270acd3035c1706af4143e9de4d89aed144f770435acc3d28e58f4"
+    },
+    {
+      "path": "exact-local-differential/080-stale_auction_retained/step-080-result.txt",
+      "bytes": 1513,
+      "sha256": "39a99241d898905e41e4603c99c90cab5c59a66fae7150263270fcef9ecc07db"
+    },
+    {
+      "path": "exact-local-differential/081-stale_expiry_block_jump/normalized-base.json",
+      "bytes": 343314,
+      "sha256": "da468d103a1d13c37b6f9da674d9c6565a9c38bfd6cd7dd688505079038588a5"
+    },
+    {
+      "path": "exact-local-differential/081-stale_expiry_block_jump/normalized-fork.json",
+      "bytes": 343314,
+      "sha256": "da468d103a1d13c37b6f9da674d9c6565a9c38bfd6cd7dd688505079038588a5"
+    },
+    {
+      "path": "exact-local-differential/081-stale_expiry_block_jump/raw-base.json",
+      "bytes": 519214,
+      "sha256": "1d7fdd577ad6b3d79da1586a3ee4b4a7dd574b3aa8a5ce8e923d398082bc1b43"
+    },
+    {
+      "path": "exact-local-differential/081-stale_expiry_block_jump/raw-fork.json",
+      "bytes": 496580,
+      "sha256": "4eb3fbf4af762c2f4b7bc4e2936b6f013ea96184890761bf73250dd464f78f8e"
+    },
+    {
+      "path": "exact-local-differential/081-stale_expiry_block_jump/step-081-result.txt",
+      "bytes": 104,
+      "sha256": "9701db7591ce58edb25021ff2fb59d12c10d24e732092d040e70365d6fbaa576"
+    },
+    {
+      "path": "exact-local-differential/082-stale_del_auction/normalized-base.json",
+      "bytes": 339968,
+      "sha256": "d715c739297514c4b158d3beff3f6aef0809c81ea9f45ceada516db230711901"
+    },
+    {
+      "path": "exact-local-differential/082-stale_del_auction/normalized-fork.json",
+      "bytes": 339968,
+      "sha256": "d715c739297514c4b158d3beff3f6aef0809c81ea9f45ceada516db230711901"
+    },
+    {
+      "path": "exact-local-differential/082-stale_del_auction/raw-base.json",
+      "bytes": 515868,
+      "sha256": "0997570930e4f60157f8c20d45f1422a86b0ff71e8a15288d88c5445974b5b8c"
+    },
+    {
+      "path": "exact-local-differential/082-stale_del_auction/raw-fork.json",
+      "bytes": 493234,
+      "sha256": "dbd944421c6669a9394ae42d62e967db2e293ca1b1b733b7000baa4244742ccd"
+    },
+    {
+      "path": "exact-local-differential/082-stale_del_auction/step-082-result.txt",
+      "bytes": 98,
+      "sha256": "6c0ed05e3315a1fb862051b3be3be206b03f8f8d2091dca9887e6ce42eba4332"
+    },
+    {
+      "path": "exact-local-differential/083-stale_deleted_auction/normalized-base.json",
+      "bytes": 339391,
+      "sha256": "1e81e8b1328462c18c9e1de4d75537da3d1a7d56a9298d85afdbf6f8580931de"
+    },
+    {
+      "path": "exact-local-differential/083-stale_deleted_auction/normalized-fork.json",
+      "bytes": 339391,
+      "sha256": "1e81e8b1328462c18c9e1de4d75537da3d1a7d56a9298d85afdbf6f8580931de"
+    },
+    {
+      "path": "exact-local-differential/083-stale_deleted_auction/raw-base.json",
+      "bytes": 515291,
+      "sha256": "5a1a89407912dc5281f2502be91cd332549de13389fc0bd7ce2315bf31c565df"
+    },
+    {
+      "path": "exact-local-differential/083-stale_deleted_auction/raw-fork.json",
+      "bytes": 492657,
+      "sha256": "98a698224b9e48920a1a7903f5eb5e83025289abc2e6c9f59ad96b785011ce07"
+    },
+    {
+      "path": "exact-local-differential/083-stale_deleted_auction/step-083-result.txt",
+      "bytes": 188,
+      "sha256": "0b56e5a9d8b0c17eb185294354cd3f07fb4c08c24597620c319be8f6efdb9ea0"
+    },
+    {
+      "path": "exact-local-differential/backstop_add_reward/fork-after-evidence.txt",
+      "bytes": 43,
+      "sha256": "27e50b183f034d0888232e24224ec51a56dbec1509cb9b587094d2e1bb7450b3"
+    },
+    {
+      "path": "exact-local-differential/backstop_add_reward/fork-after.json",
+      "bytes": 498719,
+      "sha256": "bf54e4cbc3b5fb472513323bbc7929b017cf789795ce65421244071269e48ba4"
+    },
+    {
+      "path": "exact-local-differential/backstop_add_reward/fork-before-evidence.txt",
+      "bytes": 43,
+      "sha256": "27e50b183f034d0888232e24224ec51a56dbec1509cb9b587094d2e1bb7450b3"
+    },
+    {
+      "path": "exact-local-differential/backstop_add_reward/fork-before.json",
+      "bytes": 498709,
+      "sha256": "743e51a04b9d88b01090acdd5100025176b88e8c158a8eb5f3b97205905d5077"
+    },
+    {
+      "path": "exact-local-differential/backstop_add_reward/fork-substituted.json",
+      "bytes": 547238,
+      "sha256": "7a852694f111b6f7ca6bca006f8463287b31fe311fae5f948a7f15c763429aef"
+    },
+    {
+      "path": "exact-local-differential/backstop_add_reward/reverse-recovered.json",
+      "bytes": 547238,
+      "sha256": "3fc24fa2f454b686d07af8ced8ac605668b359f20f90a9d184ad941cd166b18c"
+    },
+    {
+      "path": "exact-local-differential/backstop_add_reward/stock-add-reward-result.txt",
+      "bytes": 152,
+      "sha256": "0d78b333c85552c405c00983c979473ae2b7cd30272184e3215ab4b8e6d21551"
+    },
+    {
+      "path": "exact-local-differential/backstop_add_reward/stock-add-reward.json",
+      "bytes": 500267,
+      "sha256": "de7492a6e6c35e7c102a6ffeb1eb52fdf0b578a32b6288b6e54c978cf44aefd3"
+    },
+    {
+      "path": "exact-local-differential/backstop_add_reward/stock-before.json",
+      "bytes": 498709,
+      "sha256": "4c4f1f19c4eee8b28e0091674c498f1de369d5e4b58429df007a686ff4ed1b26"
+    },
+    {
+      "path": "exact-local-differential/backstop_add_reward/stock-prepared.json",
+      "bytes": 547238,
+      "sha256": "3fc24fa2f454b686d07af8ced8ac605668b359f20f90a9d184ad941cd166b18c"
+    },
+    {
+      "path": "exact-local-differential/backstop_claim/fork-after-evidence.txt",
+      "bytes": 43,
+      "sha256": "27e50b183f034d0888232e24224ec51a56dbec1509cb9b587094d2e1bb7450b3"
+    },
+    {
+      "path": "exact-local-differential/backstop_claim/fork-after.json",
+      "bytes": 511402,
+      "sha256": "7f7855de1ec219c7ed6150cd49f7a0c6e1ab598ed95b4a3d81fdfac2b871477e"
+    },
+    {
+      "path": "exact-local-differential/backstop_claim/fork-before-evidence.txt",
+      "bytes": 43,
+      "sha256": "27e50b183f034d0888232e24224ec51a56dbec1509cb9b587094d2e1bb7450b3"
+    },
+    {
+      "path": "exact-local-differential/backstop_claim/fork-before.json",
+      "bytes": 511392,
+      "sha256": "e22f80b2f85370c9192c9e156b79ab5178a804f63cd348f625b98fa53d25cbd7"
+    },
+    {
+      "path": "exact-local-differential/backstop_claim/fork-substituted.json",
+      "bytes": 560489,
+      "sha256": "b72e4711f6e54088d675581a217aca831b6fe4125c1ff014ddefea4e5218eeeb"
+    },
+    {
+      "path": "exact-local-differential/backstop_claim/reverse-recovered.json",
+      "bytes": 560489,
+      "sha256": "264cd0750a3e10af80c2c8b91d9ab025919925730dd7c54a1d52b0d8ec3ba2cc"
+    },
+    {
+      "path": "exact-local-differential/backstop_claim/stock-before.json",
+      "bytes": 511392,
+      "sha256": "dc31193e58baa84c1551244551f64f27592c6bb698afff1222661fbda00fb0c0"
+    },
+    {
+      "path": "exact-local-differential/backstop_claim/stock-claim-result.txt",
+      "bytes": 1121,
+      "sha256": "f83ef5ba262f14569e9cc0e465941baebd56a6ba6694425d8bbb8b94faea1ad7"
+    },
+    {
+      "path": "exact-local-differential/backstop_claim/stock-claim.json",
+      "bytes": 524128,
+      "sha256": "98142facc946863bf0a6fb3635822f3ab24a51b10f0328c7e6c00825d8a9a03b"
+    },
+    {
+      "path": "exact-local-differential/backstop_claim/stock-prepared.json",
+      "bytes": 560489,
+      "sha256": "264cd0750a3e10af80c2c8b91d9ab025919925730dd7c54a1d52b0d8ec3ba2cc"
+    },
+    {
+      "path": "exact-local-differential/backstop_distribute/fork-after-evidence.txt",
+      "bytes": 43,
+      "sha256": "27e50b183f034d0888232e24224ec51a56dbec1509cb9b587094d2e1bb7450b3"
+    },
+    {
+      "path": "exact-local-differential/backstop_distribute/fork-after.json",
+      "bytes": 503362,
+      "sha256": "91792fb5a7dbf07a59d7711d9f9e154e878a5f9878df9aca86b7aa5dde967bb1"
+    },
+    {
+      "path": "exact-local-differential/backstop_distribute/fork-before-evidence.txt",
+      "bytes": 43,
+      "sha256": "27e50b183f034d0888232e24224ec51a56dbec1509cb9b587094d2e1bb7450b3"
+    },
+    {
+      "path": "exact-local-differential/backstop_distribute/fork-before.json",
+      "bytes": 503352,
+      "sha256": "d13297df75ff16594b0335b18f672f01edfc43e16e114482fe4c9c86b419cf74"
+    },
+    {
+      "path": "exact-local-differential/backstop_distribute/fork-substituted.json",
+      "bytes": 551905,
+      "sha256": "7cc8b12064ee7e9515a1f34cead804255492f6156e7313bdb59770f2df726612"
+    },
+    {
+      "path": "exact-local-differential/backstop_distribute/reverse-recovered.json",
+      "bytes": 551905,
+      "sha256": "61a81882c555d05e41b1126a97f30ba905491ac3386e0a72237bcdff2f4ab4ae"
+    },
+    {
+      "path": "exact-local-differential/backstop_distribute/stock-before.json",
+      "bytes": 503352,
+      "sha256": "6d97a8120a86afc18f33cf6d651e243b89534e9b405e619c04ce524be0724720"
+    },
+    {
+      "path": "exact-local-differential/backstop_distribute/stock-distribute-result.txt",
+      "bytes": 169,
+      "sha256": "e8850b1db17a9ef85b8e04bcd4399f3b2b30e5a9370cb88439a9cd27bc1dce66"
+    },
+    {
+      "path": "exact-local-differential/backstop_distribute/stock-distribute.json",
+      "bytes": 505714,
+      "sha256": "e380d91f1f1a000ba9eac1f7713acbaa97727c1588c43a521647092c6a17a7d1"
+    },
+    {
+      "path": "exact-local-differential/backstop_distribute/stock-prepared.json",
+      "bytes": 551905,
+      "sha256": "61a81882c555d05e41b1126a97f30ba905491ac3386e0a72237bcdff2f4ab4ae"
+    },
+    {
+      "path": "exact-local-differential/backstop_drop/fork-after-evidence.txt",
+      "bytes": 43,
+      "sha256": "27e50b183f034d0888232e24224ec51a56dbec1509cb9b587094d2e1bb7450b3"
+    },
+    {
+      "path": "exact-local-differential/backstop_drop/fork-after.json",
+      "bytes": 498719,
+      "sha256": "bf54e4cbc3b5fb472513323bbc7929b017cf789795ce65421244071269e48ba4"
+    },
+    {
+      "path": "exact-local-differential/backstop_drop/fork-before-evidence.txt",
+      "bytes": 43,
+      "sha256": "27e50b183f034d0888232e24224ec51a56dbec1509cb9b587094d2e1bb7450b3"
+    },
+    {
+      "path": "exact-local-differential/backstop_drop/fork-before.json",
+      "bytes": 498709,
+      "sha256": "743e51a04b9d88b01090acdd5100025176b88e8c158a8eb5f3b97205905d5077"
+    },
+    {
+      "path": "exact-local-differential/backstop_drop/fork-substituted.json",
+      "bytes": 547230,
+      "sha256": "8d5feeae74bdb55c9665a9433f463da77be2f7d91d896e3f570431ce00685e6b"
+    },
+    {
+      "path": "exact-local-differential/backstop_drop/reverse-recovered.json",
+      "bytes": 547230,
+      "sha256": "fb4a50ec2b1013a8d660d3b6b8cc78d86bf04bac93c39ee3475688c2abd143ea"
+    },
+    {
+      "path": "exact-local-differential/backstop_drop/stock-before.json",
+      "bytes": 498709,
+      "sha256": "4c4f1f19c4eee8b28e0091674c498f1de369d5e4b58429df007a686ff4ed1b26"
+    },
+    {
+      "path": "exact-local-differential/backstop_drop/stock-drop-result.txt",
+      "bytes": 690,
+      "sha256": "c6fb02dfa764b7334668ea27073180ee9221bed858034fdc7d77d1bb8a23fbaf"
+    },
+    {
+      "path": "exact-local-differential/backstop_drop/stock-drop.json",
+      "bytes": 506274,
+      "sha256": "fa93bdcbe335bb13a00f3891492dc6d6c5b94670920fd40eea97bead09170a50"
+    },
+    {
+      "path": "exact-local-differential/backstop_drop/stock-prepared.json",
+      "bytes": 547230,
+      "sha256": "fb4a50ec2b1013a8d660d3b6b8cc78d86bf04bac93c39ee3475688c2abd143ea"
+    },
+    {
+      "path": "exact-local-differential/backstop_gulp_emissions/fork-after-evidence.txt",
+      "bytes": 43,
+      "sha256": "27e50b183f034d0888232e24224ec51a56dbec1509cb9b587094d2e1bb7450b3"
+    },
+    {
+      "path": "exact-local-differential/backstop_gulp_emissions/fork-after.json",
+      "bytes": 505192,
+      "sha256": "d65677e3e9569632db0d7e6851699bab455b4dd270876f83d49c0079f00e57b0"
+    },
+    {
+      "path": "exact-local-differential/backstop_gulp_emissions/fork-before-evidence.txt",
+      "bytes": 43,
+      "sha256": "27e50b183f034d0888232e24224ec51a56dbec1509cb9b587094d2e1bb7450b3"
+    },
+    {
+      "path": "exact-local-differential/backstop_gulp_emissions/fork-before.json",
+      "bytes": 505182,
+      "sha256": "e348b1e84f52d4fb891ce56b912907d36be3a64f00f379349bfdc50dcf33a700"
+    },
+    {
+      "path": "exact-local-differential/backstop_gulp_emissions/fork-substituted.json",
+      "bytes": 553743,
+      "sha256": "8a75abd70fe6da4424e3a845501787c7fb4dc3909a9e3d3ac9415bdd2ec4a149"
+    },
+    {
+      "path": "exact-local-differential/backstop_gulp_emissions/reverse-recovered.json",
+      "bytes": 553743,
+      "sha256": "f4d8ab239e842f6444ff28e4d9553e80dee77393ebdf3caed31cd2e2652d2151"
+    },
+    {
+      "path": "exact-local-differential/backstop_gulp_emissions/stock-before.json",
+      "bytes": 505182,
+      "sha256": "d2ba8f1ee9168d8e9fce90e0ed7817fcaee38fe95b4cba49c8b2b610900c97f6"
+    },
+    {
+      "path": "exact-local-differential/backstop_gulp_emissions/stock-gulp-result.txt",
+      "bytes": 619,
+      "sha256": "200f28ec447055a0cb89c4f395cf6f7dbaea4cc71678e36a68201a72da47aea9"
+    },
+    {
+      "path": "exact-local-differential/backstop_gulp_emissions/stock-gulp.json",
+      "bytes": 513848,
+      "sha256": "ccbbbda23c599820f4ca4aac4135456dba9d5581132e4541249ec3dbad2e0fa3"
+    },
+    {
+      "path": "exact-local-differential/backstop_gulp_emissions/stock-prepared.json",
+      "bytes": 553743,
+      "sha256": "f4d8ab239e842f6444ff28e4d9553e80dee77393ebdf3caed31cd2e2652d2151"
+    },
+    {
+      "path": "exact-local-differential/backstop_remove_reward/fork-after-evidence.txt",
+      "bytes": 43,
+      "sha256": "27e50b183f034d0888232e24224ec51a56dbec1509cb9b587094d2e1bb7450b3"
+    },
+    {
+      "path": "exact-local-differential/backstop_remove_reward/fork-after.json",
+      "bytes": 505146,
+      "sha256": "00c6f4d7aaa39f0a88fc5dcf96d157cf9c31a0cf33224e6aea17e91bfea766af"
+    },
+    {
+      "path": "exact-local-differential/backstop_remove_reward/fork-before-evidence.txt",
+      "bytes": 43,
+      "sha256": "27e50b183f034d0888232e24224ec51a56dbec1509cb9b587094d2e1bb7450b3"
+    },
+    {
+      "path": "exact-local-differential/backstop_remove_reward/fork-before.json",
+      "bytes": 505136,
+      "sha256": "eece8d8ad172eaeb6cbfdec0fd15b6ecba3635d3a1d0d25348f4073eea5f0f02"
+    },
+    {
+      "path": "exact-local-differential/backstop_remove_reward/fork-substituted.json",
+      "bytes": 555313,
+      "sha256": "da4f932784b28f46553ab0cfcf12eac2760b8d82735c2c6d1a9e7f302b89a5ee"
+    },
+    {
+      "path": "exact-local-differential/backstop_remove_reward/reverse-recovered.json",
+      "bytes": 555313,
+      "sha256": "7f5a6b5694c833862c00055510ebc112a77fe11639195ddc976c1b7e550a4997"
+    },
+    {
+      "path": "exact-local-differential/backstop_remove_reward/stock-before.json",
+      "bytes": 505136,
+      "sha256": "f839e4f4704060cae9aabf778bffa6aeaae1f6abd1016ed929bda23dd182e413"
+    },
+    {
+      "path": "exact-local-differential/backstop_remove_reward/stock-prepared.json",
+      "bytes": 555313,
+      "sha256": "7f5a6b5694c833862c00055510ebc112a77fe11639195ddc976c1b7e550a4997"
+    },
+    {
+      "path": "exact-local-differential/backstop_remove_reward/stock-remove-reward-result.txt",
+      "bytes": 156,
+      "sha256": "dc5be11c7d104574984677b0ec96be1cbd15c1fe510483a282ef7cc17c8a9e0c"
+    },
+    {
+      "path": "exact-local-differential/backstop_remove_reward/stock-remove-reward.json",
+      "bytes": 505492,
+      "sha256": "47021e242c5914d6685f7a5e41826bd510411ded19403e5653da6c9dff701252"
+    },
+    {
+      "path": "exact-local-differential/pool_direct_supplier_default/fork-after.json",
+      "bytes": 561822,
+      "sha256": "e1d3660a32cfbcd7c5fd8973c5a56167fdf701198eecc079cb30008e83ecea4d"
+    },
+    {
+      "path": "exact-local-differential/pool_direct_supplier_default/fork-before.json",
+      "bytes": 561151,
+      "sha256": "fd562f60b3beb0f764313f0dc7ffc2743485aabab770a79c717063c8ea12ab12"
+    },
+    {
+      "path": "exact-local-differential/pool_direct_supplier_default/fork-substituted.json",
+      "bytes": 609688,
+      "sha256": "7a6fdb08afa13acac175e30b818dd47877a9413cb349c3ca9cdc8cbfb0d1beff"
+    },
+    {
+      "path": "exact-local-differential/pool_direct_supplier_default/reverse-recovered.json",
+      "bytes": 609688,
+      "sha256": "d094bb80d8b52f2c9d260920e6e0561933da39f0d9416bfd7119f7a0e2045e72"
+    },
+    {
+      "path": "exact-local-differential/pool_direct_supplier_default/stock-after.json",
+      "bytes": 565366,
+      "sha256": "16c2d3d1c4f9d036f585c18722f322ae3ed9280d6ee7eb5f169855f774b0efe3"
+    },
+    {
+      "path": "exact-local-differential/pool_direct_supplier_default/stock-before-host-preparation.json",
+      "bytes": 504419,
+      "sha256": "68c5f3fa3440a919d93f3c1c4406bd9cd10bebf9151b90a4b714b773c8316f5d"
+    },
+    {
+      "path": "exact-local-differential/pool_direct_supplier_default/stock-before.json",
+      "bytes": 561151,
+      "sha256": "d28cc7ddc3baf41821172cf500ac109758e1d4641fca46582d31aacb7530d0a4"
+    },
+    {
+      "path": "exact-local-differential/pool_direct_supplier_default/stock-prepared.json",
+      "bytes": 609688,
+      "sha256": "d094bb80d8b52f2c9d260920e6e0561933da39f0d9416bfd7119f7a0e2045e72"
+    },
+    {
+      "path": "exact-local-differential/pool_flash_loan/fork-after.json",
+      "bytes": 570519,
+      "sha256": "ea0cd50cc832ee4e7f4a998e088a3a5aa79984df1524160b671a7c3209282651"
+    },
+    {
+      "path": "exact-local-differential/pool_flash_loan/fork-before.json",
+      "bytes": 570511,
+      "sha256": "dcaa4b82930dc02e14239a28a2473cf20e12d5322a8f9e1e0979068a8c94b0f3"
+    },
+    {
+      "path": "exact-local-differential/pool_flash_loan/fork-substituted.json",
+      "bytes": 619585,
+      "sha256": "fc9d23c1270b87cfe78c2530258d3e36ca028d42b5d888d1bd048055382af0ee"
+    },
+    {
+      "path": "exact-local-differential/pool_flash_loan/reverse-recovered.json",
+      "bytes": 619585,
+      "sha256": "73587cf7db09657cf154f0ef5fb9e6242ef842829cd3f0307f1391bad82d0c9c"
+    },
+    {
+      "path": "exact-local-differential/pool_flash_loan/stock-after.json",
+      "bytes": 583768,
+      "sha256": "35a9cce6af975c60962ba911e442fafbd9ed5192d979a90b17a016c7f7150dca"
+    },
+    {
+      "path": "exact-local-differential/pool_flash_loan/stock-before.json",
+      "bytes": 569512,
+      "sha256": "e350d7758cdd34090ca64a4681253ba65cf6756737d31b98103d7dbe9774eb17"
+    },
+    {
+      "path": "exact-local-differential/pool_flash_loan/stock-prepared.json",
+      "bytes": 619585,
+      "sha256": "73587cf7db09657cf154f0ef5fb9e6242ef842829cd3f0307f1391bad82d0c9c"
+    },
+    {
+      "path": "exact-local-differential/pool_freeze_absorbing/fork-after.json",
+      "bytes": 563574,
+      "sha256": "4e795dec4cc6b2ae110a2f03516f5db5f741dfa5b21e56951d9370be02d83304"
+    },
+    {
+      "path": "exact-local-differential/pool_freeze_absorbing/fork-before.json",
+      "bytes": 563566,
+      "sha256": "a8d37c99468ed1a8bab40547ee4b3e38274dc0686f008a301a2ffdfcb8d5792a"
+    },
+    {
+      "path": "exact-local-differential/pool_freeze_absorbing/fork-substituted.json",
+      "bytes": 611045,
+      "sha256": "17a8bbb6578475d3ca756d7e9144f1407050693a51c36ef4ed4fe8fad48d3790"
+    },
+    {
+      "path": "exact-local-differential/pool_freeze_absorbing/reverse-recovered.json",
+      "bytes": 611045,
+      "sha256": "f98e5809474621b89b45018ddb0e2d42f1e281296f1980c7e451d84ddbf2fb4d"
+    },
+    {
+      "path": "exact-local-differential/pool_freeze_absorbing/stock-after.json",
+      "bytes": 564903,
+      "sha256": "0d17baaa73e0006c4061bde7c25290f0bd17045988b4585db2fa41e17b05caa2"
+    },
+    {
+      "path": "exact-local-differential/pool_freeze_absorbing/stock-before.json",
+      "bytes": 562045,
+      "sha256": "ce2e31bdc5e44957350bd9745986e046ebaff8a97285b4000b0b608ed79f5741"
+    },
+    {
+      "path": "exact-local-differential/pool_freeze_absorbing/stock-prepared.json",
+      "bytes": 611045,
+      "sha256": "f98e5809474621b89b45018ddb0e2d42f1e281296f1980c7e451d84ddbf2fb4d"
+    },
+    {
+      "path": "exact-local-differential/pool_sealed_config/fork-after-queue.json",
+      "bytes": 569188,
+      "sha256": "e6f97e461bc2005fe76ec47dbca8eb6ff2283e66f4790a5bf9a8f16542e01ec5"
+    },
+    {
+      "path": "exact-local-differential/pool_sealed_config/fork-after.json",
+      "bytes": 569172,
+      "sha256": "606d0ba5e6257fc2f69b8108cd5100a4bc85491a79b54c5211fc087ccd1de4db"
+    },
+    {
+      "path": "exact-local-differential/pool_sealed_config/fork-before.json",
+      "bytes": 569164,
+      "sha256": "b7776c959a3e123ffc24f71b55a1137c090b521785f9b7c21b06fa293bf76286"
+    },
+    {
+      "path": "exact-local-differential/pool_sealed_config/fork-substituted.json",
+      "bytes": 619989,
+      "sha256": "85e738f1224cd9f210756cb1a1577ad485af50070440e3dc884d88b35ddc1903"
+    },
+    {
+      "path": "exact-local-differential/pool_sealed_config/reverse-recovered.json",
+      "bytes": 619989,
+      "sha256": "5bf1ffcf7217ec2aa86609a8b79c8aa0f98d97228cb53f8a1b6cb0f6f97d4b49"
+    },
+    {
+      "path": "exact-local-differential/pool_sealed_config/stock-after.json",
+      "bytes": 562696,
+      "sha256": "59ba97cf7b942cbd802f7aa2a91fc696ec08b66c86b1277c73db4c2fa56837c8"
+    },
+    {
+      "path": "exact-local-differential/pool_sealed_config/stock-before.json",
+      "bytes": 567643,
+      "sha256": "3ac56f7a3e32ab7ae7ee4668f91f9b8f7d09ebe8b3f5265a80021421d1e8173b"
+    },
+    {
+      "path": "exact-local-differential/pool_sealed_config/stock-prepared.json",
+      "bytes": 619989,
+      "sha256": "5bf1ffcf7217ec2aa86609a8b79c8aa0f98d97228cb53f8a1b6cb0f6f97d4b49"
+    },
+    {
+      "path": "exact-local-differential/pool_strict_price_decimals/fork-after.json",
+      "bytes": 565453,
+      "sha256": "4b679bc47a1c18f7b2f280c10e64a405bddf3a34ec26d570a41987f627a8156b"
+    },
+    {
+      "path": "exact-local-differential/pool_strict_price_decimals/fork-before.json",
+      "bytes": 564464,
+      "sha256": "f7f359429bb9061ff2706919dec29b0d071579d3c6012f00f1e878aa48bc0745"
+    },
+    {
+      "path": "exact-local-differential/pool_strict_price_decimals/fork-substituted.json",
+      "bytes": 615040,
+      "sha256": "1526a251dbca46d748c529efe084210e8f2f7d03f32f2e17e009206635955419"
+    },
+    {
+      "path": "exact-local-differential/pool_strict_price_decimals/reverse-recovered.json",
+      "bytes": 615040,
+      "sha256": "455ddc01f7f1936b2fba89be877ed0050307593a5edebbd11815ed1ab3f09f2e"
+    },
+    {
+      "path": "exact-local-differential/pool_strict_price_decimals/stock-after.json",
+      "bytes": 569104,
+      "sha256": "2786b0c9a9a57b728fa7c793695901087d8b55b2a8ffe2a2180ecc862b10d82d"
+    },
+    {
+      "path": "exact-local-differential/pool_strict_price_decimals/stock-before.json",
+      "bytes": 562943,
+      "sha256": "5d6550ab4f9e5bf645ce072f13c0c22129c319bef9527679272d76e36a425297"
+    },
+    {
+      "path": "exact-local-differential/pool_strict_price_decimals/stock-prepared.json",
+      "bytes": 615040,
+      "sha256": "455ddc01f7f1936b2fba89be877ed0050307593a5edebbd11815ed1ab3f09f2e"
+    },
+    {
+      "path": "exact-local-differential/pool_surplus_path/fork-after-interest.json",
+      "bytes": 562063,
+      "sha256": "fcb43c78e5c2b691a240be8a5b517f1d246abb3ae82cf479798020594ddcfa94"
+    },
+    {
+      "path": "exact-local-differential/pool_surplus_path/fork-after.json",
+      "bytes": 562055,
+      "sha256": "250a00b97c1e349545eaf0c6011a2c228d6d3117efcab7001120c4484d3e7672"
+    },
+    {
+      "path": "exact-local-differential/pool_surplus_path/fork-before.json",
+      "bytes": 562045,
+      "sha256": "e4e95c2255558457cffaec7f3c08452d135f0cfad470b5294ee79e6dfb3e8852"
+    },
+    {
+      "path": "exact-local-differential/pool_surplus_path/fork-substituted.json",
+      "bytes": 611244,
+      "sha256": "0983f2d0385f4634c6d2421e31f916faad1e48562800f56ea2191304c5a393b7"
+    },
+    {
+      "path": "exact-local-differential/pool_surplus_path/reverse-recovered.json",
+      "bytes": 611244,
+      "sha256": "7c469a369e4c54bfce273cee6f6538603e8c79b0ce432c9e5d0187ffb3f9bf24"
+    },
+    {
+      "path": "exact-local-differential/pool_surplus_path/stock-after.json",
+      "bytes": 562698,
+      "sha256": "252f90585ee33f15c77198385ddeb96bbdc5c607afc2cbfedcf4e18288f35039"
+    },
+    {
+      "path": "exact-local-differential/pool_surplus_path/stock-before.json",
+      "bytes": 562045,
+      "sha256": "b0a6a2530f2ebb01a0d3006c3cf20b7d2224463c1e6fb7621275135798f8338c"
+    },
+    {
+      "path": "exact-local-differential/pool_surplus_path/stock-prepared.json",
+      "bytes": 611244,
+      "sha256": "7c469a369e4c54bfce273cee6f6538603e8c79b0ce432c9e5d0187ffb3f9bf24"
+    },
+    {
+      "path": "exact-local-differential/pool_zero_take/fork-after.json",
+      "bytes": 562680,
+      "sha256": "467f12ecc0ec2c9768940c7f80609c41483286f94a7c059054262ee6bbc278eb"
+    },
+    {
+      "path": "exact-local-differential/pool_zero_take/fork-before.json",
+      "bytes": 562672,
+      "sha256": "c2c6767e327c26a2ecd4c6b4e39455e42e109db792b07068d853be6d4a8b3ac8"
+    },
+    {
+      "path": "exact-local-differential/pool_zero_take/fork-substituted.json",
+      "bytes": 609672,
+      "sha256": "b0153bbbd25d42141685034abbc71d0d7c2df2a458b718beec52441f1f194ab0"
+    },
+    {
+      "path": "exact-local-differential/pool_zero_take/reverse-recovered.json",
+      "bytes": 609672,
+      "sha256": "12594cc3c59e56e02746666e3fda994e2b2023970740b160e3e9c96d7bfcca5d"
+    },
+    {
+      "path": "exact-local-differential/pool_zero_take/stock-after.json",
+      "bytes": 565073,
+      "sha256": "8382c1a50ab1dc7b331d2e5ee1ac25b9ac30422255c756148407058f6e04631e"
+    },
+    {
+      "path": "exact-local-differential/pool_zero_take/stock-before.json",
+      "bytes": 561151,
+      "sha256": "f149a42d33bf61fa07615101fea37e54b8d070d6dfd9c019f69d4eb1419f8dd0"
+    },
+    {
+      "path": "exact-local-differential/pool_zero_take/stock-prepared.json",
+      "bytes": 609672,
+      "sha256": "12594cc3c59e56e02746666e3fda994e2b2023970740b160e3e9c96d7bfcca5d"
+    }
+  ]
+}

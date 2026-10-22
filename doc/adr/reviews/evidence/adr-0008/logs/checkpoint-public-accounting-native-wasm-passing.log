@@ -1,0 +1,417 @@
+warning: unexpected `cfg` condition name: `kani`
+    --> pool/src/pool/config.rs:1598:7
+     |
+1598 | #[cfg(kani)]
+     |       ^^^^
+     |
+     = help: expected names are: `clippy`, `debug_assertions`, `doc`, `docsrs`, `doctest`, `feature`, `miri`, `overflow_checks`, `panic`, `proc_macro`, `relocation_model`, `rustfmt`, `sanitize`, `sanitizer_cfi_generalize_pointers`, `sanitizer_cfi_normalize_integers`, `target_abi`, `target_arch`, `target_endian`, `target_env`, `target_family`, `target_feature`, `target_has_atomic`, `target_has_atomic_equal_alignment`, `target_has_atomic_load_store`, `target_os`, `target_pointer_width`, `target_thread_local`, `target_vendor`, `test`, `ub_checks`, `unix`, and `windows`
+     = help: consider using a Cargo feature instead
+     = help: or consider adding in `Cargo.toml` the `check-cfg` lint config for the lint:
+              [lints.rust]
+              unexpected_cfgs = { level = "warn", check-cfg = ['cfg(kani)'] }
+     = help: or consider adding `println!("cargo::rustc-check-cfg=cfg(kani)");` to the top of the `build.rs`
+     = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+     = note: `#[warn(unexpected_cfgs)]` on by default
+
+warning: unused import: `execute_update_pool`
+  --> pool/src/pool/mod.rs:10:26
+   |
+10 |     execute_set_reserve, execute_update_pool,
+   |                          ^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `execute_submit_with_flash_loan`
+  --> pool/src/pool/mod.rs:20:34
+   |
+20 | pub use submit::{execute_submit, execute_submit_with_flash_loan};
+   |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `backstop_take_rate`
+   --> pool/src/contract.rs:392:28
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                            ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_backstop_take_rate`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `max_positions`
+   --> pool/src/contract.rs:392:53
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                     ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_max_positions`
+
+warning: unused variable: `min_collateral`
+   --> pool/src/contract.rs:392:73
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                                         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_collateral`
+
+warning: unused variable: `from`
+   --> pool/src/contract.rs:480:9
+    |
+480 |         from: Address,
+    |         ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `flash_loan`
+   --> pool/src/contract.rs:481:9
+    |
+481 |         flash_loan: FlashLoan,
+    |         ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_flash_loan`
+
+warning: unused variable: `requests`
+   --> pool/src/contract.rs:482:9
+    |
+482 |         requests: Vec<Request>,
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_requests`
+
+warning: associated functions `update_pool`, `bad_debt`, and `flash_loan` are never used
+   --> pool/src/events.rs:30:12
+    |
+7   | impl PoolEvents {
+    | --------------- associated functions in this implementation
+...
+30  |     pub fn update_pool(
+    |            ^^^^^^^^^^^
+...
+157 |     pub fn bad_debt(e: &Env, user: Address, asset: Address, d_tokens: i128) {
+    |            ^^^^^^^^
+...
+306 |     pub fn flash_loan(
+    |            ^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: function `execute_update_pool` is never used
+  --> pool/src/pool/config.rs:47:8
+   |
+47 | pub fn execute_update_pool(
+   |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `execute_submit_with_flash_loan` is never used
+  --> pool/src/pool/submit.rs:70:8
+   |
+70 | pub fn execute_submit_with_flash_loan(
+   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: method `has_collateral` is never used
+   --> pool/src/pool/user.rs:119:12
+    |
+43  | impl User {
+    | --------- method in this implementation
+...
+119 |     pub fn has_collateral(&self) -> bool {
+    |            ^^^^^^^^^^^^^^
+
+warning: unused imports: `dependencies::EmitterClient` and `emissions`
+ --> backstop/src/contract.rs:4:5
+  |
+4 |     dependencies::EmitterClient,
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5 |     emissions,
+  |     ^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `claim::execute_claim`
+ --> backstop/src/emissions/mod.rs:2:9
+  |
+2 | pub use claim::execute_claim;
+  |         ^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `add_to_reward_zone`, `distribute`, `gulp_emissions`, and `remove_from_reward_zone`
+ --> backstop/src/emissions/mod.rs:8:19
+  |
+8 | pub use manager::{add_to_reward_zone, distribute, gulp_emissions, remove_from_reward_zone};
+  |                   ^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^  ^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `pool`
+   --> backstop/src/contract.rs:268:31
+    |
+268 |     fn gulp_emissions(e: Env, pool: Address) -> i128 {
+    |                               ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `to_add`
+   --> backstop/src/contract.rs:272:27
+    |
+272 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                           ^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_add`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:272:44
+    |
+272 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                                            ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:276:30
+    |
+276 |     fn remove_reward(e: Env, to_remove: Address) {
+    |                              ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `from`
+   --> backstop/src/contract.rs:280:22
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                      ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `pool_addresses`
+   --> backstop/src/contract.rs:280:37
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                     ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_pool_addresses`
+
+warning: unused variable: `min_lp_tokens_out`
+   --> backstop/src/contract.rs:280:67
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                                                   ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_lp_tokens_out`
+
+warning: function `is_pool_above_threshold` is never used
+   --> backstop/src/backstop/pool.rs:105:8
+    |
+105 | pub fn is_pool_above_threshold(pool_backstop_data: &PoolBackstopData) -> bool {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_RZ_SIZE` is never used
+ --> backstop/src/constants.rs:8:11
+  |
+8 | pub const MAX_RZ_SIZE: u32 = 30;
+  |           ^^^^^^^^^^^
+
+warning: function `execute_claim` is never used
+  --> backstop/src/emissions/claim.rs:13:8
+   |
+13 | pub fn execute_claim(
+   |        ^^^^^^^^^^^^^
+
+warning: function `claim_emissions` is never used
+  --> backstop/src/emissions/distributor.rs:37:15
+   |
+37 | pub(super) fn claim_emissions(
+   |               ^^^^^^^^^^^^^^^
+
+warning: function `add_to_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:18:8
+   |
+18 | pub fn add_to_reward_zone(e: &Env, to_add: Address, to_remove: Option<Address>) {
+   |        ^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_from_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:58:8
+   |
+58 | pub fn remove_from_reward_zone(e: &Env, to_remove: Address) {
+   |        ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_pool` is never used
+  --> backstop/src/emissions/manager.rs:73:4
+   |
+73 | fn remove_pool(e: &Env, reward_zone: &mut Vec<Address>, to_remove: &Address) {
+   |    ^^^^^^^^^^^
+
+warning: function `require_distribute_run_recently` is never used
+  --> backstop/src/emissions/manager.rs:87:4
+   |
+87 | fn require_distribute_run_recently(e: &Env) {
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `distribute` is never used
+  --> backstop/src/emissions/manager.rs:96:8
+   |
+96 | pub fn distribute(e: &Env) -> i128 {
+   |        ^^^^^^^^^^
+
+warning: function `gulp_emissions` is never used
+   --> backstop/src/emissions/manager.rs:209:8
+    |
+209 | pub fn gulp_emissions(e: &Env, pool: &Address) -> (i128, i128) {
+    |        ^^^^^^^^^^^^^^
+
+warning: function `set_backstop_emission_eps` is never used
+   --> backstop/src/emissions/manager.rs:253:8
+    |
+253 | pub fn set_backstop_emission_eps(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated functions `distribute`, `gulp_emissions`, `rw_zone_add`, `rw_zone_remove`, and `claim` are never used
+   --> backstop/src/events.rs:84:12
+    |
+5   | impl BackstopEvents {
+    | ------------------- associated functions in this implementation
+...
+84  |     pub fn distribute(e: &Env, new_tokens_emitted: i128) {
+    |            ^^^^^^^^^^
+...
+98  |     pub fn gulp_emissions(
+    |            ^^^^^^^^^^^^^^
+...
+117 |     pub fn rw_zone_add(e: &Env, to_add: Address, to_remove: Option<Address>) {
+    |            ^^^^^^^^^^^
+...
+129 |     pub fn rw_zone_remove(e: &Env, to_remove: Address) {
+    |            ^^^^^^^^^^^^^^
+...
+142 |     pub fn claim(e: &Env, from: Address, amount: i128) {
+    |            ^^^^^
+
+warning: constant `LAST_DISTRO_KEY` is never used
+  --> backstop/src/storage.rs:61:7
+   |
+61 | const LAST_DISTRO_KEY: &str = "LastDist";
+   |       ^^^^^^^^^^^^^^^
+
+warning: constant `BACKFILL_EMISSIONS_KEY` is never used
+  --> backstop/src/storage.rs:64:7
+   |
+64 | const BACKFILL_EMISSIONS_KEY: &str = "BackfillEmis";
+   |       ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: constant `BACKFILL_STATUS_KEY` is never used
+  --> backstop/src/storage.rs:65:7
+   |
+65 | const BACKFILL_STATUS_KEY: &str = "Backfill";
+   |       ^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_emitter` is never used
+   --> backstop/src/storage.rs:117:8
+    |
+117 | pub fn get_emitter(e: &Env) -> Address {
+    |        ^^^^^^^^^^^
+
+warning: function `get_last_distribution_time` is never used
+   --> backstop/src/storage.rs:288:8
+    |
+288 | pub fn get_last_distribution_time(e: &Env) -> u64 {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_last_distribution_time` is never used
+   --> backstop/src/storage.rs:302:8
+    |
+302 | pub fn set_last_distribution_time(e: &Env, timestamp: &u64) {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_reward_zone` is never used
+   --> backstop/src/storage.rs:328:8
+    |
+328 | pub fn set_reward_zone(e: &Env, reward_zone: &Vec<Address>) {
+    |        ^^^^^^^^^^^^^^^
+
+warning: function `get_backfill_emissions` is never used
+   --> backstop/src/storage.rs:340:8
+    |
+340 | pub fn get_backfill_emissions(e: &Env) -> i128 {
+    |        ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_backfill_emissions` is never used
+   --> backstop/src/storage.rs:354:8
+    |
+354 | pub fn set_backfill_emissions(e: &Env, emissions: &i128) {
+    |        ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_backfill_status` is never used
+   --> backstop/src/storage.rs:368:8
+    |
+368 | pub fn get_backfill_status(e: &Env) -> Option<bool> {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_backfill_status` is never used
+   --> backstop/src/storage.rs:382:8
+    |
+382 | pub fn set_backfill_status(e: &Env, status: &bool) {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_rz_emis` is never used
+   --> backstop/src/storage.rs:397:8
+    |
+397 | pub fn get_rz_emis(e: &Env, pool: &Address) -> RzEmissions {
+    |        ^^^^^^^^^^^
+
+warning: function `set_rz_emis` is never used
+   --> backstop/src/storage.rs:416:8
+    |
+416 | pub fn set_rz_emis(e: &Env, pool: &Address, emissions: &RzEmissions) {
+    |        ^^^^^^^^^^^
+
+warning: function `get_drop_list` is never used
+   --> backstop/src/storage.rs:498:8
+    |
+498 | pub fn get_drop_list(e: &Env) -> Vec<(Address, i128)> {
+    |        ^^^^^^^^^^^^^
+
+warning: `pool` (lib) generated 13 warnings (run `cargo fix --lib -p pool` to apply 2 suggestions)
+warning: `backstop` (lib) generated 36 warnings (run `cargo fix --lib -p backstop` to apply 3 suggestions)
+   Compiling test-suites v0.0.0 (/home/common/projects/templar/blend-contracts-v2/test-suites)
+warning: unused import: `IntoVal`
+  --> test-suites/src/adr8_stock_controls.rs:20:39
+   |
+20 |     vec as svec, Address, Env, Error, IntoVal,
+   |                                       ^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: variable does not need to be mutable
+   --> test-suites/src/adr8_properties.rs:307:9
+    |
+307 |     let mut cash = balances(&f);
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: variable does not need to be mutable
+   --> test-suites/src/adr8_stock_controls.rs:243:9
+    |
+243 |     let mut f = create_fixture_with_wasm(base_pool, base_backstop);
+    |         ----^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> test-suites/src/adr8_stock_controls.rs:292:9
+    |
+292 |     let mut f = create_fixture_with_wasm(base_pool, base_backstop);
+    |         ----^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> test-suites/src/adr8_stock_controls.rs:345:9
+    |
+345 |     let mut f = create_fixture_with_wasm(base_pool, base_backstop);
+    |         ----^
+    |         |
+    |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+   --> test-suites/src/adr8_stock_controls.rs:384:9
+    |
+384 |     let mut f = create_fixture_with_wasm(base_pool, base_backstop);
+    |         ----^
+    |         |
+    |         help: remove this `mut`
+
+warning: `test-suites` (lib) generated 6 warnings (run `cargo fix --lib -p test-suites` to apply 6 suggestions)
+warning: unused variable: `stable`
+  --> test-suites/tests/test_pool_default_orphan_scenarios.rs:32:13
+   |
+32 |         let stable = &fixture.tokens[TokenIndex::STABLE];
+   |             ^^^^^^ help: if this is intentional, prefix it with an underscore: `_stable`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: `test-suites` (test "test_pool_default_orphan_scenarios") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.91s
+     Running tests/test_pool_default_orphan_scenarios.rs (target/debug/deps/test_pool_default_orphan_scenarios-bb7c0ac946f01a58)
+
+running 3 tests
+test supplier_loss_reverts_final_fill_then_independent_filler_succeeds ... ok
+test contradictory_emissions_revert_public_default_and_settlement ... ok
+test test_public_default_orphan_custody_parking ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 11.37s
+

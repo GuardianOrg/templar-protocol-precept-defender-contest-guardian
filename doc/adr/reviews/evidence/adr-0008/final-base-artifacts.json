@@ -1,0 +1,18 @@
+{
+  "commit": "6cf6dd1ca712ea3cf17a767fe49b7da01f80b909",
+  "source_dir": "/tmp/adr8-base-final.QcaoGfgQ/source",
+  "artifacts": {
+    "pool": {
+      "sha256": "712486df0f76267e46aecc74c8c2d8ffb3bb72a2a3fdc80b301a60108ba0cfc8",
+      "bytes": 57247
+    },
+    "backstop": {
+      "sha256": "eef956ba07f26f5f1186330a4f14a3923193ca1829a24eb6a526793e64bf6d91",
+      "bytes": 30691
+    },
+    "pool_factory": {
+      "sha256": "80abaf3c68fd15adade9f82165baa9b50d85800e497c99b45809e1fbd7397de2",
+      "bytes": 3149
+    }
+  }
+}

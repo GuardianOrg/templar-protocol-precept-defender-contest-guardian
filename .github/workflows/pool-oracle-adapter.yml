@@ -1,0 +1,100 @@
+name: pool-oracle-adapter
+
+on:
+  pull_request:
+    paths:
+      - contracts/pool-oracle-adapter/**
+      - contracts/price-source/**
+      - devenv.nix
+      - .github/workflows/pool-oracle-adapter.yml
+  push:
+    branches: [main]
+    paths:
+      - contracts/pool-oracle-adapter/**
+      - contracts/price-source/**
+      - devenv.nix
+      - .github/workflows/pool-oracle-adapter.yml
+
+# Least privilege that still lets actions/checkout clone this private repo:
+# an empty `permissions` block leaves the token unscoped and checkout fails
+# with "repository not found".
+permissions:
+  contents: read
+
+jobs:
+  audit-ready:
+    name: Audit-ready gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          persist-credentials: false
+
+      - name: Install Rust 1.89.0 with wasm32v1-none
+        # The justfile's preflight asserts these exact identities from inside
+        # pool-adapter-env, so a drifted runner toolchain fails loudly here.
+        run: |
+          rustup toolchain install 1.89.0 --profile minimal --target wasm32v1-none
+          rustup default 1.89.0-x86_64-unknown-linux-gnu
+          rustc --version | grep -q '^rustc 1\.89\.0'
+          rustup target list --toolchain 1.89.0-x86_64-unknown-linux-gnu --installed | grep -qx wasm32v1-none
+
+      - name: Install just
+        uses: taiki-e/install-action@cde8c9e634f4a17bc06b61413ac0ef75450eac46
+        with:
+          tool: just
+
+      - name: Install stellar CLI 26.0.0
+        uses: stellar/stellar-cli@60f7458e7ecffddf2f2d91dc6d0d2db4fab03ecc
+        with:
+          version: 26.0.0
+
+      - name: Provide pool-adapter-env shim
+        # CI-local shim: the runner's default toolchain already IS Rust 1.89.0 +
+        # wasm32v1-none (step above), so the wrapper just execs its arguments;
+        # locally, devenv's wrapper performs the PATH/RUSTC swap instead.
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/.ci-bin"
+          printf '#!/usr/bin/env bash\nexec "$@"\n' > "$GITHUB_WORKSPACE/.ci-bin/pool-adapter-env"
+          chmod +x "$GITHUB_WORKSPACE/.ci-bin/pool-adapter-env"
+          echo "$GITHUB_WORKSPACE/.ci-bin" >> "$GITHUB_PATH"
+
+      - name: Run audit-ready gate
+        # Every cargo/stellar invocation inside is --locked (and CLI 26.0.0 builds
+        # the artifact); no secrets, no network deploys anywhere in this gate.
+        env:
+          STELLAR_BIN: stellar
+        run: just -f contracts/pool-oracle-adapter/justfile audit-ready
+
+      - name: Assert the reproduced adapter artifact
+        # The canary-qualified, testnet-deployed optimized bytes recorded in
+        # doc/adr/reviews/adr-0007-pool-oracle-adapter-implementation-record.md.
+        # An intentional adapter change must update this pin in the same PR.
+        run: |
+          echo "575e8d7c7c248b630169a5078c39e83b324baf97c15d009e2e5aa4b49616504b  contracts/pool-oracle-adapter/target/wasm32v1-none/release-soroban-checked/pool_oracle_adapter.optimized.wasm" | sha256sum -c -
+
+      - name: Test and build protected-market price source
+        run: |
+          cargo test --locked --manifest-path contracts/price-source/Cargo.toml
+          stellar contract build --locked --manifest-path contracts/price-source/Cargo.toml --profile release-soroban-checked
+
+      - name: Assert one SDK graph in the lock
+        run: |
+          python3 - <<'EOF'
+          import sys, tomllib
+          lock = tomllib.load(open("contracts/pool-oracle-adapter/Cargo.lock", "rb"))
+          # soroban-sdk is pinned exactly; the macro crate and stellar-access carry
+          # their own patch versions, so pin the exact resolved triple.
+          expected = {"soroban-sdk": "25.3.0", "soroban-sdk-macros": "25.3.0", "stellar-access": "0.7.1"}
+          ok = True
+          for pkg, want in expected.items():
+              versions = sorted({p["version"] for p in lock["package"] if p["name"] == pkg})
+              if versions != [want]:
+                  ok = False
+                  print(f"FAIL: {pkg} resolved to {versions}; expected exactly ['{want}']")
+              else:
+                  print(f"OK: {pkg} resolves once at {want}")
+          sys.exit(0 if ok else 1)
+          EOF

@@ -1,0 +1,99 @@
+{
+  "version": 3,
+  "kind": "raladr_review_receipt",
+  "status": "CONSENSUS APPROVED",
+  "created_at": "2026-09-08T23:42:06Z",
+  "branch": "adr/0008-focused-security-fork",
+  "base_commit": "13ffd055eb2f80c3807a05a13695b3890ec13715",
+  "supersedes": {
+    "reason": "The prior four-restriction review was invalidated when ADR 0008 and ADR 0009 added pool-side future/wrong-scale oracle rejection and unconditional flash_loan rejection.",
+    "architect": "agent://FocusedForkArchitectV6Retry",
+    "critic": "agent://FocusedForkCriticV6"
+  },
+  "reviewed_snapshot": {
+    "adr_0002": {
+      "path": "doc/adr/0002-pool-registry-as-deployment-configuration-and-optional-backstop-routing-layer.md",
+      "git_hash_object": "c571c3ce5bd413e421d11552cb8fb30d3dc2869d"
+    },
+    "adr_0003": {
+      "path": "doc/adr/0003-protocol-fee-on-borrow-interest-with-deferred-origination-and-flash-loan-fees.md",
+      "git_hash_object": "ef3a59bc9fdf3aa091062c41d6aa6697b9d24df7"
+    },
+    "adr_0008": {
+      "path": "doc/adr/0008-launch-v1-on-unmodified-blend-v2-with-a-templar-sovereign-backstop.md",
+      "git_hash_object": "c6abb5588cd2aecac498b247e428855a6e1c4ee6"
+    },
+    "adr_0009": {
+      "path": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+      "git_hash_object": "61d7ca04a819a6c6950e18f52af6177b57092844"
+    },
+    "supporting_sha256": {
+      "doc/adr/schema/release-records-v1.json": "b770527ae1466a6aaf76fdf41365facf041ed6951a5efc6d4152d6879a3cd6af",
+      "doc/adr/schema/verify-release-records-v1.py": "02f01ba12fa01ff4fb2f2a5fe87d5e9b4da741ee000a1b0073f8bd92904ee335",
+      "doc/adr/schema/release-records-v1-vectors.json": "ec05fd19f4f5f05e286534af7d94e99e90092e5dd2fbc6f98b02df60eef1b3e6"
+    },
+    "vendor_gitlink": "6cf6dd1ca712ea3cf17a767fe49b7da01f80b909",
+    "upstream_release_base": "c19abee5b9be4f49e0cda9057e87d343e5dcc095"
+  },
+  "review_iterations": [
+    {
+      "result": "agent://SixRestrictionArchitect",
+      "verdict": "ITERATE",
+      "resolved": [
+        "Changed the normative release-schema label from the stale two-change fork to the ADR-0008 six-restriction fork.",
+        "Limited source-identity claims to the reviewed pool, pool-factory, and backstop contract-source trees while pinning both full commits independently."
+      ]
+    },
+    {
+      "result": "agent://SixRestrictionArchitectV2",
+      "verdict": "ITERATE",
+      "resolved": [
+        "Removed stale text implying that flash loans remain callable or reach oracle-dependent logic.",
+        "Aligned manifest-binding and acceptance language with the scoped contract-source identity claim."
+      ]
+    },
+    {
+      "result": "agent://SixRestrictionArchitectV3",
+      "verdict": "ITERATE",
+      "resolved": [
+        "Aligned the Proposed ADR 0002 and ADR 0003 backlink labels with ADR 0008's narrowly hardened-fork title."
+      ]
+    }
+  ],
+  "final_review_pair": {
+    "architect": {
+      "result": "agent://SixRestrictionArchitectV4",
+      "verdict": "APPROVE",
+      "blocking_findings": "none"
+    },
+    "critic": {
+      "result": "agent://SixRestrictionCritic",
+      "verdict": "APPROVE",
+      "blocking_findings": "none"
+    }
+  },
+  "verification": [
+    {
+      "command": "PATH=\"$PWD/bin:$PATH\" adr --robot lint",
+      "result": "pass"
+    },
+    {
+      "command": "git diff --check",
+      "result": "pass"
+    },
+    {
+      "command": "nix shell --impure --expr 'let p = import <nixpkgs> {}; in p.python3.withPackages (s: [s.jsonschema s.cryptography])' --command python3 doc/adr/schema/verify-release-records-v1.py",
+      "result": "TOTAL PASS: 2 positives, 34 derived positives, 109 negatives"
+    },
+    {
+      "command": "post-Critic git hash-object and sha256sum custody recheck",
+      "result": "all seven reviewed hashes unchanged"
+    }
+  ],
+  "limitations": [
+    "Consensus approves only this frozen Proposed ADR bundle; it does not accept any ADR, authorize implementation, or authorize deployment.",
+    "The branch changes no vendored contract code. Exact fork implementation, audit/review, reproducible Wasm, differential tests, testnet canaries, successor readiness, staffing, and every release gate in the ADRs remain mandatory.",
+    "The pool's 24-hour check is a hard consumer ceiling, not a replacement for the proxy oracle's stricter signed freshness policy.",
+    "The retained flash_loan ABI is intentionally behaviorally incompatible: every v1 call must reject before effects."
+  ]
+}

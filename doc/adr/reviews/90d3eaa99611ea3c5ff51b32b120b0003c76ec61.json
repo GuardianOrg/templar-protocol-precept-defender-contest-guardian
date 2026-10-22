@@ -1,0 +1,357 @@
+{
+  "schema_version": 1,
+  "bundle_hash": "90d3eaa99611ea3c5ff51b32b120b0003c76ec61",
+  "primary": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+  "bundle": [
+    {
+      "path": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+      "blob": "a67376744bef453818d02cc6c5a5bcdec54bd265"
+    },
+    {
+      "path": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+      "blob": "186aafdff06925290bcde4c8c9c11269b2c5e1d4"
+    }
+  ],
+  "coupling_reason": "ADR0009 governs the mandatory migration and retirement of the ADR0008 cohort; its canary authority must compose with the unchanged launch profile.",
+  "preflight": [
+    {
+      "command": "PATH=\"$PWD/bin:$PATH\" adr --robot lint && git diff --check",
+      "exit_code": 0,
+      "result": "passed; no output",
+      "artifact_hashes": {}
+    },
+    {
+      "command": "git hash-object /tmp/raladr-adr0008-0009-canary.manifest",
+      "exit_code": 0,
+      "result": "90d3eaa99611ea3c5ff51b32b120b0003c76ec61",
+      "artifact_hashes": {}
+    }
+  ],
+  "custody": {
+    "type": "COMMIT",
+    "location": "6ce3e3a649ad894ec0bd5c3a46a9b51faa1a8289"
+  },
+  "reviews": [
+    {
+      "run": 2,
+      "pair": 7,
+      "attempts": {
+        "architect": [
+          {
+            "runtime_result": "agent://LiquidityCorrectionArchitect",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "architect",
+              "pair": 7,
+              "bundle_hash": "90d3eaa99611ea3c5ff51b32b120b0003c76ec61",
+              "verdict": "ITERATE",
+              "blockers": [
+                {
+                  "id": "P7-A1",
+                  "finding": "Section 5 places off-chain lane policy inside the migrator contract's enumerated behavior. 'The call: 1. verifies live … route state; `ordinary` requires T0, while `canary` requires the successor route to remain disabled and is eligible for bridge authorization only as the exact recorded `CANARY_AUTHORIZED` invocation'. The successor route is the protected runtime configuration (199-200, 223-224) and `CANARY_AUTHORIZED` lives in the protected record and signer ledger (181-186, 298-299); neither is observable by a Soroban contract whose failed postconditions 'roll back the complete Soroban transaction' (270-271) and which has 'no admin, upgrade, arbitrary call' surface (237). Only `ordinary => T0` is on-chain checkable: stock `get_config` exposes status (contract.rs:431-433), status > 3 blocks supply/borrow while leaving withdraw/repay open (pool.rs:77-78), and reserve `enabled` is readable for the all-disabled fallback (reserve.rs:146-156). As written the ADR asserts an operational policy as a contract invariant, which the user requirement explicitly forbids, and the canary-side predicate is also wrong for the I1 replacement-lane case (383-384) where a fresh lane's canary must run after T0. Additionally, the 'route state' clause has no on-chain referent, so an implementer either drops it silently or invents a proxy.",
+                  "evidence": [
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:255-259 (contract 'call' step 1 with route/phase predicates)",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:237-243 (migrator surface; signer/execution phase acceptance stated separately)",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:196-200,223-224 (route is the protected runtime change, advanced to OPEN only after T0)",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:141-146 (record/runtime/live-state disagreement fails closed; phases normative for signer/release schema, not contracts)",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:381-384 (I1 replacement requires a fresh canary after T0)",
+                    "vendor/blend-contracts-v2/pool/src/contract.rs:431-433 (get_config exposes status on-chain)",
+                    "vendor/blend-contracts-v2/pool/src/pool/pool.rs:76-81 (status > 3 blocks supply 0/2 and borrow 4; withdraw/repay remain allowed)",
+                    "vendor/blend-contracts-v2/pool/src/pool/reserve.rs:146-156 (reserve enabled flag gates supply/borrow only)"
+                  ],
+                  "required_change": "Rewrite section 5 step 1 to separate authorities: the migrator contract verifies live legacy, registry, successor, oracle, authority, reserve, cap, and cash state, and for `ordinary` lane mode additionally requires the on-chain T0 brake (legacy status 4 with its no-downgrade code, or every reserve disabled); `canary` lane mode is a bound field of the authorized invocation with no further on-chain predicate. State that route-closed and phase eligibility (`CANARY_AUTHORIZED` for the exact recorded canary, `SIGNING_ENABLED`/`OPEN` for ordinary) are enforced only by the bridge signer and execution preflight per sections 1, 4, and 6, and remove 'route state' from the contract's verified set. Mirror the split in acceptance 6 so exact-Wasm tests cover `ordinary` rejecting pre-T0 and do not claim the contract checks route or phase."
+                },
+                {
+                  "id": "P7-A2",
+                  "finding": "`CANARY_AUTHORIZED` is unsatisfiable as specified. Entering it requires a protected record revision naming 'all fields listed in section 2' for the canary, and the signer rejects 'a missing or expired field' before emitting the signature (181-186). The section 2 canary field list ends with 'transaction hash, inclusion and authorization deadlines, named approval, result, and reconciliation' (133-136). `result` and `reconciliation` cannot exist before the transaction is signed, submitted, and included, so a fail-closed signer either can never sign or an implementer must invent an undefined placeholder value for those fields, which is exactly the ambiguous-field class the lifecycle is meant to remove. The same list is what `CANARY_PASSED` publishes (191-194), so the ADR needs to say which fields are pre-signature record inputs and which are post-inclusion outputs.",
+                  "evidence": [
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:133-136 (canary record field list incl. result and reconciliation)",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:181-186 ('all fields listed in section 2'; 'a missing or expired field … rejects')",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:191-194 (CANARY_PASSED publishes the evidence)",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:597-600 (E2E requires unrecorded/missing-field canary to be rejected)"
+                  ],
+                  "required_change": "In section 2 (133-136) split the canary record into pre-signature fields (user, lineage, migrator, successor, assets, amount and slippage bounds, bridge advance and ceiling, reservation id, source account and sequence, unsigned transaction hash, inclusion and authorization deadlines, named approval) and post-inclusion fields (result, reconciliation), and in section 4 (181-186) require 'every pre-signature field' for `CANARY_AUTHORIZED` and 'the post-inclusion fields' for `CANARY_PASSED` or a return to `DEPLOYED`."
+                }
+              ],
+              "prior_blocker_disposition": [
+                {
+                  "id": "USER-CANARY-CYCLE",
+                  "status": "PARTIALLY CLOSED",
+                  "evidence": "The cycle is broken: section 4 (170-231) defines eight distinct phases with `CANARY_AUTHORIZED` as the only pre-canonical signing exception; section 1 (110-115) and section 5 (239-243) make signer acceptance phase-gated; section 6 (293-294) records `CANARY_PENDING` before signature emission on the existing reservation; ambiguous outcomes block all signing (188-189); definitive failure returns to `DEPLOYED` only on expired-bounds non-inclusion or consumed-sequence rollback with reservation reconciliation and needs fresh review (189-192); `CANONICAL` authorizes no signature (195-197); `SIGNING_ENABLED` is an explicit bridge-authority step after T0 (197-199, 223-224); >=72h notice sits at step 7 (213-214); schema semantics are normative without a normative custom schema (144-149, 298-302); the fresh-lane regression is normative in acceptance 6 and the E2E list (514-518, 594-604); alternative 10 (468-471) rejects the broader readback-only variant. Stock semantics confirm feasibility: withdraw/repay stay open at status 4 (pool.rs:77-78) so post-T0 ordinary migrations and a pre-T0 canary both execute. Two defects remain in the new text (P7-A1, P7-A2)."
+                },
+                {
+                  "id": "P1-A1",
+                  "status": "CLOSED",
+                  "evidence": "Section 7 raw gate text (deficit-only `R < C`, recorded monotone `D`) unchanged from receipt f4c423a2…; not touched by this delta."
+                },
+                {
+                  "id": "P1-A2",
+                  "status": "CLOSED",
+                  "evidence": "`C = S(0) + backstop_credit - L` definition unchanged; not touched by this delta."
+                },
+                {
+                  "id": "P1-A3",
+                  "status": "SUPERSEDED",
+                  "evidence": "Unchanged debt-zero release of both retained values; not touched."
+                },
+                {
+                  "id": "P3-C1",
+                  "status": "CLOSED",
+                  "evidence": "Inventory-derived `B` and `user_exit_buffer` unchanged; not touched."
+                },
+                {
+                  "id": "P4-A1",
+                  "status": "CLOSED",
+                  "evidence": "`S_B(x)` denominator gate unchanged; not touched."
+                },
+                {
+                  "id": "P5 stock-vector coherence",
+                  "status": "CLOSED",
+                  "evidence": "Acceptance vectors unchanged from receipt f4c423a2…; not touched."
+                }
+              ],
+              "tradeoff_tension": "Narrow exception versus lifecycle weight: granting exactly one recorded, capped, hash-bound pre-canonical signature exposes the real migration path before any general signing capability exists, but it costs eight normative phases, three phase-bearing artifacts (record, signer ledger, release schema) that must agree, and a contract/signer authority split that must be stated precisely or the ADR ends up promising on-chain enforcement of route and phase state the migrator cannot observe.",
+              "evidence_checked": [
+                "Identity: git rev-parse HEAD = 6ce3e3a649ad894ec0bd5c3a46a9b51faa1a8289; git hash-object manifest = 90d3eaa99611ea3c5ff51b32b120b0003c76ec61; ADR0008 blob a67376744bef453818d02cc6c5a5bcdec54bd265; ADR0009 blob 186aafdff06925290bcde4c8c9c11269b2c5e1d4; manifest primary is now ADR0009; doc/adr status clean; only ADR0009 changed in HEAD (159+/70-)",
+                "Complete HEAD delta read: sections 1, 2, 4 (rewritten lifecycle and 14-step order), 5, 6, alternative 10, acceptance 4-7, E2E and observability lists, new risk row, pre-mortem 1, invariants, follow-ups",
+                "Unchanged contexts read for consistency: definitions and principles (41-72), section 7 vault rule, section 8 incidents (375-384), acceptance 8-12, invariants (657-689)",
+                "Prior receipt doc/adr/reviews/f4c423a21e680465dd92124b09cccad40b2dbc5e.json ledger consulted for continuity only",
+                "Stock source at pinned 6cf6dd1: pool.rs:76-81 (status gating: >1 blocks borrow/cancel, >3 blocks supply/supply-collateral; withdraw/repay open), reserve.rs:146-156 (reserve enabled gating), contract.rs:431-433 (get_config), contract.rs:452-464 (submit auth)",
+                "Lifecycle consistency checks performed: canary reservation created at step 3 and marked pending at step 4 matches section 6; 'previous pending or successful canary rejects' composes with 'retry requires newly reviewed authorization' after definitive failure; Stellar transaction hash excludes signatures so 'exact unsigned transaction hash' is well-defined; expired-bounds non-inclusion and consumed-sequence included-failure are the two exhaustive definitive outcomes; SIGNING_ENABLED precedes OPEN and both follow T0 so the 'after T0 no legacy exposure increase' invariant holds; I1 replacement lanes restart at INTENT per acceptance 9"
+              ],
+              "steelman": "Strongest alternative to the selected one-transaction exception is alternative 10: keep candidate phases readback-only and let the first funded migration be an ordinary signature with routes still closed. It is simpler (one fewer phase, no special-case signer path) and the closed route already limits who can request. It loses because 'closed route' is operator configuration, not a signer constraint: an ordinary-signing capability with routes closed is a general capability gated by policy, whereas the selected design binds the pre-canonical permission to one hash, one reservation, and one recorded approval that the signer can verify locally. A second alternative, requiring the canary on public testnet only, is rejected correctly because it never exercises mainnet authority, funding, and inclusion. The selected design is the strongest available provided the contract/signer split (P7-A1) and the pre/post-inclusion field split (P7-A2) are stated.",
+              "synthesis": "Identity matches the frozen bundle and the delta is confined to ADR0009's release lifecycle. The user-reported cycle is genuinely broken by the new phase model, the pending-before-signature transition, definitive-failure recovery, and the normative fresh-lane regression, and the surrounding liquidity, inventory, and terminal semantics are untouched. Two defects in the new text block approval: section 5 attributes route-closed and `CANARY_AUTHORIZED` eligibility to the migrator contract, which cannot observe either and which for replacement lanes must accept a canary after T0, so an operational policy is stated as an on-chain invariant; and `CANARY_AUTHORIZED` demands result/reconciliation fields that cannot exist before signing, making a fail-closed signer either unable to sign or dependent on an undefined placeholder. Both are small textual splits with no change to the selected design.",
+              "risks": [
+                "Three phase-bearing artifacts (protected Markdown record, signer ledger, release schema) must agree; the ADR's disagreement-fails-closed rule covers it, but every phase transition is a manual multi-artifact edit and stuck-`CANARY_PENDING` will be the common operational failure mode.",
+                "The bridge likely signs a Soroban authorization entry rather than the transaction; its signature does not cryptographically bind the transaction hash, so hash-match execution and non-inclusion proofs rely on the recorded source account/sequence being operator-controlled. If the user is the source account, reconciliation must fall back to live state and nonce consumption.",
+                "Publishing the canary user, amounts, and unsigned hash in a protected PR before signing gives an observer the exact invocation; front-running is bounded by user and bridge auth nonces, but any pre-signature mempool observation of the canary should be treated as expected.",
+                "Section 4's 14-step order assumes a fresh first lineage; replacement lanes after T0 skip steps 8-11 in practice and the ADR relies on acceptance 9 and section 8 to say so.",
+                "The 'exercised alerts' list now includes route/phase disagreement; without a machine-readable phase source, that alert depends on parsing the Markdown record or trusting the signer ledger, which is one of the artifacts under check."
+              ],
+              "file_corrections": [
+                "ADR0009:189-192: name the actor for the return to `DEPLOYED` (a protected record revision citing the non-inclusion or rollback evidence), matching how every other transition names its owner.",
+                "ADR0009:177-179: name the actor that records `DEPLOYED` (protected record revision after readbacks).",
+                "ADR0009:202-231: add one sentence that a replacement lane after T0 follows the same phases but its steps 8-11 are already satisfied by the established brake."
+              ],
+              "principle_violations": [
+                "User requirement 'no operational policy pretending to be an on-chain invariant' versus ADR0009:257-259, which states route-closed and phase eligibility as migrator contract verifications (P7-A1)."
+              ]
+            }
+          }
+        ],
+        "critic": [
+          {
+            "runtime_result": "history://LiquidityCorrectionCritic",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "critic",
+              "pair": 7,
+              "bundle_hash": "90d3eaa99611ea3c5ff51b32b120b0003c76ec61",
+              "verdict": "ITERATE",
+              "blockers": [
+                {
+                  "id": "P7-A1",
+                  "finding": "The execution contract is required to observe CANARY_PENDING, the enclosing transaction hash, the reservation, and route/phase facts that exist only in the protected record and signer ledger. No authenticated on-chain representation or host API is declared for those observations. A first canary must therefore fail its unavailable predicates or replace them with unverifiable caller assertions; worker preflight alone does not constrain another submitter.",
+                  "evidence": [
+                    "ADR0009:109-115,138-149,181-193,237-259",
+                    "Pinned soroban-env-common-22.1.3/env.json host context exposes ledger sequence/timestamp/network and contract identity, but not a current transaction hash or off-chain phase.",
+                    "Pinned soroban-env-host-22.1.3/src/auth.rs:1999-2005 authenticates native invocation facts, not the readable record."
+                  ],
+                  "required_change": "Assign every predicate to the signer/release worker or the immutable migrator. Define only contract-observable execution checks and explicitly bind canary/ordinary mode, literal addresses, user, assets/bounds, reservation identity and expiry through the required native authorization; do not claim on-chain verification of off-chain phase, route files, or enclosing transaction hash. Keep signer phase dispatch separate and consistent with the invocation consumer."
+                },
+                {
+                  "id": "P7-A2",
+                  "finding": "CANARY_AUTHORIZED requires all section-2 canary fields and signing rejects a missing field, yet that field list includes the transaction result and reconciliation. Those facts cannot exist before a genuinely new lane's first funded transaction, so the pre-sign lifecycle recreates a bootstrap cycle unless evidence is fabricated.",
+                  "evidence": [
+                    "ADR0009:133-136 lists named approval, result, and reconciliation together.",
+                    "ADR0009:181-186 requires all those fields before the signature and rejects missing fields.",
+                    "ADR0009:195-197 correctly makes included success and reconciliation prerequisites of CANARY_PASSED, demonstrating the required later phase."
+                  ],
+                  "required_change": "Specify phase-dependent required/absent fields: complete approved intent, bounds, authorization identity and reserved capacity before signing; actual transaction assembly/submission identity at its defined stage; result and live-state/reservation reconciliation only after inclusion or conclusive failure. Add a fresh record test with no future-result placeholders."
+                },
+                {
+                  "id": "P7-C1",
+                  "finding": "The new exact-transaction promise does not select a native authorization mechanism or a non-circular transaction construction order. With ordinary Soroban address credentials, the bridge auth signature is inside the transaction operation itself, so adding it changes the transaction hash. A transaction hash computed before that signature cannot also be the final inclusion hash. Only outer envelope signatures are excluded; treating the two signature layers identically reintroduces the signature/hash bootstrap problem in the standard address-auth path allowed by this ADR.",
+                  "evidence": [
+                    "ADR0009:181-185 requires the exact unsigned transaction hash before bridge-signature emission, and 112-113/241-242 requires the matching hash at execution.",
+                    "Pinned stellar-xdr-22.1.0/src/curr/generated.rs:30094-30122 serializes the address-credential signature; 30368-30438 nests it in InvokeHostFunctionOp.auth; 33120-33157 nests that operation in Transaction; 33740-33804 serializes Transaction into its network signing/hash payload.",
+                    "The outer TransactionV1Envelope.signatures field is separate at generated.rs:33183-33205; the native auth preimage is instead network/nonce/expiry/invocation at soroban-env-host-22.1.3/src/auth.rs:1999-2005."
+                  ],
+                  "required_change": "Choose and document the bridge credential/signature form. Distinguish native authorization identity from final transaction identity and define the exact ordering of review, durable reservation/pending state, native signature construction, final transaction assembly/hash, outer signing and submission without exposing an unrecorded usable capability. If selecting source-account native credentials and outer signing to retain true transaction binding, make that restriction explicit. Verify actual pinned XDR identities, not a mock hash or generic unsigned-transaction label."
+                },
+                {
+                  "id": "P7-C2",
+                  "finding": "The included-failure shortcut releases the canary phase/reservation after source-sequence consumption and atomic rollback even though a native address-auth capability can remain live. Its signature does not bind source, sequence, or transaction hash, and a failed root call rolls nonce consumption back. An observer can transplant the same still-valid entry into another transaction while a newly reviewed canary is being authorized; resolving the original hash and consuming its sequence does not retire that capability.",
+                  "evidence": [
+                    "ADR0009:187-193 permits CANARY_PENDING -> DEPLOYED on included failure before bounds necessarily expire; 597-600 explicitly requires this branch in E2E verification.",
+                    "Pinned soroban-env-host-22.1.3/src/auth.rs:1999-2005 omits transaction identity from the native signature payload; 2121-2125 states a failed root call un-consumes its nonce through storage rollback.",
+                    "Pinned auth.rs:1949-1977 enforces the authorization expiration independently; src/test/auth.rs:533-535 explicitly verifies nonce non-consumption on failure."
+                  ],
+                  "required_change": "Do not release the lane or capacity until every issued native authorization is expired or provably unusable, even when the original transaction conclusively failed. Alternatively select an explicit source-account authorization design that cryptographically prevents transplantation and prove its sequence/inclusion semantics. Add failed-root-call replay under a different source/sequence/hash and crash/retry reservation checks; reconcile authorization identity as well as transaction identity."
+                }
+              ],
+              "prior_blocker_disposition": [
+                {
+                  "id": "P1-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "ADR0009:359-369 still rejects R<C, excludes D from the cap, tolerates positive surplus in the same invocation, and reconciles unexplained increases before the next batch; liquidity decision bytes are unchanged."
+                  ]
+                },
+                {
+                  "id": "P1-A2",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "ADR0009:322-329 still defines checked C=S(0)+backstop_credit-L in exact stock rounding order and rejects nonzero credit; ADR0008's disabled-gulp blob is unchanged."
+                  ]
+                },
+                {
+                  "id": "P1-A3",
+                  "status": "SUPERSEDED",
+                  "evidence": [
+                    "ADR0009:356-357 retains the objective d_supply==0 zero-buffer final tranche under stock/raw checks, replacing the former fixed-buffer policy."
+                  ]
+                },
+                {
+                  "id": "P3-C1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "ADR0009:331-347 still derives exact B and per-position-floor deadline-rate underlying minima from complete inventory and requires each record refresh to meet them."
+                  ]
+                },
+                {
+                  "id": "P4-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "ADR0009:348-355 still subtracts exact user B from the post-vault denominator, never a reconverted aggregate cash amount; sequential last-user and exact-release differential requirements remain."
+                  ]
+                },
+                {
+                  "id": "P5 stock-vector coherence (Ponytail-discovered)",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "The vector inventory partitions and explicit b_rate_deadline=b_rate correction approved in the f4c423a21e680465dd92124b09cccad40b2dbc5e receipt remain unchanged in the pair-7 delta."
+                  ]
+                }
+              ],
+              "tradeoff_tension": "One capped candidate canary is appropriately narrower than enabling ordinary signing before funded acceptance. The eight-phase operational lifecycle can enforce that distinction, but it cannot be treated as contract authority or as revocation of a transferable native authorization. Prefer a clearly chosen standard credential/transaction model over adding an on-chain phase registry, custom envelope, or another protocol merely to simulate off-chain facts.",
+              "evidence_checked": [
+                "Read the canonical manifest; git diff --no-index --full-index /dev/null against its exact bytes independently recomputed blob 90d3eaa99611ea3c5ff51b32b120b0003c76ec61. Expected diff exit 1 reflects the new-file comparison, not validation failure.",
+                "ADR0008 a67376744bef453818d02cc6c5a5bcdec54bd265 and ADR0009 186aafdff06925290bcde4c8c9c11269b2c5e1d4 compare identically with custody commit 6ce3e3a649ad894ec0bd5c3a46a9b51faa1a8289; the frozen ADR worktree has no diff.",
+                "Read complete e3b7c2f-to-6ce3e3a ADR delta, entire ADR0009, relevant unchanged ADR0008 authority/restriction sections, prior f4c423a21e680465dd92124b09cccad40b2dbc5e receipt, and Architect pair-7 ITERATE object.",
+                "Stock pin 6cf6dd1: contract.rs:452-465 native submit authorization; pool.rs:71-84 status-4 consuming rules; reserve.rs:142-155 disabled-reserve consuming rules. Neither planned brake blocks repay/withdraw themselves.",
+                "Vendored Cargo.lock pins soroban-env-host 22.1.3, soroban-sdk 22.0.7, stellar-xdr 22.1.0. Read their actual local host auth payload/nonce rollback, XDR serialization, and host-context interface sources; current upstream Stellar XDR corroborates the signature nesting but is not substituted for the pinned code.",
+                "No build, formatter, lint, test or implementation gate was run. Consequences below are independent source-grounded execution traces, not claimed runtime executions."
+              ],
+              "architect_disposition": [
+                {
+                  "id": "P7-A1",
+                  "status": "AGREE",
+                  "evidence": [
+                    "ADR0009:237-259 assigns unavailable off-chain phase/hash facts to execution. The root concern is valid; canary after T0 is not itself forbidden by the current text, so the correction should not invent a blanket pre-T0-only contract check."
+                  ]
+                },
+                {
+                  "id": "P7-A2",
+                  "status": "AGREE",
+                  "evidence": [
+                    "ADR0009:133-136 and 181-186 require future result/reconciliation fields at pre-sign time."
+                  ]
+                },
+                {
+                  "id": "native_signature_transaction_binding_risk",
+                  "status": "AGREE",
+                  "evidence": [
+                    "Elevated from Architect risk to P7-C1/P7-C2 based on pinned XDR signature nesting and explicit host nonce rollback."
+                  ]
+                },
+                {
+                  "id": "architect_file_corrections",
+                  "status": "AGREE",
+                  "evidence": [
+                    "Clarifying phase-dependent fields and exact enforcement ownership is required under A1/A2; named transition ownership and replacement-lane prose are useful integration clarifications, not independent blockers beyond the four listed."
+                  ]
+                }
+              ],
+              "consequence_simulations": [
+                "Fresh-lane trace: INTENT -> DEPLOYED -> CANARY_AUTHORIZED is intended to need no CANONICAL status, but a record without future result/reconciliation fails 181-186. Adding fabricated values would bypass the stated evidence authority; A2 must be repaired before the first real borrower canary is reachable.",
+                "Hash construction trace: place empty bridge address credentials in transaction T0 and hash it; obtaining the native signature and inserting it changes serialized operations to T1 and changes its transaction hash. The native signing digest depends on invocation/nonce/expiry rather than either transaction hash. Outer envelope signing can leave T1's hash stable, but the ADR must distinguish those stages and choose its credential model.",
+                "Failure/replay trace: signed canary T1 reaches the migrator but a later health or cash assertion fails. Native storage and nonce consumption roll back, while the included transaction can consume its source sequence. The current rule frees the phase/capacity. Copy the still-live authorization entry into T2 with a different source/sequence and suitable resources: the native auth digest is unchanged, so the original sequence and off-chain DEPLOYED state do not invalidate it. A new canary authorization can now overlap the old capability.",
+                "Invocation dispatch trace: the signer changes AUTHORIZED to PENDING before signature emission; execution then needs PENDING plus a transaction hash. The immutable contract cannot fetch either signer state or its enclosing hash. Trusting request fields instead would let another submitter claim PENDING, while treating the earlier AUTHORIZED check as an execution predicate would reject the legitimate canary. A1 must assign the checks to distinct consuming sides.",
+                "Unchanged liquidity trace: unit-rate supply 1000, debt 900, vault 995, exact user B=5 gives cap 94 for raw 100/101/200/250; 99 is deficit. The 1.7Q, supply5, debt1, vault2, three one-token users witness rejects x=1 at S_B=L. Objective debt-zero still permits the final vault tranche; no canary change reopens a liquidity blocker."
+              ],
+              "alternative_fairness": "The new alternative fairly rejects enabling broad bridge signing for the first funded migration merely because routing remains closed: that capability is wider than a single canary. Existing direct/manual, direct-only fallback, no storage copy, no raw-surplus cap, and no gulp alternatives remain coherent. What is not yet decided is the standard native credential model necessary to implement the narrower option honestly; a custom signing scheme is neither required nor recommended.",
+              "requirement_coverage": [
+                "Genuinely new production lane -> candidate canary before canonicalization -> fresh-lane E2E at 593-604; blocked by future-result fields and undefined auth/transaction construction.",
+                "Consistent signer/invocation/schema authority -> distinct phases and canary/ordinary mode -> reject unknown/skipped/incompatible requests; blocked by off-chain predicates assigned to contract execution.",
+                "No bypass -> one bounded authorization, pending before signature -> candidate mismatch/duplicate tests and risk row; incomplete until transferable native-auth identity and failure retirement are covered.",
+                "Atomic funds/auth -> native user+bridge authorization, bounded assets, repayment, restoration, zero custody -> exact-Wasm conservation/rollback checks remain sound, but rollback must not be mistaken for capability revocation.",
+                "Crash/ambiguity safety -> single writer, reserved ceiling, unknown outcomes block -> crash/retry and included-failure E2E; included-failure release is unsafe under allowed address-auth credentials.",
+                "Safe production opening -> canary evidence, separate canonical selection, notice, legacy close, status4/fallback, T0, then signing/open -> ordered acceptance and observability retain the required route/freeze order.",
+                "Liquidity/donations/final tranche -> represented-state S_B/L/C, exact B, separate raw buffer, D lifecycle, debt-zero -> unchanged stock-coherent vectors and exact-release-Wasm differential retain all prior fixes.",
+                "Compatibility/operations -> exact identity/authority/readbacks and old route/auth horizon drain before replacement -> replacement and sink drills remain required; immutable migrator remains narrow.",
+                "Maintenance/artifact integrity -> schema encodes distinct normative phases without a custom signing envelope -> phase-dependent field requirements and signer/contract ownership need explicit correction; file formats otherwise remain implementation detail.",
+                "ADR-only run -> no contract implementation authorized -> Proposed decision plus future implementation/review and acceptance gates remains the correct boundary."
+              ],
+              "risk_and_verification_findings": [
+                "The three pre-mortem classes and unit/property, integration, production/testnet, and observability layers are present. Canary phase alerts, pending-before-emission, bounded permission and genuinely fresh-lane E2E materially improve the plan.",
+                "The included-failure E2E currently encodes the unsafe early-release rule rather than challenging it. It must exercise actual native auth nonce rollback and transplantability; generic transaction-hash replay rejection is not enough.",
+                "The first-canary proof must use the selected real native credential and actual final XDR hash, with genuinely absent post-inclusion fields before execution. Staged/mock signatures or invented results would conceal the two bootstrap defects.",
+                "Ordinary liquidity, buffer denominator, donation, exact-Wasm pin coupling, direct-user service, and objective retirement risks remain addressed; no unrelated liquidity correction is required.",
+                "All required corrections are captured in P7-A1, P7-A2, P7-C1 and P7-C2; the state-machine approach itself is viable and does not warrant REJECT."
+              ],
+              "deliberate_assessment": "ITERATE. The user-requested canonical/signature cycle is addressed conceptually by a single pre-canonical canary, and the broader funds/security, upgrade/operations, alternative, lifecycle, and maintenance checklist was reviewed. Four concrete authority/evidence/cryptographic-order defects still prevent an honest fresh-lane proof without bypass; the native-auth replay defect additionally allows overlapping live canary capabilities after an included failure. Repair and refreeze the exact bundle, then repeat Architect before Critic; no implementation is authorized."
+            }
+          }
+        ]
+      },
+      "prior_blocker_disposition": [
+        {
+          "id": "P1-A1",
+          "status": "CLOSED",
+          "evidence": [
+            "ADR0009:359-369 still rejects R<C, excludes D from the cap, tolerates positive surplus in the same invocation, and reconciles unexplained increases before the next batch; liquidity decision bytes are unchanged."
+          ]
+        },
+        {
+          "id": "P1-A2",
+          "status": "CLOSED",
+          "evidence": [
+            "ADR0009:322-329 still defines checked C=S(0)+backstop_credit-L in exact stock rounding order and rejects nonzero credit; ADR0008's disabled-gulp blob is unchanged."
+          ]
+        },
+        {
+          "id": "P1-A3",
+          "status": "SUPERSEDED",
+          "evidence": [
+            "ADR0009:356-357 retains the objective d_supply==0 zero-buffer final tranche under stock/raw checks, replacing the former fixed-buffer policy."
+          ]
+        },
+        {
+          "id": "P3-C1",
+          "status": "CLOSED",
+          "evidence": [
+            "ADR0009:331-347 still derives exact B and per-position-floor deadline-rate underlying minima from complete inventory and requires each record refresh to meet them."
+          ]
+        },
+        {
+          "id": "P4-A1",
+          "status": "CLOSED",
+          "evidence": [
+            "ADR0009:348-355 still subtracts exact user B from the post-vault denominator, never a reconverted aggregate cash amount; sequential last-user and exact-release differential requirements remain."
+          ]
+        },
+        {
+          "id": "P5 stock-vector coherence (Ponytail-discovered)",
+          "status": "CLOSED",
+          "evidence": [
+            "The vector inventory partitions and explicit b_rate_deadline=b_rate correction approved in the f4c423a21e680465dd92124b09cccad40b2dbc5e receipt remain unchanged in the pair-7 delta."
+          ]
+        }
+      ],
+      "terminal_status": "ITERATE"
+    }
+  ]
+}

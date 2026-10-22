@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "bundle_hash": "95650ee7fd7ee4fcdaa0dacacd38c788a965cb89",
+  "primary": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+  "bundle": [
+    {
+      "path": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+      "blob": "a67376744bef453818d02cc6c5a5bcdec54bd265"
+    },
+    {
+      "path": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+      "blob": "7b6c216c32c821261eed7456c3ccbfcc07657ff6"
+    }
+  ],
+  "coupling_reason": "ADR 0009 defines the mandatory successor migration and vault exit-liquidity controls for ADR 0008; ADR 0008 defines why raw surplus is unrepresented, so separate review would be incoherent.",
+  "preflight": [
+    {
+      "command": "PATH=\"$PWD/bin:$PATH\" adr --robot lint",
+      "exit_code": 0,
+      "result": "no output",
+      "artifact_hashes": {}
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "no output",
+      "artifact_hashes": {}
+    },
+    {
+      "command": "sha256sum /tmp/verify-adr0009-exit-headroom.py && python3 /tmp/verify-adr0009-exit-headroom.py",
+      "exit_code": 0,
+      "result": "checker f81b2eca344cbc93292e1601909c8e25ac0d20fbef91fc663e2f3350bc055a24; initial headroom 99; post-90 headroom 9; rejected for raw 100, 110, 200, and 250",
+      "artifact_hashes": {
+        "/tmp/verify-adr0009-exit-headroom.py": "f81b2eca344cbc93292e1601909c8e25ac0d20fbef91fc663e2f3350bc055a24"
+      }
+    },
+    {
+      "command": "Ponytail review of complete pending diff against c6266b7a5ac7fc4a6a4b83d2d2b77f85c410d712",
+      "exit_code": 0,
+      "result": "PASS; no safe simplification remains",
+      "artifact_hashes": {
+        "runtime_result": "history://LiquidityPonytail"
+      }
+    },
+    {
+      "command": "Independent source oracle for ADR0009 exact stock arithmetic",
+      "exit_code": 0,
+      "result": "MATCH; zero blockers",
+      "artifact_hashes": {
+        "runtime_result": "agent://LiquiditySourceOracle"
+      }
+    },
+    {
+      "command": "git hash-object doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md /tmp/raladr-adr0008-0009-liquidity.manifest",
+      "exit_code": 0,
+      "result": "a67376744bef453818d02cc6c5a5bcdec54bd265\n7b6c216c32c821261eed7456c3ccbfcc07657ff6\n95650ee7fd7ee4fcdaa0dacacd38c788a965cb89",
+      "artifact_hashes": {
+        "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md": "a67376744bef453818d02cc6c5a5bcdec54bd265",
+        "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md": "7b6c216c32c821261eed7456c3ccbfcc07657ff6",
+        "/tmp/raladr-adr0008-0009-liquidity.manifest": "95650ee7fd7ee4fcdaa0dacacd38c788a965cb89"
+      }
+    }
+  ],
+  "custody": {
+    "type": "COMMIT",
+    "location": "510510c3cdc73306df964ff2ba9f9d968695e563"
+  },
+  "reviews": [
+    {
+      "run": 2,
+      "pair": 1,
+      "attempts": {
+        "architect": [
+          {
+            "runtime_result": "agent://LiquidityArchitect",
+            "error": "Invocation-schema validation rejected an otherwise complete JSON object because prior_blocker_disposition was present; no formal verdict counted. The complete returned object is preserved and its substantive blocker P1-A1 is adopted.",
+            "result": {
+              "schema_version": 1,
+              "role": "architect",
+              "pair": 1,
+              "bundle_hash": "95650ee7fd7ee4fcdaa0dacacd38c788a965cb89",
+              "verdict": "ITERATE",
+              "blockers": [
+                {
+                  "id": "P1-A1",
+                  "finding": "The bundle's own operational recovery guidance for the exact failure it fixes prescribes an action that is either contract-rejected under the mandated T0 brake or converts treasury cash into permanently unrepresented 'abandoned value' under the new rule. Row 473 (edited in this commit) recovers legacy exit-headroom shortfall with 'add accounted supply/cash', and pre-mortem #2 (lines 489-490) with 'add approved cash'. Vault withdrawals occur after T0 (steps 8-9, invariant lines 504-505). T0 is defined as status 4 or every reserve disabled (lines 46-47); ADR0008 line 53 states status 4 blocks supply and collateral supply, and stock require_action_allowed (reserve.rs:146-156) rejects Supply/SupplyCollateral for a disabled reserve, so 'accounted supply' cannot be added. Invariant line 523 also forbids any post-T0 operation that increases legacy exposure. The only remaining literal reading, a plain token transfer, is exactly the uncredited donation that ADR0008:148-150 and ADR0009:280-282 declare never enters headroom and that ADR0009:324-326 archives as abandoned value with no treasury claim. An operator following the Recovery column would strand funds without restoring the accounted gate.",
+                  "evidence": [
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:473 (recovery 'add accounted supply/cash', changed from 'add cash' in 510510c)",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:487-490 (pre-mortem 2 recovery 'add approved cash')",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:35,46-47,504-505,523 (brake = status 4 / all-disabled; withdrawals after T0; no post-T0 legacy exposure increase)",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:324-326 (unsolicited unrepresented transfer archived as abandoned value, no treasury/protocol claim)",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:53,148-150 (status 4 blocks supply; unsolicited underlying unrepresented)",
+                    "vendor/blend-contracts-v2/pool/src/pool/reserve.rs:146-156 (require_action_allowed rejects Supply/SupplyCollateral when reserve disabled)"
+                  ],
+                  "required_change": "Rewrite the row-473 Recovery cell and pre-mortem #2 Recovery so they name only accounted-headroom-restoring actions feasible under the brake: refinance/repay borrowers (repayment lowers L), reduce tranche size, pause supplier batching, or retain the serviced tail; state explicitly that no cash may be transferred to the legacy pool uncredited because it becomes abandoned value and never raises accounted headroom. If a pre-T0 credited supply top-up is genuinely intended, condition it on status 0 before the brake and reconcile it with the after-T0 exposure invariant; otherwise delete 'add ... cash' from both places."
+                }
+              ],
+              "prior_blocker_disposition": [],
+              "tradeoff_tension": "Fail-closed exactness versus liveness and maintenance: deriving the cap from stock b_supply/b_rate/d_supply/d_rate with the strict ceil utilization boundary guarantees donations and rounding surplus can never widen the official withdrawal, but it (a) intentionally strands physically present cash as abandoned value and can block withdrawals the pool could physically fund, and (b) duplicates the pinned fork's integer arithmetic inside the vault's checked operation, so any deviation from the pinned rounding order silently desynchronizes the off-pool cap from the on-pool check.",
+              "evidence_checked": [
+                "/tmp/raladr-adr0008-0009-liquidity.manifest: raladr-bundle-v1, primary ADR0008, blobs a67376744bef453818d02cc6c5a5bcdec54bd265 / 7b6c216c32c821261eed7456c3ccbfcc07657ff6",
+                "git hash-object of both worktree ADRs matches manifest blobs; git hash-object of manifest = 95650ee7fd7ee4fcdaa0dacacd38c788a965cb89; HEAD = 510510c3cdc73306df964ff2ba9f9d968695e563; git ls-tree HEAD matches; doc/adr clean",
+                "git show 510510c (full diff: ADR0008 +3 lines at 148-150; ADR0009 hunks at 255-282, 412-420, 438-458, 473, 507-513)",
+                "doc/adr/reviews/871b518ec96950c11ee86a378345e635c844f157.json: bundle blobs 076978c2 / 8d366b1f (old bytes only; CONSENSUS_APPROVED on superseded revision)",
+                "ADR0008:1-27 (status/invalidation), 119-178 (restrictions 3,4,7), 269-285 (max_util does not preserve free cash; withdraw enforces util<100%), 380-395",
+                "ADR0009:1-33, 35-56, 84-111, 143-180, 197-211, 254-303, 360-395, 396-435, 436-463, 465-479, 481-498, 500-534",
+                "vendor/blend-contracts-v2/pool/src/pool/actions.rs:307-332 (apply_withdraw: to_b_token_up, position cap, remove_supply, require_utilization_below_100), 363-382 (apply_withdraw_collateral same arithmetic)",
+                "vendor/blend-contracts-v2/pool/src/pool/reserve.rs:35-79 (Reserve::load accrual, same-timestamp short-circuit), 113-140 (utilization: 0 / SCALAR_7 / fixed_div_ceil; >= SCALAR_7 panics), 146-156 (require_action_allowed), 158-184 (total_liabilities ceil, total_supply floor), 226-236 (to_b_token_up ceil)",
+                "vendor/blend-contracts-v2/pool/src/pool/user.rs:183-197 (remove_supply panics on amount<=0, decrements reserve b_supply)",
+                "vendor/blend-contracts-v2/pool/src/pool/pool.rs:40-58 (load_reserve cache); contract.rs:443-446 (get_reserve = Reserve::load, current-ledger accrued read)",
+                "grep .balance( in pool/src: only gulp.rs:25 reads raw pool balance in non-test code; gulp neutered by ADR0008 restriction 4",
+                "Read-only Python replay of the ADR formulas: S(0)=1000,L=900 -> initial headroom 99, post-90 headroom 9 (matches preflight); L=1e9: S=L+1 and S=L+100 fail strict utilization, S=L+101 passes, confirming S>L is insufficient and the stock ceil boundary is required"
+              ],
+              "steelman": "Strongest counterargument to the chosen accounted-headroom rule: it reproduces the pinned fork's integer arithmetic outside the pool, creating a second implementation of burn/S/L/utilization whose only correctness guarantee is prose fidelity to a vendored source; a simpler design would let the stock submit reject (utilization >= 100%) and enforce the buffer by requiring the same invocation to also succeed at a dry-run withdrawal of x+buffer against the same accrued state, needing no formula transcription. The ADR's answer holds: a dry-run withdrawal that must roll back cannot be expressed as a pure read inside one Soroban invocation without its own contract, the vault batch is already a reviewed contract-side checked operation, the formulas are transcribed exactly from the pinned base (verified against actions.rs/reserve.rs), and the 'stock withdrawal itself passes' clause keeps the on-pool check authoritative so a transcription error can only over-reject, never over-permit. The alternative of crediting donations through gulp so physical and accounted liquidity agree is correctly rejected by ADR0008 restriction 4 (no surplus recognition, no backstop credit path) and by the sealed-economics goal.",
+              "synthesis": "Identity verified: worktree blobs and manifest hash equal the frozen bundle; the prior receipt binds only superseded blobs. The core correction is sound: burn/S/L/utilization match apply_withdraw, to_b_token_up, to_asset_from_b_token, to_asset_from_d_token and utilization exactly; get_reserve yields the same accrued state submit will load at the same timestamp, so the same-invocation read is deterministic; only gulp reads raw balance and it is neutered, so donations cannot enter b_supply/b_rate/d_rate; the permitted set is the AND of the accounting gate and the raw gate, so donation-only changes can raise the physical gate but never the accounting-permitted withdrawal (the reported counterexample rejects at raw 100/110/200/250, reproduced). The vault-position bound, 'stock withdrawal passes' precondition, post-withdraw buffer, and separate raw buffer compose without surplus enlarging headroom. The remaining defect is operational text inside the same bundle: the Recovery guidance for this very risk (row 473, pre-mortem 2) tells operators to add cash/supply to a legacy pool that, under the ADR's own T0 brake and exposure invariant, cannot accept credited supply and would archive any transfer as abandoned value. That is a funds-boundary/operations inconsistency introduced or left standing by this change and must be corrected before consensus; the fix is a small text edit with no contract implementation.",
+              "risks": [
+                "Operational: the accounted gate can block withdrawals the pool can physically fund; all such cash (donations, withdraw-rounding dust, post-orphan surplus) is by design unrecoverable treasury-side; lineage plans must size borrower_exit_buffer/direct_exit_buffer knowing repayment is the only post-T0 lever that raises headroom.",
+                "Compatibility/maintenance: the transcribed formulas are correct only for the pinned base's rounding order (ceil burn, floor supply, ceil liabilities, ceil utilization); any fork or vendor change to these helpers must be treated as a change to this ADR's cap, and tests should assert equality of the vault-side headroom with a real stock submit outcome rather than the prose formula alone.",
+                "Reconciliation: the raw gate is only raw >= transfer + buffer; the ADR does not state what happens when raw is below accounted cash (S + backstop_credit - L), i.e. a physical deficit smaller than the buffer would pass both gates; inventory reconciliation ('reconcile every transfer', T0 gap blocks) is the only guard.",
+                "Verification design: the concrete regression (S(0)=1000, L=900, buffer 100) starts with pre-withdraw headroom 99 < buffer, so every variant rejects; it discriminates a raw-only implementation but not an always-reject implementation.",
+                "Same-invocation read relies on get_reserve remaining a public getter on the fork and on Reserve::load's same-timestamp short-circuit; an implementation that reads reserve data from storage without accrual would compute stale b_rate/d_rate."
+              ],
+              "file_corrections": [
+                "ADR0009:473 Recovery and ADR0009:489-490: replace 'add accounted supply/cash' / 'add approved cash' per P1-A1.",
+                "ADR0009:272-273: define accounted exit headroom when no nonnegative x has utilization < U (e.g. 'none; no withdrawal is permitted'), since the unit test at 443-446 compares headroom values on reserves that may already sit at the strict boundary.",
+                "ADR0009:446-449: add a positive control alongside the all-reject case (e.g. same reserve with buffer 5: maximum accounting-permitted withdrawal is 94 for raw 100, 110, 200, 250) so the 'must remain identical' requirement is exercised on a nonzero cap.",
+                "ADR0009:360-376 Alternatives: record the rejected 'raw token balance minus buffer as the exit gate' design (the reported bug) and 'recognize donations via gulp' so the Decision/Alternatives pairing documents why accounting-derived headroom was selected.",
+                "ADR0009:487-490 pre-mortem 2 vocabulary: 'exit buffer falls' and 'per-tranche cash gates' should read 'accounted exit headroom falls' and 'accounted-headroom and raw-balance gates' to match the Decision vocabulary."
+              ],
+              "principle_violations": []
+            }
+          }
+        ],
+        "critic": []
+      },
+      "prior_blocker_disposition": [],
+      "terminal_status": "ITERATE"
+    }
+  ]
+}

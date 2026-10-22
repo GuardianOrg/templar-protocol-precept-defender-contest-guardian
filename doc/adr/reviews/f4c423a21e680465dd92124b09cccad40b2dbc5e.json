@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "bundle_hash": "f4c423a21e680465dd92124b09cccad40b2dbc5e",
+  "primary": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+  "bundle": [
+    {
+      "path": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+      "blob": "a67376744bef453818d02cc6c5a5bcdec54bd265"
+    },
+    {
+      "path": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+      "blob": "9685ec79aa443f940ae2babbe732b3e722f8149e"
+    }
+  ],
+  "coupling_reason": "ADR 0009 defines the mandatory successor migration, incident containment, user-claim preservation, and objective terminal-state path required before ADR 0008 may scale or retire.",
+  "preflight": [
+    {
+      "command": "PATH=\"$PWD/bin:$PATH\" adr --robot lint",
+      "exit_code": 0,
+      "result": "no output",
+      "artifact_hashes": {}
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "no output",
+      "artifact_hashes": {}
+    },
+    {
+      "command": "python3 /tmp/verify-adr0009-exit-headroom.py",
+      "exit_code": 0,
+      "result": "exit-headroom smoke PASS: donation-invariant cap; b-token and underlying claim retention; deficit, rounding, and debt-zero checks",
+      "artifact_hashes": {
+        "/tmp/verify-adr0009-exit-headroom.py": "sha256:78e63dd7f1109b72afa96f7d6ba530f2da9f5ec1360dd8f6890cad30f57df225"
+      }
+    },
+    {
+      "command": "git hash-object doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md /tmp/raladr-adr0008-0009-liquidity.manifest",
+      "exit_code": 0,
+      "result": "a67376744bef453818d02cc6c5a5bcdec54bd265\n9685ec79aa443f940ae2babbe732b3e722f8149e\nf4c423a21e680465dd92124b09cccad40b2dbc5e",
+      "artifact_hashes": {
+        "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md": "a67376744bef453818d02cc6c5a5bcdec54bd265",
+        "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md": "9685ec79aa443f940ae2babbe732b3e722f8149e",
+        "/tmp/raladr-adr0008-0009-liquidity.manifest": "f4c423a21e680465dd92124b09cccad40b2dbc5e"
+      }
+    }
+  ],
+  "custody": {
+    "type": "COMMIT",
+    "location": "f0d2fd63597989da31aaeaa5e47f500705bd63e0"
+  },
+  "reviews": [
+    {
+      "run": 1,
+      "pair": 6,
+      "attempts": {
+        "architect": [
+          {
+            "runtime_result": "agent://LiquidityCorrectionArchitect",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "architect",
+              "pair": 6,
+              "bundle_hash": "f4c423a21e680465dd92124b09cccad40b2dbc5e",
+              "verdict": "APPROVE",
+              "blockers": [],
+              "prior_blocker_disposition": [
+                {
+                  "id": "P1-A1",
+                  "status": "CLOSED",
+                  "evidence": "Unchanged: ADR0009:302-310 deficit-only `R < C` gate, recorded `D` never exact-match compared, decrease closes lane, unclassified increase pauses; acceptance 8 (449-462) and invariant (576-586) agree. Pair-6 delta (493-501 only) does not touch these lines."
+                },
+                {
+                  "id": "P1-A2",
+                  "status": "CLOSED",
+                  "evidence": "Unchanged: ADR0009:269-272 defines `C = S(0) + backstop_credit - L` per gulp.rs:26-27 and rejects nonzero credit / negative C; smoke lines 56-62 derive it."
+                },
+                {
+                  "id": "P1-A3",
+                  "status": "SUPERSEDED",
+                  "evidence": "Discretionary buffers removed; ADR0009:298-300 zeroes both retained values at `d_supply == 0` so the final tranche is live; smoke line 127 asserts the debt-zero full exit."
+                },
+                {
+                  "id": "P3-C1",
+                  "status": "CLOSED",
+                  "evidence": "Unchanged: ADR0009:274-291 derives `B = checked_sum(b_i)` and `user_exit_buffer = checked_sum(floor(b_i * b_rate_deadline / Q))` from the complete inventory with blocking on missing classes / unprovable bound; records must equal B and be >= the underlying minimum; property tests at 485-489 and smoke lines 97-108 reject deviations."
+                },
+                {
+                  "id": "P4-A1",
+                  "status": "CLOSED",
+                  "evidence": "Unchanged: ADR0009:291-298 subtracts exactly B from the post-burn denominator (`S_B(x)`), matching stock withdraw-all burning exactly b_i (actions.rs:322-325); the 1.7Q three-user vector rejects x=1 (498-501, smoke 129-130). Pair-5 exhaustive replay (67,470 permitted withdrawals, zero stranded users, zero spurious rejections) still applies since the gate text is byte-identical."
+                },
+                {
+                  "id": "P5 stock-vector coherence (Ponytail-discovered)",
+                  "status": "CLOSED",
+                  "evidence": "Pair-5 vectors stated a 1,000-b-token vault position inside a 1,000 aggregate `b_supply` while also retaining nonzero user b-tokens, which no stock state can satisfy since `b_supply` is the sum of all positions. ADR0009:493-499 now sets `b_rate_deadline = b_rate` explicitly and partitions supply: vault 900 + users 100 = 1,000 with both retained values 100 (burn(90) fits 900; S_B = 810 <= L = 900 rejects at every raw); vault 995 + five one-b-token users = 1,000 with both retained values 5 (max 94: S_B(94)=901 > 900, S_B(95)=900 rejects; raw 99 < C = 100 deficit); rounding variant keeps the same partition (each claim floor(1.2345…)=1 so buffer 5 = B; burn(237)=192 fits 995, S_B(237)=991 > L=990, S_B(238)=990 rejects; raw 243 < C = 244 deficit); the 1.7Q vector already partitioned 2 + 3 = 5. All four inventories sum to the stated `b_supply`, both retained values match their derivation at the stated deadline rate, and every maximum/rejection reproduced independently through the frozen smoke's allowed()/maximum() (smoke lines 110-130 add the partition asserts)."
+                }
+              ],
+              "tradeoff_tension": "Exact per-user protection versus vault liveness: subtracting the exact inventoried user b-token sum guarantees every user's full redemption at the strict utilization boundary without any rate forecast in the safety path, at the cost of making the vault's tranche while debt remains a pure function of user inventory and borrower-authorized repayment, so a serviced tail of small suppliers can hold the vault at zero tranche until debt-zero.",
+              "evidence_checked": [
+                "Identity: git rev-parse HEAD = f0d2fd63597989da31aaeaa5e47f500705bd63e0; git hash-object manifest = f4c423a21e680465dd92124b09cccad40b2dbc5e; ADR0008 blob a67376744bef453818d02cc6c5a5bcdec54bd265 (unchanged all pairs); ADR0009 blob 9685ec79aa443f940ae2babbe732b3e722f8149e; sha256 smoke = 78e63dd7f1109b72afa96f7d6ba530f2da9f5ec1360dd8f6890cad30f57df225; doc/adr status clean",
+                "git show HEAD --stat and diff: exactly one hunk in ADR0009 at 493-501 (9 insertions / 7 deletions), no other file changed; section 7 gate text, acceptance 8, risk rows, pre-mortem, and invariant are byte-identical to the pair-5 bundle I approved",
+                "Stock coherence of every concrete vector checked against the invariant that aggregate `b_supply` equals the sum of vault plus user positions (pool has no other b-token holder under ADR0008 restrictions; backstop_credit is zero): 900+100, 995+5, 995+5, 2+3",
+                "Read-only replay through the frozen smoke's allowed()/maximum(): v1 rejects 90 at raw 100/101/200/250; v2 max 94 at raw 100/101/200/250 and None at 99; v3 max 237 at raw 244/245/344, 238 rejects, None at 243; v4 x=0 allowed, x=1 rejected; required_user_btokens/required_user_buffer equal the stated retained values for each at b_rate_deadline = b_rate",
+                "Smoke script lines 93-130 read: partition asserts `vault + required_user_btokens == b_supply` added for both standard vectors; rounding vector asserts `required_user_buffer([1]*5, b_rate) == 5`",
+                "Stock source at pinned 6cf6dd1 (unchanged reliance): actions.rs:312-332, reserve.rs:91-108, 113-140, 158-184, 226-236, user.rs:106-116, gulp.rs:18-37, contract.rs:452-464",
+                "Global checklist re-run on the unchanged sections: requirements (capped isolated bridge, fork restrictions, abandonment gates, no incentives, migration/retirement semantics all in ADR0008 untouched); decision/alternative consistency (alternatives 8-9 still correctly rejected); funds/auth boundaries (deficit-only raw gate, B-subtraction cap, borrower-authorized repay); upgrade/operations (release-Wasm differential and sequential-exit properties); maintenance (two retained values with explicit prohibition on converting underlying back to b-tokens); artifact vocabulary consistent across section 7, acceptance 8, tests, risks, invariant"
+              ],
+              "steelman": "Strongest counterargument: the concrete vectors are illustrative and their internal stock-coherence does not change the gate, so the pair-5 bundle was already sound and this refreeze adds only test-fixture hygiene. That understates it: acceptance vectors are the contract implementers transcribe into the differential harness, and a vector that cannot exist on chain (vault holding all of `b_supply` while users hold nonzero b-tokens) would either be silently 'fixed' by an implementer, reopening ambiguity about which quantity is authoritative, or would fail the release-Wasm differential and stall the lane. Making `b_rate_deadline = b_rate` explicit likewise removes the only free variable that could make the stated retained values under-derived. The alternative of dropping concrete vectors in favor of property statements alone would lose the rounding-boundary regression that discriminates floor/ceil transpositions.",
+              "synthesis": "Identity matches the refrozen bundle and the delta is confined to making the acceptance vectors stock-coherent: every inventory now partitions the stated `b_supply`, the deadline rate is pinned to the live rate so both retained values equal their derivation, and every maximum and rejection reproduces independently through the frozen smoke predicate. The gate itself, the deficit-only raw check, the C identity, the B-subtraction denominator, the debt-zero release, and all downstream sections are byte-identical to the pair-5 text I approved after exhaustive soundness/tightness replay. All prior blockers including the Ponytail-discovered vector incoherence are closed. ADR0008 is untouched. No blocker and no file correction.",
+              "risks": [
+                "Vault liveness while debt remains depends entirely on user inventory and borrower-authorized repayment; plans must disclose to vault holders that a serviced tail can hold the vault at zero tranche until debt-zero.",
+                "The complete point-read inventory is off-chain custody; the pool exposes no position enumeration, so B completeness rests on archived genesis position sets plus live reads, and any gap silently under-counts B.",
+                "Maintenance: the release-Wasm differential property must generate multi-user sequential redemption after a permitted vault withdrawal on every pin; the risk row names it, implementers must honor it.",
+                "Two retained values invite drift if a future edit lets the underlying record influence the cap; the prohibition at ADR0009:297-298 must survive implementation review verbatim.",
+                "Reconciliation load: benign donations and third-party rounding dust pause the next batch until classified; bounded but manual and on the critical path."
+              ],
+              "file_corrections": [],
+              "principle_violations": []
+            }
+          }
+        ],
+        "critic": [
+          {
+            "runtime_result": "history://LiquidityCorrectionCritic",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "critic",
+              "pair": 6,
+              "bundle_hash": "f4c423a21e680465dd92124b09cccad40b2dbc5e",
+              "verdict": "APPROVE",
+              "blockers": [],
+              "prior_blocker_disposition": [
+                {
+                  "id": "P1-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "ADR0009:302-311 keeps R<C as the deficit-only same-invocation rejection, records D without an exact expected-surplus comparison, excludes surplus from burn/S/L/C/headroom, and pauses only the next batch for an unclassified increase.",
+                    "ADR0009:458-461,490-492,585-588 and alternative 8 at 406-407 preserve the same donation-invariant cap and fail-closed deficit lifecycle; pair-6 changes only concrete vectors."
+                  ]
+                },
+                {
+                  "id": "P1-A2",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "ADR0009:265-272 defines C=S(0)+backstop_credit-L in stock integer order and rejects nonzero credit, negative C, and checked-operation failure.",
+                    "Pinned gulp.rs:24-34 computes total_supply+backstop_credit-total_liabilities; ADR0008:145-150 disables surplus recognition and leaves raw balance only for sufficiency/reconciliation."
+                  ]
+                },
+                {
+                  "id": "P1-A3",
+                  "status": "SUPERSEDED",
+                  "evidence": [
+                    "ADR0009:298-300 sets both retained values to zero exactly at d_supply==0 while retaining stock/raw/credit checks; pinned reserve.rs:113-123 gives zero utilization at zero liabilities.",
+                    "ADR0009:456-457,512,583-584 and smoke line 127 preserve the objective debt-zero final tranche; the former discretionary fixed buffers are replaced by P3-C1/P4-A1's derived records."
+                  ]
+                },
+                {
+                  "id": "P3-C1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "ADR0009:274-290 derives exact B and the separately floored deadline-rate underlying minimum from every non-vault/non-pool-owned positive b-token position; missing classes, unprovable rate bound, or arithmetic failure blocks.",
+                    "ADR0009:449-457,485-489,536,578-584 and smoke record assertions enforce exact B equality and reject a one-unit-low underlying record."
+                  ]
+                },
+                {
+                  "id": "P4-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "ADR0009:291-298 subtracts exact B from the post-vault denominator, rejects B that does not fit, and applies pinned strict utilization to S_B without reconverting the underlying buffer to b-tokens.",
+                    "Pinned actions.rs:319-331 burns each withdraw-all position's exact b_i on the clamp path; reserve.rs:113-139 applies the final strict boundary; the corrected 1.7Q witness at ADR0009:501-506 and smoke lines 129-130 rejects x=1."
+                  ]
+                },
+                {
+                  "id": "P5 stock-vector coherence (Ponytail-discovered)",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "ADR0009:493-501 now explicitly sets b_rate_deadline=b_rate and partitions each aggregate stock b_supply: 900 vault+100 user b-tokens, 995+five one-token users, and the same 995+5 rounding state; the 1.7Q state remains 2+3=5.",
+                    "Smoke lines 110-126 assert the supply partitions and rounding buffer derivation; every stated retained value, cap, rejection, and deficit follows from an on-chain-representable position inventory."
+                  ]
+                }
+              ],
+              "tradeoff_tension": "Exact per-user denominator protection intentionally sacrifices vault liveness while debt and a user tail remain: B can reduce the official tranche to zero until borrower-authorized repayment or objective debt-zero. The separately floored deadline-rate cash record adds conservative reconciliation work, but is isolated to raw transfer sufficiency and never feeds the represented-state cap.",
+              "evidence_checked": [
+                "Canonical manifest exact bytes list ADR0008 blob a67376744bef453818d02cc6c5a5bcdec54bd265 and ADR0009 blob 9685ec79aa443f940ae2babbe732b3e722f8149e; both compare byte-identically to custody commit f0d2fd63597989da31aaeaa5e47f500705bd63e0 and the frozen ADR worktree has no diff. Canonical preflight and Architect independently report manifest hash f4c423a21e680465dd92124b09cccad40b2dbc5e.",
+                "Pair-6 commit diff is exactly one ADR0009 unit/property-vector hunk: 9 insertions and 7 deletions at 493-501; the decision gate, acceptance, risks, pre-mortem, invariants, and ADR0008 are unchanged from pair 5.",
+                "Whole affected ADR0009 decision and consequence sections reread at 247-316 and 428-607; ADR0008 pinned-source, status-4, disabled-gulp, user-tail, rounding-loss, retirement, acceptance, and exact-release boundaries were already read in full and its blob is unchanged.",
+                "Pair-6 Architect JSON read independently: APPROVE, no blockers/file corrections, all prior IDs closed or evidence-backed superseded; approval was not used as authority.",
+                "Pinned stock source commit 6cf6dd1ca712ea3cf17a767fe49b7da01f80b909 unchanged in cited files: actions.rs:319-331 withdrawal ceil/clamp/burn/order, reserve.rs:91-139 accrual/utilization and 226-235 conversion, gulp.rs:24-34 cash identity, contract.rs:452-465 submit authorization, submit.rs:25-64 atomic dispatch/store.",
+                "Exact frozen smoke input associated with SHA-256 78e63dd7f1109b72afa96f7d6ba530f2da9f5ec1360dd8f6890cad30f57df225 read in full; it now asserts vault+user position partitioning, deadline-rate buffer derivation, donation/deficit, rounding, last-user, debt-zero, and nonzero-credit behavior. No gate was rerun in this read-only Critic assignment."
+              ],
+              "architect_disposition": [],
+              "consequence_simulations": [
+                "Stock-coherent high retention: b_supply=1000,b_rate=Q,d_supply=900,d_rate=Q,vault=900,users B=100,buffer=100. x=90 burns 90 and leaves 810 b-tokens after B, so S_B=810<=L=900 and rejects at raw 100,101,200,250; positions sum exactly 900+100=1000.",
+                "Happy/donation/deficit: with vault=995,five one-b-token users,B=buffer=5, C=100. x=94 leaves S_B=901>L=900 and raw 100 leaves 6>=5; x=95 leaves S_B=900 and rejects. Raw 100,101,200,250 share cap 94 because D is excluded; raw 99<C rejects.",
+                "Rounding-sensitive: at b_rate=b_rate_deadline=1,234,567,890,123,d_rate=1,100,000,000,000,vault=995,five one-b-token users,B=buffer=5, S(0)=1234,L=990,C=244. x=237 burns 192 and leaves 803 b-tokens, S_B=991, so it passes; x=238 burns 193 and leaves 802, S_B=990=L, so it rejects. Raw 244/245/344 share cap 237; 243 is deficit.",
+                "Last-user witness: b_supply=5,b_rate=b_rate_deadline=1.7Q,d_supply=1,d_rate=Q,vault=2,three one-b-token users,B=buffer=3,raw=7. x=0 leaves S_B=floor(2*1.7)=3>L=1; x=1 burns one vault token and leaves S_B=floor(1*1.7)=1=L, so it rejects before the final user can be stranded.",
+                "Snapshot/inventory adversary: a missing/class-duplicate position, aggregate mismatch, unprovable deadline rate, or checked-sum failure blocks under 274-290 and T0 reconciliation. A user withdrawal after snapshot only overstates B/buffer and is conservative; T0 status 4 or all-disabled fallback prevents new supply, while reserve/raw/vault state is atomically reread.",
+                "Debt-zero: b_supply=100,b_rate=Q,d_supply=0,vault=100,raw=100 makes both retained values zero and utilization zero, permitting x=100 subject to stock/raw checks; nonzero backstop credit still rejects, so final-tranche liveness does not weaken ADR0008's accounting boundary."
+              ],
+              "alternative_fairness": "Direct/manual exit remains the safest default and direct-only is mandatory when the checked vault path cannot be proven. Registry adoption, storage copy, supplier-first, passive runoff, and a universal router are rejected on concrete provenance/custody/liveness grounds. Raw-balance-minus-buffer is correctly rejected because donations could enlarge it, while pre-exit gulp is incompatible with ADR0008's sealed no-surplus economics; exact B retention is the narrow stock-compatible alternative.",
+              "requirement_coverage": [
+                "Stock-coherent regression vectors -> each concrete inventory partitions b_supply and pins b_rate_deadline=b_rate -> ADR0009:493-504 plus smoke partition/derivation assertions.",
+                "Preserve all non-vault/non-pool user claims -> exact inventory B plus per-position-floor cash minimum -> acceptance 8, record equality/minimum properties, P4 witness, sequential exact-Wasm differential.",
+                "Accounting-only cap -> burn/S_B/L/C use represented stock state and exact ceil/floor order; raw/D excluded -> standard and rounding donation-invariance vectors plus separate accounted/raw integration gates.",
+                "Deficit and surplus lifecycle -> R<C rejects, positive D does not grief same invocation, D decrease closes, unclassified increase pauses next batch -> vectors, before/after receipts, reconciliation alerts.",
+                "Debt-zero liveness -> d_supply==0 zeroes both records while stock/raw/credit checks remain -> debt-zero unit/integration coverage and objective retirement.",
+                "Funds/auth -> vault native governance authorization; borrower migrator user+bridge exact native authorization; atomic conservation/rollback -> exact-Wasm auth tests, canary, reservation reconciliation.",
+                "Snapshot/rate safety -> genesis gap detection, aggregate reconciliation, T0 replay/point reads, per-batch refresh, greatest reachable deadline rate, fail closed on missing/unprovable -> property/integration/observability coverage.",
+                "Maintenance coupling -> pinned stock arithmetic/auth ordering and exact-release-Wasm multi-user differential on every pin -> risk row, concrete rounding vectors, testnet exact-byte canary.",
+                "ADR-only scope -> no implementation authorized; implementation remains a separately reviewed follow-up after human acceptance -> ADR0009 verification preamble, follow-ups, acceptance 12."
+              ],
+              "risk_and_verification_findings": [
+                "Residual liveness risk is explicit and accepted: a dust-heavy or uncooperative user tail may pin vault movement until repayments or debt-zero; funded indefinite service/direct-only is the recovery, not a softer cap.",
+                "Complete inventory is off-chain custody because stock exposes no position enumeration, but genesis event custody, aggregate reconciliation, live point reads, source snapshot, and missing-range failure are proportionate safeguards.",
+                "The exact-release differential must continue to exercise multi-user sequential withdraw-all after permitted vault batches, not merely aggregate reserve arithmetic; P4's witness and the sequential-exit risk/property retain this obligation.",
+                "The underlying deadline-rate record is conservative and partly redundant, but remains fail-closed, operator-readable, and explicitly prohibited from influencing B or the official cap.",
+                "Benign donations/rounding dust impose manual next-batch reconciliation load but cannot reject the current invocation merely for positive D or increase represented capacity."
+              ],
+              "deliberate_assessment": "The funds/auth-sensitive pair satisfies deliberate review: exact authority and asset bounds, one-way failure behavior, atomic conservation/rollback, objective terminality, credible pre-mortem warning/prevention/recovery, and unit/property, integration, E2E/testnet, observability, canary, and exact-release-Wasm coverage are present. Pair 6 removes the last fixture ambiguity without changing the already-correct gate; all prior blockers are closed or evidence-backed superseded, and no blocker or hidden correction remains."
+            }
+          }
+        ]
+      },
+      "prior_blocker_disposition": [
+        {
+          "id": "P1-A1",
+          "status": "CLOSED",
+          "evidence": [
+            "ADR0009:302-311 keeps R<C as the deficit-only same-invocation rejection, records D without an exact expected-surplus comparison, excludes surplus from burn/S/L/C/headroom, and pauses only the next batch for an unclassified increase.",
+            "ADR0009:458-461,490-492,585-588 and alternative 8 at 406-407 preserve the same donation-invariant cap and fail-closed deficit lifecycle; pair-6 changes only concrete vectors."
+          ]
+        },
+        {
+          "id": "P1-A2",
+          "status": "CLOSED",
+          "evidence": [
+            "ADR0009:265-272 defines C=S(0)+backstop_credit-L in stock integer order and rejects nonzero credit, negative C, and checked-operation failure.",
+            "Pinned gulp.rs:24-34 computes total_supply+backstop_credit-total_liabilities; ADR0008:145-150 disables surplus recognition and leaves raw balance only for sufficiency/reconciliation."
+          ]
+        },
+        {
+          "id": "P1-A3",
+          "status": "SUPERSEDED",
+          "evidence": [
+            "ADR0009:298-300 sets both retained values to zero exactly at d_supply==0 while retaining stock/raw/credit checks; pinned reserve.rs:113-123 gives zero utilization at zero liabilities.",
+            "ADR0009:456-457,512,583-584 and smoke line 127 preserve the objective debt-zero final tranche; the former discretionary fixed buffers are replaced by P3-C1/P4-A1's derived records."
+          ]
+        },
+        {
+          "id": "P3-C1",
+          "status": "CLOSED",
+          "evidence": [
+            "ADR0009:274-290 derives exact B and the separately floored deadline-rate underlying minimum from every non-vault/non-pool-owned positive b-token position; missing classes, unprovable rate bound, or arithmetic failure blocks.",
+            "ADR0009:449-457,485-489,536,578-584 and smoke record assertions enforce exact B equality and reject a one-unit-low underlying record."
+          ]
+        },
+        {
+          "id": "P4-A1",
+          "status": "CLOSED",
+          "evidence": [
+            "ADR0009:291-298 subtracts exact B from the post-vault denominator, rejects B that does not fit, and applies pinned strict utilization to S_B without reconverting the underlying buffer to b-tokens.",
+            "Pinned actions.rs:319-331 burns each withdraw-all position's exact b_i on the clamp path; reserve.rs:113-139 applies the final strict boundary; the corrected 1.7Q witness at ADR0009:501-506 and smoke lines 129-130 rejects x=1."
+          ]
+        },
+        {
+          "id": "P5 stock-vector coherence (Ponytail-discovered)",
+          "status": "CLOSED",
+          "evidence": [
+            "ADR0009:493-501 now explicitly sets b_rate_deadline=b_rate and partitions each aggregate stock b_supply: 900 vault+100 user b-tokens, 995+five one-token users, and the same 995+5 rounding state; the 1.7Q state remains 2+3=5.",
+            "Smoke lines 110-126 assert the supply partitions and rounding buffer derivation; every stated retained value, cap, rejection, and deficit follows from an on-chain-representable position inventory."
+          ]
+        }
+      ],
+      "terminal_status": "CONSENSUS_APPROVED"
+    }
+  ]
+}

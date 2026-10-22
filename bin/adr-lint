@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+## usage: adr lint
+##
+## Checks the decision log: every ADR has a known status, numbers are
+## unique, and every link in a Status section resolves to a file.
+## Exit 1 on the first problem class found. Meant for CI and pre-commit.
+
+dir=$("$adr_bin_dir/_adr_dir")
+rc=0
+
+dup=$(ls "$dir" | grep -Eo '^[0-9]+' | sort | uniq -d)
+[ -z "$dup" ] || { echo "duplicate ADR numbers: $dup"; rc=1; }
+
+for f in $("$adr_bin_dir/adr-list")
+do
+    "$adr_bin_dir/_adr_status" "$f" | grep -Eq '^(Proposed|Accepted|Deprecated|Superceded by |Rejected)' \
+        || { echo "$f: no known status (Proposed|Accepted|Deprecated|Rejected|Superceded by)"; rc=1; }
+    for link in $("$adr_bin_dir/_adr_status" "$f" | grep -Eo '\]\([^)]+\)' | tr -d '()]')
+    do
+        [ -f "$dir/$link" ] || { echo "$f: broken link $link"; rc=1; }
+    done
+done
+exit $rc

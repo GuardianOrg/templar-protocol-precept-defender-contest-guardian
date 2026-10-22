@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+## usage: adr status
+##
+## Lists every ADR with its number, current status and title, one per line:
+##
+##     0007  Proposed  Use MySQL Database
+##
+## Status is the first non-link line of the Status section
+## (Proposed, Accepted, Deprecated, Superceded ...).
+
+for f in $("$adr_bin_dir/adr-list")
+do
+    n=$(basename "$f" | cut -c 1-4)
+    status=$("$adr_bin_dir/_adr_status" "$f" | grep -v '^\(Amends\|Amended by\|Supercedes\) ' | head -1 | cut -d ' ' -f 1)
+    title=$("$adr_bin_dir/_adr_title" "$f" | cut -d ' ' -f 2-)
+    printf '%s  %-10s %s\n' "$n" "$status" "$title"
+done

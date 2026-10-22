@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "bundle_hash": "f4235d7b96578f7f1eabb5c9a5851e9dc907870d",
+  "primary": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+  "bundle": [
+    {
+      "path": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+      "blob": "e55cd7c7a348295d92839cca7331ab417ab6f454"
+    },
+    {
+      "path": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+      "blob": "ea52ebff97065b9288996efce595df3829e5742d"
+    }
+  ],
+  "coupling_reason": "ADR0009 governs the mandatory migration and retirement of the ADR0008 cohort; its canary authority must compose with the unchanged launch profile.",
+  "custody": {
+    "type": "COMMIT",
+    "location": "ade71cc7cfc42917a722c7aa1e7d0c5ba58cbe3e"
+  },
+  "preflight": [
+    {
+      "command": "bin/adr --robot lint && git diff --check",
+      "exit_code": 0,
+      "result": "PASS",
+      "input_hashes": [
+        {
+          "path": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+          "blob": "e55cd7c7a348295d92839cca7331ab417ab6f454"
+        },
+        {
+          "path": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+          "blob": "ea52ebff97065b9288996efce595df3829e5742d"
+        }
+      ]
+    },
+    {
+      "command": "python3 /tmp/precept-freeze-boundary-smoke.py",
+      "exit_code": 0,
+      "result": "PASS: separate L/L+1 markers and pending/unknown/failed queue controls, clear equality, fallback without F4, delayed reconciliation and repeated freezes; decision model only, not native policy or ledger-inclusion proof.",
+      "source": "\"\"\"ADR chronology decision model only; not native policy or ledger-inclusion proof.\"\"\"\nfrom dataclasses import dataclass\n\n\n@dataclass\nclass Boundary:\n    f4: tuple | None = None\n    t0: tuple | None = None\n\n    def observe(self, ledger, close_time, transaction, *, entered_frozen=False,\n                frozen=False, verified_code=True, queues=(), fallback=False,\n                all_disabled=False):\n        point = (ledger, close_time, transaction)\n        if entered_frozen and frozen and verified_code and self.f4 is None:\n            self.f4 = point\n        clear = all(q in (\"cancelled\", \"executed\") for q in queues)\n        brake = all_disabled if fallback else (frozen and verified_code and self.f4 is not None)\n        if self.t0 is None and clear and brake:\n            self.t0 = point\n\n\nstate = Boundary()\nstate.observe(100, 1000, \"freeze\", entered_frozen=True, frozen=True, queues=(\"pending-disable\",))\nassert state.f4 == (100, 1000, \"freeze\") and state.t0 is None\nstate.observe(101, 1005, \"cancel\", frozen=True, queues=(\"cancelled\",))\nassert state.f4 == (100, 1000, \"freeze\") and state.t0 == (101, 1005, \"cancel\")\nstate.observe(102, 1010, \"idempotent-freeze\", frozen=True, queues=(\"cancelled\",))\nassert state.f4 == (100, 1000, \"freeze\") and state.t0 == (101, 1005, \"cancel\")\n# Later reconciliation consumes historical confirmed snapshots, not its wall-clock time.\nlate = Boundary()\nlate.observe(100, 1000, \"freeze\", entered_frozen=True, frozen=True, queues=(\"pending-disable\",))\nlate.observe(101, 1005, \"cancel\", frozen=True, queues=(\"cancelled\",))\nassert late == state\nfor queue in (\"pending-disable\", \"unknown\", \"failed-cancellation\"):\n    blocked = Boundary()\n    blocked.observe(100, 1000, \"freeze\", entered_frozen=True, frozen=True, queues=(queue,))\n    blocked.observe(101, 1005, \"cancel-one\", frozen=True, queues=(\"cancelled\", queue))\n    assert blocked.f4 == (100, 1000, \"freeze\") and blocked.t0 is None\nclean = Boundary()\nclean.observe(100, 1000, \"freeze\", entered_frozen=True, frozen=True)\nassert clean.f4 == clean.t0 == (100, 1000, \"freeze\")\nfallback = Boundary()\nfallback.observe(100, 1000, \"disable-final\", fallback=True, all_disabled=True)\nassert fallback.f4 is None and fallback.t0 == (100, 1000, \"disable-final\")\nfallback.observe(101, 1005, \"later-freeze\", entered_frozen=True, frozen=True)\nassert fallback.f4 == (101, 1005, \"later-freeze\") and fallback.t0 == (100, 1000, \"disable-final\")\nfailed = Boundary()\nfailed.observe(100, 1000, \"failed-freeze\")\nassert failed.f4 is None and failed.t0 is None\nprint(\"PASS: F4=(L,timeL), T0 absent until cancellation at L+1; original transaction/time \"\n      \"preserved; pending/unknown/failed/second queue blocks; clear equality, fallback without \"\n      \"F4, later freeze, delayed replay. Decision model only, not exact-Wasm/testnet proof.\")\n",
+      "artifact_hashes": {
+        "source_sha256": "53c593387c5cdcfaf40bd395162abf5a7e30baae1eaed1eaece9489d67adfbe7"
+      }
+    },
+    {
+      "command": "Ponytail full pending diff review",
+      "exit_code": 0,
+      "result": {
+        "overall_correctness": "correct",
+        "explanation": "PASS — Full-diff minimality disposition: the correction is internally consistent and no safe deletion or mandatory simplification remains. ADR0008 explicitly authorizes cancellation at status 4 only for an exact policy-created pending disable; ADR0009 now preserves F4=L, blocks T0 while that legitimate queue remains, permits confirmed cancellation at L+1, and records T0=L+1 without rewriting F4. The preferred F4<=T0 relation, fallback-before-F4 case, I0/I1 boundary, queue-absence proof, immutable timestamps, release ordering, and regression cases all remain distinct without adding authority or assuming atomic cleanup.",
+        "confidence": 0.98
+      },
+      "runtime_result": "agent://FreezeMinimality"
+    },
+    {
+      "command": "Mechanical bundle vocabulary/cross-link and inventory consistency sweep",
+      "exit_code": 0,
+      "result": "ADR0009 definitions, record, release sequence, incidents and regression distinguish F4/T0; ADR0008 frozen per-asset cancellation unchanged; titles/backlinks/change counts unchanged; no normative JSON/schema/checker introduced."
+    }
+  ],
+  "applicability": {
+    "native_build_testnet": "Not run: Proposed ADR-only correction. Separate-confirmed-ledger exact-Wasm/testnet regression is a required implementation gate, not claimed executed.",
+    "schema_crypto_checks": "Inapplicable: bundle contains only Proposed Markdown ADRs, no schema/vector/crypto protocol changes."
+  },
+  "decision_inventory": [
+    "INCLUDE: F4 actual first successful absorbing freeze, independent of pending cleanup; immutable transaction/ledger/close-time provenance.",
+    "INCLUDE: T0 first fully satisfied chosen boundary, including expected queues; preferred F4<=T0, fallback may lack F4.",
+    "INCLUDE: separate per-asset cleanup ledgers, fail-closed lane, I0 gap, historical vs reconciliation time.",
+    "INCLUDE: requested L/L+1 exact-Wasm/testnet regression requirement and explicitly limited decision-model smoke.",
+    "REJECT: mandatory atomic freeze+cleanup or intake-only T0; user selected complete predicate definition and existing authority already permits later cancellation.",
+    "DEFER: native implementation/testnet execution to separate implementation request; this is Proposed ADR-only work."
+  ],
+  "prior_receipt": "doc/adr/reviews/db52c0ab544a71281c1fee4a47e0275a7bd804b0.json",
+  "reviews": [
+    {
+      "run": 1,
+      "pair": 1,
+      "attempts": {
+        "architect": [
+          {
+            "runtime_result": "agent://FreezeArchitect",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "architect",
+              "pair": 1,
+              "bundle_hash": "f4235d7b96578f7f1eabb5c9a5851e9dc907870d",
+              "verdict": "APPROVE",
+              "blockers": [],
+              "prior_blocker_disposition": [],
+              "tradeoff_tension": "Historical truth versus operational simplicity: preserving F4 at the actual successful freeze ledger and T0 at the first later ledger where the complete chosen brake predicate holds gives an accurate I0/I1 boundary, but the release worker may only establish those facts during a later inventory reconciliation. Defining T0 as the reconciliation/record time would be easier to implement and audit, but would make operator latency rewrite on-chain chronology. The bundle keeps the true boundary timestamps while requiring transaction/state provenance and holding ordinary signing and the successor route closed until reconciliation completes.",
+              "evidence_checked": [
+                "Frozen identity: /tmp/precept-freeze-parent.manifest:1-4 names primary ADR0009 and ordered blobs e55cd7c7a348295d92839cca7331ab417ab6f454 (ADR0008) and ea52ebff97065b9288996efce595df3829e5742d (ADR0009); doc/adr/reviews/f4235d7b96578f7f1eabb5c9a5851e9dc907870d.json:3-18 binds the same hash, paths, blobs, and custody commit ade71cc7cfc42917a722c7aa1e7d0c5ba58cbe3e",
+                "Complete requested delta inspected: ade71cc7cfc42917a722c7aa1e7d0c5ba58cbe3e changes only ADR0009 and separates F4, T0, record provenance, cutover cleanup, I0 handling, and chronology regression; the complete two-ADR frozen bundle was read",
+                "ADR0009:42-67 defines F4 as the first successful absorbing freeze, T0 as the first complete chosen no-pending-or-unresolved-queue boundary, preferred F4<=T0, fallback without F4, and the frozen-but-pre-T0 I0 interval",
+                "ADR0009:129-168 requires distinct F4/T0/I0/I1 record evidence, chosen branch, cancellation outcomes, queue/state readbacks, immutable historical ledger/time/transaction provenance, and fail-closed treatment of missing or contradictory evidence",
+                "ADR0009:189-265 keeps routing and ordinary signing off through the non-atomic freeze/cleanup sequence, records F4 immediately on success, allows later per-asset cancellation, establishes no T0 until queue absence, preserves historical markers through inventory refresh and repeated freezes, and admits fallback only after the status-4 call fails with healthy authority and inclusion",
+                "ADR0009:441-461 classifies the frozen cleanup gap as I0, forbids backdating T0 or inferring queue absence from the freeze, preserves an irreversible successful freeze even if cutover is abandoned, and prevents I1 from reopening legacy intake",
+                "ADR0009:463-515 retains the complete drained predicate: claims, liabilities, auctions, emissions, residue attribution, backstop class, queue resolution, migration authority, one route, and sink ownership all remain independent terminal gates",
+                "ADR0009:570-636 maps inventory gaps, ordered cutover, authority/TTL/inclusion/queue failure, crash-safe signing, objective retirement, and exact review to acceptance criteria",
+                "ADR0009:638-720 requires the exact L/L+1 regression: F4=L with T0 absent and route/signing closed; T0=L+1 only after all predicates first hold; failed/other/unresolved queues remain blocked; same-ledger cases retain transaction/state provenance; fallback has no fabricated F4; delayed reconciliation and repeated freezes cannot replace markers",
+                "ADR0008:199-236 gives the immutable policy sole queue authority, permits only cancellation at status 4 of an exact policy-created pending disable, records every queue, exposes policy-owned queue phase, requires live terminal configuration agreement, and fails closed on TTL-expired or unresolved queue state",
+                "ADR0008:317-345 establishes status 4 as primary containment and restricts fallback to all reserves disabled with no unresolved policy queue while authority and inclusion remain healthy; failures retain closed routes rather than inventing a deadline",
+                "ADR0008:389-428 and ADR0009:463-515 preserve source-sensitive residue, represented-claim, retirement, and immutable sink boundaries; the chronology correction does not weaken funds or terminal custody",
+                "Pinned native source identity is 6cf6dd1ca712ea3cf17a767fe49b7da01f80b909 in both the frozen gitlink and populated submodule; pool/src/contract.rs:50-78,402-419 and pool/src/pool/config.rs:66-110 show per-asset queue/cancel/execute interfaces, while pool/src/storage.rs:372-420 shows no public aggregate queue getter and temporary per-asset queue storage",
+                "Pinned native pool/src/pool/status.rs:11-117 confirms stock status handling calls the backstop before status dispatch, while the proposed ADR0008 fork must make status 4 independent and absorbing; the bundle does not misstate that future implementation obligation",
+                "Current receipt preflight explicitly labels its chronology smoke a decision model only, not native policy or ledger-inclusion proof; ADR0009:680-689 and ADR0008:487-587 reserve exact-source, exact-Wasm, separate-ledger, testnet, and observability proof for implementation",
+                "Prior receipt doc/adr/reviews/db52c0ab544a71281c1fee4a47e0275a7bd804b0.json was inspected as context for the previously reviewed bundle and its corrected reference-model interpretation, not treated as approval of the new ADR0009 blob"
+              ],
+              "steelman": "The strongest alternative is to define T0 as the moment the release worker completes its inventory refresh and writes the protected record, or to require cleanup before/atomically with freeze. That would collapse freeze, queue clearance, operational authorization, and incident-class transition into one easy-to-consume marker and avoid reconstructing a historical boundary from retained evidence. It is nevertheless inferior here: the native surfaces are per-asset and do not provide atomic freeze-plus-cleanup, a legitimate pending disable may exist when the safest absorbing freeze succeeds, and delaying or rewriting F4 would conceal the actual irreversible state transition. Using reconciliation time as T0 would also let operator lag reclassify incidents. The selected design retains one-way freeze immediately, keeps routes and ordinary signing closed throughout the gap, and records T0 only for the first evidenced ledger where the complete selected brake predicate actually holds.",
+              "synthesis": "APPROVE the exact frozen two-ADR bundle at f4235d7b96578f7f1eabb5c9a5851e9dc907870d. The requested L/L+1 case is complete and internally consistent: a confirmed status-4 transition at L permanently records F4=L despite the legitimate pending disable; T0 remains absent and the period remains I0; a separately confirmed authorized cancellation at L+1 establishes T0=L+1 only if every chosen brake predicate first holds, without rewriting F4 or pretending cleanup was atomic. Expected pending queues are distinguished from resolved history, unknown or failed cleanup remains fail-closed, the fallback order is narrower and may honestly have no F4, later freezes and reconciliation cannot replace either marker, and the smoke is explicitly not native proof. The correction preserves the prior funds, authorization, compatibility, migration, terminality, maintenance, and immutable-sink boundaries without adding scope.",
+              "risks": [
+                "No required change: the frozen-but-pre-T0 I0 interval can prolong service disruption because both ordinary signing and successor routing remain closed while cleanup or evidence reconciliation completes; this is the deliberate fail-closed cost of not backdating T0 (ADR0009:239-251,443-449).",
+                "No required change: the native pool exposes per-asset queue actions but no aggregate queued-reserve getter, so absence proof depends on the policy being sole queue authority, its complete per-asset ledger, confirmed cancellation/execution outcomes, and live bound configuration; any gap or contradiction must remain unresolved and block T0 (ADR0008:214-225; ADR0009:141-161,239-249).",
+                "No required change: T0 may be learned after its historical ledger. Consumers must preserve boundary time separately from reconciliation time and must not open the route merely because a historical predicate is reconstructed; the ordered lifecycle still requires the completed refresh before SIGNING_ENABLED/OPEN (ADR0009:158-161,247-251,577-586).",
+                "No required change: fallback T0 can precede any F4, and a later successful freeze can add F4 after T0. Implementations must apply F4<=T0 only to the preferred branch, never as a global invariant (ADR0009:50-56,680-689).",
+                "No required change: the chronology smoke demonstrates decision logic only. Native cancellation availability at status 4, exact state/event chronology across confirmed ledgers, policy queue custody, and ledger inclusion remain release-blocking exact-Wasm/testnet obligations (current receipt preflight; ADR0009:680-705).",
+                "No required change: protected Markdown/Git records preserve evidence but cannot manufacture lost ledger history. If event/state provenance is unavailable or contradictory, F4 or T0 must remain unestablished and the lane stays closed rather than substituting a later point-read timestamp (ADR0009:158-161)."
+              ],
+              "file_corrections": [],
+              "principle_violations": []
+            }
+          }
+        ],
+        "critic": [
+          {
+            "runtime_result": "agent://FreezeCritic",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "critic",
+              "pair": 1,
+              "bundle_hash": "f4235d7b96578f7f1eabb5c9a5851e9dc907870d",
+              "verdict": "APPROVE",
+              "blockers": [],
+              "prior_blocker_disposition": [],
+              "tradeoff_tension": "Historical truth and fail-closed safety cost more operational state than a single cutover timestamp. Preserving F4 at the actual first successful absorbing freeze and T0 at the first later complete chosen no-queue boundary prevents operator latency from rewriting the I0/I1 chronology, but requires immutable transaction/state evidence, per-asset queue custody, and a separate reconciliation time; the bundle accepts that burden while keeping ordinary signing and successor routing closed until reconciliation completes.",
+              "evidence_checked": [
+                "Frozen identity: /tmp/precept-freeze-parent.manifest:1-4 and doc/adr/reviews/f4235d7b96578f7f1eabb5c9a5851e9dc907870d.json:3-18 bind primary ADR0009, ordered ADR0008/ADR0009 blobs e55cd7c7a348295d92839cca7331ab417ab6f454 and ea52ebff97065b9288996efce595df3829e5742d, bundle hash f4235d7b96578f7f1eabb5c9a5851e9dc907870d, and custody commit ade71cc7cfc42917a722c7aa1e7d0c5ba58cbe3e.",
+                "The complete ade71cc delta was inspected: only ADR0009 changes, separating F4, complete-boundary T0, record/reconciliation time, non-atomic frozen cleanup, I0 chronology, and the implementation regression.",
+                "ADR0009:42-67 defines actual first-success F4, complete chosen-boundary T0, expected pending queues as T0 blockers, preferred-branch F4<=T0, fallback without F4, later freeze without T0 rewrite, and frozen-but-pre-T0 I0.",
+                "ADR0009:129-168 requires distinct F4/T0/I0/I1 evidence, chosen branch, cancellation outcomes, queue/state readbacks, actual historical ledger/close-time/transaction provenance, and fail-closed missing or contradictory boundary evidence.",
+                "ADR0009:189-265 orders route closure before freeze, records F4 on success, permits separately confirmed per-asset cancellation in later ledgers, forbids assumed atomic cleanup, blocks T0 and successor routing on any pending/unresolved queue, narrows fallback to a failed status call with healthy authority/inclusion, and preserves historical markers through later reconciliation or repeated calls.",
+                "ADR0009:441-515 keeps the freeze/cleanup gap in I0, preserves a successful absorbing freeze even if cutover is abandoned, prevents T0 backdating, and leaves the claim, queue, migration-authority, route, terminality, and immutable-sink predicates intact.",
+                "ADR0009:570-720 maps the change to ordered-cutover and incident acceptance criteria and requires the L/L+1 chronology regression, negative failed/other/unresolved-queue controls, clear-freeze equality, fallback without fabricated F4, delayed-reconciliation/idempotency controls, separate confirmed ledgers in exact-Wasm/testnet, and transaction/state provenance for same-ledger evidence.",
+                "ADR0009:722-809 retains fail-closed status/queue risk handling, a pre-mortem against premature completion with unresolved policy state, the no-post-T0-exposure invariant, and implementation follow-ups rather than claiming implementation exists.",
+                "ADR0008:199-236 makes the immutable policy the sole queue authority, permits at status 4 only cancellation of an exact policy-created pending disable, records every queue, exposes per-asset queue phase/live state, and treats expired or otherwise unresolved records as blockers; ADR0008:317-345 preserves status 4 as primary and all-disabled/no-queue as the narrow fallback.",
+                "Pinned native surfaces independently inspected at pool/src/contract.rs:50-78,402-428,496-510; pool/src/pool/config.rs:66-110; pool/src/storage.rs:372-420; and pool/src/pool/status.rs:11-117: queue/cancel/execute are per asset, queued state is temporary, there is no aggregate public queue getter, stock status dispatch still calls the backstop, and the proposed fork/policy therefore require future exact-source proof rather than inference from the decision model.",
+                "Current receipt preflight source was read in full: it exercises L/L+1, pending/unknown/failed/second queues, F4=T0, fallback T0 without F4 followed by later F4, and delayed/idempotent observations, while expressly disclaiming native policy, ledger-inclusion, and exact-Wasm proof.",
+                "The full preserved Architect APPROVE in the current receipt and both review entries in prior receipt db52c0ab544a71281c1fee4a47e0275a7bd804b0 were read; prior attribution-interpretation corrections concern rounding evidence, not the new chronology, and were treated as context rather than authority for this verdict."
+              ],
+              "architect_disposition": [
+                {
+                  "id": "A1",
+                  "status": "AGREE",
+                  "evidence": [
+                    "The Architect's no-blocker conclusion is independently corroborated by ADR0009:47-67,158-168,239-259,443-449,570-689 and ADR0008:201-232,340-345; agreement is based on the frozen bundle and native dispatch/storage review, not the Architect verdict itself."
+                  ]
+                }
+              ],
+              "consequence_simulations": [
+                "Expected pending disable: at ledger L the authenticated status-4 transaction succeeds under the verified absorbing code while one legitimate policy-owned disable remains pending. F4 becomes L with its transaction/close time; T0 remains absent, the interval remains I0, and ordinary signing and the successor route stay closed. When authorized cancellation succeeds at L+1 and every chosen predicate first becomes true, T0 becomes L+1 while F4 remains L; a later inventory refresh records that historical boundary and must complete before SIGNING_ENABLED/OPEN.",
+                "Failed, multiple, or unknown cleanup: after F4=L, a failed cancellation, a second still-pending reserve, a TTL-expired record, or contradictory/unknown queue evidence leaves T0 absent even if a point read shows status 4. The successful freeze remains absorbing and routes remain closed; abandonment cannot erase F4, and neither a later record timestamp nor an idempotent freeze may manufacture queue absence or replace either marker.",
+                "Fallback before F4: if the non-getter status-4 call fails while policy authorization and inclusion remain healthy, queued disables may establish T0 only at the first confirmed ledger where every reserve is disabled and every queue resolved; F4 is absent. A later first successful status-4 call records its actual later F4, which may be greater than fallback T0 and cannot rewrite T0. Conversely, an already-clear successful preferred freeze yields F4=T0 only when transaction/state provenance proves the complete predicate in that ledger."
+              ],
+              "alternative_fairness": "Requiring cleanup before or atomically with freeze would offer one simple marker, but the native interface exposes independent per-asset queue/cancel operations and no aggregate queue getter; delaying the safest absorbing freeze for that convenience is unjustified. Defining T0 as F4 despite an outstanding queue is simpler but violates the chosen complete predicate, while defining T0 as later record/reconciliation time lets operator latency reclassify incidents. The selected separate historical markers are the narrowest truthful option; fallback remains fairly available only after a real status-call failure with healthy authority/inclusion and a fully disabled, queue-clear state.",
+              "requirement_coverage": [
+                "Actual successful F4 despite a legitimate pending disable -> ADR0009:47-49,141-161,239-243,446-449 -> acceptance 4/9 at 579-586,623-624 and the exact L assertion at 680-689.",
+                "T0 at the first complete no-queue boundary, not freeze or reconciliation time -> ADR0009:50-56,158-161,247-249 -> acceptance 3/4 at 577-586 and the L+1/delayed-reconciliation assertions at 680-689.",
+                "Preferred F4<=T0, equality only when already complete -> ADR0009:54-56 and 239-249 -> clear-freeze and L/L+1 controls at 680-689.",
+                "Fallback without fabricated F4, including fallback-before-later-F4 -> ADR0009:55-56,244-246 -> acceptance 4 at 579-586, fallback control at 685-689, and the receipt decision-model control that preserves fallback T0 after a later first freeze.",
+                "No atomic cleanup assumption; failed, multiple, unknown, or unresolved queues fail closed -> ADR0008:214-225 plus ADR0009:239-246 -> acceptance 3/4/9 at 577-586,623-624 and negative chronology controls at 680-689.",
+                "Separate historical state time from record/reconciliation time and preserve routing/signing safety -> ADR0009:141-168,247-251 -> acceptance 2/4/7 at 574-586,604-608 and observability at 716-720."
+              ],
+              "risk_and_verification_findings": [
+                "No required change: the current Python smoke proves only decision consistency. Native assurance remains explicitly gated on the exact policy/fork Wasm and testnet with separate confirmed ledgers, cancellation results, state snapshots, and signer/route observations (ADR0009:680-705; current receipt:36-44).",
+                "No required change: native queue absence cannot be proven by an aggregate getter because none exists and queued entries are temporary per-asset keys. The design instead requires policy sole-authority custody, every created queue's durable phase, confirmed cancel/execute outcomes, live bound-state agreement, and fail-closed treatment of expiration, gaps, or contradiction (ADR0008:201-232; ADR0009:141-161).",
+                "No required change: historical T0 may be discovered after its ledger, but discovery alone does not authorize opening. The ordered lifecycle still requires the complete inventory refresh and reconciliation before SIGNING_ENABLED/OPEN, preventing a reconstructed historical predicate from bypassing current safety checks (ADR0009:247-259,579-586).",
+                "No required change: the chronology-specific operational hazard is covered across decision, regression, observability, and the existing pre-mortem's unresolved-policy-state control. Funds authority, native user authorization, bridge reservations, upgrade/replacement handling, terminal custody, maintenance ownership, and vocabulary remain unchanged by the delta."
+              ],
+              "deliberate_assessment": "APPROVE the exact frozen bundle. The requested chronology is explicit, testable, and fail closed: F4 records the actual first successful absorbing freeze even with expected cleanup pending; T0 records only the first complete chosen boundary; L/L+1, failed/multiple/unknown queue, equality, delayed reconciliation, and fallback-before-F4 behavior are covered without assuming atomic cleanup. Native proof limits are stated rather than papered over, and no blocker or hidden required correction remains. This is ADR design approval only—not human acceptance, implementation authorization, native execution proof, or production-readiness evidence."
+            }
+          }
+        ]
+      },
+      "prior_blocker_disposition": [],
+      "terminal_status": "CONSENSUS_APPROVED"
+    }
+  ]
+}

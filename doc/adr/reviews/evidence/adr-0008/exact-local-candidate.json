@@ -1,0 +1,49 @@
+{
+  "fork_commit": "273a5131da1f7407887a4a40867c992790809f3d",
+  "production_commit": "23abc743035994a5c0f18855c8cb8f54795dbce8",
+  "baseline_commit": "6cf6dd1ca712ea3cf17a767fe49b7da01f80b909",
+  "producer_roots": {
+    "verify": "/tmp/adr8-exact-local.xerov9sq/verify",
+    "rebuild": "/tmp/adr8-exact-local.xerov9sq/rebuild",
+    "harness": "/tmp/adr8-exact-local.xerov9sq/harness"
+  },
+  "custody": "Local-only exact-source clones. All executed acceptance gates passed; final sequential review and evidence commit pending. No remote publication claimed.",
+  "harness_source_hashes": {
+    "Cargo.toml": "c1584292780343bf6471193d4bec91c0d0827c4e602cc282534f418b75e90362",
+    "Cargo.lock": "bdf77b860eb7248e0dbf4a56e4dc3ad676c3199e7dc15613d7029caa56b95609",
+    "src/lib.rs": "24eb6b5a4ffd56023f98f069ae001acefbff30707276fc009c4de1e20b53d64b"
+  },
+  "property_run": {
+    "process": "adr8-exact-property-10000",
+    "command": "rustup run 1.81 cargo test --release --locked --manifest-path /tmp/adr8-exact-local.xerov9sq/harness/Cargo.toml property_adr8_invariants -- --exact --nocapture",
+    "cases": 10000,
+    "seed": "9110008",
+    "max_shrink_iters": 0,
+    "log": "logs/exact-local-property-10000-running.log",
+    "status": "passed: 10000 cases, seed 9110008, 1 test, 0 failed",
+    "log_sha256": "0fcb79dd9f7565cd71530ed7324a7aa73cd24cc15a18aa5af11be7fe28b336bc",
+    "terminal_lines": [
+      "PASS adr8 mode=wasm-registered fixtures seed=9110008 cases=10000 bounds ops<=64 users<=4 reserves<=3 amount-selectors<=5 time-selectors<=8",
+      "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 28184.17s"
+    ]
+  },
+  "differential_run": {
+    "process": "adr8-exact-differential",
+    "command": "rustup run 1.81 cargo test --locked -p test-suites --test adr8_differential -- --ignored --exact adr8_base_fork_differential --nocapture",
+    "base_pool": "/tmp/adr8-base-final.QcaoGfgQ/source/target/wasm32-unknown-unknown/optimized/pool.wasm",
+    "base_backstop": "/tmp/adr8-base-final.QcaoGfgQ/source/target/wasm32-unknown-unknown/optimized/backstop.wasm",
+    "fork_pool": "/tmp/adr8-exact-local.xerov9sq/verify/target/wasm32-unknown-unknown/optimized/pool.wasm",
+    "fork_backstop": "/tmp/adr8-exact-local.xerov9sq/verify/target/wasm32-unknown-unknown/optimized/backstop.wasm",
+    "output": "exact-local-differential",
+    "log": "logs/exact-local-differential-executed.log",
+    "status": "passed: 1 test, 0 failed, 243.32 seconds; all common-domain steps matched and negative controls detected every mutation",
+    "rejected_attempt": {
+      "log": "logs/exact-local-differential.log",
+      "reason": "Wrong standalone harness filter selected zero tests. Exit 0 is not a passing differential verdict."
+    },
+    "cwd": "/tmp/adr8-exact-local.xerov9sq/verify",
+    "retained_archive": "exact-local-differential.tar.gz",
+    "archive_manifest": "exact-local-differential-manifest.json",
+    "loose_originals_moved_to": "/tmp/adr8-exact-local.xerov9sq/retained-exact-differential"
+  }
+}

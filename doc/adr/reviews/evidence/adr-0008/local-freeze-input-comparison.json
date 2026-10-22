@@ -1,0 +1,50 @@
+{
+  "Cargo.lock": {
+    "sha256": "5ca629e352621b7fd68a8a8f657faa6e8349846d2179abc56ebcc2a806f9069c",
+    "equal_base": true
+  },
+  "Cargo.toml": {
+    "sha256": "c443726dadf6fb1fd1a608230cfd993a3203de186ea0c59264ea955c2c0a4f1a",
+    "equal_base": true
+  },
+  "Makefile": {
+    "sha256": "f034acfe09e5517781f303b4b82c7cb1bfaf8df0b9de8e0bccfe72f470312b3d",
+    "equal_base": true
+  },
+  "backstop/Cargo.toml": {
+    "sha256": "cddfaf46ce29779869f20b31ebb286454e8d37ca001365d946811c8f37015dea",
+    "equal_base": true
+  },
+  "mocks/mock-pool-factory/Cargo.toml": {
+    "sha256": "b620f3285fde6f0b3ffbeec34ac9c0c57206bc92a8658aa5d5868b7e276f6839",
+    "equal_base": true
+  },
+  "mocks/mock-pool/Cargo.toml": {
+    "sha256": "7094c4ea10e5ea760815a023eee0ef68b63499205554fc12bc7eb48d16887712",
+    "equal_base": true
+  },
+  "mocks/moderc3156/Cargo.toml": {
+    "sha256": "15537e8541a73937222a58114306fdb8d0246fa77ff942664aa9d73544c240c1",
+    "equal_base": true
+  },
+  "pool-factory/Cargo.toml": {
+    "sha256": "feeed435a6929e4f002ae90c1b0bcbbe685a52b4476870b6bd1d2c85a3f46ac8",
+    "equal_base": true
+  },
+  "pool/Cargo.toml": {
+    "sha256": "05ab827957a5d1eb44c28ba9064fae3180c5c744c1f0f2ee31c4aa4b64fc0d52",
+    "equal_base": true
+  },
+  "rust-toolchain.toml": {
+    "sha256": "0fa25ede558ba40e9c6ee4acc32b5abaa9ac1deed74842caa66d11540cf9acaa",
+    "equal_base": true
+  },
+  "test-suites/Cargo.toml": {
+    "sha256": "7c28d8047df3507c51478b5b07e9a54743dd528fb1915370f1eb1bfa62821066",
+    "equal_base": true
+  },
+  "test-suites/fuzz/Cargo.toml": {
+    "sha256": "6a13861a91304e4c459d7301680248d10fa9e7ed9c07a0a6967fee9165a47ca9",
+    "equal_base": true
+  }
+}

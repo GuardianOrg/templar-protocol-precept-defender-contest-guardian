@@ -1,0 +1,426 @@
+{
+  "schema_version": 1,
+  "bundle_hash": "871b518ec96950c11ee86a378345e635c844f157",
+  "primary": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+  "bundle": [
+    {
+      "path": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+      "blob": "076978c2a6cd2c2629341b8ab8614e6a7527f2cc"
+    },
+    {
+      "path": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+      "blob": "8d366b1f5b9c8aabadc797f1be3c9450a31d8cc4"
+    }
+  ],
+  "coupling_reason": "ADR 0009 defines the mandatory successor migration, incident containment, and objective terminal-state path required before ADR 0008 may scale or retire.",
+  "preflight": [
+    {
+      "command": "PATH=\"$PWD/bin:$PATH\" adr --robot lint",
+      "exit_code": 0,
+      "result": "no output",
+      "artifact_hashes": {}
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "no output",
+      "artifact_hashes": {}
+    },
+    {
+      "command": "git hash-object doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md /tmp/raladr-adr0008-0009.manifest",
+      "exit_code": 0,
+      "result": "076978c2a6cd2c2629341b8ab8614e6a7527f2cc\n8d366b1f5b9c8aabadc797f1be3c9450a31d8cc4\n871b518ec96950c11ee86a378345e635c844f157",
+      "artifact_hashes": {
+        "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md": "076978c2a6cd2c2629341b8ab8614e6a7527f2cc",
+        "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md": "8d366b1f5b9c8aabadc797f1be3c9450a31d8cc4",
+        "/tmp/raladr-adr0008-0009.manifest": "871b518ec96950c11ee86a378345e635c844f157"
+      }
+    }
+  ],
+  "custody": {
+    "type": "COMMIT",
+    "location": "e2d82cb"
+  },
+  "reviews": [
+    {
+      "run": 1,
+      "pair": 10,
+      "attempts": {
+        "architect": [
+          {
+            "runtime_result": "history://FreshADR8Architect",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "architect",
+              "pair": 10,
+              "bundle_hash": "871b518ec96950c11ee86a378345e635c844f157",
+              "verdict": "APPROVE",
+              "blockers": [],
+              "prior_blocker_disposition": [
+                {
+                  "id": "B1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:101-125",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:139-144",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:489-492",
+                    "vendor/blend-contracts-v2/pool/src/pool/actions.rs:295-303"
+                  ]
+                },
+                {
+                  "id": "B2",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:153-174",
+                    "vendor/blend-contracts-v2/pool/src/pool/bad_debt.rs:53-78",
+                    "vendor/blend-contracts-v2/pool/src/pool/user.rs:101-116"
+                  ]
+                },
+                {
+                  "id": "B3",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:266-282",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:291-306",
+                    "vendor/blend-contracts-v2/pool/src/pool/user.rs:106-115"
+                  ]
+                },
+                {
+                  "id": "P5-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:153-174",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:496-538",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:417-427"
+                  ]
+                },
+                {
+                  "id": "P6-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:160-169",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:273-280",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:296-311"
+                  ]
+                },
+                {
+                  "id": "P7-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:160-169",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:466-475",
+                    "vendor/blend-contracts-v2/pool/src/pool/user.rs:38-80"
+                  ]
+                },
+                {
+                  "id": "P8-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:167-173",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:471-475",
+                    "vendor/blend-contracts-v2/pool/src/pool/gulp.rs:13-35",
+                    "vendor/blend-contracts-v2/pool/src/events.rs:154-160"
+                  ]
+                },
+                {
+                  "id": "P8-A2",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:158-169",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:486-488",
+                    "vendor/blend-contracts-v2/pool/src/contract.rs:531-536",
+                    "vendor/blend-contracts-v2/pool/src/emissions/distributor.rs:83-101",
+                    "vendor/blend-contracts-v2/pool/src/emissions/distributor.rs:152-184"
+                  ]
+                },
+                {
+                  "id": "P9-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:153-174",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:266-282",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:328-343",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:382-395",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:496-538",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:50-56",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:291-322",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:400-427",
+                    "vendor/blend-contracts-v2/pool/src/pool/reserve.rs:181-184",
+                    "vendor/blend-contracts-v2/pool/src/pool/health_factor.rs:35-54",
+                    "vendor/blend-contracts-v2/pool/src/auctions/user_liquidation_auction.rs:90-112"
+                  ]
+                }
+              ],
+              "tradeoff_tension": "Exact stock collateral_raw eligibility closes liquidation, default, and retirement liveness, but adds strict-oracle dependence and can extinguish a defaulting borrower's positive token-unit collateral when oracle multiplication floors its base value to zero; zero-rate-only eligibility was simpler and oracle-independent but deadlocked reachable dust. More broadly, schedule advantage trades against substantial two-pool and indefinite-tail maintenance.",
+              "evidence_checked": [
+                "Canonical manifest /tmp/raladr-adr0008-0009.manifest rehashed to 871b518ec96950c11ee86a378345e635c844f157; ADR0008 rehashed to 076978c2a6cd2c2629341b8ab8614e6a7527f2cc; ADR0009 rehashed to 8d366b1f5b9c8aabadc797f1be3c9450a31d8cc4.",
+                "Full frozen ADR0008 and ADR0009 Context-to-Decision-to-Alternatives-to-Consequences/acceptance mapping.",
+                "2026-09-08-precept-pr9-audit-and-50m-operational-assessment.md:1-536.",
+                "vendor/blend-contracts-v2 gitlink and checkout at 6cf6dd1ca712ea3cf17a767fe49b7da01f80b909.",
+                "vendor/blend-contracts-v2/pool/src/contract.rs, events.rs, storage.rs, pool/{user,reserve,bad_debt,gulp,status,pool,health_factor,config,actions,submit}.rs, auctions/{auction,user_liquidation_auction}.rs, and emissions/{distributor,manager}.rs.",
+                "vendor/blend-contracts-v2/pool-factory/src/pool_factory.rs; backstop/src/contract.rs and backstop/{deposit,pool}.rs.",
+                "Pinned comet.wasm contract spec and upstream Comet contracts/src/c_pool/comet.rs:39-55 plus call_logic/init.rs:22-103 for controller-authenticated one-time initialization, token transfers, LP mint, and controller storage.",
+                "Stock pool-address submit rejection at pool/src/pool/submit.rs:33-38, pool-address claim authorization at pool/src/contract.rs:539-547, emissions admin gate at pool/src/contract.rs:531-536, and exact fixed-point conversion/rounding boundaries."
+              ],
+              "steelman": "The strongest alternative is to wait for the registry-native successor: it eliminates the synthetic shim, external ADR0011 dependency, per-pool immutable cohort, focused fund-path fork, two-pool operation, bridge capital, and indefinite tail. The selected bridge remains rational only for demonstrated schedule advantage under every abandonment gate; its on-chain caps, exact official-address routing, absorbing freeze, sealed configuration, direct supplier-loss accounting, narrow authority, borrower-first migration, and objective terminal record materially reduce the former stock-shim risks.",
+              "synthesis": "The exact frozen identity is verified and unchanged. The requirements inventory is coherent: reserve and pool caps are contract consequences while the global cap is honestly operational; official identity excludes arbitrary factory children; the factory remains byte-identical; ADR0011 is a hard pre-activation boundary; Comet helper deployment/init is feasible atomically; policy and sink authority are narrow; direct default avoids fake-backstop dependence; pool-owned noncollateral custody preserves b_supply, prevents borrower revival, and has no public withdrawal path; emissions absence is admin/profile-gated; settlement occurs only after d_supply is zero with stock-compatible zero-underlying gulp return/event; and ADR0009 preserves truthful lineage, native authorization, borrower-first liquidity, crash-safe reservations, vault conservation, incident irreversibility, an honest indefinite tail, and objective retirement. P9-A1 is closed by the exact stock PositionData.collateral_raw boundary, complete residual orphaning, positive-rate conversion/oracle-rounding and cyclic tests, and a separate zero-underlying-unit terminal rule that requires every withdrawable unit to exit. Alternatives are fairly presented. No blocker or hidden correction remains.",
+              "risks": [
+                "ADR0011 artifact review remains mandatory to prove zero lifetime pool emissions and ordinary backstop liveness before activation.",
+                "The 100000 USD global cap and official routing are operational; permissionless direct users can extend the tail indefinitely.",
+                "flash_loan retains its ABI but rejects; userless defaulted_debt and zero-underlying stock gulp versus b-token focused events require exact indexer classification.",
+                "Immediate direct default concentrates loss on suppliers who have not withdrawn; near-100-percent utilization and liquidation latency remain material under the caps.",
+                "Borrower-first migration depends on successor cash, bridge capacity, strict current oracle data, bounded authorization horizons, and exact reconciliation.",
+                "Byte-identical factories can deploy nonofficial siblings, so exact deterministic-address inventory and ADR0011 isolation evidence remain operationally important."
+              ],
+              "file_corrections": [],
+              "principle_violations": []
+            }
+          }
+        ],
+        "critic": [
+          {
+            "runtime_result": "agent://ADR8CriticPair10",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "critic",
+              "pair": 10,
+              "bundle_hash": "871b518ec96950c11ee86a378345e635c844f157",
+              "verdict": "APPROVE",
+              "blockers": [],
+              "prior_blocker_disposition": [
+                {
+                  "id": "B1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:101-125",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:139-144",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:489-492",
+                    "vendor/blend-contracts-v2/pool/src/pool/actions.rs:288-303"
+                  ]
+                },
+                {
+                  "id": "B2",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:153-174",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:328-349",
+                    "vendor/blend-contracts-v2/pool/src/pool/bad_debt.rs:53-75",
+                    "vendor/blend-contracts-v2/pool/src/pool/user.rs:101-116"
+                  ]
+                },
+                {
+                  "id": "B3",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:266-282",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:291-311",
+                    "vendor/blend-contracts-v2/pool/src/pool/user.rs:106-115"
+                  ]
+                },
+                {
+                  "id": "P5-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:153-174",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:328-343",
+                    "vendor/blend-contracts-v2/pool/src/pool/health_factor.rs:20-55",
+                    "vendor/blend-contracts-v2/pool/src/auctions/user_liquidation_auction.rs:82-112"
+                  ]
+                },
+                {
+                  "id": "P6-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:160-169",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:273-282",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:296-311"
+                  ]
+                },
+                {
+                  "id": "P7-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:160-169",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:466-475",
+                    "vendor/blend-contracts-v2/pool/src/pool/user.rs:38-80",
+                    "vendor/blend-contracts-v2/pool/src/pool/reserve.rs:164-184"
+                  ]
+                },
+                {
+                  "id": "P8-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:167-173",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:471-475",
+                    "vendor/blend-contracts-v2/pool/src/pool/gulp.rs:13-35",
+                    "vendor/blend-contracts-v2/pool/src/events.rs:154-160"
+                  ]
+                },
+                {
+                  "id": "P8-A2",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:158-169",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:486-488",
+                    "vendor/blend-contracts-v2/pool/src/pool/submit.rs:33-38",
+                    "vendor/blend-contracts-v2/pool/src/contract.rs:531-559",
+                    "vendor/blend-contracts-v2/pool/src/emissions/distributor.rs:83-101"
+                  ]
+                },
+                {
+                  "id": "P9-A1",
+                  "status": "CLOSED",
+                  "evidence": [
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:153-174",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:266-282",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:328-343",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:496-505",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:291-311",
+                    "vendor/blend-contracts-v2/pool/src/pool/reserve.rs:178-184",
+                    "vendor/blend-contracts-v2/pool/src/pool/health_factor.rs:35-54"
+                  ]
+                }
+              ],
+              "tradeoff_tension": "The bridge buys possible schedule advantage only by accepting direct supplier loss, a small pool/backstop fork estate, per-pool synthetic/Comet ceremonies, operational global routing control, and an indefinite direct-user tail. Waiting for the registry-native successor remains structurally safer and cheaper; the selected path is defensible only inside the immutable 25k/reserve, 50k/pool, 100k/global envelope and 90-day abandonment gates.",
+              "evidence_checked": [
+                "Canonical manifest bytes rehashed to 871b518ec96950c11ee86a378345e635c844f157; bound files rehashed to ADR0008 076978c2a6cd2c2629341b8ab8614e6a7527f2cc and ADR0009 8d366b1f5b9c8aabadc797f1be3c9450a31d8cc4.",
+                "Full frozen ADR0008 and ADR0009, including Context, Decision, alternatives, consequences, acceptance, pre-mortem, and verification layers.",
+                "2026-09-08-precept-pr9-audit-and-50m-operational-assessment.md:1-536 and current review-withdrawal/history records.",
+                "Vendored checkout at 6cf6dd1ca712ea3cf17a767fe49b7da01f80b909; pool contract/events/storage and pool user, reserve, bad_debt, gulp, status, config, actions, submit, health-factor, liquidation-auction, auction-dispatch, and emissions manager/distributor paths.",
+                "Vendored pool-factory deployment/is_pool routing and backstop contract, pool verification/data, deposit, withdrawal, storage, and emissions allocation paths.",
+                "Pinned Comet v1.0.0 interface, initialization, and pool-call source: controller-authenticated one-time init, token transfer/LP mint, freeze, controller transfer, joins/exits/swaps, and gulp behavior.",
+                "Architect pair-10 approval was read only after the independent source/ADR challenge; its no-blocker conclusion did not determine this verdict."
+              ],
+              "architect_disposition": [],
+              "consequence_simulations": [
+                "Cyclic two-user/two-reserve default: U holds zero-raw B collateral and A debt; V holds zero-raw A collateral and B debt. Defaulting U applies A's stock ceil-rounded b_rate loss without changing A b_supply and moves every U B b-token to pool-owned noncollateral supply; defaulting V does the symmetric operation using the still-preserved B denominator. No liability reaches the backstop, neither borrower retains revivable collateral, and each reserve keeps a denominator until its d_supply reaches zero.",
+                "Positive-rate oracle-rounded dust: a positive b_rate converts a residual b-token balance to an asset amount whose strict-oracle multiplication floors aggregate collateral_raw to zero. Direct default is therefore eligible, atomically extinguishes borrower ownership, and moves the full balance to the pool-owned position. Later rate/price revival belongs only to that unreachable position; after d_supply is zero, terminal gulp removes it and archives any represented/physical value as abandoned rather than reviving a borrower claim.",
+                "Terminal gulp: while reserve d_supply is nonzero, a pool-owned orphan makes permissionless gulp reject before effects. Once d_supply is zero, gulp removes exactly the pool-owned b-token balance and b_supply contribution, emits orphan_settled in b-token units plus the unchanged stock gulp(asset,0) event, returns zero underlying, moves no token, adopts no surplus, and leaves any positive physical balance explicitly unrepresented and abandoned. With no orphan it remains stock-compatible zero-return/zero-event behavior.",
+                "Incident migration and sink: after T0, a faulty migrator or ambiguous submission stops the affected lane without releasing its reservation; the worker reconciles the exact transaction hash and all token/pool states before replacement or retry. A valid borrower call advances bounded bridge cash, repays legacy debt, withdraws selected legacy assets, supplies/borrows at the successor, restores the bridge, and proves zero residual atomically. Only after debt, auctions, queues, authorizations, bridge/vault state, routes, orphan events, and accounting reconcile does the policy propose the immutable sink and the sink accept. Before T0, a trapping backstop/Comet prevents false status-4 claims and forces the oracle brake plus timelocked all-reserve-disable fallback."
+              ],
+              "alternative_fairness": "The ADRs fairly steelman waiting for the registry-native/no-backstop successor as the strongest security and maintenance option, while acknowledging its new implementation and audit work. Stock Blend, a broader protocol rewrite, shared cohorts, and manual-only migration are rejected for specific driver failures rather than caricatured; the chosen bridge is conditional on demonstrated schedule value and hard abandonment gates.",
+              "requirement_coverage": [
+                "Bound exposure -> immutable supply_cap-derived 25k/reserve and two-reserve 50k/pool limits plus exact-inventory 100k global routing -> property/canary cap-boundary and direct-call tests.",
+                "Isolation -> one official deterministic pool/factory/backstop/Comet/synthetic cohort per pool; arbitrary factory children are nonofficial -> manifest/readback identity and route-negative checks.",
+                "Minimal compatibility fork -> seven allowlisted pool restrictions, stock ABI, byte-identical factory -> base-to-fork diff allowlist, interface equality, differential tests, and clean artifact reproduction.",
+                "No fake insurance -> zero bstop_rate plus direct stock-form supplier loss and disabled bad-debt auctions -> per-reserve b_rate/d_supply/event and empty-backstop assertions.",
+                "Dust/default liveness -> strict PositionData collateral_raw boundary, complete orphan transfer, denominator custody, and debt-zero terminal gulp -> positive/zero-rate, oracle-rounding, multi-user, cross-reserve, and cyclic vectors.",
+                "Emissions safety -> absent pool b-token emission state and separate human-accepted inert-backstop profile before activation -> negative state/authority tests and exact integrated canary.",
+                "Funds/auth boundary -> immutable narrow policy, no arbitrary call/upgrade/token authority, and one-method sink -> authorization-tree, negative method, queue, downgrade, and sink-handoff tests.",
+                "Operational failure -> absorbing freeze; Comet/backstop trap fallback; funded oracle/TTL/auction keepers -> failure injection and public-testnet/disposable-mainnet containment rehearsal.",
+                "Migration -> borrower-first one-user atomic migrator, native bounded authorization, bridge reservation custody, and qualified vault-only path -> conservation, crash/retry/concurrency, ambiguous-outcome, and route-cutover checks.",
+                "Objective retirement -> complete from-genesis inventory, zero liabilities/auctions, reconciled b_supply/positions/emissions/backstop/bridge/vault/routes, classified surplus, then sink -> T4 point reads, transactions, event attribution, and negative premature-handoff tests.",
+                "Finite maintenance intent -> 90-day sunset, no new cohorts after first T0, weekly upstream review, named responders, and indefinite-tail disclosure -> route controls, signed checkpoints, staffing evidence, and weekly tail observability."
+              ],
+              "risk_and_verification_findings": [
+                "The exact inert backstop profile is deliberately outside this two-file manifest; this approval does not satisfy that hard pre-activation human-accepted ADR, artifact-review, and integrated-canary gate.",
+                "The 100k global limit and official-address exclusion are operational, not universal on-chain caps; per-reserve supply caps still bound direct activity in official pools, and the ADR requires route closure/alerts rather than claiming stronger enforcement.",
+                "defaulted_debt has no user topic and terminal gulp reuses its stock wrapper with zero underlying units; the ADR explicitly requires consumers to dispatch using the invoking transaction and bind user/owner plus before/after deltas, avoiding silent event-only misclassification.",
+                "Unit/property, integration/differential/auth, exact-Wasm E2E/testnet, and observability layers cover the material invariants and failure modes. No repository gate was rerun, as required by this read-only assignment; supplied preflight identities bind the reviewed bytes."
+              ],
+              "deliberate_assessment": "Independent deliberate review finds the funds-loss choice explicit, bounded, and observable; authority surfaces narrow and immutable; irreversible default, orphan settlement, T0, and sink transitions fail closed; and the pre-mortem covers credible oracle, Comet/backstop, keeper, auction, custody, migration, and maintenance failures with prevention, detection, and recovery. No blocker or hidden correction remains. APPROVE is only the Raladr critic verdict for these exact Proposed bytes, not human acceptance, implementation approval, or production readiness."
+            }
+          }
+        ]
+      },
+      "prior_blocker_disposition": [
+        {
+          "id": "B1",
+          "status": "CLOSED",
+          "evidence": [
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:101-125",
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:139-144",
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:489-492",
+            "vendor/blend-contracts-v2/pool/src/pool/actions.rs:295-303"
+          ]
+        },
+        {
+          "id": "B2",
+          "status": "CLOSED",
+          "evidence": [
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:153-174",
+            "vendor/blend-contracts-v2/pool/src/pool/bad_debt.rs:53-78",
+            "vendor/blend-contracts-v2/pool/src/pool/user.rs:101-116"
+          ]
+        },
+        {
+          "id": "B3",
+          "status": "CLOSED",
+          "evidence": [
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:266-282",
+            "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:291-306",
+            "vendor/blend-contracts-v2/pool/src/pool/user.rs:106-115"
+          ]
+        },
+        {
+          "id": "P5-A1",
+          "status": "CLOSED",
+          "evidence": [
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:153-174",
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:496-538",
+            "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:417-427"
+          ]
+        },
+        {
+          "id": "P6-A1",
+          "status": "CLOSED",
+          "evidence": [
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:160-169",
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:273-280",
+            "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:296-311"
+          ]
+        },
+        {
+          "id": "P7-A1",
+          "status": "CLOSED",
+          "evidence": [
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:160-169",
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:466-475",
+            "vendor/blend-contracts-v2/pool/src/pool/user.rs:38-80"
+          ]
+        },
+        {
+          "id": "P8-A1",
+          "status": "CLOSED",
+          "evidence": [
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:167-173",
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:471-475",
+            "vendor/blend-contracts-v2/pool/src/pool/gulp.rs:13-35",
+            "vendor/blend-contracts-v2/pool/src/events.rs:154-160"
+          ]
+        },
+        {
+          "id": "P8-A2",
+          "status": "CLOSED",
+          "evidence": [
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:158-169",
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:486-488",
+            "vendor/blend-contracts-v2/pool/src/contract.rs:531-536",
+            "vendor/blend-contracts-v2/pool/src/emissions/distributor.rs:83-101",
+            "vendor/blend-contracts-v2/pool/src/emissions/distributor.rs:152-184"
+          ]
+        },
+        {
+          "id": "P9-A1",
+          "status": "CLOSED",
+          "evidence": [
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:153-174",
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:266-282",
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:328-343",
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:382-395",
+            "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:496-538",
+            "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:50-56",
+            "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:291-322",
+            "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:400-427",
+            "vendor/blend-contracts-v2/pool/src/pool/reserve.rs:181-184",
+            "vendor/blend-contracts-v2/pool/src/pool/health_factor.rs:35-54",
+            "vendor/blend-contracts-v2/pool/src/auctions/user_liquidation_auction.rs:90-112"
+          ]
+        }
+      ],
+      "terminal_status": "CONSENSUS_APPROVED"
+    }
+  ]
+}

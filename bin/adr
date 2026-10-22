@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+## usage: adr [--robot] COMMAND [ARG ...]
+##
+## --robot   never open an editor or pager; for agents, CI and scripts.
+
+if [ "$1" = --robot ]
+then
+    export VISUAL=true ADR_PAGER=cat
+    shift
+fi
+
+cmd=$adr_bin_dir/adr-$1
+
+if [ -x $cmd ]
+then
+    $cmd "${@:2}"
+else
+    $adr_bin_dir/adr-help
+    exit 1
+fi

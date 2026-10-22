@@ -1,0 +1,1012 @@
+{
+  "admin": "GCNQ4ZLK45KOYNIQLIYI7GT6TYWGK2OZEVZEY7A3W5L7QSPBNCBWSJAQ",
+  "artifact_bytes": {
+    "oracle": 13543,
+    "pool": 54016,
+    "verifier": 7363
+  },
+  "artifact_sha256": {
+    "backstop": "6bd13007c020b617c43c718c2ad3d2d13605d4d42fa8f739da2293f8a4e293a0",
+    "comet": "5d721fa580714291f6846fc01738e86d70acb47e449ea75312e272a0f7436dd8",
+    "emitter": "438a5528cff17ede6fe515f095c43c5f15727af17d006971485e52462e7e7b89",
+    "factory": "80abaf3c68fd15adade9f82165baa9b50d85800e497c99b45809e1fbd7397de2",
+    "oracle": "0bdb400ee239adb6b3965da9da0d144111a36b5059293eab90ecbff3900b3e59",
+    "pool": "441e95a552c7397ce65ba2cef7332e02ec85ee0d3da1d944d587702c21266c6b",
+    "token": "dd77fe6e7554cdf3d4ab32730fc2c9fb1039f0b16c5ed99769ae62b9809801f1",
+    "verifier": "2cb81d38107d5c1a66c7d01c5a36b394cbcac150bda43898fd9260b33be5e145"
+  },
+  "contracts": {
+    "backstop": "CCBFS4UZTOPYXOJR3LIGICDRAZZCS5HRQZ624FPWWN4VMKRYJ77S4CFN",
+    "comet": "CCZQTLMYM47QMLKPDO5RVRGDFTHKBPVM2WGG55I4IWZCG66SLRQXE2JM",
+    "emitter": "CDJUIFOCSCOILCEKLZP7DDYVK6LWH6QGDIILKDJTHO276VDOIJVXGE3B",
+    "factory": "CAUYYNZC3TP6K4JWRSEKBZJZRQEIJYB65F2O77RQMS3KI2S5MYYMOLCN",
+    "oracle": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+    "pool": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+    "verifier": "CAYFT5JE3UQTKT4Q6ZOZK4FXVYVT6RE3MFC7STA4UB6WAEGBT65MRU52"
+  },
+  "deployment_settled_steps": {
+    "activate": {
+      "exit": 0,
+      "private_receipt_sha256": "63f76a723f28dbd963d936532c97c792ffff0b2dccdaef46d01abe445b7d5dd9",
+      "result": 1,
+      "transaction_hash": "6b3d3a2b14a283cca385208b2447b0ebfec6b32bb4ea2c67eb38073efc8a3cd5",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/6b3d3a2b14a283cca385208b2447b0ebfec6b32bb4ea2c67eb38073efc8a3cd5"
+    },
+    "backstop-deposit": {
+      "exit": 0,
+      "private_receipt_sha256": "5fa27c217a2260f9d89fac056d75ee830e223a51bc9cea4f096d9e223d9f5458",
+      "result": "500000000000",
+      "transaction_hash": "9421d8c8c006aeafcb355bc408a6f5abe9f0cc922f3aa6b96a5c4b4d5fd25083",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/9421d8c8c006aeafcb355bc408a6f5abe9f0cc922f3aa6b96a5c4b4d5fd25083"
+    },
+    "deploy-oracle": {
+      "exit": 0,
+      "private_receipt_sha256": "0803206719a8fe420dd788892ea39d1b396f2ff29ed40b3c212848a7a5f11e9e",
+      "result": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+      "transaction_hash": "7f04d6921f03669719c46a1941fe30c7aec5162d3fea233f820ab756f9bf7a6e",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/7f04d6921f03669719c46a1941fe30c7aec5162d3fea233f820ab756f9bf7a6e"
+    },
+    "factory-deploy-pool": {
+      "exit": 0,
+      "private_receipt_sha256": "2bbc40365957bda3d738cd44ceb3f83b6565fd05871382da7b123aa0640632df",
+      "result": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "transaction_hash": "fb5d858e7ec4366cbc3aaf144557d0c9c8fdab534c14c755fbd4c1f360db70b5",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/fb5d858e7ec4366cbc3aaf144557d0c9c8fdab534c14c755fbd4c1f360db70b5"
+    },
+    "leave-setup": {
+      "exit": 0,
+      "private_receipt_sha256": "b10ec63f7697ea05b77f4532dfb6980e6155582abce23b4475fd52f6eafc6c36",
+      "result": null,
+      "transaction_hash": "e0203c3d008d5237c28f47bfb88e22d892e51c4276cc2e2294b986cef6add62a",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/e0203c3d008d5237c28f47bfb88e22d892e51c4276cc2e2294b986cef6add62a"
+    },
+    "queue-reserve-usdc": {
+      "exit": 0,
+      "private_receipt_sha256": "a0033ad9e4e04ee26b76db2dedb33285d196ce5dc1bd5fef11374f80f9760cc5",
+      "result": null,
+      "transaction_hash": "06c4c2af29cdb74612fe529ab76ba4e18ae20ec2431c05bb10d96b3e34fbcec8",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/06c4c2af29cdb74612fe529ab76ba4e18ae20ec2431c05bb10d96b3e34fbcec8"
+    },
+    "queue-reserve-xlm": {
+      "exit": 0,
+      "private_receipt_sha256": "2792069d56797dc4ac6bb5a38f4eed4feb87b5552da387ae0a060994b567b911",
+      "result": null,
+      "transaction_hash": "29ad6abbc1e793eafcb04644a6ebfd5a59017ee1b007fb107f67e3efcd9faca2",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/29ad6abbc1e793eafcb04644a6ebfd5a59017ee1b007fb107f67e3efcd9faca2"
+    },
+    "set-reserve-usdc": {
+      "exit": 0,
+      "private_receipt_sha256": "ac78428ed2d6fbbd4f15f0ebb26ff88245a9608a8b7e54dba3ab994ea519b82f",
+      "result": 1,
+      "transaction_hash": "074713c9929bdbfcc51208b2628b4b9fedf31015884e7a6c693cd5d338c0df23",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/074713c9929bdbfcc51208b2628b4b9fedf31015884e7a6c693cd5d338c0df23"
+    },
+    "set-reserve-xlm": {
+      "exit": 0,
+      "private_receipt_sha256": "7b063ac7283ac98070452bdaa1a277fb1030a9df78239bbf039f7a8da594411f",
+      "result": 0,
+      "transaction_hash": "84600dfc3fc86e9eec34fcce65ab1a3c3adbf0d3ae91a2ae1898aa8efa54b213",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/84600dfc3fc86e9eec34fcce65ab1a3c3adbf0d3ae91a2ae1898aa8efa54b213"
+    },
+    "upload-oracle": {
+      "exit": 0,
+      "private_receipt_sha256": "db497762fd1c5a6b8dba6d2440fad96bf47cc50d7f08ba7ac89e3be51528bd11",
+      "result": "0bdb400ee239adb6b3965da9da0d144111a36b5059293eab90ecbff3900b3e59",
+      "transaction_hash": "bcca4dfa6ab623edcd1553f5e7ec2af5d4644ecfe8e1ec8c9def41ec21d70fac",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/bcca4dfa6ab623edcd1553f5e7ec2af5d4644ecfe8e1ec8c9def41ec21d70fac"
+    }
+  },
+  "explorer": {
+    "argv": [
+      "/home/common/projects/templar/precept/tools/abtest/target/release/precept-abtest",
+      "--out",
+      "/home/common/projects/templar/precept-abtest-evidence/rc-xlmusdc-lazer-20261009",
+      "--stellar-bin",
+      "/nix/store/n17nwb71qrxqchprjcy8ifd9y54qddpa-stellar-cli-26.1.0/bin/stellar",
+      "--rpc-url",
+      "https://soroban-testnet.stellar.org",
+      "--passphrase",
+      "Test SDF Network ; September 2015",
+      "market",
+      "tui",
+      "--mode",
+      "explore"
+    ],
+    "exit": 0,
+    "interaction": "opened real 140x40 PTY; quit with q",
+    "loaded_pool_abi": true,
+    "observed_at": "2026-10-09T18:31:19.623996+00:00",
+    "terminal_sha256": "e1b5bbb84e51c90abb46cbac3e7371997c6bcabd3ef0d6a8f8228b6d41fbeb55",
+    "visible_functions": [
+      "__constructor",
+      "accept_admin",
+      "bad_debt",
+      "cancel_set_reserve"
+    ]
+  },
+  "final_chain_state": {
+    "code_hashes": {
+      "oracle": "0bdb400ee239adb6b3965da9da0d144111a36b5059293eab90ecbff3900b3e59",
+      "pool": "441e95a552c7397ce65ba2cef7332e02ec85ee0d3da1d944d587702c21266c6b",
+      "verifier": "2cb81d38107d5c1a66c7d01c5a36b394cbcac150bda43898fd9260b33be5e145"
+    },
+    "observed_at": "2026-10-09T18:29:12.119032+00:00",
+    "reads": {
+      "activation-credit": {
+        "blnd": "5000000000000",
+        "q4w_pct": "0",
+        "shares": "500000000000",
+        "token_spot_price": "12500000",
+        "tokens": "500000000000",
+        "usdc": "125000000000"
+      },
+      "pool-admin": "GCNQ4ZLK45KOYNIQLIYI7GT6TYWGK2OZEVZEY7A3W5L7QSPBNCBWSJAQ",
+      "pool-config": {
+        "bstop_rate": 0,
+        "max_positions": 6,
+        "min_collateral": "10000000",
+        "oracle": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+        "status": 1
+      },
+      "positions-frodo": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      },
+      "positions-sam": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      },
+      "positions-user": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      },
+      "receiver-verifier": "CAYFT5JE3UQTKT4Q6ZOZK4FXVYVT6RE3MFC7STA4UB6WAEGBT65MRU52",
+      "reserve-usdc": {
+        "asset": "CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA",
+        "config": {
+          "c_factor": 9000000,
+          "decimals": 7,
+          "enabled": true,
+          "index": 1,
+          "l_factor": 9500000,
+          "max_util": 9500000,
+          "r_base": 100000,
+          "r_one": 500000,
+          "r_three": 15000000,
+          "r_two": 5000000,
+          "reactivity": 20,
+          "supply_cap": "170141183460469231731687303715884105727",
+          "util": 8500000
+        },
+        "data": {
+          "b_rate": "1000000010000",
+          "b_supply": "0",
+          "backstop_credit": "0",
+          "d_rate": "1000000002519",
+          "d_supply": "0",
+          "ir_mod": "9999925",
+          "last_time": 1791570552
+        },
+        "scalar": "10000000"
+      },
+      "reserve-xlm": {
+        "asset": "CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC",
+        "config": {
+          "c_factor": 7500000,
+          "decimals": 7,
+          "enabled": true,
+          "index": 0,
+          "l_factor": 8000000,
+          "max_util": 9500000,
+          "r_base": 100000,
+          "r_one": 500000,
+          "r_three": 15000000,
+          "r_two": 5000000,
+          "reactivity": 20,
+          "supply_cap": "170141183460469231731687303715884105727",
+          "util": 5000000
+        },
+        "data": {
+          "b_rate": "1000000000000",
+          "b_supply": "0",
+          "backstop_credit": "0",
+          "d_rate": "1000000000000",
+          "d_supply": "0",
+          "ir_mod": "10000000",
+          "last_time": 1791570552
+        },
+        "scalar": "10000000"
+      },
+      "retired-reserve-usdc": {
+        "asset": "CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA",
+        "config": {
+          "c_factor": 9000000,
+          "decimals": 7,
+          "enabled": true,
+          "index": 1,
+          "l_factor": 9500000,
+          "max_util": 9500000,
+          "r_base": 100000,
+          "r_one": 500000,
+          "r_three": 15000000,
+          "r_two": 5000000,
+          "reactivity": 20,
+          "supply_cap": "170141183460469231731687303715884105727",
+          "util": 8500000
+        },
+        "data": {
+          "b_rate": "1000000010000",
+          "b_supply": "0",
+          "backstop_credit": "0",
+          "d_rate": "1000000002519",
+          "d_supply": "0",
+          "ir_mod": "9999925",
+          "last_time": 1791570552
+        },
+        "scalar": "10000000"
+      },
+      "retired-reserve-xlm": {
+        "asset": "CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC",
+        "config": {
+          "c_factor": 7500000,
+          "decimals": 7,
+          "enabled": true,
+          "index": 0,
+          "l_factor": 8000000,
+          "max_util": 9500000,
+          "r_base": 100000,
+          "r_one": 500000,
+          "r_three": 15000000,
+          "r_two": 5000000,
+          "reactivity": 20,
+          "supply_cap": "170141183460469231731687303715884105727",
+          "util": 5000000
+        },
+        "data": {
+          "b_rate": "1000000000000",
+          "b_supply": "0",
+          "backstop_credit": "0",
+          "d_rate": "1000000000000",
+          "d_supply": "0",
+          "ir_mod": "10000000",
+          "last_time": 1791570552
+        },
+        "scalar": "10000000"
+      },
+      "rewards": []
+    }
+  },
+  "fork_commit": "ffeca2683162e8e32321c27f1652903d7990d7ac",
+  "freshness": {
+    "internal_timestamp_unit": "microseconds",
+    "max_future_skew_seconds": 15,
+    "price_scaling": "positive signed USD8 integer / 10, floor to USD7",
+    "read_max_age_seconds": 300,
+    "sep40_timestamp_unit": "floor seconds",
+    "write_max_age_seconds": 60
+  },
+  "horizon_confirmations": {
+    "04-permissionless-authentic-update": {
+      "created_at": "2026-10-09T18:11:57Z",
+      "ledger": 5109186,
+      "source_account": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F",
+      "successful": true,
+      "transaction_hash": "f3b05cd0639777d975b3444ba02b1a43f772ce7eb0551066ace3ef73982046dd",
+      "url": "https://horizon-testnet.stellar.org/transactions/f3b05cd0639777d975b3444ba02b1a43f772ce7eb0551066ace3ef73982046dd"
+    },
+    "09-borrow-usdc": {
+      "created_at": "2026-10-09T18:12:17Z",
+      "ledger": 5109190,
+      "source_account": "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+      "successful": true,
+      "transaction_hash": "d749e5c94b8d1b1b326d59bb98026ad91e0d9d01e4fa3c65ee439ed922e2af55",
+      "url": "https://horizon-testnet.stellar.org/transactions/d749e5c94b8d1b1b326d59bb98026ad91e0d9d01e4fa3c65ee439ed922e2af55"
+    },
+    "12-repay-usdc": {
+      "created_at": "2026-10-09T18:12:22Z",
+      "ledger": 5109191,
+      "source_account": "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+      "successful": true,
+      "transaction_hash": "93b33343c750dbdb03150affebc4f8724d1a6edc655ee3eb4eaabedd60bb7f19",
+      "url": "https://horizon-testnet.stellar.org/transactions/93b33343c750dbdb03150affebc4f8724d1a6edc655ee3eb4eaabedd60bb7f19"
+    }
+  },
+  "keeper_operations": {
+    "cadence": "30 seconds after previous completed cycle",
+    "completed_cycles": 4,
+    "credential_delivery": "systemd LoadCredential; key absent from observed logs and argv",
+    "failed_cycles": 0,
+    "last_observed_update_events": [
+      {
+        "asset": "xlm",
+        "invocation_id": "59c6b61fbe56496197082ca26024322d",
+        "observed_at_us": 1791571734378968,
+        "price": "1927100",
+        "stage": "update",
+        "status": "done",
+        "timestamp": 1791571724
+      },
+      {
+        "asset": "usdc",
+        "invocation_id": "59c6b61fbe56496197082ca26024322d",
+        "observed_at_us": 1791571735022247,
+        "price": "9999060",
+        "stage": "update",
+        "status": "done",
+        "timestamp": 1791571724
+      }
+    ],
+    "lastprice": {
+      "usdc": {
+        "price": "9999060",
+        "timestamp": 1791571724
+      },
+      "xlm": {
+        "price": "1927100",
+        "timestamp": 1791571724
+      }
+    },
+    "observed_at": "2026-10-09T18:48:59.085571+00:00",
+    "pinned_script_sha256": "0b25a0edf4535aca987749c27d10d676c9407446104aad6caf06cc3f84d0ffd2",
+    "promoted_at": "2026-10-09T18:46:42.166283+00:00",
+    "receipt_custody": "durable public send argv before send; exclusive bounded result sidecar on error/timeout/SIGTERM; both retained objects block replay; cleared only after both exact readbacks",
+    "restart": "no",
+    "retired_backend_units": "removed after disable and completion",
+    "timer_active": true,
+    "timer_enabled": true,
+    "unresolved_new_sends": []
+  },
+  "limits": [
+    "TESTNET only, not audit or launch approval",
+    "Supply caps remain i128::MAX; frontend limits separate",
+    "Synthetic activation LP is not real insurance",
+    "No changes to the original four-asset lab pool or production quorum requirement"
+  ],
+  "live_smoke_steps": {
+    "01-before-tamper-usdc": {
+      "arguments": [
+        "--asset",
+        "{\"Stellar\":\"CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA\"}"
+      ],
+      "contract": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+      "exit": 0,
+      "method": "lastprice",
+      "observed_at_unix": 1791569509,
+      "private_receipt_sha256": "ab9fc440cfbe547a1025add1a0ef1d9d1be0a439e5c463c015add5a7c984223e",
+      "result": {
+        "price": "9998731",
+        "timestamp": 1791569501
+      },
+      "send": "no",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F"
+    },
+    "01-before-tamper-xlm": {
+      "arguments": [
+        "--asset",
+        "{\"Stellar\":\"CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC\"}"
+      ],
+      "contract": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+      "exit": 0,
+      "method": "lastprice",
+      "observed_at_unix": 1791569508,
+      "private_receipt_sha256": "744f5c8e13f054371095d713487a1bc302b65c20df1bfae06c0f98148e7c3fe6",
+      "result": {
+        "price": "1934892",
+        "timestamp": 1791569501
+      },
+      "send": "no",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F"
+    },
+    "02-price-forgery-refused": {
+      "arguments": [
+        "--payload",
+        "e4bd474dad19c2385a5ece3950a3de0ed74acda9699852076812624fb0470bfd2bb170e708c2d3b10fe422847a6c02516e98d318290e0d4408ee7d8036a5cd68fae177ea01440075d3c79380e53b486c5d06000302170000000300a93f27010000000004f8ff0c0180e53b486c5d06000700000003000baff5050000000004f8ff0c0180e53b486c5d0600"
+      ],
+      "contract": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+      "contract_error_codes": [
+        3,
+        6
+      ],
+      "exit": 1,
+      "method": "update",
+      "observed_at_unix": 1791569510,
+      "private_receipt_sha256": "e65a4c248def65066e171f860290fcc13b3f49ae76644d34be2553c9dec3d291",
+      "result": null,
+      "send": "no",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F"
+    },
+    "03-after-tamper-usdc": {
+      "arguments": [
+        "--asset",
+        "{\"Stellar\":\"CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA\"}"
+      ],
+      "contract": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+      "exit": 0,
+      "method": "lastprice",
+      "observed_at_unix": 1791569511,
+      "private_receipt_sha256": "00b5c15b769a006189a7e1e31bc634fd5ab87da6f855fd895c00bd47d7ffa2e2",
+      "result": {
+        "price": "9998731",
+        "timestamp": 1791569501
+      },
+      "send": "no",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F"
+    },
+    "03-after-tamper-xlm": {
+      "arguments": [
+        "--asset",
+        "{\"Stellar\":\"CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC\"}"
+      ],
+      "contract": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+      "exit": 0,
+      "method": "lastprice",
+      "observed_at_unix": 1791569511,
+      "private_receipt_sha256": "abb27c3027b0bdf22f8eef995bbf43ef3d3dff570a41d595281f0aa2ff102ea5",
+      "result": {
+        "price": "1934892",
+        "timestamp": 1791569501
+      },
+      "send": "no",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F"
+    },
+    "04-permissionless-authentic-update": {
+      "arguments": [
+        "--payload",
+        "e4bd474dad19c2385a5ece3950a3de0ed74acda9699852076812624fb0470bfd2bb170e708c2d3b10fe422847a6c02516e98d318290e0d4408ee7d8036a5cd68fae177ea01440075d3c79380e53b486c5d06000302170000000300453f27010000000004f8ff0c0180e53b486c5d06000700000003000baff5050000000004f8ff0c0180e53b486c5d0600"
+      ],
+      "contract": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+      "exit": 0,
+      "method": "update",
+      "observed_at_unix": 1791569519,
+      "private_receipt_sha256": "bd1acee7159bb2870b593cfb5c2df1d52b92cefaffa8085ec7e6063312b895c7",
+      "result": null,
+      "send": "yes",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F",
+      "transaction_hash": "f3b05cd0639777d975b3444ba02b1a43f772ce7eb0551066ace3ef73982046dd",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/f3b05cd0639777d975b3444ba02b1a43f772ce7eb0551066ace3ef73982046dd"
+    },
+    "05-verified-usdc": {
+      "arguments": [
+        "--asset",
+        "{\"Stellar\":\"CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA\"}"
+      ],
+      "contract": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+      "exit": 0,
+      "method": "lastprice",
+      "observed_at_unix": 1791569520,
+      "private_receipt_sha256": "3328dc148a6e781672e9ae2458e6030e8547a0367729f8ed4d63acca7af4ba8e",
+      "result": {
+        "price": "9998721",
+        "timestamp": 1791569510
+      },
+      "send": "no",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F"
+    },
+    "05-verified-xlm": {
+      "arguments": [
+        "--asset",
+        "{\"Stellar\":\"CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC\"}"
+      ],
+      "contract": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+      "exit": 0,
+      "method": "lastprice",
+      "observed_at_unix": 1791569520,
+      "private_receipt_sha256": "77e8f3b89c473d16fa6b115a2e946a0c1ad3440503e65409bd234d973747117d",
+      "result": {
+        "price": "1934931",
+        "timestamp": 1791569510
+      },
+      "send": "no",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F"
+    },
+    "06-before-rc-frodo": {
+      "arguments": [
+        "--address",
+        "GBTV5ORM2SH76LJHNNJEIKB7MAW452XOLIS6R7SEB33ESMJGOGRYY3E4"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "exit": 0,
+      "method": "get_positions",
+      "observed_at_unix": 1791569521,
+      "private_receipt_sha256": "bc575de8c21d889c0319b01bba85c987065164b951c1784adbd81c76fcde103a",
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      },
+      "send": "no",
+      "source": "GBTV5ORM2SH76LJHNNJEIKB7MAW452XOLIS6R7SEB33ESMJGOGRYY3E4"
+    },
+    "06-before-rc-sam": {
+      "arguments": [
+        "--address",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "exit": 0,
+      "method": "get_positions",
+      "observed_at_unix": 1791569521,
+      "private_receipt_sha256": "a57c9613782cee1c01fbcdbad89429f730b2a4a8c94ad00c433ef11cfee546cd",
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      },
+      "send": "no",
+      "source": "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV"
+    },
+    "07-supply-usdc": {
+      "arguments": [
+        "--from",
+        "GBTV5ORM2SH76LJHNNJEIKB7MAW452XOLIS6R7SEB33ESMJGOGRYY3E4",
+        "--spender",
+        "GBTV5ORM2SH76LJHNNJEIKB7MAW452XOLIS6R7SEB33ESMJGOGRYY3E4",
+        "--to",
+        "GBTV5ORM2SH76LJHNNJEIKB7MAW452XOLIS6R7SEB33ESMJGOGRYY3E4",
+        "--requests",
+        "[{\"request_type\":0,\"address\":\"CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA\",\"amount\":\"100000000\"}]"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "exit": 0,
+      "method": "submit",
+      "observed_at_unix": 1791569529,
+      "private_receipt_sha256": "7c8d4b433238a6a57bcc0393add8206deebf6c136cc6cd04fbd077bd784b7042",
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {
+          "1": "100000000"
+        }
+      },
+      "send": "yes",
+      "source": "GBTV5ORM2SH76LJHNNJEIKB7MAW452XOLIS6R7SEB33ESMJGOGRYY3E4",
+      "transaction_hash": "b79bd96278a7b92174e6430c244fcc5cc07c3e0513985a237c7c66aa6433f45a",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/b79bd96278a7b92174e6430c244fcc5cc07c3e0513985a237c7c66aa6433f45a"
+    },
+    "08-collateral-xlm": {
+      "arguments": [
+        "--from",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+        "--spender",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+        "--to",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+        "--requests",
+        "[{\"request_type\":2,\"address\":\"CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC\",\"amount\":\"500000000\"}]"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "exit": 0,
+      "method": "submit",
+      "observed_at_unix": 1791569532,
+      "private_receipt_sha256": "454d3db79078b7b776ee2563caa22d8d03b54b7cd15b9deadb58cb68bd9feb8b",
+      "result": {
+        "collateral": {
+          "0": "500000000"
+        },
+        "liabilities": {},
+        "supply": {}
+      },
+      "send": "yes",
+      "source": "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+      "transaction_hash": "58c7bb5a3a70aa0b1e4c0245c9db4137751a0c9dceb017232ee7af829485b50d",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/58c7bb5a3a70aa0b1e4c0245c9db4137751a0c9dceb017232ee7af829485b50d"
+    },
+    "09-borrow-usdc": {
+      "arguments": [
+        "--from",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+        "--spender",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+        "--to",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+        "--requests",
+        "[{\"request_type\":4,\"address\":\"CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA\",\"amount\":\"10000000\"}]"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "exit": 0,
+      "method": "submit",
+      "observed_at_unix": 1791569537,
+      "private_receipt_sha256": "fdae24bbd7687a94650a300a88eee33480ef9e6b371fbf813ef88e2c7b57291b",
+      "result": {
+        "collateral": {
+          "0": "500000000"
+        },
+        "liabilities": {
+          "1": "10000000"
+        },
+        "supply": {}
+      },
+      "send": "yes",
+      "source": "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+      "transaction_hash": "d749e5c94b8d1b1b326d59bb98026ad91e0d9d01e4fa3c65ee439ed922e2af55",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/d749e5c94b8d1b1b326d59bb98026ad91e0d9d01e4fa3c65ee439ed922e2af55"
+    },
+    "10-borrowed-sam": {
+      "arguments": [
+        "--address",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "exit": 0,
+      "method": "get_positions",
+      "observed_at_unix": 1791569538,
+      "private_receipt_sha256": "db1a98da22618f9ba95aeb7369329d0c3706b4f5f2c825032f607e8d07210305",
+      "result": {
+        "collateral": {
+          "0": "500000000"
+        },
+        "liabilities": {
+          "1": "10000000"
+        },
+        "supply": {}
+      },
+      "send": "no",
+      "source": "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV"
+    },
+    "11-borrowed-usdc-reserve": {
+      "arguments": [
+        "--asset",
+        "CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "exit": 0,
+      "method": "get_reserve",
+      "observed_at_unix": 1791569539,
+      "private_receipt_sha256": "42d03a5aabf1310c770d66f8dd646a067d140fef9de01429f721b0eeb4b33e20",
+      "result": {
+        "asset": "CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA",
+        "config": {
+          "c_factor": 9000000,
+          "decimals": 7,
+          "enabled": true,
+          "index": 1,
+          "l_factor": 9500000,
+          "max_util": 9500000,
+          "r_base": 100000,
+          "r_one": 500000,
+          "r_three": 15000000,
+          "r_two": 5000000,
+          "reactivity": 20,
+          "supply_cap": "170141183460469231731687303715884105727",
+          "util": 8500000
+        },
+        "data": {
+          "b_rate": "1000000000000",
+          "b_supply": "100000000",
+          "backstop_credit": "0",
+          "d_rate": "1000000000000",
+          "d_supply": "10000000",
+          "ir_mod": "10000000",
+          "last_time": 1791569537
+        },
+        "scalar": "10000000"
+      },
+      "send": "no",
+      "source": "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV"
+    },
+    "12-repay-usdc": {
+      "arguments": [
+        "--from",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+        "--spender",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+        "--to",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+        "--requests",
+        "[{\"request_type\":5,\"address\":\"CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA\",\"amount\":\"10010001\"}]"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "exit": 0,
+      "method": "submit",
+      "observed_at_unix": 1791569542,
+      "private_receipt_sha256": "fc1d90ace0220cf3d2ab20b21bd1c71da3ee992197de010817bd7d19c53c0f64",
+      "result": {
+        "collateral": {
+          "0": "500000000"
+        },
+        "liabilities": {},
+        "supply": {}
+      },
+      "send": "yes",
+      "source": "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+      "transaction_hash": "93b33343c750dbdb03150affebc4f8724d1a6edc655ee3eb4eaabedd60bb7f19",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/93b33343c750dbdb03150affebc4f8724d1a6edc655ee3eb4eaabedd60bb7f19"
+    },
+    "13-repaid-sam": {
+      "arguments": [
+        "--address",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "exit": 0,
+      "method": "get_positions",
+      "observed_at_unix": 1791569543,
+      "private_receipt_sha256": "325451d2a72b81982eeb99c77140b3e9b48e6e2f541b8ec4f70e8302d6712b9f",
+      "result": {
+        "collateral": {
+          "0": "500000000"
+        },
+        "liabilities": {},
+        "supply": {}
+      },
+      "send": "no",
+      "source": "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV"
+    },
+    "14-withdraw-collateral": {
+      "arguments": [
+        "--from",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+        "--spender",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+        "--to",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+        "--requests",
+        "[{\"request_type\":3,\"address\":\"CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC\",\"amount\":\"170141183460469231731687303715884105727\"}]"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "exit": 0,
+      "method": "submit",
+      "observed_at_unix": 1791569547,
+      "private_receipt_sha256": "333f279b67ef91ebb56ad44fb198fbb56e654ba17389d8bc5c6e44347cdd4bc3",
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      },
+      "send": "yes",
+      "source": "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV",
+      "transaction_hash": "0761400763ddc122e26314a4aa133212f6027ed5f1dee15abb35323bfd4d8824",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/0761400763ddc122e26314a4aa133212f6027ed5f1dee15abb35323bfd4d8824"
+    },
+    "15-withdraw-supply": {
+      "arguments": [
+        "--from",
+        "GBTV5ORM2SH76LJHNNJEIKB7MAW452XOLIS6R7SEB33ESMJGOGRYY3E4",
+        "--spender",
+        "GBTV5ORM2SH76LJHNNJEIKB7MAW452XOLIS6R7SEB33ESMJGOGRYY3E4",
+        "--to",
+        "GBTV5ORM2SH76LJHNNJEIKB7MAW452XOLIS6R7SEB33ESMJGOGRYY3E4",
+        "--requests",
+        "[{\"request_type\":1,\"address\":\"CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA\",\"amount\":\"170141183460469231731687303715884105727\"}]"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "exit": 0,
+      "method": "submit",
+      "observed_at_unix": 1791569553,
+      "private_receipt_sha256": "52b375f57d3cbf5af845bdd1660e1992d6bd1c0b5d7eac4d6ff276f4e918e6fe",
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      },
+      "send": "yes",
+      "source": "GBTV5ORM2SH76LJHNNJEIKB7MAW452XOLIS6R7SEB33ESMJGOGRYY3E4",
+      "transaction_hash": "39a2e84cc245ab91fff0edfa3efb33199fc0fb651f904c1a757cd2629dcb908b",
+      "transaction_url": "https://stellar.expert/explorer/testnet/tx/39a2e84cc245ab91fff0edfa3efb33199fc0fb651f904c1a757cd2629dcb908b"
+    },
+    "16-after-rc-frodo": {
+      "arguments": [
+        "--address",
+        "GBTV5ORM2SH76LJHNNJEIKB7MAW452XOLIS6R7SEB33ESMJGOGRYY3E4"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "exit": 0,
+      "method": "get_positions",
+      "observed_at_unix": 1791569553,
+      "private_receipt_sha256": "7f2c18c1a1e4098eaa0c7bf10d01cc3172ac089650ae2c113bfec71f35a9c50c",
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      },
+      "send": "no",
+      "source": "GBTV5ORM2SH76LJHNNJEIKB7MAW452XOLIS6R7SEB33ESMJGOGRYY3E4"
+    },
+    "16-after-rc-sam": {
+      "arguments": [
+        "--address",
+        "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "exit": 0,
+      "method": "get_positions",
+      "observed_at_unix": 1791569554,
+      "private_receipt_sha256": "6f286ca82d1745d5b6fa5885bdb0d105941ddac812a64f53fb552fd126cfbb9b",
+      "result": {
+        "collateral": {},
+        "liabilities": {},
+        "supply": {}
+      },
+      "send": "no",
+      "source": "GDRVIKUTJIKTYWWQISGEHL274AWEGQMEMQSZOADT7NZZDLQT5JGARHKV"
+    },
+    "17-disabled-bad-debt": {
+      "arguments": [
+        "--auction_type",
+        "1",
+        "--user",
+        "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F",
+        "--bid",
+        "[\"CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA\"]",
+        "--lot",
+        "[\"CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC\"]",
+        "--percent",
+        "100"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "contract_error_codes": [
+        1200
+      ],
+      "exit": 1,
+      "method": "new_auction",
+      "observed_at_unix": 1791569555,
+      "private_receipt_sha256": "2827022f07f3ee32b5dd2b4fc328691662b03166892e379b6aa4525847393977",
+      "result": null,
+      "send": "no",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F"
+    },
+    "17-disabled-interest": {
+      "arguments": [
+        "--auction_type",
+        "2",
+        "--user",
+        "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F",
+        "--bid",
+        "[\"CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA\"]",
+        "--lot",
+        "[\"CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC\"]",
+        "--percent",
+        "100"
+      ],
+      "contract": "CCA3GD33RD3ZEEFCLO5W3JLNABOPOPQKHW4VWXXHN5KCYOHTTMMG3LO2",
+      "contract_error_codes": [
+        1200
+      ],
+      "exit": 1,
+      "method": "new_auction",
+      "observed_at_unix": 1791569555,
+      "private_receipt_sha256": "2150310f20f54aefd24d0b2f02253e175de241d0e0e89cbc107555496944927b",
+      "result": null,
+      "send": "no",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F"
+    },
+    "18-stale-usdc": {
+      "arguments": [
+        "--asset",
+        "{\"Stellar\":\"CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA\"}"
+      ],
+      "contract": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+      "exit": 0,
+      "method": "lastprice",
+      "observed_at_unix": 1791569841,
+      "private_receipt_sha256": "ac655bcd2fc61a8b83d927ea2f7ae4890f9a3c7bd2e5f461f36132b1fcb4144d",
+      "result": null,
+      "send": "no",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F"
+    },
+    "18-stale-xlm": {
+      "arguments": [
+        "--asset",
+        "{\"Stellar\":\"CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC\"}"
+      ],
+      "contract": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+      "exit": 0,
+      "method": "lastprice",
+      "observed_at_unix": 1791569840,
+      "private_receipt_sha256": "86f26eb8fadf7d2c02020bf7cf7206696d99587b372b7bea6f04572b515a585b",
+      "result": null,
+      "send": "no",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F"
+    },
+    "19-restored-usdc": {
+      "arguments": [
+        "--asset",
+        "{\"Stellar\":\"CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA\"}"
+      ],
+      "contract": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+      "exit": 0,
+      "method": "lastprice",
+      "observed_at_unix": 1791569855,
+      "private_receipt_sha256": "3bde062abef26f8b11d7984c4817d6deaa53e5021a18b2ad85dbac554abd5d4f",
+      "result": {
+        "price": "9998942",
+        "timestamp": 1791569846
+      },
+      "send": "no",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F"
+    },
+    "19-restored-xlm": {
+      "arguments": [
+        "--asset",
+        "{\"Stellar\":\"CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC\"}"
+      ],
+      "contract": "CAZYNT3QQQZP75BBBN5G56PD6Z45USODMBGHKSHOKSX6LU3Z3SYMA3IH",
+      "exit": 0,
+      "method": "lastprice",
+      "observed_at_unix": 1791569854,
+      "private_receipt_sha256": "1070de01b9c464684cd839728f368c2a2ed16ab71d71b2b9647ce731aa9829cf",
+      "result": {
+        "price": "1936681",
+        "timestamp": 1791569846
+      },
+      "send": "no",
+      "source": "GCQCIQSSS5DTG2HEJ6PQ7RJAZNRF57OHG4BW55JNHCUZJWWFHBZ5WL6F"
+    }
+  },
+  "network": {
+    "label": "testnet",
+    "passphrase": "Test SDF Network ; September 2015",
+    "rpc_url": "https://soroban-testnet.stellar.org"
+  },
+  "observed_at": "2026-10-09T18:34:10.547549+00:00",
+  "original_lab_custody": {
+    "existing_keeper_issue_not_repaired": true,
+    "marker_preserved": true,
+    "read_only_reconciliation": {
+      "conclusion": "Later successful admin sequence, after the old bounded CLI lifetime, makes its old-sequence transaction impossible to apply later. No old transaction retried, marker unchanged, original lab unmodified.",
+      "later_successful_admin_transaction": {
+        "created_at": "2026-10-09T17:48:27Z",
+        "hash": "ae801e4e913ca16177fc0e38ee86d0c52072d793f274c83d7cece5c35762f072",
+        "source_account": "GCNQ4ZLK45KOYNIQLIYI7GT6TYWGK2OZEVZEY7A3W5L7QSPBNCBWSJAQ",
+        "source_account_sequence": "20890355855526431",
+        "successful": true
+      },
+      "latest_source_quote": {
+        "price": "10000000",
+        "timestamp": 1791550857
+      },
+      "marker_preserved": {
+        "action": "set_data",
+        "asset": "stable",
+        "price": "10000000",
+        "schema": "spoon-price-keeper/pending/v1",
+        "source": 0,
+        "timestamp": 1791552747
+      }
+    },
+    "timer_restored": true
+  },
+  "pyth_source": {
+    "channel": "fixed_rate@200ms",
+    "commit": "e0f2cf3b4dbb185c4b6e02ef3ca0ae11dccd38e5",
+    "endpoint": "https://pyth-lazer-0.dourolabs.app/v1/latest_price",
+    "feeds": {
+      "usdc_usd": 7,
+      "xlm_usd": 23
+    },
+    "format": "leEcdsa",
+    "repo": "https://github.com/pyth-network/pyth-lazer-public",
+    "sdk_version": "0.4.0"
+  },
+  "replaces_pool": "CCWMK5KJ3ICQ7QXI3RWIHUP3O3ARJJMMF6PESTZXSQHL2EJSUD6YMOBE",
+  "schema": "precept-testnet-xlmusdc-signed-lazer/v1",
+  "tokens": {
+    "blnd": "CAKMGYLHMPLDRD4CYEJFZSBITAU7GRVOUGTQS7XWBD7NPPIS34TVGXBY",
+    "synthetic_usdc": "CCO5BBE67QMDQDUZM2DEVHF2AVK7PZ6BPO2OBLADSN6NTTQUML7NRHJW",
+    "usdc": "CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA",
+    "xlm": "CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC"
+  },
+  "toolchains": {
+    "blend_producer_cli": "22.6.0",
+    "blend_rust": "1.81.0",
+    "historical_adapter_producer_cli": "26.0.0",
+    "historical_adapter_rust": "1.89.0",
+    "runtime_cli": "26.1.0",
+    "signed_receiver_rust": "1.93.0",
+    "signed_receiver_soroban_sdk": "26.1.0"
+  },
+  "trust": "permissionless delivery, official on-chain Pyth signature verification, original signed per-feed timestamps; one provider, not independent quorum",
+  "verification": {
+    "authenticity": "signed-price byte forgery refused; genuine payload accepted from ordinary user",
+    "clippy": "passed with warnings denied",
+    "disabled_auctions": "bad debt and interest creation refused with contract error 1200",
+    "freshness": "genuine signed observations expired to null; keeper restored fresh prices",
+    "keeper_tests_passed": 27,
+    "live_cycle": "supply 10 USDC, collateral 50 XLM, borrow 1 USDC, full repay and full withdrawals; empty final positions/reserves",
+    "optimized_receiver_build": "passed; deployed hash verified",
+    "receiver_tests_passed": 16
+  }
+}

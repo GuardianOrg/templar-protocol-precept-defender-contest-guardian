@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+## usage: adr accept ADR
+##
+## Moves a Proposed ADR to Accepted. ADR is a number or partial filename.
+## Refuses if the ADR is not currently Proposed.
+
+file=$("$adr_bin_dir/_adr_file" "${1:?ADR}")
+grep -qx Proposed "$file" || { echo "ERROR: $file is not Proposed" >&2; exit 1; }
+sed -i '0,/^Proposed$/s//Accepted/' "$file"
+echo "$file"

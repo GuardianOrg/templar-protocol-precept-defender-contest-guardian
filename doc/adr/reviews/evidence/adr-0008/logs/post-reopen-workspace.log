@@ -1,0 +1,971 @@
+## Completed (1)
+
+### bg_6 [bash] — completed
+Label: devenv shell -- make test
+Delivery: not auto-delivered; recovered by this snapshot.
+```
+✨ devenv 2.1.2 is out of date. Please update to 2.3.1: https://devenv.sh/getting-started/#installation
+cargo rustc --manifest-path=pool-factory/Cargo.toml --crate-type=cdylib --target=wasm32-unknown-unknown --release
+    Finished `release` profile [optimized] target(s) in 0.28s
+cargo rustc --manifest-path=backstop/Cargo.toml --crate-type=cdylib --target=wasm32-unknown-unknown --release
+warning: unused import: `claim::execute_claim`
+ --> backstop/src/emissions/mod.rs:2:9
+  |
+2 | pub use claim::execute_claim;
+  |         ^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused imports: `add_to_reward_zone`, `distribute`, `gulp_emissions`, and `remove_from_reward_zone`
+ --> backstop/src/emissions/mod.rs:8:19
+  |
+8 | pub use manager::{add_to_reward_zone, distribute, gulp_emissions, remove_from_reward_zone};
+  |                   ^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^  ^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `pool`
+   --> backstop/src/contract.rs:266:31
+    |
+266 |     fn gulp_emissions(e: Env, pool: Address) -> i128 {
+    |                               ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `to_add`
+   --> backstop/src/contract.rs:270:27
+    |
+270 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                           ^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_add`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:270:44
+    |
+270 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                                            ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:274:30
+    |
+274 |     fn remove_reward(e: Env, to_remove: Address) {
+    |                              ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `from`
+   --> backstop/src/contract.rs:278:22
+    |
+278 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                      ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `pool_addresses`
+   --> backstop/src/contract.rs:278:37
+    |
+278 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                     ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_pool_addresses`
+
+warning: unused variable: `min_lp_tokens_out`
+   --> backstop/src/contract.rs:278:67
+    |
+278 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                                                   ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_lp_tokens_out`
+
+warning: function `is_pool_above_threshold` is never used
+   --> backstop/src/backstop/pool.rs:105:8
+    |
+105 | pub fn is_pool_above_threshold(pool_backstop_data: &PoolBackstopData) -> bool {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_RZ_SIZE` is never used
+ --> backstop/src/constants.rs:8:11
+  |
+8 | pub const MAX_RZ_SIZE: u32 = 30;
+  |           ^^^^^^^^^^^
+
+warning: function `execute_claim` is never used
+  --> backstop/src/emissions/claim.rs:13:8
+   |
+13 | pub fn execute_claim(
+   |        ^^^^^^^^^^^^^
+
+warning: function `claim_emissions` is never used
+  --> backstop/src/emissions/distributor.rs:37:15
+   |
+37 | pub(super) fn claim_emissions(
+   |               ^^^^^^^^^^^^^^^
+
+warning: function `add_to_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:18:8
+   |
+18 | pub fn add_to_reward_zone(e: &Env, to_add: Address, to_remove: Option<Address>) {
+   |        ^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_from_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:58:8
+   |
+58 | pub fn remove_from_reward_zone(e: &Env, to_remove: Address) {
+   |        ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_pool` is never used
+  --> backstop/src/emissions/manager.rs:73:4
+   |
+73 | fn remove_pool(e: &Env, reward_zone: &mut Vec<Address>, to_remove: &Address) {
+   |    ^^^^^^^^^^^
+
+warning: function `require_distribute_run_recently` is never used
+  --> backstop/src/emissions/manager.rs:87:4
+   |
+87 | fn require_distribute_run_recently(e: &Env) {
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `distribute` is never used
+  --> backstop/src/emissions/manager.rs:96:8
+   |
+96 | pub fn distribute(e: &Env) -> i128 {
+   |        ^^^^^^^^^^
+
+warning: function `gulp_emissions` is never used
+   --> backstop/src/emissions/manager.rs:209:8
+    |
+209 | pub fn gulp_emissions(e: &Env, pool: &Address) -> (i128, i128) {
+    |        ^^^^^^^^^^^^^^
+
+warning: function `set_backstop_emission_eps` is never used
+   --> backstop/src/emissions/manager.rs:253:8
+    |
+253 | pub fn set_backstop_emission_eps(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated functions `distribute`, `gulp_emissions`, `rw_zone_add`, `rw_zone_remove`, and `claim` are never used
+   --> backstop/src/events.rs:84:12
+    |
+5   | impl BackstopEvents {
+    | ------------------- associated functions in this implementation
+...
+84  |     pub fn distribute(e: &Env, new_tokens_emitted: i128) {
+    |            ^^^^^^^^^^
+...
+98  |     pub fn gulp_emissions(
+    |            ^^^^^^^^^^^^^^
+...
+117 |     pub fn rw_zone_add(e: &Env, to_add: Address, to_remove: Option<Address>) {
+    |            ^^^^^^^^^^^
+...
+129 |     pub fn rw_zone_remove(e: &Env, to_remove: Address) {
+    |            ^^^^^^^^^^^^^^
+...
+142 |     pub fn claim(e: &Env, from: Address, amount: i128) {
+    |            ^^^^^
+
+warning: constant `LAST_DISTRO_KEY` is never used
+  --> backstop/src/storage.rs:61:7
+   |
+61 | const LAST_DISTRO_KEY: &str = "LastDist";
+   |       ^^^^^^^^^^^^^^^
+
+warning: constant `BACKFILL_EMISSIONS_KEY` is never used
+  --> backstop/src/storage.rs:64:7
+   |
+64 | const BACKFILL_EMISSIONS_KEY: &str = "BackfillEmis";
+   |       ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: constant `BACKFILL_STATUS_KEY` is never used
+  --> backstop/src/storage.rs:65:7
+   |
+65 | const BACKFILL_STATUS_KEY: &str = "Backfill";
+   |       ^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_emitter` is never used
+   --> backstop/src/storage.rs:117:8
+    |
+117 | pub fn get_emitter(e: &Env) -> Address {
+    |        ^^^^^^^^^^^
+
+warning: function `get_last_distribution_time` is never used
+   --> backstop/src/storage.rs:288:8
+    |
+288 | pub fn get_last_distribution_time(e: &Env) -> u64 {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_last_distribution_time` is never used
+   --> backstop/src/storage.rs:302:8
+    |
+302 | pub fn set_last_distribution_time(e: &Env, timestamp: &u64) {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_reward_zone` is never used
+   --> backstop/src/storage.rs:328:8
+    |
+328 | pub fn set_reward_zone(e: &Env, reward_zone: &Vec<Address>) {
+    |        ^^^^^^^^^^^^^^^
+
+warning: function `get_backfill_emissions` is never used
+   --> backstop/src/storage.rs:340:8
+    |
+340 | pub fn get_backfill_emissions(e: &Env) -> i128 {
+    |        ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_backfill_emissions` is never used
+   --> backstop/src/storage.rs:354:8
+    |
+354 | pub fn set_backfill_emissions(e: &Env, emissions: &i128) {
+    |        ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_backfill_status` is never used
+   --> backstop/src/storage.rs:368:8
+    |
+368 | pub fn get_backfill_status(e: &Env) -> Option<bool> {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_backfill_status` is never used
+   --> backstop/src/storage.rs:382:8
+    |
+382 | pub fn set_backfill_status(e: &Env, status: &bool) {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_rz_emis` is never used
+   --> backstop/src/storage.rs:397:8
+    |
+397 | pub fn get_rz_emis(e: &Env, pool: &Address) -> RzEmissions {
+    |        ^^^^^^^^^^^
+
+warning: function `set_rz_emis` is never used
+   --> backstop/src/storage.rs:416:8
+    |
+416 | pub fn set_rz_emis(e: &Env, pool: &Address, emissions: &RzEmissions) {
+    |        ^^^^^^^^^^^
+
+warning: function `get_drop_list` is never used
+   --> backstop/src/storage.rs:498:8
+    |
+498 | pub fn get_drop_list(e: &Env) -> Vec<(Address, i128)> {
+    |        ^^^^^^^^^^^^^
+
+warning: `backstop` (lib) generated 35 warnings (run `cargo fix --lib -p backstop` to apply 2 suggestions)
+    Finished `release` profile [optimized] target(s) in 0.11s
+cargo rustc --manifest-path=pool/Cargo.toml --crate-type=cdylib --target=wasm32-unknown-unknown --release
+   Compiling pool v2.0.0 (/home/common/projects/templar/blend-contracts-v2/pool)
+warning: unexpected `cfg` condition name: `kani`
+    --> pool/src/pool/config.rs:1606:7
+     |
+1606 | #[cfg(kani)]
+     |       ^^^^
+     |
+     = help: expected names are: `clippy`, `debug_assertions`, `doc`, `docsrs`, `doctest`, `feature`, `miri`, `overflow_checks`, `panic`, `proc_macro`, `relocation_model`, `rustfmt`, `sanitize`, `sanitizer_cfi_generalize_pointers`, `sanitizer_cfi_normalize_integers`, `target_abi`, `target_arch`, `target_endian`, `target_env`, `target_family`, `target_feature`, `target_has_atomic`, `target_has_atomic_equal_alignment`, `target_has_atomic_load_store`, `target_os`, `target_pointer_width`, `target_thread_local`, `target_vendor`, `test`, `ub_checks`, `unix`, and `windows`
+     = help: consider using a Cargo feature instead
+     = help: or consider adding in `Cargo.toml` the `check-cfg` lint config for the lint:
+              [lints.rust]
+              unexpected_cfgs = { level = "warn", check-cfg = ['cfg(kani)'] }
+     = help: or consider adding `println!("cargo::rustc-check-cfg=cfg(kani)");` to the top of the `build.rs`
+     = note: see <https://doc.rust-lang.org/nightly/rustc/check-cfg/cargo-specifics.html> for more information about checking conditional configuration
+     = note: `#[warn(unexpected_cfgs)]` on by default
+
+warning: unused import: `execute_update_pool`
+  --> pool/src/pool/mod.rs:10:26
+   |
+10 |     execute_set_reserve, execute_update_pool,
+   |                          ^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `execute_submit_with_flash_loan`
+  --> pool/src/pool/mod.rs:20:34
+   |
+20 | pub use submit::{execute_submit, execute_submit_with_flash_loan};
+   |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `backstop_take_rate`
+   --> pool/src/contract.rs:392:28
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                            ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_backstop_take_rate`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `max_positions`
+   --> pool/src/contract.rs:392:53
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                     ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_max_positions`
+
+warning: unused variable: `min_collateral`
+   --> pool/src/contract.rs:392:73
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                                         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_collateral`
+
+warning: unused variable: `from`
+   --> pool/src/contract.rs:480:9
+    |
+480 |         from: Address,
+    |         ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `flash_loan`
+   --> pool/src/contract.rs:481:9
+    |
+481 |         flash_loan: FlashLoan,
+    |         ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_flash_loan`
+
+warning: unused variable: `requests`
+   --> pool/src/contract.rs:482:9
+    |
+482 |         requests: Vec<Request>,
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_requests`
+
+warning: associated functions `update_pool`, `bad_debt`, and `flash_loan` are never used
+   --> pool/src/events.rs:30:12
+    |
+7   | impl PoolEvents {
+    | --------------- associated functions in this implementation
+...
+30  |     pub fn update_pool(
+    |            ^^^^^^^^^^^
+...
+157 |     pub fn bad_debt(e: &Env, user: Address, asset: Address, d_tokens: i128) {
+    |            ^^^^^^^^
+...
+306 |     pub fn flash_loan(
+    |            ^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: function `execute_update_pool` is never used
+  --> pool/src/pool/config.rs:47:8
+   |
+47 | pub fn execute_update_pool(
+   |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `execute_submit_with_flash_loan` is never used
+  --> pool/src/pool/submit.rs:70:8
+   |
+70 | pub fn execute_submit_with_flash_loan(
+   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: method `has_collateral` is never used
+   --> pool/src/pool/user.rs:121:12
+    |
+43  | impl User {
+    | --------- method in this implementation
+...
+121 |     pub fn has_collateral(&self) -> bool {
+    |            ^^^^^^^^^^^^^^
+
+warning: `pool` (lib) generated 13 warnings (run `cargo fix --lib -p pool` to apply 2 suggestions)
+    Finished `release` profile [optimized] target(s) in 1.65s
+mkdir -p target/wasm32-unknown-unknown/optimized
+stellar contract optimize \
+	--wasm target/wasm32-unknown-unknown/release/pool_factory.wasm \
+	--wasm-out target/wasm32-unknown-unknown/optimized/pool_factory.wasm
+Reading: target/wasm32-unknown-unknown/release/pool_factory.wasm (3624 bytes)
+Optimized: target/wasm32-unknown-unknown/optimized/pool_factory.wasm (3149 bytes)
+stellar contract optimize \
+	--wasm target/wasm32-unknown-unknown/release/backstop.wasm \
+	--wasm-out target/wasm32-unknown-unknown/optimized/backstop.wasm
+Reading: target/wasm32-unknown-unknown/release/backstop.wasm (26200 bytes)
+Optimized: target/wasm32-unknown-unknown/optimized/backstop.wasm (22701 bytes)
+stellar contract optimize \
+	--wasm target/wasm32-unknown-unknown/release/pool.wasm \
+	--wasm-out target/wasm32-unknown-unknown/optimized/pool.wasm
+Reading: target/wasm32-unknown-unknown/release/pool.wasm (64137 bytes)
+Optimized: target/wasm32-unknown-unknown/optimized/pool.wasm (54368 bytes)
+cd target/wasm32-unknown-unknown/optimized/ && \
+	for i in *.wasm ; do \
+		ls -l "$i"; \
+	done
+-rw-rw-r--+ 1 common users 22701 Sep 14 13:53 backstop.wasm
+-rw-rw-r--+ 1 common users 3149 Sep 14 13:53 pool_factory.wasm
+-rw-rw-r--+ 1 common users 54368 Sep 14 13:53 pool.wasm
+cargo test --all --tests
+   Compiling pool v2.0.0 (/home/common/projects/templar/blend-contracts-v2/pool)
+warning: unused import: `claim::execute_claim`
+ --> backstop/src/emissions/mod.rs:2:9
+  |
+2 | pub use claim::execute_claim;
+  |         ^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused imports: `add_to_reward_zone`, `distribute`, `gulp_emissions`, and `remove_from_reward_zone`
+ --> backstop/src/emissions/mod.rs:8:19
+  |
+8 | pub use manager::{add_to_reward_zone, distribute, gulp_emissions, remove_from_reward_zone};
+  |                   ^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^  ^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `pool`
+   --> backstop/src/contract.rs:266:31
+    |
+266 |     fn gulp_emissions(e: Env, pool: Address) -> i128 {
+    |                               ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `to_add`
+   --> backstop/src/contract.rs:270:27
+    |
+270 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                           ^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_add`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:270:44
+    |
+270 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                                            ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:274:30
+    |
+274 |     fn remove_reward(e: Env, to_remove: Address) {
+    |                              ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `from`
+   --> backstop/src/contract.rs:278:22
+    |
+278 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                      ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `pool_addresses`
+   --> backstop/src/contract.rs:278:37
+    |
+278 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                     ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_pool_addresses`
+
+warning: unused variable: `min_lp_tokens_out`
+   --> backstop/src/contract.rs:278:67
+    |
+278 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                                                   ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_lp_tokens_out`
+
+warning: function `is_pool_above_threshold` is never used
+   --> backstop/src/backstop/pool.rs:105:8
+    |
+105 | pub fn is_pool_above_threshold(pool_backstop_data: &PoolBackstopData) -> bool {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_RZ_SIZE` is never used
+ --> backstop/src/constants.rs:8:11
+  |
+8 | pub const MAX_RZ_SIZE: u32 = 30;
+  |           ^^^^^^^^^^^
+
+warning: function `execute_claim` is never used
+  --> backstop/src/emissions/claim.rs:13:8
+   |
+13 | pub fn execute_claim(
+   |        ^^^^^^^^^^^^^
+
+warning: function `claim_emissions` is never used
+  --> backstop/src/emissions/distributor.rs:37:15
+   |
+37 | pub(super) fn claim_emissions(
+   |               ^^^^^^^^^^^^^^^
+
+warning: function `add_to_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:18:8
+   |
+18 | pub fn add_to_reward_zone(e: &Env, to_add: Address, to_remove: Option<Address>) {
+   |        ^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_from_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:58:8
+   |
+58 | pub fn remove_from_reward_zone(e: &Env, to_remove: Address) {
+   |        ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_pool` is never used
+  --> backstop/src/emissions/manager.rs:73:4
+   |
+73 | fn remove_pool(e: &Env, reward_zone: &mut Vec<Address>, to_remove: &Address) {
+   |    ^^^^^^^^^^^
+
+warning: function `require_distribute_run_recently` is never used
+  --> backstop/src/emissions/manager.rs:87:4
+   |
+87 | fn require_distribute_run_recently(e: &Env) {
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `distribute` is never used
+  --> backstop/src/emissions/manager.rs:96:8
+   |
+96 | pub fn distribute(e: &Env) -> i128 {
+   |        ^^^^^^^^^^
+
+warning: function `gulp_emissions` is never used
+   --> backstop/src/emissions/manager.rs:209:8
+    |
+209 | pub fn gulp_emissions(e: &Env, pool: &Address) -> (i128, i128) {
+    |        ^^^^^^^^^^^^^^
+
+warning: function `set_backstop_emission_eps` is never used
+   --> backstop/src/emissions/manager.rs:253:8
+    |
+253 | pub fn set_backstop_emission_eps(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated functions `distribute`, `gulp_emissions`, `rw_zone_add`, `rw_zone_remove`, and `claim` are never used
+   --> backstop/src/events.rs:84:12
+    |
+5   | impl BackstopEvents {
+    | ------------------- associated functions in this implementation
+...
+84  |     pub fn distribute(e: &Env, new_tokens_emitted: i128) {
+    |            ^^^^^^^^^^
+...
+98  |     pub fn gulp_emissions(
+    |            ^^^^^^^^^^^^^^
+...
+117 |     pub fn rw_zone_add(e: &Env, to_add: Address, to_remove: Option<Address>) {
+    |            ^^^^^^^^^^^
+...
+129 |     pub fn rw_zone_remove(e: &Env, to_remove: Address) {
+    |          
+[…454ln elided…]
+:auction::tests::test_partial_partial_full_fill ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_invalid_bid - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_auction_bad_full_liq - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_checks_max_positions - should panic ... ok
+test auctions::auction::tests::test_create_auction_duplicate_lot - should panic ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_invalid_bid - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_invalid_lot_empty - should panic ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_no_backstop_tokens - should panic ... ok
+test auctions::bad_debt_auction::tests::test_fill_bad_debt_auction_leftover_debt_small_backstop_burns ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_partial ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_max_balance ... ok
+test auctions::bad_debt_auction::tests::test_fill_bad_debt_auction_empty_bid ... ok
+test auctions::backstop_interest_auction::tests::test_create_interest_auction_applies_interest ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_applies_interest ... ok
+test auctions::backstop_interest_auction::tests::test_fill_interest_auction_empty_bid ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_invalid_bid_empty - should panic ... ok
+test auctions::bad_debt_auction::tests::test_fill_bad_debt_auction ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_invalid_lot - should panic ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_invalid_bid_no_position - should panic ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_checks_max_positions - should panic ... ok
+test auctions::backstop_interest_auction::tests::test_fill_interest_auction ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_already_in_progress - should panic ... ok
+test auctions::bad_debt_auction::tests::test_fill_bad_debt_auction_with_backstop - should panic ... ok
+test auctions::bad_debt_auction::tests::test_fill_bad_debt_auction_leftover_debt_small_backstop_does_not_burn_if_not_full_liq ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_user_not_backstop - should panic ... ok
+test auctions::bad_debt_auction::tests::test_fill_bad_debt_auction_leftover_debt_sufficient_balance ... ok
+test auctions::bad_debt_auction::tests::test_create_bad_debt_auction_percent_not_100 - should panic ... ok
+test emissions::distributor::tests::test_update_emissions_no_data_ignores ... ok
+test emissions::distributor::tests::test_update_emission_data_no_supply_returns_old ... ok
+test emissions::distributor::tests::test_update_emission_data_expired_returns_old ... ok
+test emissions::distributor::tests::test_update_user_emissions_claim_returns_accrual ... ok
+test emissions::distributor::tests::test_update_emission_no_overflow ... ok
+test emissions::distributor::tests::test_update_emissions_negative_time_diff - should panic ... ok
+test emissions::distributor::tests::test_claim_emissions_no_config_ignores ... ok
+test emissions::distributor::tests::test_update_emission_data_no_eps_returns_old ... ok
+test emissions::distributor::tests::test_claim_emissions ... ok
+test emissions::distributor::tests::test_update_user_emissions_claim_first_time_claims_tokens ... ok
+test emissions::distributor::tests::test_update_emission_data_rounds_down ... ok
+test emissions::distributor::tests::test_update_emissions ... ok
+test emissions::distributor::tests::test_update_emission_data_past_exp ... ok
+test emissions::manager::tests::test_gulp_emissions_no_pool_emissions_does_nothing ... ok
+test pool::actions::tests::test_build_actions_from_request_borrow ... ok
+test emissions::distributor::tests::test_update_user_emissions_negative_index - should panic ... ok
+test emissions::distributor::tests::test_update_emission_data_no_config_returns_none ... ok
+test emissions::distributor::tests::test_update_user_emissions_if_accrued_skips ... ok
+test emissions::distributor::tests::test_update_user_emissions_accrues ... ok
+test emissions::distributor::tests::test_update_user_emissions_first_time_had_tokens ... ok
+test pool::actions::tests::test_aggregating_actions ... ok
+test emissions::distributor::tests::test_update_user_emissions_no_bal_no_accrual ... ok
+test emissions::distributor::tests::test_update_emission_data_updated_this_block_returns_old ... ok
+test pool::actions::tests::test_delete_liquidation_auction ... ok
+test emissions::distributor::tests::test_update_user_emissions_first_time ... ok
+test pool::actions::tests::test_build_actions_from_request_withdraw ... ok
+test pool::actions::tests::test_build_actions_from_request_supply ... ok
+test pool::actions::tests::test_build_actions_from_request_repay ... ok
+test pool::actions::tests::test_build_actions_from_request_supply_collateral ... ok
+test pool::actions::tests::test_build_actions_from_request_borrow_blocks_over_100_util - should panic ... ok
+test pool::actions::tests::test_build_actions_from_request_repay_over_balance ... ok
+test pool::actions::tests::test_build_actions_from_request_withdraw_collateral ... ok
+test pool::actions::tests::test_build_actions_from_request_withdraw_collateral_blocks_over_100_util - should panic ... ok
+test pool::actions::tests::test_build_actions_from_request_withdraw_blocks_over_100_util - should panic ... ok
+test pool::actions::tests::test_build_actions_from_request_borrow_adds_check_util_safely ... ok
+test pool::actions::tests::test_build_actions_panic_borrow_disabled_asset - should panic ... ok
+test emissions::manager::tests::test_gulp_emissions ... ok
+test pool::actions::tests::test_build_actions_from_request_withdraw_collateral_over_balance ... ok
+test pool::actions::tests::test_build_actions_from_request_withdraw_over_balance ... ok
+test pool::actions::tests::test_exceed_supply_cap - should panic ... ok
+test emissions::manager::tests::test_gulp_emissions_too_small - should panic ... ok
+test pool::actions::tests::test_build_actions_panic_supply_disabled_asset - should panic ... ok
+test pool::actions::tests::test_build_actions_panic_supply_collateral_disabled_asset - should panic ... ok
+test emissions::manager::tests::test_set_pool_emissions_ok_if_under_100 ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_requires_unhealthy_user - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_no_bad_debt_if_not_100_fill ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_partial_exclude_collateral_when_required_panics - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_partial ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_partial_exclude_liabilities_when_required_too_small - should panic ... ok
+test emissions::distributor::tests::test_execute_claim ... ok
+test emissions::manager::tests::test_gulp_emissions_when_a_reserve_disabled ... ok
+test auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_assigns_bad_debt ... ok
+test emissions::manager::tests::test_set_pool_emissions ... ok
+test pool::actions::tests::test_fill_user_liquidation ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_partial_0_cf_lot ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_invalid_lot_no_position - should panic ... ok
+test emissions::manager::tests::test_set_pool_emissions_panics_if_anyone_share_equal_0 - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_empty_bid ... ok
+test emissions::distributor::tests::test_calc_claim_with_invalid_reserve_panics - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction ... ok
+test auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_hits_target ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_partial_100 ... ok
+test pool::config::tests::test_validate_reserve_metadata ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_c_factor - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_l_factor - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_decimals - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_max_util - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_r_base_too_high - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_r_order - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_r_base_too_low - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_reactivity - should panic ... ok
+test pool::config::tests::test_validate_reserve_metadata_validates_util - should panic ... ok
+test pool::config::tests::test_execute_initialize ... ok
+test pool::config::tests::test_execute_update_pool ... ok
+test pool::config::tests::test_execute_initialize_bad_take_rate - should panic ... ok
+test pool::config::tests::test_execute_initialize_bad_max_positions - should panic ... ok
+test pool::config::tests::test_execute_update_pool_validates_min_collateral - should panic ... ok
+test pool::config::tests::test_execute_update_pool_validates_max_positions - should panic ... ok
+test pool::bad_debt::tests::test_bad_debt_backstop - should panic ... ok
+test pool::bad_debt::tests::test_public_bad_debt_rejects_no_liability_user_without_valuation - should panic ... ok
+test pool::bad_debt::tests::test_bad_debt_backstop_rejection_precedes_auction - should panic ... ok
+test pool::config::tests::test_execute_update_pool_validates_b_stop_rate - should panic ... ok
+test pool::config::tests::test_execute_cancel_queued_reserve_initialization ... ok
+test pool::config::tests::test_queue_set_reserve_decimals_changed - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_invalid_lot_empty - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_create_user_liquidation_invalid_bid_no_position - should panic ... ok
+test auctions::user_liquidation_auction::tests::test_fill_user_liquidation_auction_no_bad_debt_if_collateral_remaining ... ok
+test pool::config::tests::test_queue_set_reserve_duplicate - should panic ... ok
+test pool::config::tests::test_execute_set_reserve_first_reserve ... ok
+test pool::config::tests::test_execute_set_reserve_requires_block_passed - should panic ... ok
+test pool::config::tests::test_execute_set_reserve_validates_decimals_stay_same - should panic ... ok
+test pool::config::tests::test_execute_set_reserve_update_during_setup ... ok
+test pool::config::tests::test_initialize_reserve_sets_index ... ok
+test pool::config::tests::test_execute_update_pool_updates_reserves_if_backstop_rate_changes ... ok
+test pool::config::tests::test_execute_set_reserve_rejects_drift_on_existing_reserve - should panic ... ok
+test pool::config::tests::test_execute_set_reserve_applies_queued_disable_only_transition ... ok
+test pool::bad_debt::tests::test_bad_debt_orphaned_same_reserve_cycle ... ok
+test pool::health_factor::tests::test_as_health_factor_rounds_floor ... ok
+test pool::bad_debt::tests::test_custody_rejects_pool_address_user_emissions - should panic ... ok
+test pool::bad_debt::tests::test_bad_debt_user ... ok
+test pool::bad_debt::tests::test_custody_rejects_reserve_b_token_emission_data - should panic ... ok
+test pool::bad_debt::tests::test_full_setoff_retains_collateral_with_emissions ... ok
+test pool::bad_debt::tests::test_custody_rejects_pool_map_b_token_emissions - should panic ... ok
+test emissions::distributor::tests::test_execute_claim_with_already_claimed_reserve ... ok
+test pool::health_factor::tests::test_is_hf_over ... ok
+test pool::health_factor::tests::test_is_hf_over_no_liabilites ... ok
+test pool::health_factor::tests::test_is_hf_over_odd_scalar ... ok
+test pool::health_factor::tests::test_is_hf_over_true ... ok
+test pool::health_factor::tests::test_is_hf_under_no_liabilites ... ok
+test pool::health_factor::tests::test_is_hf_under ... ok
+test pool::health_factor::tests::test_is_hf_under_odd_scalar ... ok
+test pool::interest::tests::test_calc_accrual_fixed_rate ... ok
+test pool::interest::tests::test_calc_accrual_rounds_up ... ok
+test pool::config::tests::test_queue_set_reserve_rejects_new_reserve_off_setup - should panic ... ok
+test pool::config::tests::test_queue_set_reserve_status_6 ... ok
+test pool::config::tests::test_queue_set_reserve_lf_removed - should panic ... ok
+test pool::health_factor::tests::test_is_hf_under_true ... ok
+test pool::config::tests::test_queue_set_reserve_rejects_other_field_drift_on_existing - should panic ... ok
+test pool::interest::tests::test_calc_accrual_util_over_95 ... ok
+test pool::config::tests::test_queue_set_reserve_seeds_disabled_transition_from_existing ... ok
+test pool::interest::tests::test_calc_accrual_util_over_target ... ok
+test pool::config::tests::test_queue_set_reserve_with_existing_res_during_setup ... ok
+test pool::interest::tests::test_calc_accrual_util_under_target ... ok
+test pool::interest::tests::test_calc_ir_mod_under_limit ... ok
+test pool::interest::tests::test_calc_ir_mod_over_limit ... ok
+test pool::interest::tests::test_calc_ir_mod_reactivity_0 ... ok
+test pool::bad_debt::tests::test_check_and_handle_backstop_bad_debt_with_no_liabilities ... ok
+test pool::bad_debt::tests::test_bad_debt_user_panics_no_change - should panic ... ok
+test pool::bad_debt::tests::test_bad_debt_user_with_ongoing_auction - should panic ... ok
+test pool::bad_debt::tests::test_check_and_handle_backstop_bad_debt ... ok
+test pool::bad_debt::tests::test_check_and_handle_user_bad_debt_with_collateral ... ok
+test pool::reserve::tests::test_accrue ... ok
+test pool::reserve::tests::test_accrue_negative_delta_no_change ... ok
+test pool::bad_debt::tests::test_bad_debt_backstop_no_change - should panic ... ok
+test pool::reserve::tests::test_require_action_allowed_panics_if_borrow_disabled_asset - should panic ... ok
+test pool::reserve::tests::test_require_action_allowed_panics_if_supply_collateral_disabled_asset - should panic ... ok
+test pool::reserve::tests::test_require_action_allowed_panics_if_supply_disabled_asset - should panic ... ok
+test pool::reserve::tests::test_to_b_token_up ... ok
+test pool::reserve::tests::test_require_action_allowed_passed_if_withdraw_or_repay ... ok
+test pool::reserve::tests::test_to_d_token_down ... ok
+test pool::reserve::tests::test_require_utilization_below_max_pass ... ok
+test pool::reserve::tests::test_require_utilization_under_100_pass ... ok
+test pool::reserve::tests::test_to_d_token_up ... ok
+test pool::reserve::tests::test_require_utilization_under_100_panic - should panic ... ok
+test pool::reserve::tests::test_to_effective_asset_from_b_token ... ok
+test pool::reserve::tests::test_to_effective_asset_from_d_token ... ok
+test pool::reserve::tests::test_total_liabilities ... ok
+test pool::reserve::tests::test_require_utilization_under_max_panic - should panic ... ok
+test pool::reserve::tests::test_total_supply ... ok
+test pool::reserve::tests::test_utilization_empty ... ok
+test pool::reserve::tests::test_utilization ... ok
+test pool::reserve::tests::test_to_asset_from_b_token ... ok
+test pool::reserve::tests::test_to_asset_from_d_token ... ok
+test pool::reserve::tests::test_utilization_more_liabilities ... ok
+test pool::reserve::tests::test_utilization_no_liabilities ... ok
+test pool::status::tests::test_calc_pool_backstop_threshold ... ok
+test pool::reserve::tests::test_to_b_token_down ... ok
+test pool::status::tests::test_calc_pool_backstop_threshold_10_percent ... ok
+test pool::status::tests::test_calc_pool_backstop_threshold_5pct ... ok
+test pool::status::tests::test_calc_pool_backstop_threshold_saturates ... ok
+test pool::status::tests::test_calc_pool_backstop_threshold_over ... ok
+test pool::status::tests::test_calc_pool_backstop_threshold_too_small ... ok
+test pool::bad_debt::tests::test_check_and_handle_user_bad_debt ... ok
+test pool::bad_debt::tests::test_check_and_handle_backstop_bad_debt_with_unhealthy_backstop_defaults ... ok
+test pool::gulp::tests::test_execute_gulp_rejects_pool_user_emissions - should panic ... ok
+test pool::gulp::tests::test_execute_gulp_rejects_pool_map_emissions - should panic ... ok
+test pool::gulp::tests::test_execute_gulp_rejects_debt_positive - should panic ... ok
+test pool::pool::tests::test_require_action_allowed_borrow_while_on_ice_panics - should panic ... ok
+test pool::pool::tests::test_require_action_allowed_supply_while_frozen - should panic ... ok
+test pool::pool::tests::test_require_action_allowed_cancel_liquidation_while_on_ice_panics - should panic ... ok
+test pool::pool::tests::test_require_action_allowed_cancel_liquidation_while_active ... ok
+test pool::pool::tests::test_require_action_allowed_can_withdrawal_and_repay_while_frozen ... ok
+test pool::pool::tests::test_require_action_allowed_supply_collateral_while_frozen - should panic ... ok
+test pool::pool::tests::test_require_action_allowed_borrow_while_active ... ok
+test pool::pool::tests::test_require_under_max_empty ... ok
+test pool::reserve::tests::test_load_reserve ... ok
+test pool::reserve::tests::test_load_reserve_zero_util ... ok
+test pool::reserve::tests::test_load_reserve_accrues_b_rate ... ok
+test pool::reserve::tests::test_load_reserve_zero_supply ... ok
+test pool::reserve::tests::test_load_reserve_zero_bstop_rate ... ok
+test pool::gulp::tests::test_execute_gulp_zero_delta_skips ... ok
+test pool::gulp::tests::test_execute_gulp_rejects_res_emis_data - should panic ... ok
+test pool::pool::tests::test_load_price_panics_if_zero - should panic ... ok
+test pool::pool::tests::test_require_under_max_panics_if_over - should panic ... ok
+test pool::pool::tests::test_load_price_accepts_exact_24_hours ... ok
+test pool::pool::tests::test_require_under_max_allows_decreasing_change ... ok
+test pool::pool::tests::test_load_price_decimals ... ok
+test pool::pool::tests::test_load_price_panics_if_stale - should panic ... ok
+test pool::reserve::tests::test_store ... ok
+test pool::pool::tests::test_load_price_panics_if_future_dated - should panic ... ok
+test pool::pool::tests::test_require_under_max_ignores_supply ... ok
+test pool::gulp::tests::test_execute_gulp_settles_orphan ... ok
+test pool::pool::tests::test_reserve_cache ... ok
+test pool::pool::tests::test_load_price ... ok
+test pool::pool::tests::test_reserve_cache_does_nothing_if_nothing_marked ... ok
+test pool::pool::tests::test_load_price_decimals_panics_if_wrong_decimals - should panic ... ok
+test pool::pool::tests::test_reserve_cache_stores_only_marked ... ok
+test pool::pool::tests::test_reserve_cache_panics_if_missing_reserve_to_store - should panic ... ok
+test pool::gulp::tests::test_gulp_settles_collateral_relocated_by_bad_debt ... ok
+test pool::submit::tests::test_submit_from_is_not_self - should panic ... ok
+test pool::submit::tests::test_submit ... ok
+test pool::submit::tests::test_submit_under_min_collateral_fails - should panic ... ok
+test pool::submit::tests::test_submit_to_is_not_self - should panic ... ok
+test pool::submit::tests::test_submit_spender_is_not_self - should panic ... ok
+test pool::submit::tests::test_submit_with_flash_loan_checks_pool_status - should panic ... ok
+test pool::user::tests::test_add_collateral_accrues_emissions ... ok
+test pool::user::tests::test_add_collateral_zero_mint - should panic ... ok
+test pool::submit::tests::test_submit_over_max_positions - should panic ... ok
+test pool::submit::tests::test_submit_with_flash_loan_checks_max_util - should panic ... ok
+test pool::user::tests::test_add_supply_accrues_emissions ... ok
+test pool::user::tests::test_add_supply_zero_mint - should panic ... ok
+test pool::user::tests::test_add_liabilities_zero_mint - should panic ... ok
+test pool::submit::tests::test_submit_no_liabilities_does_not_load_oracle ... ok
+test pool::user::tests::test_add_liabilities_accrues_emissions ... ok
+test pool::submit::tests::test_submit_with_flash_loan_over_max_positions - should panic ... ok
+test pool::submit::tests::test_submit_with_flash_loan_process_flash_loan_first ... ok
+test pool::submit::tests::test_submit_requires_healhty - should panic ... ok
+test pool::submit::tests::test_submit_with_flash_loan_checks_health - should panic ... ok
+test pool::user::tests::test_collateral ... ok
+test pool::submit::tests::test_submit_use_allowance_no_allowance - should panic ... ok
+test pool::submit::tests::test_submit_over_max_positions_decrease_allowed ... ok
+test pool::submit::tests::test_submit_with_flash_loan_with_ongoing_liquidation_blocked - should panic ... ok
+test pool::user::tests::test_remove_collateral_zero_burn - should panic ... ok
+test pool::submit::tests::test_submit_with_flash_loan_checks_reserve_status - should panic ... ok
+test pool::user::tests::test_remove_liabilities_zero_burn - should panic ... ok
+test pool::user::tests::test_default_liabilities_reduces_b_rate_to_zero ... ok
+test pool::user::tests::test_default_liabilities_without_suppliers_preserves_b_rate ... ok
+test pool::user::tests::test_default_liabilities_reduces_b_rate ... ok
+test pool::user::tests::test_remove_liabilities_over_balance_panics - should panic ... ok
+test pool::user::tests::test_default_liabilities_reduces_b_rate_rounds_ceil ... ok
+test pool::user::tests::test_remove_collateral_over_balance_panics - should panic ... ok
+test pool::submit::tests::test_submit_borrow_over_max_util - should panic ... ok
+test pool::user::tests::test_remove_supply_zero_burn - should panic ... ok
+test pool::user::tests::test_load_and_store ... ok
+test pool::user::tests::test_liabilities ... ok
+test pool::user::tests::test_remove_supply_over_balance_panics - should panic ... ok
+test pool::user::tests::test_remove_collateral_accrues_emissions ... ok
+test pool::user::tests::test_total_supply ... ok
+test pool::user::tests::test_supply ... ok
+test pool::user::tests::test_remove_supply_accrues_emissions ... ok
+test pool::user::tests::test_remove_liabilities_accrues_emissions ... ok
+test pool::health_factor::tests::test_calculate_from_positions ... ok
+test pool::submit::tests::test_submit_use_allowance_over_repay ... ok
+test pool::submit::tests::test_submit_with_flash_loan ... ok
+test pool::submit::tests::test_submit_withdraw_over_max_util ... ok
+test pool::submit::tests::test_submit_with_ongoing_liquidation_blocked - should panic ... ok
+test pool::submit::tests::test_submit_with_ongoing_liquidation_works_if_canceled ... ok
+test pool::submit::tests::test_submit_with_flash_loan_over_max_positions_decrease_allowed ... ok
+test pool::submit::tests::test_submit_with_flash_loan_under_min_collateral_fails - should panic ... ok
+test pool::status::tests::test_set_pool_status_backstop_on_ice_blocks_with_too_high_q4w - should panic ... ok
+test pool::status::tests::test_set_pool_status_admin_on_ice_blocks_with_too_high_q4w - should panic ... ok
+test pool::status::tests::test_update_pool_status_admin_frozen - should panic ... ok
+test pool::status::tests::test_update_pool_status_active ... ok
+test pool::status::tests::test_set_pool_status_active ... ok
+test pool::status::tests::test_update_pool_status_frozen ... ok
+test pool::submit::tests::test_submit_use_allowance ... ok
+test pool::status::tests::test_set_pool_status_frozen ... ok
+test pool::status::tests::test_admin_update_pool_status_unfreeze ... ok
+test pool::status::tests::test_set_pool_status_active_blocks_without_backstop_minimum - should panic ... ok
+test pool::status::tests::test_set_non_admin_pool_status_panics - should panic ... ok
+test pool::status::tests::test_set_pool_status_on_ice ... ok
+test pool::status::tests::test_update_pool_status_admin_set_no_changes ... ok
+test pool::status::tests::test_update_pool_status_frozen_75_q4w ... ok
+test pool::status::tests::test_update_pool_status_on_ice_tokens ... ok
+test pool::status::tests::test_set_pool_status_active_blocks_with_too_high_q4w - should panic ... ok
+test pool::status::tests::test_update_pool_status_setup - should panic ... ok
+test pool::status::tests::test_update_pool_status_on_ice_30_q4w_admin_active ... ok
+test pool::status::tests::test_update_pool_status_on_ice_50_q4w_admin_active ... ok
+test pool::status::tests::test_update_pool_status_frozen_admin_on_ice ... ok
+test pool::status::tests::test_update_pool_status_on_ice_30_q4w ... ok
+
+test result: ok. 342 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.00s
+
+     Running unittests src/lib.rs (target/debug/deps/pool_factory-fc723d3a0f16b087)
+
+running 6 tests
+test test::test_pool_factory_invalid_pool_init_args_min_collateral - should panic ... ok
+test test::test_pool_factory_invalid_pool_init_args_max_positions - should panic ... ok
+test test::test_pool_factory_invalid_pool_init_args_max_positions_large - should panic ... ok
+test test::test_pool_factory ... ok
+test test::test_pool_factory_frontrun_protection ... ok
+test test::test_pool_factory_invalid_pool_init_args_backstop_rate - should panic ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.90s
+
+     Running unittests src/lib.rs (target/debug/deps/test_suites-0347bac9b0b2eb50)
+
+running 1 test
+test setup::tests::test_create_fixture_with_data_wasm ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.45s
+
+     Running tests/adr8_differential.rs (target/debug/deps/adr8_differential-6be8ed892c2074dd)
+
+running 1 test
+test adr8_base_fork_differential ... ignored
+
+test result: ok. 0 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/adr8_probe.rs (target/debug/deps/adr8_probe-fdf5b5cbec83e159)
+
+running 2 tests
+test final_fill_lawful_rejection_precedence ... ok
+test exact_generated_prefix ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 4.30s
+
+     Running tests/test_backstop.rs (target/debug/deps/test_backstop-989d2b28049c74f3)
+
+running 3 tests
+test test_backstop_constructor_over_max - should panic ... ok
+test test_backstop_constructor ... ok
+test test_backstop ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.41s
+
+     Running tests/test_backstop_and_pool_failure.rs (target/debug/deps/test_backstop_and_pool_failure-7c189c574a3a4bcf)
+
+running 1 test
+test test_backstop_and_pool_failure ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.40s
+
+     Running tests/test_backstop_emissions_traps.rs (target/debug/deps/test_backstop_emissions_traps-12b01deddfae8d6c)
+
+running 4 tests
+test unsolicited_blnd_stays_custodied ... ok
+test six_traps_preserve_complete_ledger_ttls_and_events ... ok
+test live_pool_config_cannot_create_emission_state ... ok
+test deposit_queue_and_withdraw_survive_trap_interleavings ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.82s
+
+     Running tests/test_backstop_inflation_attack.rs (target/debug/deps/test_backstop_inflation_attack-96a6e9aaf7eec3f9)
+
+running 1 test
+test test_backstop_inflation_attack ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.18s
+
+     Running tests/test_flashloan.rs (target/debug/deps/test_flashloan-ec9ddd72a06d23be)
+
+running 2 tests
+test test_flashloan_rejected_without_any_permissions ... ok
+test test_flashloan_rejected_atomically ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.68s
+
+     Running tests/test_liquidation.rs (target/debug/deps/test_liquidation-d4e8b3e075a05b3b)
+
+running 4 tests
+test test_stale_liquidation_deletion ... ok
+test test_bad_debt ... ok
+test test_user_restore_position_and_delete_liquidation ... ok
+test test_liquidations ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.49s
+
+     Running tests/test_overflow_flag.rs (target/debug/deps/test_overflow_flag-65f33cd9d92df95d)
+
+running 2 tests
+test test_pool_overflow ... ok
+test test_auction_underflow_panics - should panic ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.53s
+
+     Running tests/test_pool.rs (target/debug/deps/test_pool-9c64a2029bc89128)
+
+running 3 tests
+test test_pool_user ... ok
+test setup_cannot_plant_an_immediate_reserve_disable ... ok
+test test_pool_config ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.32s
+
+     Running tests/test_pool_default_orphan_scenarios.rs (target/debug/deps/test_pool_default_orphan_scenarios-5becc9df43924cac)
+
+running 4 tests
+test same_reserve_supply_is_locked_and_netted_before_default ... ok
+test supplier_loss_reverts_final_fill_then_independent_filler_succeeds ... ok
+test contradictory_emissions_revert_public_default_and_settlement ... ok
+test test_public_default_orphan_custody_parking ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 11.80s
+
+     Running tests/test_pool_inflation_attack.rs (target/debug/deps/test_pool_inflation_attack-6219e784550b6d39)
+
+running 1 test
+test test_pool_inflation_attack ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.18s
+
+     Running tests/test_pool_interest.rs (target/debug/deps/test_pool_interest-4321da063d0afdd2)
+
+running 1 test
+test test_pool_interest ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.79s
+
+     Running tests/test_pool_max_position_reduction.rs (target/debug/deps/test_pool_max_position_reduction-2ef0951e2ef5ba36)
+
+running 1 test
+test test_pool_max_positions_reduction ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.32s
+
+     Running tests/test_wasm_happy_path.rs (target/debug/deps/test_wasm_happy_path-eb03cc6b51e63df8)
+
+running 1 test
+test test_wasm_happy_path ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.84s
+
+
+
+Wall time: 39.53 seconds
+```
+
+## Still Running (1)
+
+- `FrozenSecurity` [task] — FrozenSecurity

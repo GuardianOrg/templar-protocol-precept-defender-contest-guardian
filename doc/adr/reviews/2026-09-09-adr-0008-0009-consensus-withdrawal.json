@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "kind": "raladr_consensus_withdrawal",
+  "status": "CONSENSUS WITHDRAWN",
+  "blocked_on": "human decision: choose emissions Option A or Option B before any new Raladr freeze or review",
+  "created_at": "2026-09-09T00:00:00Z",
+  "branch": "adr/0008-focused-security-fork",
+  "withdraws": {
+    "reason_summary": "PR #11 review found the recorded Raladr pair non-verifiable and unresolved design gaps; consensus authority over the candidate is withdrawn so a fresh canonical pair can run against the current amended blobs. No ADR is Accepted by this withdrawal.",
+    "receipt_path": "doc/adr/reviews/2026-09-08-adr-0008-0009-hardened-bridge.json",
+    "receipt_git_blob": "64e7b5eb94ef8c1a4df4b282929aaa4e3c287831",
+    "receipt_sha256": "35b9cad1333107406c88440471195a93657e39751fecb46ab50c0d4e23728190"
+  },
+  "basis_documentation": [
+    {
+      "path": "doc/adr/0008-launch-v1-on-unmodified-blend-v2-with-a-templar-sovereign-backstop.md",
+      "role": "amended post-receipt: status UNREVIEWED with withdrawal pointer, explicit unresolved emissions Option A/B freeze blocker, exact zero-argument propose_retirement ABI plus immediate on-chain predicate set and immutable-sink-only rule, negative retirement-handoff acceptance tests, quantitative pre-successor pilot envelope with signed approval record and successor-gated material activation"
+    },
+    {
+      "path": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+      "role": "amended post-receipt: future-authority references repointed from ADR 0006 to future ADR 0010 with parent-supplied-head placeholders blocking exact pins until publication"
+    },
+    {
+      "path": "doc/adr/0003-protocol-fee-on-borrow-interest-with-deferred-origination-and-flash-loan-fees.md",
+      "role": "amended post-receipt: positive-protocol-interest-fee rule narrowed to exempt only the exact manifested out-of-registry ADR-0008 legacy cohort"
+    }
+  ],
+  "pr_11_review_findings_addressed_or_blocking": [
+    {
+      "finding": "Recorded Architect/Critic results are not independently verifiable from the PR alone.",
+      "disposition": "Candidate remains UNREVIEWED. This withdrawal invalidates prior raladr iteration authority; a new canonical bundle manifest plus fresh sequential same-blob Architect/Critic pair is required before any CONSENSUS APPROVED claim is again valid."
+    },
+    {
+      "finding": "Emissions disposition unresolved between permissionless stock reward-zone state/events and a backstop fork trapping emissions mutators.",
+      "disposition": "BLOCKING by design. doc/adr/0008 now names both dispositions explicitly (Option A: stock state/events modeled as economically inert with consequence-based retirement; Option B: trapping emissions mutators in a backstop fork) and states that neither is selected. Candidate freeze, canonical review, human acceptance, and production activation remain blocked until a human selection replaces the conditional text."
+    },
+    {
+      "finding": "propose_retirement had permissive or underspecified signature/predicate language versus the reviewed blend-contracts-v2 admin model.",
+      "disposition": "doc/adr/0008 now specifies the exact operator-authenticated zero-argument propose_retirement() -> () ABI: it can propose only the constructor-bound immutable sink, and reads/requires live get_admin() == policy contract, no queued update on every bound reserve, and either confirmed pool status 4 or every bound reserve disabled, all before an admin proposal; negative acceptance tests are named in criterion 4."
+    },
+    {
+      "finding": "Pilot exposure lacked quantitative caps and could be bypassed via cohort splitting or aliasing.",
+      "disposition": "doc/adr/0008 now fixes a signed pre-successor pilot envelope with per-reserve/pool/cohort/global-program caps, stress valuation, cross-level aggregation including same-asset aliasing, anti-splitting aggregation across pools/cohorts/signers/manifests, and material activation defined as any cap increase remaining successor-gated under §6. An unchanged signed envelope stays launchable before the successor."
+    },
+    {
+      "finding": "ADR references to the no-backstop decision and successor PR heads were stale or pinned to unpublished commits.",
+      "disposition": "doc/adr/0009 references were repointed from ADR 0006 to ADR 0010. Exact amended published heads for PRs #6 and #8 are now pinned in ADR 0009. Stale 'ADR 0006' labels survive only inside the historical alternatives-comparison table where they describe the originally-proposed option D, not current authority."
+    }
+  ],
+  "append_only_note": "This record appends after the 2026-09-08 receipt and does not modify it. The original receipt's recorded blobs bind the pre-amendment bytes; this record withdraws only its forward-looking consensus authority, not its historical verification evidence."
+}

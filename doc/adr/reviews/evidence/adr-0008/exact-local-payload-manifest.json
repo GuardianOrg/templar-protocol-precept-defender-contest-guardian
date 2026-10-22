@@ -1,0 +1,336 @@
+{
+  "source_commit": "273a5131da1f7407887a4a40867c992790809f3d",
+  "scope": "Frozen local acceptance payload before sequential final reviews; no publication/deployment approval",
+  "files": [
+    {
+      "path": "doc/adr/reviews/adr-0008-blend-fork-implementation-evidence.md",
+      "bytes": 30531,
+      "sha256": "312e475831dd65759f49741715ab2a88637899dd4b0b83241a416bd383e66267"
+    },
+    {
+      "path": "doc/adr/reviews/adr-0008-blend-fork-spec/backstop.xdr-base64",
+      "bytes": 5169,
+      "sha256": "a0bfed1ea59382ebf9573867eb177d0e1da958adac51e037f8f981ec69ed853e"
+    },
+    {
+      "path": "doc/adr/reviews/adr-0008-blend-fork-spec/pool.xdr-base64",
+      "bytes": 9981,
+      "sha256": "e2d5e75029a044fdaf107a6124d2e3a346f5cf180e1dbbbff51dbd4b34a89d95"
+    },
+    {
+      "path": "doc/adr/reviews/adr-0008-blend-fork-spec/pool_factory.xdr-base64",
+      "bytes": 1217,
+      "sha256": "28bfa6de93228ce3af8c08e4df13f014594d4c6a741834ee00c74fb922b8eda4"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/baseline-artifacts.json",
+      "bytes": 626,
+      "sha256": "fb8b001c66d4202ffa6aa3649474181f5c1ea29f7ab796eb5959ac3dd8769db2"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/baseline-build-input-hashes.json",
+      "bytes": 1342,
+      "sha256": "dae0528b4469f16030ce749cda8d8c6f230d78951ba60b00cbde026e7912d52f"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/checkpoint-artifacts.json",
+      "bytes": 511,
+      "sha256": "fd178b86514cba6e7d92f394c3bb8267ad3b55b9f641f3fa8e9306fae22ce5d7"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/development-checkpoints.json",
+      "bytes": 1255,
+      "sha256": "1fdad62872c55950b32a921a44c844668db0f1c5290ad17325b6ca690874980d"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/exact-local-artifacts.json",
+      "bytes": 1380,
+      "sha256": "acb317866e2a9033014b9b5622dd6e0223d597c099e8e7493272e6e9c2d5b3e8"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/exact-local-candidate.json",
+      "bytes": 3044,
+      "sha256": "3487f67260aa984067fabae9bc53e1272c7b048bf26ee01d6b0d7e16fb3e2fca"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/exact-local-differential-manifest.json",
+      "bytes": 107668,
+      "sha256": "36f3f5efc2009814e25a134221155536db5a6dda614ff4215b838a7b0e150983"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/exact-local-differential.tar.gz",
+      "bytes": 29369733,
+      "sha256": "15d01cf22578d2d62ae5f8cf056f477acfc72082183496b192e0bcab1832e92c"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/final-base-artifacts.json",
+      "bytes": 525,
+      "sha256": "ef54afca7e9d9b45ef78fe49810a44c1e9bac2e7dacd31ca818cebea553168fc"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/final-base-specs/backstop.xdr-base64",
+      "bytes": 5169,
+      "sha256": "a0bfed1ea59382ebf9573867eb177d0e1da958adac51e037f8f981ec69ed853e"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/final-base-specs/pool.xdr-base64",
+      "bytes": 9981,
+      "sha256": "e2d5e75029a044fdaf107a6124d2e3a346f5cf180e1dbbbff51dbd4b34a89d95"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/final-base-specs/pool_factory.xdr-base64",
+      "bytes": 1217,
+      "sha256": "28bfa6de93228ce3af8c08e4df13f014594d4c6a741834ee00c74fb922b8eda4"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/final-fork-artifacts.json",
+      "bytes": 1591,
+      "sha256": "8588df88acc408a805acf340c3ff69303e777b233cd57ba17891a1ce893537fd"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/harness/Cargo.lock",
+      "bytes": 44564,
+      "sha256": "bdf77b860eb7248e0dbf4a56e4dc3ad676c3199e7dc15613d7029caa56b95609"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/harness/Cargo.toml",
+      "bytes": 299,
+      "sha256": "c1584292780343bf6471193d4bec91c0d0827c4e602cc282534f418b75e90362"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/harness/src/lib.rs",
+      "bytes": 2510,
+      "sha256": "24eb6b5a4ffd56023f98f069ae001acefbff30707276fc009c4de1e20b53d64b"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/local-freeze-dependency-comparison.json",
+      "bytes": 327,
+      "sha256": "b925d19e6c8d418e0cdc352b790826ff63edc8f157c2e05df383e39d44145040"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/local-freeze-input-comparison.json",
+      "bytes": 1659,
+      "sha256": "4cdfae19bba3ba3cc49e78e0d4533d7a4c655d09b19f7548ff7a1223eb8ead63"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/baseline-backstop-inspect.stderr",
+      "bytes": 111,
+      "sha256": "7099540d9ae6b0d5d9ca358ecb1c14fe708dedc63cf7405f523ff882a97e2181"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/baseline-backstop-normal-dependencies.log",
+      "bytes": 18881,
+      "sha256": "ce41ee5a910c5d4ebecae7b7d665a72f93b5ae94ea5864a57ff3ba289c55555e"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/baseline-build-test.log",
+      "bytes": 51583,
+      "sha256": "0ee5a53e6dc4e2db92b2aa844501749b13e4616c1c42d35821e23903aceb914d"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/baseline-pool-inspect.stderr",
+      "bytes": 111,
+      "sha256": "7099540d9ae6b0d5d9ca358ecb1c14fe708dedc63cf7405f523ff882a97e2181"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/baseline-pool-normal-dependencies.log",
+      "bytes": 18993,
+      "sha256": "aeca5fb0f47a6aba742525436d30f8212896f726667183ca9ac37f5755812ba6"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/baseline-pool_factory-inspect.stderr",
+      "bytes": 111,
+      "sha256": "7099540d9ae6b0d5d9ca358ecb1c14fe708dedc63cf7405f523ff882a97e2181"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-backstop-native-passing.log",
+      "bytes": 18199,
+      "sha256": "6b76ebd715d0be2655cce505bfebe2d15911bc9271ac299d183daa2ceb701c9c"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-derived-interest-dust-and-wasm-lifecycle-passing.log",
+      "bytes": 13833,
+      "sha256": "17da3948914803c468dbd8a79410d672336a0ded445a8509e8d4a4082adeba47"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-fixture-compile.log",
+      "bytes": 21621,
+      "sha256": "b9c951b492443993987b4f0b884c71b44278ddcc5344c1a2a238d77d166f6a3c"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-full-workspace-486-passing.log",
+      "bytes": 60127,
+      "sha256": "21a3f9e0b8dd8226f04262896176ffc5ad388548acdc90ba7e46e2fa6b5c8268"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-full-workspace-ordinary-migration.log",
+      "bytes": 66910,
+      "sha256": "42107a92a8a9998a63bc4b1bc5b2180108ccc62be67d8d67c9beaedceae53405"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-integration-types.log",
+      "bytes": 18854,
+      "sha256": "9f810a79a595634e0bf947d9bc54edaf358e87af483659650abfb8aea793aa7d"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-multi-asset-partial-full-and-zero-bid-liquidations-passing.log",
+      "bytes": 14141,
+      "sha256": "243dc9533e317a89b59bf5586a9d08440e83c420bb4b95c5800c3d0620c73cee"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-native-and-ordinary-scenarios.log",
+      "bytes": 77366,
+      "sha256": "04a9ff8039d9b797c387dff6b37b78f913214146475ba78df82155e2a524a042"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-option-types.log",
+      "bytes": 23636,
+      "sha256": "4a6088e685ab9fbff4c2c8e26df6a94221a61176b0d7232dfb505d9316b35cb5"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-pool-compile.log",
+      "bytes": 46698,
+      "sha256": "df59758220a1a6bcda7fb6b81848ae8fdeb8c2986afbe1474e41cda92616c75a"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-pool-tests.log",
+      "bytes": 79749,
+      "sha256": "a9bf9f20d0f0c71151b5850abc90032b6c6b6826756255022ccbd45d029d4436"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-public-accounting-native-wasm-passing.log",
+      "bytes": 15851,
+      "sha256": "e51859b2ea0c1618dfacaa781612a7ce6a091d0b4b5832602b6d43487bf90a91"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-public-default-and-six-traps-passing.log",
+      "bytes": 14614,
+      "sha256": "eb1443165e68a8d4f08407297307d0f4ece823f7193693f17eedf294a4c8ae63"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-scenario-compile.log",
+      "bytes": 14679,
+      "sha256": "b45909e53271de59367e8adb3225c584282e9fc3b64dd5361e8d5dee8d89d1e0"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-sequential-default-conservation-and-flash-traps-passing.log",
+      "bytes": 14039,
+      "sha256": "b4d2ac2041b5d1c17f94bfbd5130751558651fdae2d6b9bd459e3bfca237460a"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/checkpoint-trap-api.log",
+      "bytes": 22081,
+      "sha256": "c54d9e825ac2df561ef838b76a0812a46d0f7a8b8484d6f56a87c0e5eff7f838"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/exact-local-differential-executed.log",
+      "bytes": 17943,
+      "sha256": "598c999a80727df3711be6b2f83ec254a7dce570cae8afd829fa3528f30e7895"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/exact-local-differential.log",
+      "bytes": 13754,
+      "sha256": "c893656d65d8ca7f18586e9d5f1a6b4f9ab44d9b467f26c66c6c87ac7c53304f"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/exact-local-harness-build.log",
+      "bytes": 17726,
+      "sha256": "20508121b520f2f4500707d28505140813ce453b96a7b3f74c0632de1bde121c"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/exact-local-property-10000-running.log",
+      "bytes": 6301643,
+      "sha256": "0fcb79dd9f7565cd71530ed7324a7aa73cd24cc15a18aa5af11be7fe28b336bc"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/exact-local-property-10000.log",
+      "bytes": 358,
+      "sha256": "1436415411c4168b3ac65506323f403a82ab5eee7d44ecebfa19b703679ea59b"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/exact-local-rebuild.log",
+      "bytes": 17693,
+      "sha256": "beba15e33443e0ed983da0628ffac038594fd5026ff8fb85ca5839c70083c555"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/exact-local-verifier-build-test.log",
+      "bytes": 82822,
+      "sha256": "beeee7b9af855cef319174986ce0e6d6c5389d31fc156d6d38044ac3a6bcf7b6"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/final-base-build-test.log",
+      "bytes": 53908,
+      "sha256": "34cd35c337fae67a2b4aa81435e20ef48b4735fbc2c5159df56ffe69ed53d1b5"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/final-fork-full-workspace-passing.log",
+      "bytes": 62352,
+      "sha256": "78c5e8ecdc2d1cac6d6a2e2981ff110fffa1a1a70c33f5dcca26001fc0ebc1c4"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/kani-disable-only-transition.log",
+      "bytes": 51248,
+      "sha256": "2c6028fb07711f036c5f8b0f85f3f0c4da2a029fb38d83eda2e4f713d8dced5b"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/local-freeze-base-backstop-normal-dependencies.log",
+      "bytes": 18869,
+      "sha256": "882a594a47fd74d05cc0af04f011814d48b7a7127c25717d0dfc955f439f97b3"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/local-freeze-base-pool-normal-dependencies.log",
+      "bytes": 18981,
+      "sha256": "a4ac277a3c084aabd0c9a45b329cf43419d519c4151e05a59444701ea1ea99b2"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/local-freeze-build-test.log",
+      "bytes": 77538,
+      "sha256": "7d970a24545972e07a1293d8647bc30195d30db4c7a6b72f1b83d1896da36b83"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/local-freeze-differential.log",
+      "bytes": 17965,
+      "sha256": "c19141788704c64208c4d1b9d05d620e6309201fe29cc5cd051101c05028e8d9"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/local-freeze-final-build-test.log",
+      "bytes": 30196,
+      "sha256": "1fc39dd9dbe96258b9264918ec5cc17250e5dc7435f02d9983ccac78840796a0"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/local-freeze-final-passing-build-test.log",
+      "bytes": 75505,
+      "sha256": "f93e7c4e3cfefbfbd3c6f362e9d6cf1053b423306861b759a7d943c9be0949d1"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/local-freeze-fork-backstop-normal-dependencies.log",
+      "bytes": 18881,
+      "sha256": "ce41ee5a910c5d4ebecae7b7d665a72f93b5ae94ea5864a57ff3ba289c55555e"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/local-freeze-fork-pool-normal-dependencies.log",
+      "bytes": 18993,
+      "sha256": "aeca5fb0f47a6aba742525436d30f8212896f726667183ca9ac37f5755812ba6"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/local-freeze-post-review-build-test.log",
+      "bytes": 31693,
+      "sha256": "80ded000f36e9ce990328bad7f8a62495a7e3dc8804f665bebe3dd8e9c3513bb"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/rejected-agent-Cargo.lock",
+      "bytes": 43359,
+      "sha256": "3942b40f8566b737d0156c5ea9f4a6838e244b5ac273e0c1f6bbf294eb373f4a"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/logs/reviewed-property-10000.log",
+      "bytes": 6300348,
+      "sha256": "1c8df1e039dbe597a07d84957a43cd52a18143e602ef227373ae2e9ac5618b51"
+    },
+    {
+      "path": "doc/adr/reviews/evidence/adr-0008/reviewed-development-property-result.json",
+      "bytes": 546,
+      "sha256": "cb6d06cd3c7b65dbd188a3503ef7ed55a589442cbf03ae63167d68698b9cae40"
+    }
+  ]
+}

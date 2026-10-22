@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "bundle_hash": "7cf8e7af425bd871114c54f35b12066228559ab3",
+  "primary": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+  "bundle": [
+    {
+      "path": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+      "blob": "a67376744bef453818d02cc6c5a5bcdec54bd265"
+    },
+    {
+      "path": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+      "blob": "ae4d3c02670aeabb68dd90ba1fd638050afcef06"
+    }
+  ],
+  "coupling_reason": "ADR 0009 defines the mandatory successor migration and vault exit-liquidity controls for ADR 0008; ADR 0008 defines why raw surplus is unrepresented, so separate review would be incoherent.",
+  "preflight": [
+    {
+      "command": "PATH=\"$PWD/bin:$PATH\" adr --robot lint",
+      "exit_code": 0,
+      "result": "no output",
+      "artifact_hashes": {}
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "no output",
+      "artifact_hashes": {}
+    },
+    {
+      "command": "python3 /tmp/verify-adr0009-exit-headroom.py",
+      "exit_code": 0,
+      "result": "exit-headroom smoke PASS: donations invariant; deficit rejected; rounding and debt-zero final tranche checked",
+      "artifact_hashes": {
+        "/tmp/verify-adr0009-exit-headroom.py": "36a6fb1f2c04de24a8cd8a9d37fd3a18834342a1c20bb01ae21e31d4b0af0e83"
+      }
+    },
+    {
+      "command": "Ponytail review of complete correction diff against 642cb57",
+      "exit_code": 0,
+      "result": "PASS; no safe simplification remains",
+      "artifact_hashes": {
+        "runtime_result": "history://LiquidityPonytail-2"
+      }
+    },
+    {
+      "command": "git hash-object doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md /tmp/raladr-adr0008-0009-liquidity.manifest",
+      "exit_code": 0,
+      "result": "a67376744bef453818d02cc6c5a5bcdec54bd265\nae4d3c02670aeabb68dd90ba1fd638050afcef06\n7cf8e7af425bd871114c54f35b12066228559ab3",
+      "artifact_hashes": {
+        "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md": "a67376744bef453818d02cc6c5a5bcdec54bd265",
+        "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md": "ae4d3c02670aeabb68dd90ba1fd638050afcef06",
+        "/tmp/raladr-adr0008-0009-liquidity.manifest": "7cf8e7af425bd871114c54f35b12066228559ab3"
+      }
+    }
+  ],
+  "custody": {
+    "type": "COMMIT",
+    "location": "9a52bd32769c93a497ea62513eb58e0e054e8632"
+  },
+  "reviews": [
+    {
+      "run": 1,
+      "pair": 3,
+      "attempts": {
+        "architect": [
+          {
+            "runtime_result": "agent://LiquidityCorrectionArchitect",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "architect",
+              "pair": 3,
+              "bundle_hash": "7cf8e7af425bd871114c54f35b12066228559ab3",
+              "verdict": "APPROVE",
+              "blockers": [],
+              "prior_blocker_disposition": [
+                {
+                  "id": "P1-A1",
+                  "status": "CLOSED",
+                  "evidence": "Unchanged since pair 2: ADR0009:290-298 deficit-only in-invocation raw gate (`R < C` rejects), `D = R - C` recorded but never compared with a pre-bound expected value, decrease closes lane, unexplained increase blocks next batch; acceptance 8 (436-444) and invariant (546-552) agree; integration tests name exact-match griefing (480-482). D monotonicity re-derived from stock actions.rs:297,321,348,400,424, reserve.rs:102-106,226-236, user.rs:106-116 and terminal gulp per ADR0008:170-175. Pair-3 delta does not touch these lines."
+                },
+                {
+                  "id": "P1-A2",
+                  "status": "CLOSED",
+                  "evidence": "Unchanged since pair 2: ADR0009:269-272 defines `C = S(0) + backstop_credit - L` in stock integer order matching gulp.rs:26-27 / reserve.rs:158-166 and rejects `backstop_credit != 0` and `C < 0`; term used consistently at 290, 440, 549; smoke script lines 29-34 derive accounted_cash and reject nonzero credit."
+                },
+                {
+                  "id": "P1-A3",
+                  "status": "CLOSED",
+                  "evidence": "Unchanged since pair 2: ADR0009:278-288 initial buffers with cited-reduction / blocking-increase lifecycle, buffer requirements only while `d_supply > 0`, zero buffer for the final tranche at `d_supply == 0`; raw sufficiency at 292-293 carries the same qualifier; acceptance 8, invariant, and 'debt-zero final-tranche liveness' test (483) align with the drained predicate. Smoke line 72 asserts the debt-zero full exit."
+                }
+              ],
+              "tradeoff_tension": "Purity versus liveness of the official exit: an accounting-only cap with the stock ceil utilization boundary makes donations and rounding surplus provably unable to widen the vault's withdrawal, at the cost of abandoning physically present cash, maintaining a second transcription of the pinned fork's integer arithmetic (fenced by the release-Wasm differential property), and accepting that post-T0 headroom can only be restored by borrower-authorized repayment or migrator refinance, so a non-cooperating serviced tail is retained rather than cashed out.",
+              "evidence_checked": [
+                "Identity: git rev-parse HEAD = 9a52bd32769c93a497ea62513eb58e0e054e8632; git hash-object of /tmp/raladr-adr0008-0009-liquidity.manifest = 7cf8e7af425bd871114c54f35b12066228559ab3; worktree ADR0008 blob a67376744bef453818d02cc6c5a5bcdec54bd265 (unchanged across all three pairs); ADR0009 blob ae4d3c02670aeabb68dd90ba1fd638050afcef06; sha256 /tmp/verify-adr0009-exit-headroom.py = 36a6fb1f2c04de24a8cd8a9d37fd3a18834342a1c20bb01ae21e31d4b0af0e83; doc/adr status clean",
+                "git show HEAD -- doc/adr and diff against HEAD~1 blob c0ad6e8: exactly two hunks (ADR0009:477-478 adds 'raw balance `243` rejects as a deficit'; 525-526 'borrower-authorized refinance/repayment through stock `submit`'), 3 insertions / 2 deletions, nothing else changed",
+                "Both pair-2 file_corrections are applied verbatim and match my own replay (C=244 for the rounding vector, so raw 243 is a deficit) and stock auth (contract.rs:452-464 requires the position owner's auth for repay when from != spender)",
+                "Smoke script delta: new assertion `maximum(*rounding, 5, 243) is None` at line 70; script executed read-only in this pass and prints the PASS line",
+                "Full-checklist carry-over from pairs 1-2 against unchanged text: ADR0008 restrictions 2/4/7, terminal classes, acceptance 3, invariants; ADR0009 definitions, cutover order, section 7 vault rule, drained predicate, alternatives 1-9, acceptance 8/10, verification vectors, risks rows incl. transcription drift, pre-mortem 2, invariants; stock source actions.rs, reserve.rs, user.rs, gulp.rs, contract.rs at pinned 6cf6dd1 and soroban-fixed-point-math 1.3.0"
+              ],
+              "steelman": "Strongest counterargument to the corrected design: recording D and pausing on unclassified increases still lets a donor force operator reconciliation work, so griefing has moved from on-chain rejection to an operational pause, and a purer design would ignore D entirely. That is weaker for this profile: an unexplained D increase is also the signature of a fork accounting defect that under-states C, which is exactly the failure class the correction targets, and archived transfer/rounding evidence classifies a benign donation in one cycle without touching the cap. The stock round-trip alternative for buffer enforcement stays infeasible post-T0 (supply blocked by status 4/disabled reserves, reserve.rs:146-156) and would floor-mint dust donations; alternative 9 (gulp recognition) would reopen the backstop-credit path ADR0008 restriction 4 removes.",
+              "synthesis": "Identity matches the refrozen bundle exactly and the delta is limited to the two non-blocking corrections I requested in pair 2, both applied correctly and mirrored in the smoke script. All pair-1 blockers remain closed; the accounting cap still derives only from stock reserve quantities with the exact ceil utilization boundary, C matches stock gulp's cash identity with nonzero backstop_credit rejected, the raw gate is deficit-only with D recorded and monotone, buffers have a reviewed lifecycle and lapse at debt-zero, the O(1) hypothetical-buffer implementation is equivalent to the largest-x definition, both concrete vectors plus the new deficit boundary reproduce independently, and the release-Wasm differential property fences transcription drift. ADR0008's fork restrictions, abandonment gates, caps, no-incentive posture, migration order, and retirement semantics are untouched. No blocker and no remaining file correction.",
+              "risks": [
+                "Operational: post-T0 headroom rises only through borrower-authorized repayment or migrator refinance; buffer sizing must assume a non-cooperating tail is retained.",
+                "Maintenance: the vault-side transcription is guarded solely by the release-Wasm differential property on each fork pin; skipping it on a rebuild would silently desynchronise the off-pool cap from the on-pool check.",
+                "Reconciliation load: each benign donation or third-party rounding dust event pauses the next batch until archived evidence classifies it; bounded but manual and on the critical path.",
+                "Valuation: adapter positions valued at native b-token accounting can overstate near-term redeemability while headroom is repayment-bound during the split-liquidity window.",
+                "Asset-level: a clawback-enabled SEP-41 reserve asset could lower R below C legitimately from the pool's view; the design closes the lane on that deficit, which is safe but should inform reserve asset selection."
+              ],
+              "file_corrections": [],
+              "principle_violations": []
+            }
+          }
+        ],
+        "critic": [
+          {
+            "runtime_result": "agent://LiquidityCorrectionCritic",
+            "error": "Returned the generic reviewer findings schema instead of the required Raladr critic schema; substantive finding retained for revision.",
+            "result": null
+          }
+        ]
+      },
+      "prior_blocker_disposition": [
+        {
+          "id": "P1-A1",
+          "status": "CLOSED",
+          "evidence": "Unchanged since pair 2: ADR0009:290-298 deficit-only in-invocation raw gate (`R < C` rejects), `D = R - C` recorded but never compared with a pre-bound expected value, decrease closes lane, unexplained increase blocks next batch; acceptance 8 (436-444) and invariant (546-552) agree; integration tests name exact-match griefing (480-482). D monotonicity re-derived from stock actions.rs:297,321,348,400,424, reserve.rs:102-106,226-236, user.rs:106-116 and terminal gulp per ADR0008:170-175. Pair-3 delta does not touch these lines."
+        },
+        {
+          "id": "P1-A2",
+          "status": "CLOSED",
+          "evidence": "Unchanged since pair 2: ADR0009:269-272 defines `C = S(0) + backstop_credit - L` in stock integer order matching gulp.rs:26-27 / reserve.rs:158-166 and rejects `backstop_credit != 0` and `C < 0`; term used consistently at 290, 440, 549; smoke script lines 29-34 derive accounted_cash and reject nonzero credit."
+        },
+        {
+          "id": "P1-A3",
+          "status": "CLOSED",
+          "evidence": "Unchanged since pair 2: ADR0009:278-288 initial buffers with cited-reduction / blocking-increase lifecycle, buffer requirements only while `d_supply > 0`, zero buffer for the final tranche at `d_supply == 0`; raw sufficiency at 292-293 carries the same qualifier; acceptance 8, invariant, and 'debt-zero final-tranche liveness' test (483) align with the drained predicate. Smoke line 72 asserts the debt-zero full exit."
+        }
+      ],
+      "terminal_status": "ITERATE"
+    }
+  ]
+}

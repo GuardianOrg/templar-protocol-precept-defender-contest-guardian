@@ -1,0 +1,1154 @@
+cargo rustc --manifest-path=pool-factory/Cargo.toml --crate-type=cdylib --target=wasm32-unknown-unknown --release
+    Finished `release` profile [optimized] target(s) in 0.07s
+cargo rustc --manifest-path=backstop/Cargo.toml --crate-type=cdylib --target=wasm32-unknown-unknown --release
+warning: unused imports: `dependencies::EmitterClient` and `emissions`
+ --> backstop/src/contract.rs:4:5
+  |
+4 |     dependencies::EmitterClient,
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5 |     emissions,
+  |     ^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `claim::execute_claim`
+ --> backstop/src/emissions/mod.rs:2:9
+  |
+2 | pub use claim::execute_claim;
+  |         ^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `add_to_reward_zone`, `distribute`, `gulp_emissions`, and `remove_from_reward_zone`
+ --> backstop/src/emissions/mod.rs:8:19
+  |
+8 | pub use manager::{add_to_reward_zone, distribute, gulp_emissions, remove_from_reward_zone};
+  |                   ^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^  ^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `pool`
+   --> backstop/src/contract.rs:268:31
+    |
+268 |     fn gulp_emissions(e: Env, pool: Address) -> i128 {
+    |                               ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `to_add`
+   --> backstop/src/contract.rs:272:27
+    |
+272 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                           ^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_add`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:272:44
+    |
+272 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                                            ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:276:30
+    |
+276 |     fn remove_reward(e: Env, to_remove: Address) {
+    |                              ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `from`
+   --> backstop/src/contract.rs:280:22
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                      ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `pool_addresses`
+   --> backstop/src/contract.rs:280:37
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                     ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_pool_addresses`
+
+warning: unused variable: `min_lp_tokens_out`
+   --> backstop/src/contract.rs:280:67
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                                                   ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_lp_tokens_out`
+
+warning: function `is_pool_above_threshold` is never used
+   --> backstop/src/backstop/pool.rs:105:8
+    |
+105 | pub fn is_pool_above_threshold(pool_backstop_data: &PoolBackstopData) -> bool {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_RZ_SIZE` is never used
+ --> backstop/src/constants.rs:8:11
+  |
+8 | pub const MAX_RZ_SIZE: u32 = 30;
+  |           ^^^^^^^^^^^
+
+warning: function `execute_claim` is never used
+  --> backstop/src/emissions/claim.rs:13:8
+   |
+13 | pub fn execute_claim(
+   |        ^^^^^^^^^^^^^
+
+warning: function `claim_emissions` is never used
+  --> backstop/src/emissions/distributor.rs:37:15
+   |
+37 | pub(super) fn claim_emissions(
+   |               ^^^^^^^^^^^^^^^
+
+warning: function `add_to_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:18:8
+   |
+18 | pub fn add_to_reward_zone(e: &Env, to_add: Address, to_remove: Option<Address>) {
+   |        ^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_from_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:58:8
+   |
+58 | pub fn remove_from_reward_zone(e: &Env, to_remove: Address) {
+   |        ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_pool` is never used
+  --> backstop/src/emissions/manager.rs:73:4
+   |
+73 | fn remove_pool(e: &Env, reward_zone: &mut Vec<Address>, to_remove: &Address) {
+   |    ^^^^^^^^^^^
+
+warning: function `require_distribute_run_recently` is never used
+  --> backstop/src/emissions/manager.rs:87:4
+   |
+87 | fn require_distribute_run_recently(e: &Env) {
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `distribute` is never used
+  --> backstop/src/emissions/manager.rs:96:8
+   |
+96 | pub fn distribute(e: &Env) -> i128 {
+   |        ^^^^^^^^^^
+
+warning: function `gulp_emissions` is never used
+   --> backstop/src/emissions/manager.rs:209:8
+    |
+209 | pub fn gulp_emissions(e: &Env, pool: &Address) -> (i128, i128) {
+    |        ^^^^^^^^^^^^^^
+
+warning: function `set_backstop_emission_eps` is never used
+   --> backstop/src/emissions/manager.rs:253:8
+    |
+253 | pub fn set_backstop_emission_eps(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated functions `distribute`, `gulp_emissions`, `rw_zone_add`, `rw_zone_remove`, and `claim` are never used
+   --> backstop/src/events.rs:84:12
+    |
+5   | impl BackstopEvents {
+    | ------------------- associated functions in this implementation
+...
+84  |     pub fn distribute(e: &Env, new_tokens_emitted: i128) {
+    |            ^^^^^^^^^^
+...
+98  |     pub fn gulp_emissions(
+    |            ^^^^^^^^^^^^^^
+...
+117 |     pub fn rw_zone_add(e: &Env, to_add: Address, to_remove: Option<Address>) {
+    |            ^^^^^^^^^^^
+...
+129 |     pub fn rw_zone_remove(e: &Env, to_remove: Address) {
+    |            ^^^^^^^^^^^^^^
+...
+142 |     pub fn claim(e: &Env, from: Address, amount: i128) {
+    |            ^^^^^
+
+warning: constant `LAST_DISTRO_KEY` is never used
+  --> backstop/src/storage.rs:61:7
+   |
+61 | const LAST_DISTRO_KEY: &str = "LastDist";
+   |       ^^^^^^^^^^^^^^^
+
+warning: constant `BACKFILL_EMISSIONS_KEY` is never used
+  --> backstop/src/storage.rs:64:7
+   |
+64 | const BACKFILL_EMISSIONS_KEY: &str = "BackfillEmis";
+   |       ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: constant `BACKFILL_STATUS_KEY` is never used
+  --> backstop/src/storage.rs:65:7
+   |
+65 | const BACKFILL_STATUS_KEY: &str = "Backfill";
+   |       ^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_emitter` is never used
+   --> backstop/src/storage.rs:117:8
+    |
+117 | pub fn get_emitter(e: &Env) -> Address {
+    |        ^^^^^^^^^^^
+
+warning: function `get_last_distribution_time` is never used
+   --> backstop/src/storage.rs:288:8
+    |
+288 | pub fn get_last_distribution_time(e: &Env) -> u64 {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_last_distribution_time` is never used
+   --> backstop/src/storage.rs:302:8
+    |
+302 | pub fn set_last_distribution_time(e: &Env, timestamp: &u64) {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_reward_zone` is never used
+   --> backstop/src/storage.rs:328:8
+    |
+328 | pub fn set_reward_zone(e: &Env, reward_zone: &Vec<Address>) {
+    |        ^^^^^^^^^^^^^^^
+
+warning: function `get_backfill_emissions` is never used
+   --> backstop/src/storage.rs:340:8
+    |
+340 | pub fn get_backfill_emissions(e: &Env) -> i128 {
+    |        ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_backfill_emissions` is never used
+   --> backstop/src/storage.rs:354:8
+    |
+354 | pub fn set_backfill_emissions(e: &Env, emissions: &i128) {
+    |        ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_backfill_status` is never used
+   --> backstop/src/storage.rs:368:8
+    |
+368 | pub fn get_backfill_status(e: &Env) -> Option<bool> {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_backfill_status` is never used
+   --> backstop/src/storage.rs:382:8
+    |
+382 | pub fn set_backfill_status(e: &Env, status: &bool) {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_rz_emis` is never used
+   --> backstop/src/storage.rs:397:8
+    |
+397 | pub fn get_rz_emis(e: &Env, pool: &Address) -> RzEmissions {
+    |        ^^^^^^^^^^^
+
+warning: function `set_rz_emis` is never used
+   --> backstop/src/storage.rs:416:8
+    |
+416 | pub fn set_rz_emis(e: &Env, pool: &Address, emissions: &RzEmissions) {
+    |        ^^^^^^^^^^^
+
+warning: function `get_drop_list` is never used
+   --> backstop/src/storage.rs:498:8
+    |
+498 | pub fn get_drop_list(e: &Env) -> Vec<(Address, i128)> {
+    |        ^^^^^^^^^^^^^
+
+warning: `backstop` (lib) generated 36 warnings (run `cargo fix --lib -p backstop` to apply 3 suggestions)
+    Finished `release` profile [optimized] target(s) in 0.07s
+cargo rustc --manifest-path=pool/Cargo.toml --crate-type=cdylib --target=wasm32-unknown-unknown --release
+   Compiling pool v2.0.0 (/home/common/projects/templar/blend-contracts-v2/pool)
+warning: unused import: `execute_update_pool`
+  --> pool/src/pool/mod.rs:10:26
+   |
+10 |     execute_set_reserve, execute_update_pool,
+   |                          ^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `execute_submit_with_flash_loan`
+  --> pool/src/pool/mod.rs:20:34
+   |
+20 | pub use submit::{execute_submit, execute_submit_with_flash_loan};
+   |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `backstop_take_rate`
+   --> pool/src/contract.rs:392:28
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                            ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_backstop_take_rate`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `max_positions`
+   --> pool/src/contract.rs:392:53
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                     ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_max_positions`
+
+warning: unused variable: `min_collateral`
+   --> pool/src/contract.rs:392:73
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                                         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_collateral`
+
+warning: unused variable: `from`
+   --> pool/src/contract.rs:480:9
+    |
+480 |         from: Address,
+    |         ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `flash_loan`
+   --> pool/src/contract.rs:481:9
+    |
+481 |         flash_loan: FlashLoan,
+    |         ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_flash_loan`
+
+warning: unused variable: `requests`
+   --> pool/src/contract.rs:482:9
+    |
+482 |         requests: Vec<Request>,
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_requests`
+
+warning: associated functions `update_pool`, `bad_debt`, and `flash_loan` are never used
+   --> pool/src/events.rs:30:12
+    |
+7   | impl PoolEvents {
+    | --------------- associated functions in this implementation
+...
+30  |     pub fn update_pool(
+    |            ^^^^^^^^^^^
+...
+157 |     pub fn bad_debt(e: &Env, user: Address, asset: Address, d_tokens: i128) {
+    |            ^^^^^^^^
+...
+306 |     pub fn flash_loan(
+    |            ^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: function `execute_update_pool` is never used
+  --> pool/src/pool/config.rs:47:8
+   |
+47 | pub fn execute_update_pool(
+   |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `execute_submit_with_flash_loan` is never used
+  --> pool/src/pool/submit.rs:70:8
+   |
+70 | pub fn execute_submit_with_flash_loan(
+   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: method `has_collateral` is never used
+   --> pool/src/pool/user.rs:119:12
+    |
+43  | impl User {
+    | --------- method in this implementation
+...
+119 |     pub fn has_collateral(&self) -> bool {
+    |            ^^^^^^^^^^^^^^
+
+warning: `pool` (lib) generated 12 warnings (run `cargo fix --lib -p pool` to apply 2 suggestions)
+    Finished `release` profile [optimized] target(s) in 1.27s
+mkdir -p target/wasm32-unknown-unknown/optimized
+stellar contract optimize \
+	--wasm target/wasm32-unknown-unknown/release/pool_factory.wasm \
+	--wasm-out target/wasm32-unknown-unknown/optimized/pool_factory.wasm
+Reading: target/wasm32-unknown-unknown/release/pool_factory.wasm (3624 bytes)
+Optimized: target/wasm32-unknown-unknown/optimized/pool_factory.wasm (3149 bytes)
+stellar contract optimize \
+	--wasm target/wasm32-unknown-unknown/release/backstop.wasm \
+	--wasm-out target/wasm32-unknown-unknown/optimized/backstop.wasm
+Reading: target/wasm32-unknown-unknown/release/backstop.wasm (26200 bytes)
+Optimized: target/wasm32-unknown-unknown/optimized/backstop.wasm (22701 bytes)
+stellar contract optimize \
+	--wasm target/wasm32-unknown-unknown/release/pool.wasm \
+	--wasm-out target/wasm32-unknown-unknown/optimized/pool.wasm
+Reading: target/wasm32-unknown-unknown/release/pool.wasm (63642 bytes)
+Optimized: target/wasm32-unknown-unknown/optimized/pool.wasm (53921 bytes)
+cd target/wasm32-unknown-unknown/optimized/ && \
+	for i in *.wasm ; do \
+		ls -l "$i"; \
+	done
+-rw-r--r-- 1 common users 22701 Sep 13 10:25 backstop.wasm
+-rw-r--r-- 1 common users 3149 Sep 13 10:25 pool_factory.wasm
+-rw-r--r-- 1 common users 53921 Sep 13 10:25 pool.wasm
+   Compiling pool v2.0.0 (/home/common/projects/templar/blend-contracts-v2/pool)
+   Compiling backstop v2.0.0 (/home/common/projects/templar/blend-contracts-v2/backstop)
+warning: unused imports: `dependencies::EmitterClient` and `emissions`
+ --> backstop/src/contract.rs:4:5
+  |
+4 |     dependencies::EmitterClient,
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5 |     emissions,
+  |     ^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `claim::execute_claim`
+ --> backstop/src/emissions/mod.rs:2:9
+  |
+2 | pub use claim::execute_claim;
+  |         ^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `add_to_reward_zone`, `distribute`, `gulp_emissions`, and `remove_from_reward_zone`
+ --> backstop/src/emissions/mod.rs:8:19
+  |
+8 | pub use manager::{add_to_reward_zone, distribute, gulp_emissions, remove_from_reward_zone};
+  |                   ^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^  ^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `execute_update_pool`
+  --> pool/src/pool/mod.rs:10:26
+   |
+10 |     execute_set_reserve, execute_update_pool,
+   |                          ^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `execute_submit_with_flash_loan`
+  --> pool/src/pool/mod.rs:20:34
+   |
+20 | pub use submit::{execute_submit, execute_submit_with_flash_loan};
+   |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `pool`
+   --> backstop/src/contract.rs:268:31
+    |
+268 |     fn gulp_emissions(e: Env, pool: Address) -> i128 {
+    |                               ^^^^ help: if this is intentional, prefix it with an underscore: `_pool`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `to_add`
+   --> backstop/src/contract.rs:272:27
+    |
+272 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                           ^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_add`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:272:44
+    |
+272 |     fn add_reward(e: Env, to_add: Address, to_remove: Option<Address>) {
+    |                                            ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `to_remove`
+   --> backstop/src/contract.rs:276:30
+    |
+276 |     fn remove_reward(e: Env, to_remove: Address) {
+    |                              ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_to_remove`
+
+warning: unused variable: `from`
+   --> backstop/src/contract.rs:280:22
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                      ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `pool_addresses`
+   --> backstop/src/contract.rs:280:37
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                     ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_pool_addresses`
+
+warning: unused variable: `min_lp_tokens_out`
+   --> backstop/src/contract.rs:280:67
+    |
+280 |     fn claim(e: Env, from: Address, pool_addresses: Vec<Address>, min_lp_tokens_out: i128) -> i128 {
+    |                                                                   ^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_lp_tokens_out`
+
+warning: function `is_pool_above_threshold` is never used
+   --> backstop/src/backstop/pool.rs:105:8
+    |
+105 | pub fn is_pool_above_threshold(pool_backstop_data: &PoolBackstopData) -> bool {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: constant `MAX_RZ_SIZE` is never used
+ --> backstop/src/constants.rs:8:11
+  |
+8 | pub const MAX_RZ_SIZE: u32 = 30;
+  |           ^^^^^^^^^^^
+
+warning: function `execute_claim` is never used
+  --> backstop/src/emissions/claim.rs:13:8
+   |
+13 | pub fn execute_claim(
+   |        ^^^^^^^^^^^^^
+
+warning: function `claim_emissions` is never used
+  --> backstop/src/emissions/distributor.rs:37:15
+   |
+37 | pub(super) fn claim_emissions(
+   |               ^^^^^^^^^^^^^^^
+
+warning: function `add_to_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:18:8
+   |
+18 | pub fn add_to_reward_zone(e: &Env, to_add: Address, to_remove: Option<Address>) {
+   |        ^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_from_reward_zone` is never used
+  --> backstop/src/emissions/manager.rs:58:8
+   |
+58 | pub fn remove_from_reward_zone(e: &Env, to_remove: Address) {
+   |        ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `remove_pool` is never used
+  --> backstop/src/emissions/manager.rs:73:4
+   |
+73 | fn remove_pool(e: &Env, reward_zone: &mut Vec<Address>, to_remove: &Address) {
+   |    ^^^^^^^^^^^
+
+warning: function `require_distribute_run_recently` is never used
+  --> backstop/src/emissions/manager.rs:87:4
+   |
+87 | fn require_distribute_run_recently(e: &Env) {
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `distribute` is never used
+  --> backstop/src/emissions/manager.rs:96:8
+   |
+96 | pub fn distribute(e: &Env) -> i128 {
+   |        ^^^^^^^^^^
+
+warning: function `gulp_emissions` is never used
+   --> backstop/src/emissions/manager.rs:209:8
+    |
+209 | pub fn gulp_emissions(e: &Env, pool: &Address) -> (i128, i128) {
+    |        ^^^^^^^^^^^^^^
+
+warning: function `set_backstop_emission_eps` is never used
+   --> backstop/src/emissions/manager.rs:253:8
+    |
+253 | pub fn set_backstop_emission_eps(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated functions `distribute`, `gulp_emissions`, `rw_zone_add`, `rw_zone_remove`, and `claim` are never used
+   --> backstop/src/events.rs:84:12
+    |
+5   | impl BackstopEvents {
+    | ------------------- associated functions in this implementation
+...
+84  |     pub fn distribute(e: &Env, new_tokens_emitted: i128) {
+    |            ^^^^^^^^^^
+...
+98  |     pub fn gulp_emissions(
+    |            ^^^^^^^^^^^^^^
+...
+117 |     pub fn rw_zone_add(e: &Env, to_add: Address, to_remove: Option<Address>) {
+    |            ^^^^^^^^^^^
+...
+129 |     pub fn rw_zone_remove(e: &Env, to_remove: Address) {
+    |            ^^^^^^^^^^^^^^
+...
+142 |     pub fn claim(e: &Env, from: Address, amount: i128) {
+    |            ^^^^^
+
+warning: constant `LAST_DISTRO_KEY` is never used
+  --> backstop/src/storage.rs:61:7
+   |
+61 | const LAST_DISTRO_KEY: &str = "LastDist";
+   |       ^^^^^^^^^^^^^^^
+
+warning: constant `BACKFILL_EMISSIONS_KEY` is never used
+  --> backstop/src/storage.rs:64:7
+   |
+64 | const BACKFILL_EMISSIONS_KEY: &str = "BackfillEmis";
+   |       ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: constant `BACKFILL_STATUS_KEY` is never used
+  --> backstop/src/storage.rs:65:7
+   |
+65 | const BACKFILL_STATUS_KEY: &str = "Backfill";
+   |       ^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_emitter` is never used
+   --> backstop/src/storage.rs:117:8
+    |
+117 | pub fn get_emitter(e: &Env) -> Address {
+    |        ^^^^^^^^^^^
+
+warning: function `get_last_distribution_time` is never used
+   --> backstop/src/storage.rs:288:8
+    |
+288 | pub fn get_last_distribution_time(e: &Env) -> u64 {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_last_distribution_time` is never used
+   --> backstop/src/storage.rs:302:8
+    |
+302 | pub fn set_last_distribution_time(e: &Env, timestamp: &u64) {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_reward_zone` is never used
+   --> backstop/src/storage.rs:328:8
+    |
+328 | pub fn set_reward_zone(e: &Env, reward_zone: &Vec<Address>) {
+    |        ^^^^^^^^^^^^^^^
+
+warning: function `get_backfill_emissions` is never used
+   --> backstop/src/storage.rs:340:8
+    |
+340 | pub fn get_backfill_emissions(e: &Env) -> i128 {
+    |        ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_backfill_emissions` is never used
+   --> backstop/src/storage.rs:354:8
+    |
+354 | pub fn set_backfill_emissions(e: &Env, emissions: &i128) {
+    |        ^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_backfill_status` is never used
+   --> backstop/src/storage.rs:368:8
+    |
+368 | pub fn get_backfill_status(e: &Env) -> Option<bool> {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `set_backfill_status` is never used
+   --> backstop/src/storage.rs:382:8
+    |
+382 | pub fn set_backfill_status(e: &Env, status: &bool) {
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `get_rz_emis` is never used
+   --> backstop/src/storage.rs:397:8
+    |
+397 | pub fn get_rz_emis(e: &Env, pool: &Address) -> RzEmissions {
+    |        ^^^^^^^^^^^
+
+warning: function `set_rz_emis` is never used
+   --> backstop/src/storage.rs:416:8
+    |
+416 | pub fn set_rz_emis(e: &Env, pool: &Address, emissions: &RzEmissions) {
+    |        ^^^^^^^^^^^
+
+warning: function `get_drop_list` is never used
+   --> backstop/src/storage.rs:498:8
+    |
+498 | pub fn get_drop_list(e: &Env) -> Vec<(Address, i128)> {
+    |        ^^^^^^^^^^^^^
+
+warning: unused variable: `backstop_take_rate`
+   --> pool/src/contract.rs:392:28
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                            ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_backstop_take_rate`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `max_positions`
+   --> pool/src/contract.rs:392:53
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                     ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_max_positions`
+
+warning: unused variable: `min_collateral`
+   --> pool/src/contract.rs:392:73
+    |
+392 |     fn update_pool(e: Env, backstop_take_rate: u32, max_positions: u32, min_collateral: i128) {
+    |                                                                         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_min_collateral`
+
+warning: unused variable: `from`
+   --> pool/src/contract.rs:480:9
+    |
+480 |         from: Address,
+    |         ^^^^ help: if this is intentional, prefix it with an underscore: `_from`
+
+warning: unused variable: `flash_loan`
+   --> pool/src/contract.rs:481:9
+    |
+481 |         flash_loan: FlashLoan,
+    |         ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_flash_loan`
+
+warning: unused variable: `requests`
+   --> pool/src/contract.rs:482:9
+    |
+482 |         requests: Vec<Request>,
+    |         ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_requests`
+
+warning: associated functions `update_pool`, `bad_debt`, and `flash_loan` are never used
+   --> pool/src/events.rs:30:12
+    |
+7   | impl PoolEvents {
+    | --------------- associated functions in this implementation
+...
+30  |     pub fn update_pool(
+    |            ^^^^^^^^^^^
+...
+157 |     pub fn bad_debt(e: &Env, user: Address, asset: Address, d_tokens: i128) {
+    |            ^^^^^^^^
+...
+306 |     pub fn flash_loan(
+    |            ^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: function `execute_update_pool` is never used
+  --> pool/src/pool/config.rs:47:8
+   |
+47 | pub fn execute_update_pool(
+   |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `execute_submit_with_flash_loan` is never used
+  --> pool/src/pool/submit.rs:70:8
+   |
+70 | pub fn execute_submit_with_flash_loan(
+   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: method `has_collateral` is never used
+   --> pool/src/pool/user.rs:119:12
+    |
+43  | impl User {
+    | --------- method in this implementation
+...
+119 |     pub fn has_collateral(&self) -> bool {
+    |            ^^^^^^^^^^^^^^
+
+warning: `backstop` (lib) generated 36 warnings (run `cargo fix --lib -p backstop` to apply 3 suggestions)
+warning: `pool` (lib) generated 12 warnings (run `cargo fix --lib -p pool` to apply 2 suggestions)
+   Compiling mock-pool-factory v0.0.0 (/home/common/projects/templar/blend-contracts-v2/mocks/mock-pool-factory)
+   Compiling moderc3156-example v0.1.0 (/home/common/projects/templar/blend-contracts-v2/mocks/moderc3156)
+error: cannot find macro `map` in this scope
+   --> pool/src/pool/gulp.rs:419:26
+    |
+419 |             liabilities: map![&e, (0, 50_0000000)],
+    |                          ^^^
+    |
+help: consider importing this macro
+    |
+34  +     use soroban_sdk::map;
+    |
+
+error: cannot find macro `map` in this scope
+   --> pool/src/pool/gulp.rs:420:25
+    |
+420 |             collateral: map![&e, (0, 1)],
+    |                         ^^^
+    |
+help: consider importing this macro
+    |
+34  +     use soroban_sdk::map;
+    |
+
+error: cannot find macro `map` in this scope
+   --> pool/src/pool/gulp.rs:421:21
+    |
+421 |             supply: map![&e],
+    |                     ^^^
+    |
+help: consider importing this macro
+    |
+34  +     use soroban_sdk::map;
+    |
+
+error[E0599]: no method named `into_val` found for tuple `(soroban_sdk::Symbol, soroban_sdk::Address)` in the current scope
+   --> pool/src/pool/bad_debt.rs:322:83
+    |
+322 |                         (Symbol::new(&e, "defaulted_debt"), underlying_0.clone()).into_val(&e),
+    |                                                                                   ^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:90:8
+    |
+90  |     fn into_val(&self, e: &E) -> T;
+    |        -------- the method is available for `(soroban_sdk::Symbol, soroban_sdk::Address)` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `into` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/mod.rs:450:5
+    |
+450 |     fn into(self) -> T;
+    |     ^^^^^^^^^^^^^^^^^^^
+help: trait `IntoVal` which provides `into_val` is implemented but not in scope; perhaps you want to import it
+    |
+154 +     use soroban_sdk::IntoVal;
+    |
+
+error[E0599]: no method named `into_val` found for type `i128` in the current scope
+   --> pool/src/pool/bad_debt.rs:323:39
+    |
+323 |                         1_5000000i128.into_val(&e),
+    |                                       ^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:90:8
+    |
+90  |     fn into_val(&self, e: &E) -> T;
+    |        -------- the method is available for `i128` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `into` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/mod.rs:450:5
+    |
+450 |     fn into(self) -> T;
+    |     ^^^^^^^^^^^^^^^^^^^
+help: trait `IntoVal` which provides `into_val` is implemented but not in scope; perhaps you want to import it
+    |
+154 +     use soroban_sdk::IntoVal;
+    |
+
+error[E0599]: no method named `into_val` found for tuple `(soroban_sdk::Symbol, soroban_sdk::Address)` in the current scope
+   --> pool/src/pool/bad_debt.rs:333:83
+    |
+333 |                         (Symbol::new(&e, "defaulted_debt"), underlying_1.clone()).into_val(&e),
+    |                                                                                   ^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:90:8
+    |
+90  |     fn into_val(&self, e: &E) -> T;
+    |        -------- the method is available for `(soroban_sdk::Symbol, soroban_sdk::Address)` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `into` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/mod.rs:450:5
+    |
+450 |     fn into(self) -> T;
+    |     ^^^^^^^^^^^^^^^^^^^
+help: trait `IntoVal` which provides `into_val` is implemented but not in scope; perhaps you want to import it
+    |
+154 +     use soroban_sdk::IntoVal;
+    |
+
+error[E0599]: no method named `into_val` found for type `i128` in the current scope
+   --> pool/src/pool/bad_debt.rs:334:44
+    |
+334 |                         50_987_654_321i128.into_val(&e),
+    |                                            ^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:90:8
+    |
+90  |     fn into_val(&self, e: &E) -> T;
+    |        -------- the method is available for `i128` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `into` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/mod.rs:450:5
+    |
+450 |     fn into(self) -> T;
+    |     ^^^^^^^^^^^^^^^^^^^
+help: trait `IntoVal` which provides `into_val` is implemented but not in scope; perhaps you want to import it
+    |
+154 +     use soroban_sdk::IntoVal;
+    |
+
+error[E0599]: no method named `unwrap_optimized` found for enum `core::option::Option` in the current scope
+   --> pool/src/pool/bad_debt.rs:423:53
+    |
+423 |             assert_eq!(pool_positions.supply.get(0).unwrap_optimized(), 1);
+    |                                                     ^^^^^^^^^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/unwrap.rs:5:8
+    |
+5   |     fn unwrap_optimized(self) -> Self::Output;
+    |        ---------------- the method is available for `core::option::Option<i128>` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `unwrap_or` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/option.rs:990:5
+    |
+990 |     pub fn unwrap_or(self, default: T) -> T {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: trait `UnwrapOptimized` which provides `unwrap_optimized` is implemented but not in scope; perhaps you want to import it
+    |
+154 +     use soroban_sdk::unwrap::UnwrapOptimized;
+    |
+
+error[E0599]: no method named `into_val` found for tuple `(soroban_sdk::Symbol, soroban_sdk::Address)` in the current scope
+   --> pool/src/pool/bad_debt.rs:434:83
+    |
+434 |                         (Symbol::new(&e, "defaulted_debt"), underlying_0.clone()).into_val(&e),
+    |                                                                                   ^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:90:8
+    |
+90  |     fn into_val(&self, e: &E) -> T;
+    |        -------- the method is available for `(soroban_sdk::Symbol, soroban_sdk::Address)` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `into` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/mod.rs:450:5
+    |
+450 |     fn into(self) -> T;
+    |     ^^^^^^^^^^^^^^^^^^^
+help: trait `IntoVal` which provides `into_val` is implemented but not in scope; perhaps you want to import it
+    |
+154 +     use soroban_sdk::IntoVal;
+    |
+
+error[E0599]: no method named `into_val` found for type `i128` in the current scope
+   --> pool/src/pool/bad_debt.rs:435:40
+    |
+435 |                         50_0000000i128.into_val(&e),
+    |                                        ^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:90:8
+    |
+90  |     fn into_val(&self, e: &E) -> T;
+    |        -------- the method is available for `i128` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `into` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/mod.rs:450:5
+    |
+450 |     fn into(self) -> T;
+    |     ^^^^^^^^^^^^^^^^^^^
+help: trait `IntoVal` which provides `into_val` is implemented but not in scope; perhaps you want to import it
+    |
+154 +     use soroban_sdk::IntoVal;
+    |
+
+error[E0599]: no method named `into_val` found for tuple `(soroban_sdk::Symbol, soroban_sdk::Address, soroban_sdk::Address)` in the current scope
+   --> pool/src/pool/bad_debt.rs:450:30
+    |
+445 | /                         (
+446 | |                             Symbol::new(&e, "collateral_orphaned"),
+447 | |                             samwise.clone(),
+448 | |                             underlying_0.clone(),
+449 | |                         )
+450 | |                             .into_val(&e),
+    | |_____________________________-^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:90:8
+    |
+90  |       fn into_val(&self, e: &E) -> T;
+    |          -------- the method is available for `(soroban_sdk::Symbol, soroban_sdk::Address, soroban_sdk::Address)` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `into` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/mod.rs:450:5
+    |
+450 |     fn into(self) -> T;
+    |     ^^^^^^^^^^^^^^^^^^^
+help: trait `IntoVal` which provides `into_val` is implemented but not in scope; perhaps you want to import it
+    |
+154 +     use soroban_sdk::IntoVal;
+    |
+
+error[E0599]: no method named `into_val` found for type `i128` in the current scope
+   --> pool/src/pool/bad_debt.rs:451:31
+    |
+451 |                         1i128.into_val(&e), // b-token units
+    |                               ^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:90:8
+    |
+90  |     fn into_val(&self, e: &E) -> T;
+    |        -------- the method is available for `i128` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `into` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/mod.rs:450:5
+    |
+450 |     fn into(self) -> T;
+    |     ^^^^^^^^^^^^^^^^^^^
+help: trait `IntoVal` which provides `into_val` is implemented but not in scope; perhaps you want to import it
+    |
+154 +     use soroban_sdk::IntoVal;
+    |
+
+error[E0599]: no method named `env` found for struct `pool::pool::Pool` in the current scope
+   --> pool/src/pool/bad_debt.rs:856:30
+    |
+856 |                         pool.env().current_contract_address(),
+    |                              ^^^ method not found in `Pool`
+    |
+   ::: pool/src/pool/pool.rs:13:1
+    |
+13  | pub struct Pool {
+    | --------------- method `env` not found for this struct
+    |
+help: some of the expressions' fields have a method of the same name
+    |
+856 |                         pool.config.oracle.env().current_contract_address(),
+    |                              ++++++++++++++
+856 |                         pool.reserves.env().current_contract_address(),
+    |                              +++++++++
+
+error[E0599]: no method named `into_val` found for tuple `(soroban_sdk::Symbol, soroban_sdk::Address)` in the current scope
+   --> pool/src/pool/bad_debt.rs:857:83
+    |
+857 |                         (Symbol::new(&e, "defaulted_debt"), underlying_0.clone()).into_val(&e),
+    |                                                                                   ^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:90:8
+    |
+90  |     fn into_val(&self, e: &E) -> T;
+    |        -------- the method is available for `(soroban_sdk::Symbol, soroban_sdk::Address)` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `into` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/mod.rs:450:5
+    |
+450 |     fn into(self) -> T;
+    |     ^^^^^^^^^^^^^^^^^^^
+help: trait `IntoVal` which provides `into_val` is implemented but not in scope; perhaps you want to import it
+    |
+154 +     use soroban_sdk::IntoVal;
+    |
+
+error[E0599]: no method named `into_val` found for type `i128` in the current scope
+   --> pool/src/pool/bad_debt.rs:858:39
+    |
+858 |                         1_5000000i128.into_val(&e),
+    |                                       ^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:90:8
+    |
+90  |     fn into_val(&self, e: &E) -> T;
+    |        -------- the method is available for `i128` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `into` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/mod.rs:450:5
+    |
+450 |     fn into(self) -> T;
+    |     ^^^^^^^^^^^^^^^^^^^
+help: trait `IntoVal` which provides `into_val` is implemented but not in scope; perhaps you want to import it
+    |
+154 +     use soroban_sdk::IntoVal;
+    |
+
+error[E0599]: no method named `env` found for struct `pool::pool::Pool` in the current scope
+   --> pool/src/pool/bad_debt.rs:867:30
+    |
+867 |                         pool.env().current_contract_address(),
+    |                              ^^^ method not found in `Pool`
+    |
+   ::: pool/src/pool/pool.rs:13:1
+    |
+13  | pub struct Pool {
+    | --------------- method `env` not found for this struct
+    |
+help: some of the expressions' fields have a method of the same name
+    |
+867 |                         pool.config.oracle.env().current_contract_address(),
+    |                              ++++++++++++++
+867 |                         pool.reserves.env().current_contract_address(),
+    |                              +++++++++
+
+error[E0599]: no method named `into_val` found for tuple `(soroban_sdk::Symbol, soroban_sdk::Address)` in the current scope
+   --> pool/src/pool/bad_debt.rs:868:83
+    |
+868 |                         (Symbol::new(&e, "defaulted_debt"), underlying_1.clone()).into_val(&e),
+    |                                                                                   ^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:90:8
+    |
+90  |     fn into_val(&self, e: &E) -> T;
+    |        -------- the method is available for `(soroban_sdk::Symbol, soroban_sdk::Address)` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `into` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/mod.rs:450:5
+    |
+450 |     fn into(self) -> T;
+    |     ^^^^^^^^^^^^^^^^^^^
+help: trait `IntoVal` which provides `into_val` is implemented but not in scope; perhaps you want to import it
+    |
+154 +     use soroban_sdk::IntoVal;
+    |
+
+error[E0599]: no method named `into_val` found for type `i128` in the current scope
+   --> pool/src/pool/bad_debt.rs:869:44
+    |
+869 |                         50_987_654_321i128.into_val(&e),
+    |                                            ^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/env.rs:90:8
+    |
+90  |     fn into_val(&self, e: &E) -> T;
+    |        -------- the method is available for `i128` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `into` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/mod.rs:450:5
+    |
+450 |     fn into(self) -> T;
+    |     ^^^^^^^^^^^^^^^^^^^
+help: trait `IntoVal` which provides `into_val` is implemented but not in scope; perhaps you want to import it
+    |
+154 +     use soroban_sdk::IntoVal;
+    |
+
+error[E0063]: missing field `last_time` in initializer of `storage::ReserveEmissionData`
+   --> pool/src/pool/bad_debt.rs:976:18
+    |
+976 |                 &ReserveEmissionData {
+    |                  ^^^^^^^^^^^^^^^^^^^ missing `last_time`
+
+error[E0063]: missing field `status` in initializer of `storage::PoolConfig`
+   --> pool/src/pool/config.rs:367:27
+    |
+367 |         let pool_config = PoolConfig {
+    |                           ^^^^^^^^^^ missing `status`
+
+error[E0063]: missing field `status` in initializer of `storage::PoolConfig`
+   --> pool/src/pool/config.rs:422:27
+    |
+422 |         let pool_config = PoolConfig {
+    |                           ^^^^^^^^^^ missing `status`
+
+error[E0063]: missing field `status` in initializer of `storage::PoolConfig`
+   --> pool/src/pool/config.rs:454:27
+    |
+454 |         let pool_config = PoolConfig {
+    |                           ^^^^^^^^^^ missing `status`
+
+error[E0063]: missing field `status` in initializer of `storage::PoolConfig`
+   --> pool/src/pool/config.rs:474:27
+    |
+474 |         let pool_config = PoolConfig {
+    |                           ^^^^^^^^^^ missing `status`
+
+error[E0063]: missing field `status` in initializer of `storage::PoolConfig`
+   --> pool/src/pool/config.rs:494:27
+    |
+494 |         let pool_config = PoolConfig {
+    |                           ^^^^^^^^^^ missing `status`
+
+error[E0063]: missing field `status` in initializer of `storage::PoolConfig`
+   --> pool/src/pool/config.rs:531:27
+    |
+531 |         let pool_config = PoolConfig {
+    |                           ^^^^^^^^^^ missing `status`
+
+error[E0063]: missing field `status` in initializer of `storage::PoolConfig`
+   --> pool/src/pool/config.rs:581:27
+    |
+581 |         let pool_config = PoolConfig {
+    |                           ^^^^^^^^^^ missing `status`
+
+error[E0063]: missing field `status` in initializer of `storage::PoolConfig`
+   --> pool/src/pool/config.rs:634:27
+    |
+634 |         let pool_config = PoolConfig {
+    |                           ^^^^^^^^^^ missing `status`
+
+error[E0063]: missing field `last_time` in initializer of `storage::ReserveEmissionData`
+   --> pool/src/pool/gulp.rs:313:18
+    |
+313 |                 &ReserveEmissionData {
+    |                  ^^^^^^^^^^^^^^^^^^^ missing `last_time`
+
+error[E0599]: no method named `unwrap_optimized` found for enum `core::option::Option` in the current scope
+   --> pool/src/pool/gulp.rs:432:56
+    |
+432 |             assert_eq!(custody_positions.supply.get(0).unwrap_optimized(), 1);
+    |                                                        ^^^^^^^^^^^^^^^^
+    |
+   ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/unwrap.rs:5:8
+    |
+5   |     fn unwrap_optimized(self) -> Self::Output;
+    |        ---------------- the method is available for `core::option::Option<i128>` here
+    |
+    = help: items from traits can only be used if the trait is in scope
+help: there is a method `unwrap_or` with a similar name, but with different arguments
+   --> /home/common/.rustup/toolchains/1.81-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/option.rs:990:5
+    |
+990 |     pub fn unwrap_or(self, default: T) -> T {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: trait `UnwrapOptimized` which provides `unwrap_optimized` is implemented but not in scope; perhaps you want to import it
+    |
+34  +     use soroban_sdk::unwrap::UnwrapOptimized;
+    |
+
+warning: unused variable: `backstop_client`
+   --> pool/src/pool/bad_debt.rs:682:17
+    |
+682 |         let (_, backstop_client) = create_backstop(&e, &pool, &lp_token, &usdc, &blnd);
+    |                 ^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_backstop_client`
+
+warning: unused variable: `bombadil`
+    --> pool/src/pool/bad_debt.rs:1018:13
+     |
+1018 |         let bombadil = Address::generate(&e);
+     |             ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_bombadil`
+
+Some errors have detailed explanations: E0063, E0599.
+For more information about an error, try `rustc --explain E0063`.
+warning: `pool` (lib test) generated 10 warnings (8 duplicates)
+error: could not compile `pool` (lib test) due to 29 previous errors; 10 warnings emitted

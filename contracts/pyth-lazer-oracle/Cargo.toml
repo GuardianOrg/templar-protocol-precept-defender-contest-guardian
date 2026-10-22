@@ -1,0 +1,38 @@
+[package]
+name = "pyth-lazer-oracle"
+license = "GPL-3.0-only"
+repository = "https://github.com/Templar-Protocol/precept"
+edition = "2021"
+rust-version = "1.93"
+version = "0.1.0"
+publish = false
+
+[lib]
+name = "pyth_lazer_oracle"
+crate-type = ["cdylib", "rlib"]
+path = "src/lib.rs"
+
+[workspace]
+
+[dependencies]
+soroban-sdk = { version = "=26.1.0", features = ["alloc"] }
+# Source-pinned official SDK; no mutable branch or custom signature verifier.
+pyth-lazer-stellar-sdk = { git = "https://github.com/pyth-network/pyth-lazer-public", rev = "e0f2cf3b4dbb185c4b6e02ef3ca0ae11dccd38e5", version = "=0.4.0" }
+
+[dev-dependencies]
+soroban-sdk = { version = "=26.1.0", features = ["testutils", "alloc"] }
+# Official verifier with a controlled trust list for deterministic host tests.
+pyth-lazer-stellar = { git = "https://github.com/pyth-network/pyth-lazer-public", rev = "e0f2cf3b4dbb185c4b6e02ef3ca0ae11dccd38e5" }
+hex-literal = "0.4"
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = "fat"
+debug = false
+panic = "abort"
+strip = "symbols"
+overflow-checks = true
+
+[profile.release-soroban-checked]
+inherits = "release"

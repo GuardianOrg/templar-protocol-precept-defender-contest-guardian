@@ -1,0 +1,57 @@
+[package]
+name = "pool-oracle-adapter"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.86"
+publish = false
+license = "GPL-3.0-only"
+
+[lib]
+name = "pool_oracle_adapter"
+crate-type = ["cdylib", "rlib"]
+
+[workspace]
+
+[dependencies]
+soroban-sdk = { version = "=25.3.0", features = ["alloc"] }
+templar-proxy-oracle-soroban-common = { git = "https://github.com/Templar-Protocol/contracts", rev = "6477b1d7ef0e17ed4ba6e6fcfa9493d049cca4eb" }
+
+[dev-dependencies]
+soroban-sdk = { version = "=25.3.0", features = ["alloc", "testutils"] }
+templar-proxy-oracle-soroban-contract = { git = "https://github.com/Templar-Protocol/contracts", rev = "6477b1d7ef0e17ed4ba6e6fcfa9493d049cca4eb", features = ["testutils"] }
+
+[features]
+testutils = ["soroban-sdk/testutils"]
+wasm-smoke = []
+
+[[test]]
+name = "optimized_wasm"
+required-features = ["wasm-smoke"]
+
+[profile.release]
+codegen-units = 1
+opt-level = "z"
+lto = "fat"
+debug = false
+panic = "abort"
+strip = "symbols"
+overflow-checks = true
+
+[profile.release-soroban]
+inherits = "release"
+opt-level = "z"
+lto = "fat"
+debug = false
+panic = "abort"
+strip = "symbols"
+overflow-checks = false
+
+[profile.release-soroban.package."*"]
+overflow-checks = false
+
+[profile.release-soroban-checked]
+inherits = "release-soroban"
+overflow-checks = true
+
+[profile.release-soroban-checked.package."*"]
+overflow-checks = false

@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "bundle_hash": "b050f20ebe6b951888f186cb02301d8860bfe426",
+  "primary": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+  "bundle": [
+    {
+      "path": "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md",
+      "blob": "a67376744bef453818d02cc6c5a5bcdec54bd265"
+    },
+    {
+      "path": "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md",
+      "blob": "9fd96f78b7813bb30c4d3a83758eaebf9061914b"
+    }
+  ],
+  "coupling_reason": "ADR 0009 defines the mandatory successor migration and exact vault claim-preservation controls for ADR 0008; separate review would lose the disabled-gulp/raw-surplus boundary that motivates them.",
+  "preflight": [
+    {
+      "command": "PATH=\"$PWD/bin:$PATH\" adr --robot lint",
+      "exit_code": 0,
+      "result": "no output",
+      "artifact_hashes": {}
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "no output",
+      "artifact_hashes": {}
+    },
+    {
+      "command": "python3 /tmp/verify-adr0009-exit-headroom.py",
+      "exit_code": 0,
+      "result": "exit-headroom smoke PASS: donation-invariant cap; claim-derived buffer; deficit, rounding, and debt-zero checks",
+      "artifact_hashes": {
+        "/tmp/verify-adr0009-exit-headroom.py": "5ebaa2187bcb0ffcf28058a77d4df6e29ebf13fee225b8378a5ec60f6e57e687"
+      }
+    },
+    {
+      "command": "Ponytail review of complete correction diff against 9a52bd32769c93a497ea62513eb58e0e054e8632",
+      "exit_code": 0,
+      "result": "PASS; single user_exit_buffer was minimal before the b-token rounding blocker was found",
+      "artifact_hashes": {
+        "runtime_result": "history://LiquidityPonytail-2"
+      }
+    },
+    {
+      "command": "git hash-object doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md /tmp/raladr-adr0008-0009-liquidity.manifest",
+      "exit_code": 0,
+      "result": "a67376744bef453818d02cc6c5a5bcdec54bd265\n9fd96f78b7813bb30c4d3a83758eaebf9061914b\nb050f20ebe6b951888f186cb02301d8860bfe426",
+      "artifact_hashes": {
+        "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md": "a67376744bef453818d02cc6c5a5bcdec54bd265",
+        "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md": "9fd96f78b7813bb30c4d3a83758eaebf9061914b",
+        "/tmp/raladr-adr0008-0009-liquidity.manifest": "b050f20ebe6b951888f186cb02301d8860bfe426"
+      }
+    }
+  ],
+  "custody": {
+    "type": "COMMIT",
+    "location": "57503d77ce8a6e0705826e56b5c39744dbe623e9"
+  },
+  "reviews": [
+    {
+      "run": 1,
+      "pair": 4,
+      "attempts": {
+        "architect": [
+          {
+            "runtime_result": "agent://LiquidityCorrectionArchitect",
+            "error": null,
+            "result": {
+              "schema_version": 1,
+              "role": "architect",
+              "pair": 4,
+              "bundle_hash": "b050f20ebe6b951888f186cb02301d8860bfe426",
+              "verdict": "ITERATE",
+              "blockers": [
+                {
+                  "id": "P4-A1",
+                  "finding": "The new `user_exit_buffer` minimum is correctly sized in underlying units as the checked sum of separately floored per-position claims, but the gate that consumes it is still the pair-2 mechanism: 'one exact hypothetical stock withdrawal of the buffer from the post-withdraw state'. That single aggregate withdrawal burns `ceil(buffer * Q / b_rate)` b-tokens, which is strictly less than the b-tokens the users themselves burn when they redeem those claims: stock withdraw-all clamps to the position and burns exactly `b_i` (actions.rs:322-325), so the sequential burn is `sum(b_i)`, and `ceil(sum(floor(b_i*r/Q))*Q/r) <= sum(b_i)` with a gap of up to n-1 b-tokens. The check therefore certifies a post-withdraw reserve that is above the strict utilization boundary for the aggregate but below it for the last redeeming user. Reproduced with the frozen smoke script's own `allowed()`: b_rate=1,700,000,000,000, b_supply=5 (vault 2 b-tokens, three users at 1 b-token each), d_supply=1, d_rate=Q, so L=1, S(0)=8, C=7, raw=7 (no donation), claims floor(1.7)=1 each, record=3 (deadline rate equal to live rate). Vault withdrawal x=1 (burn 1) passes every gate (post S=6; hypothetical burn(3)=2 leaves S=3 > 1). Then user1 and user2 withdraw-all succeed (S=5, S=3) but user3's withdraw-all leaves S=1, not > L=1, so stock `require_utilization_below_100` panics (reserve.rs:133-140); a 1-unit partial withdrawal burns the same 1 b-token and also rejects. Without the vault withdrawal all three users exit (S=6,5,3). An exhaustive sweep over d_supply<60, vault<40, n in {2,3,4} at that rate found 4,210 such states. This violates the contract that 'qualification must preserve all still-withdrawable user claims' and ADR0008:284-285 ('any withdrawable unit must exit'); the loss is rounding dust per user, but the whole correction exists to make the gate exact, and the sizing text at 279-285 explicitly rejects 'aggregate-before-floor rounding' while the check re-aggregates.",
+                  "evidence": [
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:278-285 (minimum = checked sum of per-position floors)",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:290-295 (gate = accounted exit headroom >= buffer, implemented as one hypothetical stock withdrawal of the buffer)",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:443-450 (acceptance 8 repeats the underlying-denominated retention)",
+                    "doc/adr/0009-migrate-adr-0008-legacy-pools-to-registry-native-successors.md:563-567 (invariant: buffer 'no smaller than every remaining user-owned b-token claim')",
+                    "/tmp/verify-adr0009-exit-headroom.py:19-22,51-55 (required_user_buffer sums floors; allowed() checks one aggregate supply_after(post_b_supply, b_rate, live_buffer))",
+                    "vendor/blend-contracts-v2/pool/src/pool/actions.rs:320-332 (withdraw: to_b_token_up ceil; clamp to position burns exactly b_i and pays floor; require_utilization_below_100 after)",
+                    "vendor/blend-contracts-v2/pool/src/pool/reserve.rs:113-140,226-236 (utilization ceil, below_100 strict, to_b_token_up ceil / to_asset_from_b_token floor)",
+                    "doc/adr/0008-launch-v1-on-a-narrowly-hardened-blend-v2-fork.md:284-285 ('any withdrawable unit must exit')",
+                    "Read-only replay through the frozen script's allowed(): vault x=1 allowed=True; sequential user withdraw-all S_after=5, 3, 1 -> third rejects; sweep count 4,210"
+                  ],
+                  "required_change": "Denominate the retained buffer in b-tokens taken from the same inventory: let `B = checked sum of b_i` over the same non-vault, non-pool-owned positions, and make the in-invocation gate `utilization(floor((b_supply - burn(x) - B) * b_rate / Q), L) < U` (equivalently: the hypothetical withdrawal removes `B` b-tokens, the exact state after every user redeems in full, instead of `burn(user_exit_buffer)`), with `B > b_supply - burn(x)` rejecting. Keep the underlying-unit `user_exit_buffer` only for the raw-balance sufficiency clause at 296-299 and the record lifecycle. Mirror the b-token denomination in acceptance 8 (443-450), the unit/property vectors (477-479: add the b_rate=1.7Q, three-user vector above as a rejecting case), the integration list (486-488), and the invariant (563-567); update /tmp/verify-adr0009-exit-headroom.py accordingly so the new vector rejects."
+                }
+              ],
+              "prior_blocker_disposition": [
+                {
+                  "id": "P1-A1",
+                  "status": "CLOSED",
+                  "evidence": "Unchanged: ADR0009:297-305 deficit-only `R < C` gate, recorded `D` never exact-match compared, decrease closes lane, unclassified increase pauses; acceptance 8 and invariant agree; alternative 8 (400-401) rejects raw-minus-buffer. Pair-4 delta does not touch these lines."
+                },
+                {
+                  "id": "P1-A2",
+                  "status": "CLOSED",
+                  "evidence": "Unchanged: ADR0009:269-272 defines `C = S(0) + backstop_credit - L` per gulp.rs:26-27 and rejects nonzero credit / negative C; smoke lines 40-43 derive it."
+                },
+                {
+                  "id": "P1-A3",
+                  "status": "SUPERSEDED",
+                  "evidence": "The fixed discretionary buffers whose L==0 deadlock I raised are removed; ADR0009:294-295 keeps 'When d_supply == 0, the buffer becomes zero for the final reserve tranche', and with L==0 stock utilization is 0 for every S (reserve.rs:113-116) so no user claim can be stranded there. The debt-zero final tranche is unharmed by the new bound; smoke line 88 still asserts the full exit. Superseded by P3-C1's sizing question."
+                },
+                {
+                  "id": "P3-C1",
+                  "status": "OPEN",
+                  "evidence": "The mechanical lower bound (ADR0009:278-290) closes the arbitrary-sizing defect: the record can no longer be below the sum of per-position floored claims, missing positions/classes or an unprovable rate bound block, and the deadline rate bounds accrual growth. What remains open is narrowed to P4-A1: the gate re-aggregates the correctly sized underlying buffer into one ceil-burn, so up to n-1 user b-tokens of the reserved claims are not actually protected at the strict utilization boundary (reproduced above). Closing P4-A1 by checking against `sum(b_i)` in b-tokens closes P3-C1 fully without affecting the debt-zero tranche."
+                }
+              ],
+              "tradeoff_tension": "Exact per-user protection versus vault liveness and maintenance: reserving `sum(b_i)` b-tokens reserves every user's full redemption at the strict boundary and needs no rate forecasting, but it withholds slightly more of the vault's exit than the underlying-unit floor sum (users leave zero-unit dust b-tokens), and while any debt remains the vault may be unable to take any tranche until borrowers repay; the alternative of an underlying-unit buffer with a forecasted deadline rate is easier to record in a lineage document but provably under-protects at rounding boundaries and carries an accrual-bound proof obligation per batch.",
+              "evidence_checked": [
+                "Identity: git rev-parse HEAD = 57503d77ce8a6e0705826e56b5c39744dbe623e9; git hash-object manifest = b050f20ebe6b951888f186cb02301d8860bfe426; ADR0008 blob a67376744bef453818d02cc6c5a5bcdec54bd265 (unchanged all pairs); ADR0009 blob 9fd96f78b7813bb30c4d3a83758eaebf9061914b; sha256 smoke = 5ebaa2187bcb0ffcf28058a77d4df6e29ebf13fee225b8378a5ec60f6e57e687; doc/adr status clean",
+                "git show HEAD -- doc/adr/0009: hunks at 278-295 (user_exit_buffer derivation and lifecycle), 443-454 (acceptance 8), 474-490 (property/integration test text), 521 (new risk row), 536-543 (pre-mortem 2), 563-571 (invariant); nothing else; grep confirms borrower_exit_buffer/direct_exit_buffer fully removed, 'buffers' remains only in rejected alternative 8",
+                "Full refrozen ADR0009 section 7 (247-305), alternatives 8-9, acceptance 8/10, test plan, risks, pre-mortem, invariants; ADR0008 unchanged (restrictions 2/4/7, status-4 semantics at 53-54, rounding-loss terminal class 284-285, filler operations 354-359)",
+                "Stock source at pinned 6cf6dd1: actions.rs:312-332 withdraw clamp/burn/utilization order; reserve.rs:91-108 accrue (b_rate floor), 113-140 utilization and below_100, 226-236 conversions; user.rs:106-116 default; gulp.rs:18-37",
+                "Smoke script read in full (90 lines): required_user_buffer/buffer_record_is_adequate sum per-position floors; allowed() performs one aggregate hypothetical withdrawal of live_buffer; asserts 69-89 pass",
+                "Read-only replay: prior standard and rounding vectors still hold (94/237, deficits 99/243); counterexample vector at b_rate=1.7Q with three 1-b-token users passes allowed() for vault x=1 and strands the third user's 1-unit claim; exhaustive sweep found 4,210 such states in the small parameter box",
+                "Derivation: sequential redemption burns sum(b_i) (clamp path) whereas the aggregate hypothetical burns ceil(sum(floor(b_i*r/Q))*Q/r) <= sum(b_i); with L == 0 utilization is identically 0 so debt-zero liveness is unaffected"
+              ],
+              "steelman": "Strongest case for keeping the underlying-unit hypothetical withdrawal: it reuses the exact stock withdraw arithmetic already differential-tested, keeps the lineage record in the same unit operators reason about, and the residual gap is at most n-1 b-tokens, each worth under one underlying unit, which ADR0008 already discloses as a rounding-loss terminal class. It fails because the ADR's own contract is stronger than 'dust is acceptable': it promises to reserve every still-withdrawable claim and explicitly rejects aggregate-before-floor rounding, and a 1-unit claim that was withdrawable before the vault batch and is not afterwards is a vault-caused user loss, however small. The b-token denomination is strictly simpler: `sum(b_i)` is an integer read from the same inventory, needs no accrual forecast, is monotone nonincreasing after T0 (status 4 blocks supply, ADR0008:53-54; fills and orphaning only move b-tokens away from user classes), and the gate remains one exact stock utilization evaluation.",
+              "synthesis": "Identity matches the refrozen bundle and the delta is confined to replacing the discretionary buffers with an inventory-derived `user_exit_buffer`. The sizing rule is right in kind (complete inventory, per-position floor, conservative deadline rate, block on missing classes or unprovable bound, debt-zero release), the raw/accounting separation from pairs 1-3 is intact, and no raw surplus, donation, backstop credit, market value, or arbitrary number can enlarge the cap. The remaining defect is in the consumer of that buffer: retaining it as one aggregate hypothetical withdrawal under-burns by up to n-1 b-tokens relative to what users actually burn, so the strict utilization boundary is certified for the aggregate but not for the last redeeming user; reproduced concretely with the frozen script's own predicate. Denominating the retained buffer in b-tokens (`sum(b_i)` from the same inventory) closes P3-C1 completely, removes the accrual-forecast obligation from the safety-critical path, and leaves the debt-zero final tranche unchanged. ITERATE on that single correction.",
+              "risks": [
+                "If corrected as required, the deadline-rate bound becomes a record-hygiene input rather than a safety input; the ADR should not let its complexity persist as a perceived invariant.",
+                "Vault liveness while debt remains is now fully hostage to user inventory plus borrower-authorized repayment; a serviced tail with many small suppliers can keep the vault at zero tranche until debt-zero, which the plan must disclose to vault holders.",
+                "The complete point-read inventory is an off-chain artifact bound into the batch; any indexer gap silently under-counts `B`, so the 'missing positions/classes blocks' rule depends on an authoritative position enumeration (the pool has no on-chain position list), and acceptance should name the enumeration source.",
+                "Maintenance: the differential property must now generate multi-user sequential redemption scenarios, not only single aggregate withdrawals, to catch this class of gap on future pins."
+              ],
+              "file_corrections": [
+                "ADR0009:281-284: once the gate is b-token denominated, `b_rate_deadline` is only needed for the underlying-unit record used by the raw-sufficiency clause, which pair-2 analysis showed is implied by `R >= C` plus the accounting gate; consider stating that the rate bound is record hygiene, not a withdrawal-cap input, to avoid future readers treating an accrual forecast as an invariant.",
+                "ADR0009:477-479: the property text 'one unit below rejects' tests record adequacy only; add the sequential multi-user redemption property (every inventory position can withdraw-all after the batch) so the differential harness exercises the P4-A1 class.",
+                "ADR0009:283-284: name the authoritative source of the 'complete point-read inventory' (archived position set from genesis plus live point reads), since the stock pool exposes no position enumeration and completeness cannot be proven from the contract alone."
+              ],
+              "principle_violations": [
+                "ADR0009:284-285 claims the buffer 'reserves every still-withdrawable user claim' and ADR0008:284-285 requires 'any withdrawable unit must exit'; the aggregate hypothetical gate at 290-295 does not honor that for the last redeeming user at rounding boundaries (P4-A1)."
+              ]
+            }
+          }
+        ],
+        "critic": []
+      },
+      "prior_blocker_disposition": [
+        {
+          "id": "P1-A1",
+          "status": "CLOSED",
+          "evidence": "Unchanged: ADR0009:297-305 deficit-only `R < C` gate, recorded `D` never exact-match compared, decrease closes lane, unclassified increase pauses; acceptance 8 and invariant agree; alternative 8 (400-401) rejects raw-minus-buffer. Pair-4 delta does not touch these lines."
+        },
+        {
+          "id": "P1-A2",
+          "status": "CLOSED",
+          "evidence": "Unchanged: ADR0009:269-272 defines `C = S(0) + backstop_credit - L` per gulp.rs:26-27 and rejects nonzero credit / negative C; smoke lines 40-43 derive it."
+        },
+        {
+          "id": "P1-A3",
+          "status": "SUPERSEDED",
+          "evidence": "The fixed discretionary buffers whose L==0 deadlock I raised are removed; ADR0009:294-295 keeps 'When d_supply == 0, the buffer becomes zero for the final reserve tranche', and with L==0 stock utilization is 0 for every S (reserve.rs:113-116) so no user claim can be stranded there. The debt-zero final tranche is unharmed by the new bound; smoke line 88 still asserts the full exit. Superseded by P3-C1's sizing question."
+        },
+        {
+          "id": "P3-C1",
+          "status": "OPEN",
+          "evidence": "The mechanical lower bound (ADR0009:278-290) closes the arbitrary-sizing defect: the record can no longer be below the sum of per-position floored claims, missing positions/classes or an unprovable rate bound block, and the deadline rate bounds accrual growth. What remains open is narrowed to P4-A1: the gate re-aggregates the correctly sized underlying buffer into one ceil-burn, so up to n-1 user b-tokens of the reserved claims are not actually protected at the strict utilization boundary (reproduced above). Closing P4-A1 by checking against `sum(b_i)` in b-tokens closes P3-C1 fully without affecting the debt-zero tranche."
+        }
+      ],
+      "terminal_status": "ITERATE"
+    }
+  ]
+}

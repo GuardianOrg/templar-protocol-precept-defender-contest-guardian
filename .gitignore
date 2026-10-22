@@ -1,0 +1,38 @@
+# Devenv
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+
+# agent runtimes: track skills only, never local state
+.claude/*
+!.claude/skills/
+.codex/
+.omp/
+*.local.json
+
+# adr-tools scratch (left behind if an awk step fails)
+doc/adr/*.tmp
+
+# abtest run artifacts (evidence lives under doc/adr/reviews/evidence)
+tools/abtest/target
+tools/abtest/runs
+
+# pool-oracle-adapter build output and Stellar local-testnet scratch
+contracts/pool-oracle-adapter/target/
+contracts/pool-oracle-adapter/.soroban/
+contracts/pool-oracle-adapter/test_snapshots/
+contracts/pool-oracle-adapter/scripts/__pycache__/
+
+# protected-market synthetic source build output
+contracts/price-source/target/
+contracts/price-source/test_snapshots/
+
+# testnet token faucet build output
+contracts/token-faucet/target/
+contracts/token-faucet/test_snapshots/

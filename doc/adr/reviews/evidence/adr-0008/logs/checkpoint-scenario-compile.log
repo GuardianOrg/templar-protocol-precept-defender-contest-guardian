@@ -1,0 +1,302 @@
+error[E0432]: unresolved import `blend_contracts_v2_test_suites`
+  --> test-suites/tests/test_backstop_emissions_traps.rs:31:5
+   |
+31 | use blend_contracts_v2_test_suites::{
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ use of undeclared crate or module `blend_contracts_v2_test_suites`
+
+error[E0432]: unresolved import `blend_contracts_v2_test_suites`
+  --> test-suites/tests/test_pool_default_orphan_scenarios.rs:29:5
+   |
+29 | use blend_contracts_v2_test_suites::{create_fixture_with_data, TestFixture, TokenIndex, SCALAR_7};
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ use of undeclared crate or module `blend_contracts_v2_test_suites`
+
+error[E0412]: cannot find type `TryFromValForContractFnOutputError` in crate `soroban_sdk`
+  --> test-suites/tests/test_pool_default_orphan_scenarios.rs:61:38
+   |
+61 |     r: Result<Result<T, soroban_sdk::TryFromValForContractFnOutputError>, soroban_sdk::Error>,
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: a trait with a similar name exists: `TryFromValForContractFn`
+   |
+  ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/try_from_val_for_contract_fn.rs:24:1
+   |
+24 | pub trait TryFromValForContractFn<E: Env, V: ?Sized>: Sized {
+   | ----------------------------------------------------------- similarly named trait `TryFromValForContractFn` defined here
+
+warning: unused import: `soroban_fixed_point_math::FixedPoint`
+  --> test-suites/tests/test_pool_default_orphan_scenarios.rs:25:5
+   |
+25 | use soroban_fixed_point_math::FixedPoint;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `Events as _`
+  --> test-suites/tests/test_pool_default_orphan_scenarios.rs:26:44
+   |
+26 | use soroban_sdk::testutils::{Address as _, Events as _, Ledger as _};
+   |                                            ^^^^^^^^^^^
+
+warning: unused import: `Symbol`
+  --> test-suites/tests/test_pool_default_orphan_scenarios.rs:27:33
+   |
+27 | use soroban_sdk::{vec, Address, Symbol, Vec as SVec};
+   |                                 ^^^^^^
+
+error[E0106]: missing lifetime specifier
+  --> test-suites/tests/test_backstop_emissions_traps.rs:78:44
+   |
+78 | fn fork_fixture(wasm: bool) -> TestFixture<'_> {
+   |                                            ^^ expected named lifetime parameter
+   |
+   = help: this function's return type contains a borrowed value, but there is no value for it to be borrowed from
+help: consider using the `'static` lifetime, but this is uncommon unless you're returning a borrowed value from a `const` or a `static`, or if you will only have owned values
+   |
+78 | fn fork_fixture(wasm: bool) -> TestFixture<'static> {
+   |                                            ~~~~~~~
+
+warning: unused import: `Ledger`
+  --> test-suites/tests/test_pool_default_orphan_scenarios.rs:26:57
+   |
+26 | use soroban_sdk::testutils::{Address as _, Events as _, Ledger as _};
+   |                                                         ^^^^^^
+
+Some errors have detailed explanations: E0412, E0432.
+For more information about an error, try `rustc --explain E0412`.
+error[E0412]: cannot find type `TryFromValForContractFnOutputError` in crate `soroban_sdk`
+  --> test-suites/tests/test_backstop_emissions_traps.rs:51:38
+   |
+51 |     r: Result<Result<T, soroban_sdk::TryFromValForContractFnOutputError>, soroban_sdk::Error>,
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: a trait with a similar name exists: `TryFromValForContractFn`
+   |
+  ::: /home/common/.cargo/registry/src/index.crates.io-6f17d22bba15001f/soroban-sdk-22.0.7/src/try_from_val_for_contract_fn.rs:24:1
+   |
+24 | pub trait TryFromValForContractFn<E: Env, V: ?Sized>: Sized {
+   | ----------------------------------------------------------- similarly named trait `TryFromValForContractFn` defined here
+
+error[E0425]: cannot find value `SCALAR_12` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:305:47
+    |
+305 |         500 * 10i128.pow(6) * b_rate_before / SCALAR_12,
+    |                                               ^^^^^^^^^ not found in this scope
+    |
+help: consider importing this constant
+    |
+24  + use test_suites::test_fixture::SCALAR_12;
+    |
+
+warning: unused import: `Events as _`
+  --> test-suites/tests/test_backstop_emissions_traps.rs:24:30
+   |
+24 | use soroban_sdk::testutils::{Events as _, Ledger as _};
+   |                              ^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+warning: unused imports: `MockAuthContract` and `MockAuth`
+  --> test-suites/tests/test_backstop_emissions_traps.rs:27:31
+   |
+27 |     testutils::{Address as _, MockAuth, MockAuthContract},
+   |                               ^^^^^^^^  ^^^^^^^^^^^^^^^^
+
+warning: `test-suites` (test "test_pool_default_orphan_scenarios") generated 4 warnings
+error: could not compile `test-suites` (test "test_pool_default_orphan_scenarios") due to 2 previous errors; 4 warnings emitted
+warning: build failed, waiting for other jobs to finish...
+error[E0599]: no method named `to_bytes` found for struct `soroban_ledger_snapshot::LedgerSnapshot` in the current scope
+  --> test-suites/tests/test_backstop_emissions_traps.rs:44:40
+   |
+44 |         env_after.to_ledger_snapshot().to_bytes(),
+   |                                        ^^^^^^^^ method not found in `LedgerSnapshot`
+
+error[E0599]: no method named `to_bytes` found for struct `soroban_ledger_snapshot::LedgerSnapshot` in the current scope
+  --> test-suites/tests/test_backstop_emissions_traps.rs:68:30
+   |
+68 |     env.to_ledger_snapshot().to_bytes()
+   |                              ^^^^^^^^ method not found in `LedgerSnapshot`
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:113:5
+    |
+113 |     try_expect_bad_request(fixture.backstop.try_distribute());
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:117:5
+    |
+117 |     try_expect_bad_request(fixture.backstop.try_gulp_emissions(&pool_id));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:121:5
+    |
+121 |     try_expect_bad_request(fixture.backstop.try_add_reward(&pool_id, &None));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:125:5
+    |
+125 |     try_expect_bad_request(fixture.backstop.try_remove_reward(&pool_id));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:130:5
+    |
+130 |     try_expect_bad_request(fixture.backstop.try_claim(&frodo, &pool_list, &0));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:134:5
+    |
+134 |     try_expect_bad_request(fixture.backstop.try_drop());
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:157:5
+    |
+157 |     try_expect_bad_request(fixture.backstop.try_distribute());
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:158:5
+    |
+158 |     try_expect_bad_request(fixture.backstop.try_gulp_emissions(&pool_id));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:159:5
+    |
+159 |     try_expect_bad_request(fixture.backstop.try_add_reward(&pool_id, &None));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:160:5
+    |
+160 |     try_expect_bad_request(fixture.backstop.try_remove_reward(&pool_id));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:162:5
+    |
+162 |     try_expect_bad_request(fixture.backstop.try_claim(&frodo, &pool_list, &0));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:163:5
+    |
+163 |     try_expect_bad_request(fixture.backstop.try_drop());
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:192:17
+    |
+192 |                 try_expect_bad_request(fixture.backstop.try_distribute());
+    |                 ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:198:17
+    |
+198 |                 try_expect_bad_request(fixture.backstop.try_gulp_emissions(&pool_id));
+    |                 ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:204:17
+    |
+204 |                 try_expect_bad_request(fixture.backstop.try_add_reward(&pool_id, &None));
+    |                 ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:210:17
+    |
+210 |                 try_expect_bad_request(fixture.backstop.try_remove_reward(&pool_id));
+    |                 ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:216:17
+    |
+216 |                 try_expect_bad_request(
+    |                 ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:226:17
+    |
+226 |                 try_expect_bad_request(fixture.backstop.try_drop());
+    |                 ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0277]: `TrapCase<'_>` doesn't implement `Debug`
+   --> test-suites/tests/test_backstop_emissions_traps.rs:233:25
+    |
+233 |         eprintln!("trap {case:?} verified inert");
+    |                         ^^^^^^^^ `TrapCase<'_>` cannot be formatted using `{:?}`
+    |
+    = help: the trait `Debug` is not implemented for `TrapCase<'_>`
+    = note: add `#[derive(Debug)]` to `TrapCase<'_>` or manually `impl Debug for TrapCase<'_>`
+    = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `eprintln` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:253:5
+    |
+253 |     try_expect_bad_request(fixture.backstop.try_distribute());
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:261:5
+    |
+261 |     try_expect_bad_request(fixture.backstop.try_gulp_emissions(&pool_id));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:275:5
+    |
+275 |     try_expect_bad_request(fixture.backstop.try_add_reward(&pool_id, &None));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:309:5
+    |
+309 |     try_expect_bad_request(
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:314:5
+    |
+314 |     try_expect_bad_request(fixture.backstop.try_drop());
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:315:5
+    |
+315 |     try_expect_bad_request(fixture.backstop.try_remove_reward(&pool_id));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:341:5
+    |
+341 |     try_expect_bad_request(fixture.backstop.try_distribute());
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:342:5
+    |
+342 |     try_expect_bad_request(fixture.backstop.try_gulp_emissions(&pool_id));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:343:5
+    |
+343 |     try_expect_bad_request(fixture.backstop.try_add_reward(&pool_id, &None));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:344:5
+    |
+344 |     try_expect_bad_request(fixture.backstop.try_remove_reward(&pool_id));
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:345:5
+    |
+345 |     try_expect_bad_request(fixture.backstop.try_drop());
+    |     ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `try_expect_bad_request` in this scope
+   --> test-suites/tests/test_backstop_emissions_traps.rs:346:5
+
+[Showing lines 1-300 of 374. Use :301 to continue]
